@@ -24,6 +24,7 @@ public class ProductController {
 	@Autowired
 	private ProductService productService;
 	
+	
 	@GetMapping("memberProductList")
 	public ModelAndView getMemberProductList(Pager pager) throws Exception {
 		ModelAndView mv = new ModelAndView();
