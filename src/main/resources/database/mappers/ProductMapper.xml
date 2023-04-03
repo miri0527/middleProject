@@ -3,14 +3,81 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
-	<mapper namespace="com.home.middle.product.ProductDAO">
-	<sql id="ProductCondition">
-		<where>
-			<if test="kind == 'productName'">
-				PRODUCTNAME LIKE '%' || #{search} || '%'
-			</if>
-		</where>
-	</sql>
+ <mapper namespace="com.home.middle.product.ProductDAO">
+ 
+ 	  <sql id="ProductCondition">
+      <where>
+         <if test="kind == 'productName'">
+            PRODUCTNAME LIKE '%' || #{search} || '%'
+         </if>
+      </where>
+   	</sql>
+ 
+ 	<select id="getProductNum" resultType="Long">
+  		SELECT PRODUCT_SEQ.NEXTVAL FROM DUAL
+  	</select>
+  	
+  	
+  	<select id="getProductList" resultType="ProductDTO" parameterType="ProductDTO">
+  	SELECT PRODUCTNUM , PRODUCTNAME , DISCOUNT , DISCOUNTPERCENT FROM PRODUCT
+  	WHERE CATEGORYNUM = #{categoryNum}
+  	
+  	</select>
+
+ 	<select id="getProductDetail" parameterType="ProductDTO" resultMap="productDetailResult">
+
+	SELECT P.*, PO.* ,FI.* FROM PRODUCT P
+	LEFT JOIN PRODUCTOPTION PO 
+	ON PO.PRODUCTNUM   = P.PRODUCTNUM 
+	LEFT JOIN PRODUCTFILES FI 
+	ON FI.PRODUCTNUM  = P.PRODUCTNUM 
+	WHERE P.PRODUCTNUM = #{productNum}
+   </select> 
+ 	
+ <!--type=""에는 최종리턴타입  -->
+   <resultMap type="ProductDTO" id="productDetailResult">
+   
+	   <!--Primary Key  -->
+	   <id column="PRODUCTNUM" property="productNum" />
+	   <!-- 그외 나머지 -->
+	   <result column="PRODUCTNAME" property="productName" />
+	   <result column="DISCOUNT" property="discount" />
+	   <result column="DISCOUNTPERCENT" property="discountPercent" />
+	   <result column="PRODUCTSALES" property="productSales" />
+	   <result column="CATEGORYNUM" property="categoryNum" />
+	   
+ 	   <!-- 1:n 관계일 때  -->
+ 	   <collection property="productOptionDTOs" javaType="List" ofType="ProductOptionDTO">
+ 	    <id  column="OPTIONNUM"  property="optionNum" />
+ 	    <result  column="PRODUCTNUM" property="productNum"/>
+        <result  column="PRODUCTPRICE" property="productPrice"/>
+    	<result  column="PRODUCTSTOCK" property="productStock"/>
+    	<result  column="OPTIONNAME" property="optionName"/>
+    	<result  column="PRODUCTDATE" property="productDate"/>
+    	<result  column="OPTIONVALUE" property="optionValue"/>
+    	<result  column="REF" property="ref"/>
+    	<result  column="DEPTH" property="depth"/>
+    	<result  column="STEP" property="step"/>
+ 	   </collection>
+ 	 
+ 	   <collection property="productImgDTOs" javaType="List" ofType="ProductImgDTO" >
+ 	    <id  column="FILENUM"  property="fileNum" />
+        <result  column="NUM" property="num"/>
+    	<result  column="FILENAME" property="fileName"/>
+    	<result  column="ORINAME" property="oriName"/>
+ 	   </collection>
+ 	   
+ 	    <!-- 1:1 관계일 때 -->
+    	<!--<association property="" javaType="">-->
+   </resultMap>
+   
+    <select id="getProductOptionDetail" parameterType="ProductDTO" resultType="ProductOptionDTO">
+		SELECT * FROM PRODUCTOPTION WHERE PRODUCTNUM = #{productNum} ORDER BY OPTIONNUM ASC
+	</select>
+	
+	<select id="getOption" parameterType="ProductOptionDTO" resultType="ProductOptionDTO">
+		SELECT * FROM PRODUCTOPTION WHERE PRODUCTNUM = #{productNum} AND REF = #{ref} AND DEPTH = #{depth} ORDER BY OPTIONNUM ASC
+	</select>
 	
 	<select id="getTotalCount" resultType="Long" parameterType="Pager">
  		SELECT COUNT(PRODUCTNUM) FROM PRODUCT
@@ -28,9 +95,9 @@
 	<insert id="setProductFileAdd" parameterType="ProductImgDTO">
 		INSERT INTO PRODUCTFILES
 		VALUES (PRODUCTFILES_SEQ.NEXTVAL, #{productNum}, #{fileName}, #{oriName})
-	</insert>
+	</insert>  
 	
-	<select id="getMemberProductList" resultType="ProductDTO" parameterType="Pager" >
+ 	<select id="getMemberProductList" resultType="ProductDTO" parameterType="Pager" >
 		SELECT * FROM 
 		(
 			SELECT ROWNUM R, N.* FROM
@@ -44,59 +111,12 @@
 		WHERE R BETWEEN #{startRow} AND #{lastRow} 	
 		
 	</select>	
-	
+	 
 	<select id="getProductFileList" resultType="ProductImgDTO">
 		SELECT * FROM PRODUCTFILES
 		WHERE PRODUCTNUM=#{productNum}
 	</select>
-	
-	<select id="getProductDetail" parameterType="ProductDTO" resultMap="productDetailResult">
-		   SELECT P.*, PO.* ,FI.* FROM PRODUCT P
-		   LEFT JOIN PRODUCTOPTION PO 
-		   ON PO.PRODUCTNUM   = P.PRODUCTNUM 
-		   LEFT JOIN PRODUCTFILES FI 
-		   ON FI.PRODUCTNUM  = P.PRODUCTNUM 
-		   WHERE P.PRODUCTNUM = #{productNum}
-   </select> 
 
-    
- 	<!--type=""에는 최종리턴타입  -->
-   <resultMap type="ProductDTO" id="productDetailResult">
-   
-      <!--Primary Key  -->
-      <id column="PRODUCTNUM" property="productNum" />
-      <!-- 그외 나머지 -->
-      <result column = "ID" property="id"/>
-      <result column="PRODUCTNAME" property="productName" />
-      
-      <result column="DISCOUNT" property="discount" />
-      <result column="DISCOUNTPERCENT" property="discountPercent" />
-      <result column="PRODUCTSALES" property="productSales" />
-      <result column="CATEGORYNUM" property="categoryNum" />
-      
-       <!-- 1:n 관계일 때  -->
-       <collection property="productOptionDTOs" javaType="List" ofType="ProductOptionDTO">
-        <id  column="OPTIONNUM"  property="optionNum" />
- 		<result  column="PRODUCTNUM" property="productNum"/>
-        <result  column="PRODUCTPRICE" property="productPrice"/>
-       <result  column="PRODUCTSTOCK" property="productStock"/>
-       <result  column="OPTIONNAME" property="optionName"/>
-       <result  column="OPTIONVALUE" property="optionValue"/>
-       <result  column="REF" property="ref"/>
-       <result  column="DEPTH" property="depth"/>
-       </collection>
-     
-       <collection property="productImgDTOs" javaType="List" ofType="ProductImgDTO" >
-        <id  column="FILENUM"  property="fileNum" />
-       <result  column="PRODUCTNUM" property="productNum"/>
-       <result  column="FILENAME" property="fileName"/>
-       <result  column="ORINAME" property="oriName"/>
-       </collection>
-       
-        <!-- 1:1 관계일 때 -->
-       <!--<association property="" javaType="">-->
-   </resultMap>
-   
 	
 	<update id="setProductUpdate" parameterType="ProductDTO">
 		UPDATE PRODUCT 

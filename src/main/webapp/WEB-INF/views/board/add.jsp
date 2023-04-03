@@ -33,9 +33,9 @@
     		<input type="text" class="form-control" id="productNum" name="productNum" readonly value="${dto.productNum}">
   		</div>
 
-		<div id="fileList" class="my-5">
+		<!-- <div id="fileList" class="my-5">
 				<button type="button" class="btn btn-primary" id="fileAdd">ADD</button>
-		</div>
+		</div> -->
 
 
 	  <div class="col-12">

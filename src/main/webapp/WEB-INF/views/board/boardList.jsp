@@ -20,7 +20,7 @@
 		<table class="table table-hover">
 			<thead>
 				<tr>
-					<th>NUM</th><th>CONTENTS</th><th>TITLE</th><th>ID</th><th>DATE</th>
+					<th>NUM</th><th>CONTENTS</th><th>TITLE</th><th>ID</th><th>DATE</th><th>상품번호</th><th>삭제</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -32,6 +32,12 @@
 					<td>${dto.id}</td>
 					<td>${dto.regDate}</td>
 					<td>${dto.productNum}</td>
+					<td>
+					<form action="./delete" id="frm">
+					 <input type="hidden" name="num" value="${dto.num}">
+					 <button id="delete" type="button" class="btn btn-info">DELETE</button>
+					</form>
+					</td>
 				</tr>
 				</c:forEach>
 			</tbody>

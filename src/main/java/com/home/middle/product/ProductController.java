@@ -26,17 +26,63 @@ public class ProductController {
 	
 	
 	
-	@GetMapping("memberProductList")
-	public ModelAndView getMemberProductList(Pager pager) throws Exception {
+	@RequestMapping(value="list" , method=RequestMethod.GET)
+	public ModelAndView getProductList(ProductDTO productDTO) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		
-		List<ProductDTO> ar =  productService.getMemberProductList(pager);
 		
-		mv.setViewName("product/memberProductList");
-		mv.addObject("list", ar);
-		
+		List<ProductDTO> ar = productService.getProductList(productDTO);
+	  
+		mv.setViewName("product/productList");
+		mv.addObject("list",ar);
+		//mv.addObject("pager", pager);
 		return mv;
 	}
+	
+
+	@RequestMapping(value="detail",method=RequestMethod.GET)
+	public ModelAndView getProductDetail(ProductDTO productDTO, Model model) throws Exception{
+		//파라미터 이름과 setter의 이름과 같아야함 
+		
+		 System.out.println("Product detail");
+		 ModelAndView mv = new ModelAndView();
+		 productDTO = productService.getProductDetail(productDTO);
+		
+		 System.out.println(productDTO!=null);
+		
+		 mv.setViewName("/product/productDetail");
+		 mv.addObject("dto",productDTO);
+		
+	   return mv;
+		
+	}
+	
+	@GetMapping("memberProductList")
+	   public ModelAndView getMemberProductList(Pager pager) throws Exception {
+	      ModelAndView mv = new ModelAndView();
+	      
+	      List<ProductDTO> ar =  productService.getMemberProductList(pager);
+	      
+	      mv.setViewName("product/memberProductList");
+	      mv.addObject("list", ar);
+	      
+	      return mv;
+	   }
+	////////////////////////상품 하위 옵션 구현 ///////////////////////////////////// 
+	
+
+	//ajax의 post url "./optionList" 
+	@PostMapping("optionList")
+	public ModelAndView getOption(ProductOptionDTO productOptionDTO) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		
+		List<ProductOptionDTO> ar = productService.getOption(productOptionDTO);
+		
+		mv.addObject("list", ar);
+		mv.setViewName("/product/selectOption");
+		
+		return mv;
+	}		
 	
 	@GetMapping("add")
 	public ModelAndView setProductAdd() throws Exception {
@@ -62,21 +108,6 @@ public class ProductController {
 		return mv;
 	}
 	
-   @RequestMapping(value="detail",method=RequestMethod.GET)
-   public ModelAndView getProductDetail(ProductDTO productDTO, Model model) throws Exception{
-      //파라미터 이름과 setter의 이름과 같아야함 
-      ModelAndView mv = new ModelAndView();
-     
-      productDTO = productService.getProductDetail(productDTO);     
-
-       mv.setViewName("product/productDetail");
-       
-       System.out.println(productDTO.getId());
-       mv.addObject("dto",productDTO);
-      
-      return mv;
-      
-   }
 
 	@GetMapping("update")
 	public ModelAndView setProductUpdate(ProductDTO productDTO) throws Exception {

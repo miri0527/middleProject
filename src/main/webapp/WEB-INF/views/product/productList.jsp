@@ -36,7 +36,7 @@
                                     <!-- Product name-->
                                     <h5 class="fw-bolder">${pageScope.dto.productNum}</h5>
                                     <!-- Product price-->
-                                   ${pageScope.dto.productName}
+                                     ${pageScope.dto.productName}
                                 </div>
                             </div>
                             <!-- Product actions-->
@@ -46,7 +46,6 @@
                         </div>
                     </div>
                     </c:forEach>
-
          </div>
      </div>
 </section> 

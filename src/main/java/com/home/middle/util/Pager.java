@@ -18,7 +18,7 @@ public class Pager {
 	public void setNum(Long num) {
 		this.num = num;
 	}
-
+                  
 	
 
 	

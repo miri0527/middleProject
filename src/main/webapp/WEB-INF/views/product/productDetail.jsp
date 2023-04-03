@@ -1,4 +1,4 @@
-<%@page import="com.home.middle.product.ProductDTO"%>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -70,6 +70,7 @@
           <div  id="qnaList">  </div>   
                  
           <div class="row">
+            <a href="../../qna/add?productNum=${dto.productNum}" class="btn btn-primary">상품문의</a>
 			<a href="../../review/add?productNum=${dto.productNum}" class="btn btn-primary">리뷰작성</a>
 			<a href="./add" class="btn btn-primary">상품추가</a>
 			

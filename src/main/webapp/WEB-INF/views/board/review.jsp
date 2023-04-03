@@ -21,7 +21,7 @@
 		<table class="table table-hover">
 			<thead>
 				<tr>
-					<th>NUM</th><th>CONTENTS</th><th>TITLE</th><th>ID</th><th>DATE</th>
+					<th>NUM</th><th>CONTENTS</th><th>TITLE</th><th>ID</th><th>DATE</th><th>삭제</th><th>수정</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -111,6 +111,7 @@
 	
 </div>
 
+<script type="text/javascript" src="../resources/js/boardForm.js"></script>
 <c:import url="../template/common_js.jsp"></c:import>
 <script src="../resources/js/pageing.js"></script>
 <script>
