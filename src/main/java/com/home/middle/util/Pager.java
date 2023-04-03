@@ -9,7 +9,7 @@ public class Pager {
 	private String id;
 	private String name;
 	private String[] roleName;
-	
+
 	
 	public Long getNum() {
 		return num;
