@@ -20,6 +20,7 @@
 		</head>
 
 		<body>
+
 			<div class="container-fluid">
 				<div class="col-lg-10 mx-auto">
 					<!-- Tab panes -->
@@ -47,9 +48,6 @@
 															data-orderNum="${dto.orderNum}">
 													</td>
 													<td class="product-thumbnail orderNum" id="orderNum-${i.count}">
-														<div class="pro-thumbnail-img">
-															<img src="https://shop-phinf.pstatic.net/20230317_262/1679040584256kQrbw_JPEG/80176479993578269_2030409830.JPG?type=m510">
-														</div>
 														<p class="orderNum">${dto.orderNum}</p>
 														${dto.productDTO.productName}
 														<p class="optionNum">${dto.optionNum}</p>
@@ -60,18 +58,18 @@
 													<td class="product-price">${dto.productDTO.productPrice}</td>
 													<td class="product-quantity">
 														<c:if test="${dto.buyCheck == 0 }">
-															<div class="cart-plus-minus mx-auto">
+															<div class="cart-plus-minus f-left mx-auto">
 																<div class="dec qtybutton btnN" id="btnN${i.count}">-
 																</div>
 																<input type="text" value="${dto.productEa}"
-																	name="qtybutton" class="cart-plus-minus-box ea" readonly>
+																	name="qtybutton" class="cart-plus-minus-box mx-auto">
 																<div class="inc qtybutton btnP" id="btnP${i.count}">+
 																</div>
 															</div>
 														</c:if>
 														<c:if test="${dto.buyCheck == 1 }">
-															<input type="text" value="${dto.productEa}" name="qtybutton"
-																class="cart-plus-minus-box mx-auto" readonly>
+															${dto.productEa}
+
 														</c:if>
 													</td>
 													<td class="product-subtotal totalPrice" id="totalPrice-${i.count}"
@@ -98,17 +96,14 @@
 									</table>
 
 								</div>
-								<button class="btn btn-primary selectPayment float-end mx-2">Payment Selected</button>
-								
+								<button class="btn btn-primary selectPaymentCancel float-end mx-2">PaymentCancel Selected</button>
 								<button class="btn btn-primary selectedDelete float-end">Delete Selected</button>
 							</div>
 						</div>
 						<!-- shopping-cart end -->
 					</div>
 				</div>
-
 			</div>
-
 			<script src="/resources/js/cartUpdate1.js"></script>
 			<c:import url="../template/common_js.jsp"></c:import>
 		</body>

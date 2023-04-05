@@ -15,7 +15,10 @@
    </properties>
    <dependencies>
    
-   
+   	
+   	
+   	
+   	
       <!-- https://mvnrepository.com/artifact/com.artifact/com.fasterxml.jackson.core/에이젝트 추가(희진) -->
 		 <dependency>
 		    <groupId>com.fasterxml.jackson.core</groupId>
@@ -35,6 +38,21 @@
           <artifactId>commons-fileupload</artifactId>
           <version>1.4</version>
       </dependency>
+      
+      <!-- https://mvnrepository.com/artifact/javax.mail/mail -->
+		<dependency>
+    		<groupId>javax.mail</groupId>
+    		<artifactId>mail</artifactId>
+    		<version>1.4.7</version>
+			</dependency>
+			
+			
+			<dependency>
+	    	<groupId>org.springframework</groupId>
+    		<artifactId>spring-context-support</artifactId>
+    		<version>${org.springframework-version}</version> 
+		</dependency>
+      
       
       <!-- https://mvnrepository.com/artifact/org.mybatis/mybatis -->
       <dependency>

@@ -24,3 +24,4 @@
     <link rel="stylesheet" href="/resources/css/style-customizer.css">
     <link href="#" data-style="/resources/styles" rel="stylesheet">
     <script src="js/vendor/modernizr-3.11.2.min.js"></script>
+<script type="text/javascript" src="//code.jquery.com/jquery-3.6.0.min.js"></script>

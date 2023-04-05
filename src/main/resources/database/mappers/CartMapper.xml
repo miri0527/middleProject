@@ -17,7 +17,7 @@
 		SELECT P.PRODUCTNUM, P.PRODUCTNAME, "POP".OPTIONNUM, "POP".OPTIONNAME, "POP".PRODUCTPRICE FROM PRODUCT P
 		LEFT OUTER JOIN PRODUCTOPTION "POP"
 		ON(P.PRODUCTNUM = "POP".PRODUCTNUM)
-		WHERE P.PRODUCTNUM = #{productNum} AND "POP".OPTIONNUM = 27
+		WHERE P.PRODUCTNUM = #{productNum} AND "POP".OPTIONNUM = 121
 	</select>
 
 	<select id="getCartList" parameterType="MemberDTO" resultMap="ProductCartList">
@@ -26,7 +26,16 @@
 		ON(PO.PRODUCTNUM = P.PRODUCTNUM)
 		LEFT OUTER JOIN PRODUCTOPTION "POP"
 		ON(PO.OPTIONNUM  = "POP".OPTIONNUM)
-		WHERE PO.ID = #{id}
+		WHERE PO.ID = #{id} AND BUYCHECK = 0
+		ORDER BY PO.ORDERNUM DESC
+	</select>
+	<select id="getCartPaymentList" parameterType="MemberDTO" resultMap="ProductCartList">
+		SELECT * FROM PRODUCTORDER PO
+		LEFT OUTER JOIN PRODUCT P
+		ON(PO.PRODUCTNUM = P.PRODUCTNUM)
+		LEFT OUTER JOIN PRODUCTOPTION "POP"
+		ON(PO.OPTIONNUM  = "POP".OPTIONNUM)
+		WHERE PO.ID = #{id} AND BUYCHECK = 1
 		ORDER BY PO.ORDERNUM DESC
 	</select>
 	
@@ -54,6 +63,7 @@
  		<result column="PRODUCTEA" property="productEa"/>
  		<result column="ORDERDATE" property="orderDate"/>
  		<result column="BUYCHECK" property="buyCheck"/>
+ 		<result column="PAYMENTCHECK" property="paymentCheck"/>
  		<result column="OPTIONNUM" property="optionNum"/>
  		
  		<association property="productDTO" javaType="ProductDTO">
@@ -66,7 +76,7 @@
 	</resultMap>
 	
 	<insert id="setCartAdd" parameterType="CartDTO">
-		INSERT INTO PRODUCTORDER VALUES (ORDER_SEQ.NEXTVAL, #{productDTO.productNum}, #{id}, #{totalPrice}, #{productEa}, SYSDATE, 0, #{optionNum})
+		INSERT INTO PRODUCTORDER (ORDERNUM, PRODUCTNUM, ID, TOTALPRICE, PRODUCTEA, ORDERDATE, BUYCHECK, PAYMENTCHECK,OPTIONNUM)VALUES (ORDER_SEQ.NEXTVAL, #{productDTO.productNum}, #{id}, #{totalPrice}, #{productEa}, SYSDATE, 0, 0, #{optionNum})
 	</insert>
 	
 	
@@ -81,6 +91,13 @@
 	<update id="setCartPayment" parameterType="CartDTO">
 		UPDATE PRODUCTORDER SET BUYCHECK = 1 WHERE ORDERNUM = #{orderNum}
 	</update>
+	<select id="getOptionDetail" parameterType="CartDTO" resultType="ProductOptionDTO">
+		SELECT * FROM PRODUCTOPTION WHERE OPTIONNUM = #{optionNum}
+	</select>
+	<update id="setOptionUpdate" parameterType="CartDTO">
+		UPDATE PRODUCTOPTION SET PRODUCTSTOCK = #{productEa} WHERE OPTIONNUM = #{optionNum}
+	</update>
+	
 	<update id="setCartPaymentCancel" parameterType="CartDTO">
 		UPDATE PRODUCTORDER SET BUYCHECK = 0 WHERE ORDERNUM = #{orderNum}
 	</update>

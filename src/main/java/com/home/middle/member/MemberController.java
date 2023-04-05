@@ -3,7 +3,6 @@ package com.home.middle.member;
 import java.util.List;
 
 import javax.servlet.http.Cookie;
-
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -12,70 +11,26 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.home.middle.product.ProductDTO;
-import com.home.middle.util.Pager;
-
-import oracle.jdbc.proxy.annotation.Post;
+import com.home.middle.email.MailSendController;
+import com.home.middle.email.MailSendService;
 
 @Controller
 @RequestMapping(value="/member/*")
 public class MemberController {
 	
+	
+	@Autowired
+	private MailSendController mailSendController;
+
+	@Autowired
+	private MailSendService mailService;
+	
+	
+	
 	@Autowired
 	private MemberService memberService;
-	
-//	@GetMapping("memberList")
-//	public ModelAndView getMemberList(Pager pager) throws Exception {
-//		ModelAndView mv = new ModelAndView();
-//
-//		
-//		List<MemberDTO> ar = memberService.getMemberList(pager);
-//		
-//		mv.addObject("list", ar);
-//		mv.setViewName("member/memberList");
-//		
-//		
-//		return mv;
-//		
-//	}
-	
-//	@GetMapping("memberList")
-//	public ModelAndView getMemberList(Pager pager, @RequestParam(name = "roleName", required = false) String [] roleName) throws Exception {
-//		ModelAndView mv = new ModelAndView();
-//		pager.setRoleName(roleName);
-//		System.out.println(pager.getRoleName() == null);
-//		
-//		List<MemberDTO> ar = memberService.getMemberList(pager);
-//		
-////		System.out.println("AR" + ar.size());
-//		
-//		
-//		mv.addObject("list", ar);
-//		
-//		mv.setViewName("member/memberList");
-//		System.out.println("RoleName : " + ar.get(0).getRoleDTO().getRoleName());
-//		
-//		
-//		return mv;
-//		
-//	}
-//	
-	
-//	@PostMapping("memberDelete")
-//	public ModelAndView setMemberDelete(MemberDTO memberDTO) throws Exception {
-//		ModelAndView mv = new ModelAndView();
-//		
-//		int result =  memberService.setMemberDelete(memberDTO);
-//		
-//		mv.setViewName("redirect:./memberList");
-//		
-//		return mv;
-//		
-//	}
 	
 	@GetMapping("memberIdFind")
 	public ModelAndView getMemberIdFind()throws Exception{
@@ -88,7 +43,7 @@ public class MemberController {
 	public ModelAndView getMemberIdFind(String email)throws Exception{
 		ModelAndView mv = new ModelAndView();
 		
-		System.out.println(email);
+		
 		List<String> names=memberService.getMemberIdFind(email);
 		
 		mv.addObject("name", names);
@@ -106,8 +61,10 @@ public class MemberController {
 	@PostMapping("memberPwFind")
 	public ModelAndView getMemberPwFind(MemberDTO memberDTO)throws Exception{
 		ModelAndView mv = new ModelAndView();
+		System.out.println("Con pw :"+memberDTO.getPw());
+		System.out.println("Con em :"+memberDTO.getEmail());
 		String pw=memberService.setMemberPwChange(memberDTO);
-		
+		System.out.println("Con em :"+memberDTO.getEmail());
 		
 		
 		mv.addObject("name", pw);
@@ -119,9 +76,9 @@ public class MemberController {
 	@PostMapping("memberCheck")
 	public ModelAndView getMemberCheck(MemberDTO memberDTO) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		System.out.println(memberDTO.getId());
+		
 		boolean check = memberService.getMemberCheck(memberDTO);
-		System.out.println(check);
+		
 		mv.addObject("result", check);
 		mv.setViewName("common/memberCheck");
 		return mv;
@@ -136,8 +93,10 @@ public class MemberController {
 	}
 	
 	@PostMapping("memberJoin")
-	public ModelAndView setMemberAdd(MemberDTO memberDTO) throws Exception{
+	public ModelAndView setMemberAdd(MemberDTO memberDTO,String emaildomain,String address1) throws Exception{
 		ModelAndView mv = new ModelAndView();
+		memberDTO.setAddress(memberDTO.getAddress()+address1);
+		memberDTO.setEmail(memberDTO.getEmail()+emaildomain);
 		int result = memberService.setMemberJoin(memberDTO);
 		
 		mv.setViewName("redirect:../");
@@ -150,23 +109,12 @@ public class MemberController {
 		MemberDTO memberDTO=new MemberDTO();
 		memberDTO=(MemberDTO)session.getAttribute("member");
 		
-		//memberDTO=memberService.getMemberDetail(memberDTO);
+		memberDTO=memberService.getMemberDetail(memberDTO);
 		
 		mv.addObject("dto", memberDTO);
 		mv.setViewName("./member/memberDetail");
 		return mv;
 	}
-	
-//	@GetMapping("adminMemberDetail")
-//	public ModelAndView getAdminMemberDetail(MemberDTO memberDTO) throws Exception {
-//		ModelAndView mv = new ModelAndView();
-//		memberDTO = memberService.getMemberDetail(memberDTO);
-//		
-//		mv.addObject("dto", memberDTO);
-//		mv.setViewName("./member/adminMemberDetail");
-//		
-//		return mv;
-//	}
 	@GetMapping("memberLogin")
 	public ModelAndView getMemberLogin() throws Exception{
 		ModelAndView mv = new ModelAndView();
@@ -211,36 +159,14 @@ public class MemberController {
 		return mv;
 	}
 	@PostMapping("memberUpdate")
-	public ModelAndView setMemberUpdate(MemberDTO memberDTO, HttpSession session) throws Exception{
+	public ModelAndView setMemberUpdate(MemberDTO memberDTO) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		System.out.println(memberDTO.getId());
-		int result=memberService.setMemberUpdate(memberDTO);
 		
+		int result=memberService.setMemberUpdate(memberDTO);
+	
 		mv.setViewName("redirect:./memberDetail");
 		return mv;
 	}
-	
-//	@GetMapping("adminMemberUpdate")
-//	public ModelAndView setAdminMemberUpdate(MemberDTO memberDTO) throws Exception {
-//		ModelAndView mv = new ModelAndView();
-//		memberDTO = memberService.getMemberDetail(memberDTO);
-//		
-//		mv.addObject("dto", memberDTO);
-//		mv.setViewName("./member/adminMemberUpdate");
-//		
-//		return mv;
-//	}
-	
-//	@PostMapping("adminMemberUpdate")
-//	public ModelAndView setAdminMemberUpdate(MemberDTO memberDTO, ModelAndView mv) throws Exception {
-//		int result = memberService.setAdminMemberUpdate(memberDTO);
-//		
-//		mv.setViewName("redirect:./adminMemberDetail?id=" + memberDTO.getId());
-//		
-//		return mv;
-//	}
-	
-	
 	@GetMapping("memberLogout")
 	public ModelAndView setMemberLogout(HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView();

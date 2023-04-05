@@ -30,17 +30,24 @@ public class CartController {
 	public ModelAndView getCartList(HttpSession session) throws Exception{
 		//member 연동해서 아이디에 따른 장바구니 가져오기
 		ModelAndView mv = new ModelAndView();
+		//임시 아이디 설정
+		MemberDTO memberDTO = new MemberDTO();
+		memberDTO.setId("TEST2");
 		
-		if(session.getAttribute("member")!=null) {
-			MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
-			
-			List<CartDTO> ar = cartService.getCartList(memberDTO);
-			
-			mv.addObject("list", ar);
-			mv.setViewName("/cart/cartPayment");
-		}else {
-			mv.setViewName("redirect:../");
-		}
+		List<CartDTO> ar = cartService.getCartList(memberDTO);
+		System.out.println(ar.size());
+		mv.addObject("list", ar);
+		mv.setViewName("/cart/cartList");
+//		if(session.getAttribute("member")!=null) {
+//			MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+//			
+//			List<CartDTO> ar = cartService.getCartList(memberDTO);
+//			
+//			mv.addObject("list", ar);
+//			mv.setViewName("/cart/cartPayment");
+//		}else {
+//			mv.setViewName("redirect:../");
+//		}
 		return mv;
 		
 	}
@@ -51,9 +58,9 @@ public class CartController {
 		ModelAndView mv = new ModelAndView();
 		//임시 아이디 설정
 		MemberDTO memberDTO = new MemberDTO();
-		memberDTO.setId("TEST2");
+		memberDTO.setId("test");
 		ProductDTO productDTO = new ProductDTO();
-		productDTO.setProductNum(3L);
+		productDTO.setProductNum(17L);//임시 수정
 		productDTO = productService.getProductDetail(productDTO);
 		
 		mv.addObject("mDTO", memberDTO);
@@ -83,8 +90,8 @@ public class CartController {
 		
 		int result = cartService.setCartDelete(cartDTO);
 		
-		mv.addObject("result", result);
-		mv.setViewName("/common/result_1");
+		
+		mv.setViewName("redirect:../cart/cartList");
 		
 		return mv;
 	}
@@ -101,46 +108,44 @@ public class CartController {
 		return mv;
 	}
 	
-	@GetMapping("cartPayment")
-	public ModelAndView setCartPayment(HttpSession session) throws Exception{
-		ModelAndView mv = new ModelAndView();
-		
-		if(session.getAttribute("member")!=null) {
-			MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
-			
-			List<CartDTO> ar = cartService.getCartList(memberDTO);
-			
-			mv.addObject("list", ar);
-			mv.setViewName("/cart/cartPayment");
-		}else {
-			mv.setViewName("redirect:../");
-		}
-		return mv;
-	}
-	
-	@PostMapping("cartPayment")
-	public ModelAndView setCartPayment(CartDTO cartDTO) throws Exception{
-		ModelAndView mv = new ModelAndView();
-		
-		int result = cartService.setCartPayment(cartDTO);
-		
-		//mv.addObject("result", result);
-		mv.setViewName("redirect:./cartPayment");
-		
-		return mv;
-	}
-	
-	@PostMapping("cartPaymentCancel")
-	public ModelAndView setCartPaymentCancel(CartDTO cartDTO) throws Exception{
-		ModelAndView mv = new ModelAndView();
-		
-		int result = cartService.setCartPaymentCancel(cartDTO);
-		
-		//mv.addObject("result", result);
-		mv.setViewName("redirect:./cartPayment");
-		
-		return mv;
-	}
+//	@GetMapping("cartPayment")
+//	public ModelAndView setCartPayment() throws Exception{
+//		ModelAndView mv = new ModelAndView();
+//		
+//		//임시 아이디 설정
+//		MemberDTO memberDTO = new MemberDTO();
+//		memberDTO.setId("TEST2");
+//		List<CartDTO> ar = cartService.getCartList(memberDTO);
+//		
+//		mv.addObject("list", ar);
+//		mv.setViewName("/cart/cartPayment");
+//		
+//		return mv;
+//	}
+//	
+//	@PostMapping("cartPayment")
+//	public ModelAndView setCartPayment(CartDTO cartDTO) throws Exception{
+//		ModelAndView mv = new ModelAndView();
+//		
+//		int result = cartService.setCartPayment(cartDTO);
+//		
+//		//mv.addObject("result", result);
+//		mv.setViewName("redirect:./cartPayment");
+//		
+//		return mv;
+//	}
+//	
+//	@PostMapping("cartPaymentCancel")
+//	public ModelAndView setCartPaymentCancel(CartDTO cartDTO) throws Exception{
+//		ModelAndView mv = new ModelAndView();
+//		
+//		int result = cartService.setCartPaymentCancel(cartDTO);
+//		
+//		//mv.addObject("result", result);
+//		mv.setViewName("redirect:./cartPayment");
+//		
+//		return mv;
+//	}
 	
 	@PostMapping("cartPaymentDetail")
 	public ModelAndView getCartPaymentDetail(CartDTO cartDTO) throws Exception{
@@ -164,6 +169,86 @@ public class CartController {
 		mv.addObject("result", result);
 		mv.setViewName("/common/result_1");
 		
+		return mv;
+	}
+	
+	@PostMapping("cartPayment")
+	public ModelAndView setCartPayment(CartDTO cartDTO) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		
+		int result = cartService.setCartPayment(cartDTO);
+		
+		mv.setViewName("redirect:./cartList");
+		return mv;
+	}
+	
+	@PostMapping("cartPaymentCancel")
+	public ModelAndView setCartPaymentCancel(CartDTO cartDTO) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		
+		int result = cartService.setCartPaymentCancel(cartDTO);
+		mv.setViewName("redirect:./cartList");
+		return mv;
+	}
+	
+	@PostMapping("cartSelectedDelete")
+	public ModelAndView setCartSelectedDelete(String check[]) throws Exception{
+		
+		ModelAndView mv = new ModelAndView();
+		
+		for(int i = 0; i < check.length; i ++) {
+			CartDTO cartDTO = new CartDTO();
+			cartDTO.setOrderNum(Long.parseLong(check[i]));
+			cartService.setCartDelete(cartDTO);
+		}
+		mv.setViewName("redirect:./cartList");
+		return mv;
+		
+	}
+	
+	@PostMapping("cartSelectedPayment")
+	public ModelAndView setCartSelectedPayment(String check[], String ea[], String opNum[]) throws Exception{
+		
+		ModelAndView mv = new ModelAndView();
+		
+		for(int i = 0; i < check.length; i ++) {
+			CartDTO cartDTO = new CartDTO();
+			cartDTO.setOrderNum(Long.parseLong(check[i]));
+			cartDTO.setProductEa(Long.parseLong(ea[i]));
+			cartDTO.setOptionNum(Long.parseLong(opNum[i]));
+			cartService.setCartPayment(cartDTO);
+		}
+		mv.setViewName("redirect:./cartList");
+		return mv;
+	}
+	@PostMapping("cartSelectedPaymentCancel")
+	public ModelAndView setCartSelectedPaymentCancel(String check[], String ea[], String opNum[]) throws Exception{
+		
+		ModelAndView mv = new ModelAndView();
+		
+		for(int i = 0; i < check.length; i ++) {
+			CartDTO cartDTO = new CartDTO();
+			cartDTO.setOrderNum(Long.parseLong(check[i]));
+			cartDTO.setProductEa(Long.parseLong(ea[i]));
+			cartDTO.setOptionNum(Long.parseLong(opNum[i]));
+			cartService.setCartPaymentCancel(cartDTO);
+		}
+		mv.setViewName("redirect:./cartList");
+		return mv;
+	}
+	
+	@GetMapping("cartPaymentList")
+	public ModelAndView setCartPaymentList() throws Exception{
+		//member 연동해서 아이디에 따른 장바구니 가져오기
+		ModelAndView mv = new ModelAndView();
+		//임시 아이디 설정
+		MemberDTO memberDTO = new MemberDTO();
+		memberDTO.setId("TEST2");
+				
+		List<CartDTO> ar = cartService.getCartPaymentList(memberDTO);
+		
+		mv.addObject("list", ar);
+				
 		return mv;
 	}
 }

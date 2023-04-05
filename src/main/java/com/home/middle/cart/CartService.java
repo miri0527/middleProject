@@ -36,10 +36,38 @@ public class CartService {
 	}
 	
 	public int setCartPayment(CartDTO cartDTO) throws Exception{
+		long temp = cartDTO.getProductEa();
+		
+		ProductOptionDTO productOptionDTO = cartDAO.getOptionDetail(cartDTO);
+		while(true) {
+			cartDTO.setProductEa(productOptionDTO.getProductStock() - temp);
+			cartDAO.setOptionUpdate(cartDTO);
+			cartDTO.setOptionNum(productOptionDTO.getRef());
+			productOptionDTO = cartDAO.getOptionDetail(cartDTO);
+			if(productOptionDTO.getDepth() == 0) {
+				cartDTO.setProductEa(productOptionDTO.getProductStock() - temp);
+				cartDAO.setOptionUpdate(cartDTO);
+				break;
+			}
+		}
 		return cartDAO.setCartPayment(cartDTO);
 	}
 	
 	public int setCartPaymentCancel(CartDTO cartDTO) throws Exception{
+		long temp = cartDTO.getProductEa();
+		
+		ProductOptionDTO productOptionDTO = cartDAO.getOptionDetail(cartDTO);
+		while(true) {
+			cartDTO.setProductEa(productOptionDTO.getProductStock() + temp);
+			cartDAO.setOptionUpdate(cartDTO);
+			cartDTO.setOptionNum(productOptionDTO.getRef());
+			productOptionDTO = cartDAO.getOptionDetail(cartDTO);
+			if(productOptionDTO.getDepth() == 0) {
+				cartDTO.setProductEa(productOptionDTO.getProductStock() + temp);
+				cartDAO.setOptionUpdate(cartDTO);
+				break;
+			}
+		}
 		return cartDAO.setCartPaymentCancel(cartDTO);
 	}
 	
@@ -48,6 +76,9 @@ public class CartService {
 	}
 	public int getCartUpdate(CartDTO cartDTO) throws Exception{
 		return cartDAO.getCartUpdate(cartDTO);
+	}
+	public List<CartDTO> getCartPaymentList(MemberDTO memberDTO) throws Exception{
+		return cartDAO.getCartPaymentList(memberDTO);
 	}
 	
 	

@@ -12,9 +12,19 @@ public class CartDTO {
 	private Long productEa;
 	private Date orderDate;
 	private Long buyCheck;
+	private Long paymentCheck;
 	private Long optionNum;
 	private ProductDTO productDTO;
 	
+	
+	
+	
+	public Long getPaymentCheck() {
+		return paymentCheck;
+	}
+	public void setPaymentCheck(Long paymentCheck) {
+		this.paymentCheck = paymentCheck;
+	}
 	public Long getOptionNum() {
 		return optionNum;
 	}
