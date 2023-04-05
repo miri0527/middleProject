@@ -72,7 +72,11 @@
           <div class="row">
             <a href="../../qna/add?productNum=${dto.productNum}" class="btn btn-primary">상품문의</a>
 			<a href="../../review/add?productNum=${dto.productNum}" class="btn btn-primary">리뷰작성</a>
+			
+			<c:if test="${member.roleDTO.roleName eq 'ADMIN'  or member.id eq dto.id eq member.id eq null}">
 			<a href="./add" class="btn btn-primary">상품추가</a>
+			<a href="./update?productNum="${dto.productNum}" class="btn btn-primary">상품수정</a>
+			</c:if>
 			
 		  </div>
 		  

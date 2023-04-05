@@ -18,7 +18,7 @@
                 </a>
             </div>
             
-            <form action="./adminMemberUpdate" method="post" id="frm">
+            <form action="./memberUpdate" method="post" id="frm">
             
             
                 <div class="form-group has-success">
@@ -65,5 +65,6 @@
      
 
 <c:import url="../template/common_js.jsp"></c:import>
+<script type="text/javascript" src="../resources/js/adminMemberUpdate.js"></script>
 </body>
 </html>

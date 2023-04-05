@@ -56,7 +56,7 @@
     </div>
   </div>
 
-	<a href="./adminMemberUpdate?id=${dto.id}"><button type="button" class="btn btn-primary">회원수정</button></a>
+	<a href="./memberUpdate?id=${dto.id}"><button type="button" class="btn btn-primary">회원수정</button></a>
 	<form action="./memberDelete" method="post" id="frm2">
 		<input type="hidden" name="id" value="${dto.id}">
 		<button type="submit" id="deleteBtn" class="btn btn-danger">탈퇴처리</button>

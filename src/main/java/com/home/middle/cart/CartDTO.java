@@ -13,6 +13,7 @@ public class CartDTO {
 	private Date orderDate;
 	private Long buyCheck;
 	private Long optionNum;
+	private ProductDTO productDTO;
 	
 	public Long getOptionNum() {
 		return optionNum;
@@ -20,8 +21,6 @@ public class CartDTO {
 	public void setOptionNum(Long optionNum) {
 		this.optionNum = optionNum;
 	}
-	private ProductDTO productDTO;
-	
 	
 	public ProductDTO getProductDTO() {
 		return productDTO;

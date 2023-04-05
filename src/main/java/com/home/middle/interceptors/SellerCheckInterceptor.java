@@ -8,15 +8,15 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import com.home.middle.member.MemberDTO;
 
-public class AdminCheckInterceptor extends HandlerInterceptorAdapter {
+public class SellerCheckInterceptor extends HandlerInterceptorAdapter {
 	
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
-		MemberDTO memberDTO = (MemberDTO)request.getSession().getAttribute("member");
 		
+		MemberDTO memberDTO = (MemberDTO)request.getSession().getAttribute("member");
 		if(memberDTO !=null) {
-			if(memberDTO.getRoleDTO().getRoleName().equals("ADMIN") ) {
+			if(memberDTO.getRoleDTO().getRoleName().equals("SELLER") || memberDTO.getRoleDTO().getRoleName().equals("ADMIN")) {
 				return true;
 			}
 		}else {
@@ -32,5 +32,4 @@ public class AdminCheckInterceptor extends HandlerInterceptorAdapter {
 		view.forward(request, response);
 		return false;
 	}
-	
 }

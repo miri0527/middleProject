@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.home.middle.member.MemberDTO;
 import com.home.middle.product.ProductDTO;
+import com.home.middle.util.Pager;
 
 @Repository
 public class CartDAO {
@@ -19,6 +20,11 @@ public class CartDAO {
 	
 	public List<CartDTO> getCartList(MemberDTO memberDTO)throws Exception{
 		return sqlSession.selectList(NAMESPACE + "getCartList", memberDTO);
+	}
+	
+	public List<CartDTO> getMemberCartList(MemberDTO memberDTO) throws Exception {
+		List<CartDTO> ar =  sqlSession.selectList(NAMESPACE + "getMemberCartList",memberDTO);
+		return ar;
 	}
 	
 	public int setCartAdd(CartDTO cartDTO) throws Exception{
@@ -47,7 +53,6 @@ public class CartDAO {
 	public int getCartUpdate(CartDTO cartDTO) throws Exception{
 		return sqlSession.update(NAMESPACE + "getCartUpdate", cartDTO);
 	}
-	
 	
 	
 }

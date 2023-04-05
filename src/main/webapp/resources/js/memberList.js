@@ -13,7 +13,7 @@ function deleteValue() {
 
         if(check == true) {
              $.ajax ({
-            url : "./memberDelete",
+            url : "/manager/memberDelete",
             type : 'POST',
             traditional : true,
     
@@ -24,7 +24,7 @@ function deleteValue() {
             success : function(jdata) {
                 
                 alert("회원이 삭제되었습니다")
-                location.replace("./memberList")
+                location.replace("/manager/memberList")
             }
     
         })

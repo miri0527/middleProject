@@ -114,7 +114,7 @@ public class ProductService {
 
 	}
 
-	public int setProductDelete(HttpSession session, ProductDTO productDTO) throws Exception {
+	public int setProductDelete(HttpSession session, ProductDTO productDTO, List<ProductDTO> productDTOs) throws Exception {
 		List<ProductImgDTO> ar = productDAO.getProductFileList(productDTO);
 
 		int result = productDAO.setProductDelete(productDTO);

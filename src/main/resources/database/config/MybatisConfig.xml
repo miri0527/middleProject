@@ -21,7 +21,6 @@
   	     <typeAlias type="com.home.middle.util.Pager" alias="Pager"/>
   	    <typeAlias type="java.lang.Long" alias="Long" />
   		
-  		
   		<typeAlias type="com.home.middle.cart.CartDTO" alias="CartDTO"/> 
   		
   		<typeAlias type="com.home.middle.member.MemberDTO" alias="MemberDTO"/>

@@ -3,6 +3,14 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace = "com.home.middle.cart.CartDAO">
+
+	<sql id="CartCondition">
+		<where>
+			<if test="kind == orderNum">
+				 ORDERNUM LIKE '%' || #{search} || '%'
+			</if>
+		</where>
+	</sql>
 	
 	<!-- 나중에 삭제하기 -->
 	<select id="getProductDetail" parameterType="ProductDTO" resultType="ProductDTO">
@@ -22,13 +30,21 @@
 		ORDER BY PO.ORDERNUM DESC
 	</select>
 	
+	<select id="getMemberCartList" parameterType="MemberDTO" resultMap="ProductCartList">
+		SELECT * FROM
+			(SELECT ROWNUM R, N.* FROM
+				(SELECT * FROM PRODUCTORDER PO
+				LEFT OUTER JOIN PRODUCT P
+				ON(PO.PRODUCTNUM = P.PRODUCTNUM)
+				LEFT OUTER JOIN PRODUCTOPTION "POP"
+				ON(PO.OPTIONNUM  = "POP".OPTIONNUM)
+				WHERE PO.ID = #{id}
+			ORDER BY PO.ORDERNUM DESC) 
+			N)	
+	</select>
+	
 	<select id="getCartPaymentDetail" parameterType="CartDTO" resultMap="ProductCartList">
-		SELECT * FROM PRODUCTORDER PO
-		LEFT OUTER JOIN PRODUCT P
-		ON(PO.PRODUCTNUM = P.PRODUCTNUM)
-		LEFT OUTER JOIN PRODUCTOPTION "POP"
-		ON(PO.OPTIONNUM  = "POP".OPTIONNUM)
-		WHERE ORDERNUM = #{orderNum}
+		
 	</select>
 	
 	<resultMap type="CartDTO" id="ProductCartList">
@@ -40,12 +56,12 @@
  		<result column="BUYCHECK" property="buyCheck"/>
  		<result column="OPTIONNUM" property="optionNum"/>
  		
- 		<association property="ProductDTO" javaType="ProductDTO">
+ 		<association property="productDTO" javaType="ProductDTO">
  			<id column="PRODUCTNUM" property="productNum"></id>
  			<result column="PRODUCTNAME" property="productName"/>
- 			<result column="PRODUCTPRICE" property="productPrice"/>
  			<result column="OPTIONNUM" property="optionNum"/>
  			<result column="OPTIONNAME" property="optionName"/>
+
  		</association>
 	</resultMap>
 	

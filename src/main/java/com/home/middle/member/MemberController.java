@@ -43,39 +43,39 @@ public class MemberController {
 //		
 //	}
 	
-	@GetMapping("memberList")
-	public ModelAndView getMemberList(Pager pager, @RequestParam(name = "roleName", required = false) String [] roleName) throws Exception {
-		ModelAndView mv = new ModelAndView();
-		pager.setRoleName(roleName);
-		System.out.println(pager.getRoleName() == null);
-		
-		List<MemberDTO> ar = memberService.getMemberList(pager);
-		
-//		System.out.println("AR" + ar.size());
-		
-		
-		mv.addObject("list", ar);
-		
-		mv.setViewName("member/memberList");
-		System.out.println("RoleName : " + ar.get(0).getRoleDTO().getRoleName());
-		
-		
-		return mv;
-		
-	}
+//	@GetMapping("memberList")
+//	public ModelAndView getMemberList(Pager pager, @RequestParam(name = "roleName", required = false) String [] roleName) throws Exception {
+//		ModelAndView mv = new ModelAndView();
+//		pager.setRoleName(roleName);
+//		System.out.println(pager.getRoleName() == null);
+//		
+//		List<MemberDTO> ar = memberService.getMemberList(pager);
+//		
+////		System.out.println("AR" + ar.size());
+//		
+//		
+//		mv.addObject("list", ar);
+//		
+//		mv.setViewName("member/memberList");
+//		System.out.println("RoleName : " + ar.get(0).getRoleDTO().getRoleName());
+//		
+//		
+//		return mv;
+//		
+//	}
+//	
 	
-	
-	@PostMapping("memberDelete")
-	public ModelAndView setMemberDelete(MemberDTO memberDTO) throws Exception {
-		ModelAndView mv = new ModelAndView();
-		
-		int result =  memberService.setMemberDelete(memberDTO);
-		
-		mv.setViewName("redirect:./memberList");
-		
-		return mv;
-		
-	}
+//	@PostMapping("memberDelete")
+//	public ModelAndView setMemberDelete(MemberDTO memberDTO) throws Exception {
+//		ModelAndView mv = new ModelAndView();
+//		
+//		int result =  memberService.setMemberDelete(memberDTO);
+//		
+//		mv.setViewName("redirect:./memberList");
+//		
+//		return mv;
+//		
+//	}
 	
 	@GetMapping("memberIdFind")
 	public ModelAndView getMemberIdFind()throws Exception{
@@ -157,16 +157,16 @@ public class MemberController {
 		return mv;
 	}
 	
-	@GetMapping("adminMemberDetail")
-	public ModelAndView getAdminMemberDetail(MemberDTO memberDTO) throws Exception {
-		ModelAndView mv = new ModelAndView();
-		memberDTO = memberService.getMemberDetail(memberDTO);
-		
-		mv.addObject("dto", memberDTO);
-		mv.setViewName("./member/adminMemberDetail");
-		
-		return mv;
-	}
+//	@GetMapping("adminMemberDetail")
+//	public ModelAndView getAdminMemberDetail(MemberDTO memberDTO) throws Exception {
+//		ModelAndView mv = new ModelAndView();
+//		memberDTO = memberService.getMemberDetail(memberDTO);
+//		
+//		mv.addObject("dto", memberDTO);
+//		mv.setViewName("./member/adminMemberDetail");
+//		
+//		return mv;
+//	}
 	@GetMapping("memberLogin")
 	public ModelAndView getMemberLogin() throws Exception{
 		ModelAndView mv = new ModelAndView();
@@ -220,25 +220,25 @@ public class MemberController {
 		return mv;
 	}
 	
-	@GetMapping("adminMemberUpdate")
-	public ModelAndView setAdminMemberUpdate(MemberDTO memberDTO) throws Exception {
-		ModelAndView mv = new ModelAndView();
-		memberDTO = memberService.getMemberDetail(memberDTO);
-		
-		mv.addObject("dto", memberDTO);
-		mv.setViewName("./member/adminMemberUpdate");
-		
-		return mv;
-	}
+//	@GetMapping("adminMemberUpdate")
+//	public ModelAndView setAdminMemberUpdate(MemberDTO memberDTO) throws Exception {
+//		ModelAndView mv = new ModelAndView();
+//		memberDTO = memberService.getMemberDetail(memberDTO);
+//		
+//		mv.addObject("dto", memberDTO);
+//		mv.setViewName("./member/adminMemberUpdate");
+//		
+//		return mv;
+//	}
 	
-	@PostMapping("adminMemberUpdate")
-	public ModelAndView setAdminMemberUpdate(MemberDTO memberDTO, ModelAndView mv) throws Exception {
-		int result = memberService.setAdminMemberUpdate(memberDTO);
-		
-		mv.setViewName("redirect:./adminMemberDetail?id=" + memberDTO.getId());
-		
-		return mv;
-	}
+//	@PostMapping("adminMemberUpdate")
+//	public ModelAndView setAdminMemberUpdate(MemberDTO memberDTO, ModelAndView mv) throws Exception {
+//		int result = memberService.setAdminMemberUpdate(memberDTO);
+//		
+//		mv.setViewName("redirect:./adminMemberDetail?id=" + memberDTO.getId());
+//		
+//		return mv;
+//	}
 	
 	
 	@GetMapping("memberLogout")

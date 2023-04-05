@@ -66,7 +66,7 @@
                   </li>
                       
                   <c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
-                     <li class="page-item"><a class="page-link" href="./list?page=${i}" data-board-page="${i}">${i}</a></li>
+                     <li class="page-item"><a class="page-link" href="./memberProductList?page=${i}" data-board-page="${i}">${i}</a></li>
                   </c:forEach>
                   
                   <li class="page-item  ${pager.after eq false ? 'disabled' : ''}">

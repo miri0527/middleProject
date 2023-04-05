@@ -1,5 +1,7 @@
 package com.home.middle.util;
 
+import com.home.middle.member.MemberDTO;
+
 public class Pager {
 	
 	
@@ -9,8 +11,18 @@ public class Pager {
 	private String id;
 	private String name;
 	private String[] roleName;
-
+	private Long orderNum;
+	private MemberDTO memberDTO;
 	
+	
+	public MemberDTO getMemberDTO() {
+		return memberDTO;
+	}
+
+	public void setMemberDTO(MemberDTO memberDTO) {
+		this.memberDTO = memberDTO;
+	}
+
 	public Long getNum() {
 		return num;
 	}
@@ -19,9 +31,16 @@ public class Pager {
 		this.num = num;
 	}
                   
-	
 
-	
+	public Long getOrderNum() {
+		return orderNum;
+	}
+
+	public void setOrderNum(Long orderNum) {
+		this.orderNum = orderNum;
+	}
+
+
 
 	//검색 종료(사용할 column)
 	private String kind;

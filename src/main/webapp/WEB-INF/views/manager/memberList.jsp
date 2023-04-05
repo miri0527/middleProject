@@ -34,7 +34,7 @@
 						<td>
 							<input class="form-check-input mt-0"  type="checkbox" name="chkList" value="${dto.id}" aria-label="Checkbox for following text input">
 						</td>
-						<td><a href="./adminMemberDetail?id=${dto.id}">${dto.id}</a></td>
+						<td><a href="./memberDetail?id=${dto.id}">${dto.id}</a></td>
 						<td>${dto.name}</td>
 						<td>${dto.roleDTO.roleName }</td>
 						

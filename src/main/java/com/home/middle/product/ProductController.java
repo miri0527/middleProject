@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -142,17 +143,9 @@ public class ProductController {
 	}
 	
 	@PostMapping("delete")
-	public ModelAndView setProductDelete(@RequestParam(value="chkList",required = false) ProductDTO[] productDTOs, HttpSession session) throws Exception {
+	public ModelAndView setProductDelete(List<ProductDTO> productDTOs, HttpSession session, ProductDTO productDTO) throws Exception {
 		ModelAndView mv = new ModelAndView();
-		
-		for (ProductDTO productDTO2 : productDTOs) {
-			productDTO2.setProductNum(productDTO2.getProductNum());
-			System.out.println(productDTO2.getProductNum());
-			int result = productService.setProductDelete(session, productDTO2) ;
-			
-		}
-		
-		
+		productService.setProductDelete(session, productDTO,productDTOs);
 		mv.setViewName("redirect:./memberProductList");
 		
 		return mv;
