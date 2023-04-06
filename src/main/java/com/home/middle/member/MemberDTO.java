@@ -10,6 +10,7 @@ public class MemberDTO {
 	private String email;
 	private Integer roleNum;
 	private RoleDTO roleDTO;
+	private Long autoStatus;
 	
 	public Integer getRoleNum() {
 		return roleNum;
@@ -59,6 +60,12 @@ public class MemberDTO {
 	}
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	public Long getAutoStatus() {
+		return autoStatus;
+	}
+	public void setAutoStatus(Long autoStatus) {
+		this.autoStatus = autoStatus;
 	}
 	
 	

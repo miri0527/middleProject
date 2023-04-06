@@ -209,4 +209,35 @@ public class MemberController {
 		mv.setViewName("common/result");
 		return mv;
 	}
+	
+	@GetMapping("memberApplication")
+	public ModelAndView getMemberApplication (MemberDTO memberDTO) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("member/memberApplication");
+		
+		
+		return mv;
+	}
+	
+	@PostMapping("memberApplication")
+	public ModelAndView getMemberApplication(MemberDTO memberDTO, HttpSession session) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		
+		MemberDTO check = (MemberDTO)session.getAttribute("member");
+		if(check.getId().equals(memberDTO.getId()) &&  
+				check.getName().equals(memberDTO.getName()) && check.getEmail().equals(memberDTO.getEmail()) && check.getPhone().equals(memberDTO.getPhone())) {
+			memberDTO = memberService.getMemberApplication(memberDTO);
+			session.setAttribute("application", memberDTO);
+			mv.setViewName("redirect:../");
+		}else if(!check.getId().equals(memberDTO.getId())||!check.getName().equals(memberDTO.getName()) || !check.getEmail().equals(memberDTO.getEmail())
+				|| !check.getPhone().equals(memberDTO.getPhone())) {
+			String message = "정보를 다시 입력하세요";
+			
+			mv.addObject("result",message);
+			mv.setViewName("common/result");
+			mv.addObject("url", "./memberApplication");
+			
+		}
+		return mv;
+	}
 }
