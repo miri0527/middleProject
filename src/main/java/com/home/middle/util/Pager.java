@@ -12,15 +12,16 @@ public class Pager {
 	private String name;
 	private String[] roleName;
 	private Long orderNum;
-	private MemberDTO memberDTO;
+	private Long autoStatus;
 	
 	
-	public MemberDTO getMemberDTO() {
-		return memberDTO;
+	
+	public Long getAutoStatus() {
+		return autoStatus;
 	}
 
-	public void setMemberDTO(MemberDTO memberDTO) {
-		this.memberDTO = memberDTO;
+	public void setAutoStatus(Long autoStatus) {
+		this.autoStatus = autoStatus;
 	}
 
 	public Long getNum() {

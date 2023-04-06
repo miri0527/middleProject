@@ -35,6 +35,8 @@ public class ManagerController {
 		
 		List<MemberDTO> ar = memberService.getMemberList(pager);
 		
+		System.out.println(pager.getAutoStatus());
+		
 //		System.out.println("AR" + ar.size());
 		
 		

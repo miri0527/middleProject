@@ -25,7 +25,14 @@ public class MemberDAO {
 	}
 	
 	public List<MemberDTO> getMemberList(Pager pager) throws Exception {
-		return sqlSession.selectList(NAMESPACE + "getMemberList", pager);
+		List<MemberDTO> ar = sqlSession.selectList(NAMESPACE + "getMemberList", pager);
+		System.out.println("AUTOSTATUS: " + ar.get(0).getAutoStatus());
+		return ar;
+	}
+	
+	public MemberDTO getMenberApplication(MemberDTO memberDTO) throws Exception {
+		memberDTO = sqlSession.selectOne(NAMESPACE + "getMemberApplication", memberDTO);
+		return memberDTO;
 	}
 	
 	public MemberDTO getMemberLogin(MemberDTO memberDTO) throws Exception{

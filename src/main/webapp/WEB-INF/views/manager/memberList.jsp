@@ -28,6 +28,7 @@
 					<th>아이디</th>
 					<th>이름</th>
 					<th>회원등급</th>	
+					<th>신청여부</th>
 				</tr>
 				<c:forEach items="${list}" var="dto">
 					<tr>
@@ -37,7 +38,11 @@
 						<td><a href="./memberDetail?id=${dto.id}">${dto.id}</a></td>
 						<td>${dto.name}</td>
 						<td>${dto.roleDTO.roleName }</td>
-						
+						<td>
+							<c:if test="${dto.autoStatus eq 0 }">미신청</c:if>
+							<c:if test="${dto.autoStatus eq 1 }">신청중</c:if>
+							<c:if test="${dto.autoStatus eq 2 }">신청완료</c:if>
+						</td>
 					</tr>
 				</c:forEach>
 			</table>

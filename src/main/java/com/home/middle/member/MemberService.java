@@ -34,6 +34,10 @@ public class MemberService {
 		
 	}
 	
+	public MemberDTO getMemberApplication(MemberDTO memberDTO) throws Exception {
+		memberDTO = memberDAO.getMenberApplication(memberDTO);
+		return memberDTO;
+	}
 
 	public MemberDTO getMemberDetail(MemberDTO memberDTO) throws Exception{
 		return memberDAO.getMemberLogin(memberDTO);

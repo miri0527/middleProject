@@ -47,9 +47,12 @@
 				ON(PO.PRODUCTNUM = P.PRODUCTNUM)
 				LEFT OUTER JOIN PRODUCTOPTION "POP"
 				ON(PO.OPTIONNUM  = "POP".OPTIONNUM)
-				WHERE PO.ID = #{id}
+				WHERE PO.ID = #{id} AND BUYCHECK = 1
+				<include refid="CartCondition"></include>
+				
 			ORDER BY PO.ORDERNUM DESC) 
 			N)	
+			WHERE R BETWEEN #{startRow} AND #{lastRow}
 	</select>
 	
 	<select id="getCartPaymentDetail" parameterType="CartDTO" resultMap="ProductCartList">
@@ -66,7 +69,7 @@
  		<result column="PAYMENTCHECK" property="paymentCheck"/>
  		<result column="OPTIONNUM" property="optionNum"/>
  		
- 		<association property="productDTO" javaType="ProductDTO">
+ 		<association property="ProductDTO" javaType="ProductDTO">
  			<id column="PRODUCTNUM" property="productNum"></id>
  			<result column="PRODUCTNAME" property="productName"/>
  			<result column="OPTIONNUM" property="optionNum"/>
