@@ -9,22 +9,13 @@ public class ProductDTO {
 	private Long r;
 	private Long productNum;
 	private String productName;
-	private Long productPrice;
-	private Long discount;
-	private Double discountPercent;
 	private Integer productSales;
 	private Long categoryNum;
 	private Long optionNum;
 	private String optionName;
 	private List<ProductOptionDTO> productOptionDTOs;
 	private List<ProductImgDTO> productImgDTOs;
-	
-	public Long getProductPrice() {
-		return productPrice;
-	}
-	public void setProductPrice(Long productPrice) {
-		this.productPrice = productPrice;
-	}
+
 	public Long getOptionNum() {
 		return optionNum;
 	}
@@ -64,19 +55,7 @@ public class ProductDTO {
 	public void setProductName(String productName) {
 		this.productName = productName;
 	}
-	public Long getDiscount() {
-		return discount;
-	}
-	public void setDiscount(Long discount) {
-		this.discount = discount;
-	}
-	public Double getDiscountPercent() {
-		return discountPercent;
-	}
-	public void setDiscountPercent(Double discountPercent) {
-		this.discountPercent = discountPercent;
 		
-	}
 	public Integer getProductSales() {
 		return productSales;
 	}

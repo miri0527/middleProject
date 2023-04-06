@@ -11,8 +11,6 @@
 </head>
 <body>
 
-	<c:import url="../template/header.jsp"></c:import>
-
 	 
 		<img class="mb-4" src="/resources/imgs/logo.png" alt="" width="72"
 			height="57">

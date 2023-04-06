@@ -19,7 +19,7 @@
   	
   	
   	<select id="getProductList" resultType="ProductDTO" parameterType="ProductDTO">
-  	SELECT PRODUCTNUM , PRODUCTNAME , DISCOUNT , DISCOUNTPERCENT FROM PRODUCT
+  	SELECT PRODUCTNUM , PRODUCTNAME FROM PRODUCT
   	WHERE CATEGORYNUM = #{categoryNum}
   	
   	</select>

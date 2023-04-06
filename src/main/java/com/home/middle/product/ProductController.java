@@ -156,15 +156,11 @@ public class ProductController {
 	}
 	
 	@PostMapping("delete")
-	public ModelAndView setProductDelete(@RequestParam(value="chkList",required = false) ProductDTO[] productDTOs, HttpSession session) throws Exception {
+	public ModelAndView setProductDelete(@RequestParam(value="chkList",required = false) ProductDTO productDTO, HttpSession session) throws Exception {
 		ModelAndView mv = new ModelAndView();
-		
-		for (ProductDTO productDTO2 : productDTOs) {
-			productDTO2.setProductNum(productDTO2.getProductNum());
-			System.out.println(productDTO2.getProductNum());
-			int result = productService.setProductDelete(session, productDTO2) ;
-			
-		}		
+			productDTO.setProductNum(productDTO.getProductNum());
+			int result = productService.setProductDelete(session,productDTO) ;
+					
 		
 		mv.setViewName("redirect:./memberProductList");
 		

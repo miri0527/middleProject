@@ -24,8 +24,6 @@
             </c:if>
                <th>번호</th>
                <th>상품명</th>
-               <th>할인가</th>
-               <th>할인율</th>
                <th>판매여부</th>
             
          </tr>
@@ -40,8 +38,6 @@
                </c:if>
                <td>${dto.r}</td>
                <td><a href="./detail?productNum=${dto.productNum}"> ${dto.productName}</a></td>
-               <td>${dto.discount }</td>
-               <td>${dto.discountPercent }</td>
                <td>${dto.productSales}</td>
             </tr>
          </c:forEach>

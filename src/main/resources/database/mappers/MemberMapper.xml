@@ -28,7 +28,7 @@
  	</select>
   	
   	<insert id="setMemberJoin" parameterType="MemberDTO">
-  		INSERT INTO MEMBER VALUES(#{id},3,#{pw},#{name},#{address},#{phone},#{email})
+  		INSERT INTO MEMBER VALUES(#{id},3,#{pw},#{name},#{address},#{phone},#{email},0)
   	</insert>
   	<select id="getMemberLogin" parameterType="MemberDTO" resultMap="MemberLogin">
   	SELECT * FROM  MEMBER M
@@ -51,12 +51,12 @@
   	</resultMap>
   	
   	<update id="setMemberUpdate" parameterType="MemberDTO">
-  		UPDATE MEMBER SET PW=#{pw},NAME=#{name},ADDRESS=#{address},PHONE=#{phone},EMAIL=#{email} WHERE ID=#{id}
+  		UPDATE MEMBER SET PW=#{pw},NAME=#{name},ADDRESS=#{address},PHONE=#{phone},EMAIL=#{email},AUTOSTATUS=#{autoStatus} WHERE ID=#{id}
   	</update>
   	
   	<update id="setAdminMemberUpdate" parameterType="MemberDTO">
   		UPDATE MEMBER SET ID=#{id},ROLENUM=#{roleNum},PW=#{pw},NAME=#{name},ADDRESS=#{address},PHONE=#{phone},
-  		EMAIL=#{email} WHERE ID=#{id}
+  		EMAIL=#{email},AUTOSTATUS=#{autoStatus} WHERE ID=#{id}
   	</update>
   	
   	<select id="getMemberIdFind" parameterType="String" resultType="String">
@@ -88,6 +88,7 @@
   	<resultMap type="MemberDTO" id="MemberList">
   		<id column="ID" property="id"/>
   		<result column="NAME" property="name"/>
+  		<result column="AUTOSTATUS" property="autoStatus"/>
   		<association property="roleDTO" javaType="RoleDTO">
   			<id column="ROLENUM" property="roleNum"/>
   			<result column="ROLENAME" property="roleName"/>
@@ -95,6 +96,11 @@
 
   	</resultMap>
   	
+  	<select id="getMemberApplication" parameterType="MemberDTO" resultType="MemberDTO">
+  		SELECT NAME,EMAIL,PW,PHONE
+  		FROM MEMBER
+  		WHERE ID=#{id}
+  	</select>
  
   	
   	
