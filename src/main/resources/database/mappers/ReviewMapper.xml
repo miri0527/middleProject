@@ -26,7 +26,7 @@
 	  	(
 		  	SELECT ROWNUM R, N.* FROM
 		  		(
-			  		SELECT NUM, ID ,PRODUCTNUM,CONTENTS, REGDATE,DEPTH FROM REVIEW
+			  		SELECT NUM, ID ,PRODUCTNUM,CONTENTS,REGDATE,DEPTH FROM REVIEW
 			  		<include refid="reviewCondition"></include>
 			  		ORDER BY DEPTH DESC
 		  		) N
@@ -46,9 +46,12 @@
 	VALUES(REVIEW_SEQ.NEXTVAL,#{id},#{contents},sysdate,0,#{productNum})
     </insert>
     
-    
+    <select id="getBoardFileList" parameterType="BbsDTO" resultType="BoardFileDTO">
+  	SELECT * FROM REVIEWFILES WHERE NUM=#{num}
+  	</select>
+  	
     <!--파일 추가-->
-    <insert id="setProductFileAdd" parameterType="ReviewDTO">
+    <insert id="setBoardFileAdd" parameterType="ReviewDTO">
 	INSERT INTO REVIEWFILES
 	VALUES (REVIEW_FILE_SEQ.NEXTVAL, #{num}, #{fileName}, #{oriName})
 	</insert>
@@ -58,7 +61,32 @@
 	DELETE REVIEW WHERE NUM = #{num}
    </delete>
     
-    
-    
-    
+     <update id="setBoardUpdate" parameterType="BbsDTO">
+  		UPDATE REVIEW SET TITLE=#{title}, CONTENTS=#{contents} WHERE NUM=#{num}
+  	</update>
+     <select id="getBoardDetail" parameterType="BbsDTO" resultMap="getBoardDetailResult"> 
+   		SELECT Q.*, QF.*
+   		FROM REVIEW Q
+   			LEFT JOIN
+   			REVIEWFILES QF
+   			ON (Q.NUM = QF.NUM)
+   			WHERE Q.NUM=#{num}
+   </select>
+     <resultMap type="REVIEWDTO" id="getBoardDetailResult">
+   	<!--select된 것들중에 pk를 id에다가 써줘  -->
+        <id column="num" property="num"/>
+  		<result column="id" property="id"/>
+  		<result column="contents" property="contents"/>
+  		<result column="regDate" property="regDate"/>
+  		<result column="depth" property="depth"/>
+	     <result column="productNum" property="productNum"/>
+	<!--type에 멤버메서드중에서 속성을 넣어주기  -->
+	<!--of type은 제네릭 타입을 쓰라는 뜻입니다 column은 대소문자구문 하지 않습니다-->
+	<collection property="boardFileDTOs" javaType="List" ofType="BoardFileDTO">
+		<id column="fileNum" property="fileNum" />
+		<result column="fileName"  property="fileName"/>
+		<result column="oriName" property="oriName" />
+	</collection>
+	
+   </resultMap>
    </mapper>

@@ -22,7 +22,7 @@ public class ProductDAO {
 		return l;
 	}
 	
-	public List<ProductDTO> getProductList(ProductDTO productDTO)throws Exception{
+	public List<ProductOptionDTO> getProductList(ProductDTO productDTO)throws Exception{
 		return sqlSession.selectList(NAMESPACE+"getProductList",productDTO);
 	}
 	
@@ -52,11 +52,14 @@ public class ProductDAO {
 	
 	
 	 public List<ProductDTO> getMemberProductList(Pager pager) throws Exception {
-	 List<ProductDTO> ar = sqlSession.selectList(NAMESPACE +
-	 "getMemberProductList", pager); return ar; }
+	 List<ProductDTO> ar = sqlSession.selectList(NAMESPACE + "getMemberProductList", pager);
+	 return ar; 
+	 }
 	
-	
-
+	//장바구니 
+	public int setProductOptionAdd(ProductDTO productDTO) throws Exception {
+		return sqlSession.update(NAMESPACE + "ssetProductOptionAdd", productDTO);
+	}
 	
 	public int setProductUpdate(ProductDTO productDTO) throws Exception {
 		return sqlSession.update(NAMESPACE + "setProductUpdate", productDTO);

@@ -106,7 +106,6 @@
                </div>
             </div>
          </form>
-         
       </div>
 
    <c:if test="${member.roleDTO.roleName eq 'ADMIN'}">

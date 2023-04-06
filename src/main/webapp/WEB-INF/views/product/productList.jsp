@@ -16,7 +16,7 @@
 <!-- 서버 내부 주소, 상대 경로  -->
 	<div class="container-fluid my-5">
 	<div class="row mb-4 border-bottom border-dark">
-	<h1 class="col-md-7 mx-auto text-center pb-4"> Productlist page</h1>
+	<h1 class="col-md-7 mx-auto text-center pb-4"> ${boardName} page</h1>
 	</div>	
 	
 	

@@ -76,7 +76,8 @@
 	</resultMap>
 	
 	<insert id="setCartAdd" parameterType="CartDTO">
-		INSERT INTO PRODUCTORDER (ORDERNUM, PRODUCTNUM, ID, TOTALPRICE, PRODUCTEA, ORDERDATE, BUYCHECK, PAYMENTCHECK,OPTIONNUM)VALUES (ORDER_SEQ.NEXTVAL, #{productDTO.productNum}, #{id}, #{totalPrice}, #{productEa}, SYSDATE, 0, 0, #{optionNum})
+		INSERT INTO PRODUCTORDER (ORDERNUM, PRODUCTNUM, ID, TOTALPRICE, PRODUCTEA, ORDERDATE, BUYCHECK, OPTIONNUM, PAYMENTCHECK)
+		VALUES (PRODUCT_ORDER_SEQ.NEXTVAL, #{productDTO.productNum}, #{id}, #{totalPrice}, #{productEa}, SYSDATE, 0, #{optionNum}, 0)
 	</insert>
 	
 	

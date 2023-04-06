@@ -10,6 +10,7 @@ import com.home.middle.board.BbsDTO;
 import com.home.middle.board.BoardFileDTO;
 import com.home.middle.util.Pager;
 
+
 @Repository
 public class QnaDAO implements BbsDAO{
 	
@@ -39,7 +40,7 @@ public class QnaDAO implements BbsDAO{
 	@Override
 	public int setBoardUpdate(BbsDTO bbsDTO) throws Exception {
 		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.update(NAMESPACE+"setBoardUpdate", bbsDTO);
 	}
 
 	@Override
@@ -48,12 +49,30 @@ public class QnaDAO implements BbsDAO{
 		return sqlSession.delete(NAMESPACE+"setBoardDelete",bbsDTO);
 	}
 	
-	public int setProductFileAdd(BoardFileDTO boardFileDTO) throws Exception {
+	public int setBoardFileAdd(BoardFileDTO boardFileDTO) throws Exception {
 		return sqlSession.insert(NAMESPACE + "setProductFileAdd", boardFileDTO);
 	}
 	
 	public List<BoardFileDTO> getBoardFileList(BbsDTO bbsDTO) throws Exception {
 		// TODO Auto-generated method stub
 		return sqlSession.selectList(NAMESPACE+"getBoardFileList", bbsDTO);
+	}
+	
+	
+	public BbsDTO getBoardDetail(BbsDTO bbsDTO) throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne(NAMESPACE+"getBoardDetail", bbsDTO);
+	}
+	
+	
+	public BoardFileDTO getBoardFileDetail(BoardFileDTO boardFileDTO) throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne(NAMESPACE+"getBoardFileDetail", boardFileDTO);
+	}
+	
+	
+	public int setBoardFileDelete(Long fileNum) throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.delete(NAMESPACE+"setBoardFileDelete", fileNum);
 	}
 }

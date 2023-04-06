@@ -56,7 +56,7 @@
                             <div class="top-link clearfix">
                                 <ul class="link f-right">
                                     <li>
-                                        <a href="my-account.html">
+                                        <a href="/member/memberDetail">
                                             <i class="zmdi zmdi-account"></i>
                                             My Account
                                         </a>
@@ -68,7 +68,7 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="login.html">
+                                        <a href="/member/memberLogin">
                                             <i class="zmdi zmdi-lock"></i>
                                             Login
                                         </a>
@@ -256,9 +256,9 @@
                                             <div class="mega-menu-area clearfix">
                                                 <div class="mega-menu-link f-left">
                                                     <ul class="single-mega-item">
-                                                        <li class="menu-title">Smart Phone</li>
+                                                        <li class="menu-title">상품</li>
                                                         <li>
-                                                            <a href="#">All Mobile Phones</a>
+                                                            <a href="product/detail?productNum=1">Products Detail</a>
                                                         </li>
                                                         <li>
                                                             <a href="#">Smart phones</a>
@@ -335,7 +335,7 @@
                                                 </div>
                                             </div>
                                         </li>
-                                        <li class="mega-parent"><a href="#">Pages</a>
+                                        <li class="mega-parent"><a href="#">Qna</a>
                                             <div class="mega-menu-area mega-menu-area-2 clearfix">
                                                 <div class="mega-menu-link mega-menu-link-2  f-left">
                                                     <ul class="single-mega-item">
@@ -383,7 +383,7 @@
                                                             <a href="login.html">Login</a>
                                                         </li>
                                                         <li>
-                                                            <a href="my-account.html">My Account</a>
+                                                            <a href="/member/memberDetail">My Account</a>
                                                         </li>
                                                         <li>
                                                             <a href="about.html">About us</a>
@@ -559,7 +559,7 @@
                                                 <a href="login.html">Login</a>
                                             </li>
                                             <li>
-                                                <a href="my-account.html">My Account</a>
+                                                <a href="/member/memberDetail">My Account</a>
                                             </li>
                                             <li>
                                                 <a href="about.html">About us</a>
@@ -611,11 +611,12 @@
 
         <!-- START SLIDER AREA -->
         <div>
-            <img src="resources/js/img/main/main1.jpg">
+            
             <div class="container">
                 
                 <div class="row">
-                    <div class="col-lg-12">
+                    <img src="resources/js/img/main/main1.jpg">    
+                    <!-- <div class="col-lg-12">
                         <div class="slider-desc-3 text-center">
                             <div class="wow rotateInDownLeft" data-wow-duration="2s" data-wow-delay="0.5s">
                                 <h6 class="slider2-title-1"></h6>
@@ -628,7 +629,7 @@
                             </div>
                              
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
@@ -643,7 +644,7 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="section-title text-center mb-50">
-                                <h2 class="uppercase">Featured product</h2>
+                                <h2 class="uppercase">놓치면 후회하는 오늘의 특가 </h2>
                                 <h6>There are many variations of passages of brands available,</h6>
                             </div>
                             <div class="featured-product">
@@ -1784,7 +1785,7 @@
             <div class="footer-top">
                 <div class="container-fluid">
                     <div class="plr-185">
-                        <div class="footer-top-inner theme-bg">
+                        <div class="footer-top-inner gray-bg">
                             <div class="row">
                                 <div class="col-xl-4 col-lg-5 col-md-5">
                                     <div class="single-footer footer-about">

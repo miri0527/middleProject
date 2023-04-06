@@ -31,7 +31,7 @@ public class ReviewController {
 			
 			@ModelAttribute("boardName")
 			public String getBoardName() {
-				return "boardName";
+				return "review";
 			}
 			
 			@RequestMapping(value="list", method = RequestMethod.GET)
@@ -46,7 +46,28 @@ public class ReviewController {
 				
 			return mv;			
 			}
+			
+			@GetMapping("update")
+			public ModelAndView setBoardUpdate(BbsDTO bbsDTO) throws Exception{
+			ModelAndView mv = new ModelAndView();
+			bbsDTO = reviewService.getBoardDetail(bbsDTO);
+			mv.addObject("dto", bbsDTO);
+			mv.setViewName("board/update");
+			return mv;
+
+			}
+			@PostMapping("update")
+			public ModelAndView setBoardUpdate(BbsDTO bbsDTO, MultipartFile [] addFiles, HttpSession session, Long [] fileNum)throws Exception{
+				ModelAndView mv = new ModelAndView();
+				int result = reviewService.setBoardUpdate(bbsDTO, addFiles, session, fileNum);
 				
+				mv.setViewName("common/result");
+				mv.addObject("result", "수정 성공");
+				mv.addObject("url", "./list");
+				
+				return mv;
+			}
+			
 			//글쓰기 
 			@GetMapping("add")
 			public ModelAndView SetBoardAdd(ProductDTO productDTO) throws Exception{
@@ -71,6 +92,24 @@ public class ReviewController {
 			return mv;
 			}	
 			
+			@PostMapping("delete")
+			public ModelAndView setBoardDelete(BbsDTO bbsDTO, HttpSession session)throws Exception{
+				ModelAndView mv = new ModelAndView();
+				mv.setViewName("common/result");
+
+				int result = reviewService.setBoardDelete(bbsDTO, session);
+
+				String message="삭제 실패";
+
+				if(result>0) {
+					message="삭제 성공";
+				}
+
+				mv.addObject("result", message);
+				mv.addObject("url", "./list");
+
+				return mv;
+			}
 			
 			@GetMapping("listTop")
 			public ModelAndView getReviewListTop(Pager pager) throws Exception{

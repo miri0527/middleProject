@@ -25,7 +25,6 @@ public class CartController {
 	@Autowired
 	private ProductService productService;
 	
-	
 	@GetMapping("cartList")
 	public ModelAndView getCartList(HttpSession session) throws Exception{
 		//member 연동해서 아이디에 따른 장바구니 가져오기
@@ -33,7 +32,7 @@ public class CartController {
 		//임시 아이디 설정
 		MemberDTO memberDTO = new MemberDTO();
 		memberDTO.setId("TEST2");
-		
+	
 		List<CartDTO> ar = cartService.getCartList(memberDTO);
 		System.out.println(ar.size());
 		mv.addObject("list", ar);
@@ -49,7 +48,6 @@ public class CartController {
 //			mv.setViewName("redirect:../");
 //		}
 		return mv;
-		
 	}
 	
 	@GetMapping("cartAdd")
@@ -72,12 +70,14 @@ public class CartController {
 	
 	@PostMapping("cartAdd")
 	public ModelAndView setCartAdd(CartDTO cartDTO, ProductDTO productDTO) throws Exception{
-		
+	
+		System.out.println("카트"+ cartDTO.getOptionNum());
+		System.out.println("상품"+ productDTO.getOptionNum());
 		ModelAndView mv = new ModelAndView();
-		cartDTO.setProductDTO(productDTO);
+    	cartDTO.setProductDTO(productDTO);
 		int result = cartService.setCartAdd(cartDTO);
-		
-		//mv.addObject("result", result);
+	
+		mv.addObject("result", result);
 		mv.setViewName("redirect:./cartList");
 		
 		return mv;
@@ -152,7 +152,6 @@ public class CartController {
 		ModelAndView mv = new ModelAndView();
 		
 		cartDTO = cartService.getCartPaymentDetail(cartDTO);
-		
 		
 		mv.addObject("dto", cartDTO);
 		mv.setViewName("/cart/cartPaymentDetail");

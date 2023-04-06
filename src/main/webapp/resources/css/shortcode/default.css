@@ -667,7 +667,7 @@ textarea:focus {
     font-size: 13px;
 }
 .submit-btn-1 {
-  background: rgb(255, 127, 0) none repeat scroll 0 0;
+  background: rgb(234, 234, 234) none repeat scroll 0 0;
   border: medium none;
   color: rgb(255, 255, 255);
   font-size: 13px;
@@ -1295,7 +1295,7 @@ textarea:focus {
   16. Background variation set 
  **************************************/
 /*colored background*/
-.theme-bg { background: #ff7f00; }
+.theme-bg { background: #F5F5F5; }
 .black-bg { background: #222222; }
 .white-bg { background: #fff; }
 .gray-bg { background: #f6f6f6; }
@@ -1373,7 +1373,6 @@ textarea:focus {
  .bg-5 { background: url(../../images/bg/5.jpg);}
  .bg-6 { background: url(../../images/bg/6.jpg);}
  .bg-7 { background: url(../../images/bg/7.jpg);}
- .bg-8 { background: url(../../images/bg/8.jpg);}
  .bg-9 { background: url(../../images/bg/9.jpg);}
  .bg-10 { background: url(../../images/bg/10.jpg);}
 

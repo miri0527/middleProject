@@ -10,8 +10,14 @@ public class BbsDTO {
 	private String id;
 	private String title;
 	private Long hit;
+	private Long depth;
 	
-	
+	public Long getDepth() {
+		return depth;
+	}
+	public void setDepth(Long depth) {
+		this.depth = depth;
+	}
 	public String getTitle() {
 		return title;
 	}

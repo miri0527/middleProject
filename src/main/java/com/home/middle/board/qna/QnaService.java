@@ -14,6 +14,7 @@ import com.home.middle.board.review.ReviewDAO;
 import com.home.middle.util.FileManager;
 import com.home.middle.util.Pager;
 
+
 @Service
 public class QnaService implements BbsService{
 	
@@ -53,7 +54,7 @@ public class QnaService implements BbsService{
 		boardFileDTO.setFileName(fileName);
 		boardFileDTO.setOriName(multipartFile.getOriginalFilename());
 		
-		result = qnaDAO.setProductFileAdd(boardFileDTO);
+		result = qnaDAO.setBoardFileAdd(boardFileDTO);
 		}
 		//file을 hdd에 저장
 		return result;
@@ -63,6 +64,48 @@ public class QnaService implements BbsService{
 	public int setBoardUpdate(BbsDTO bbsDTO) throws Exception {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+
+	public int setBoardUpdate(BbsDTO bbsDTO, MultipartFile[] multipartFiles, HttpSession session, Long[] fileNums)
+			throws Exception {
+		//qna Update
+		int result = qnaDAO.setBoardUpdate(bbsDTO);
+		
+		//qnaFiles Delete
+		if(fileNums != null) {
+			for(Long fileNum : fileNums) {
+				qnaDAO.setBoardFileDelete(fileNum);
+				
+			}
+		}
+		
+		//qnaFiles Insert
+		//file HDD에 저장
+		String realPath=session.getServletContext().getRealPath("resources/upload/qna/");
+		System.out.println(realPath);
+				
+		for(MultipartFile multipartFile: multipartFiles) {
+					
+			if(multipartFile.isEmpty()) {
+				continue;
+			}
+					
+			String fileName = fileManager.fileSave(multipartFile, realPath);
+							
+			//DB INSERT
+			BoardFileDTO boardFileDTO = new BoardFileDTO();
+			boardFileDTO.setNum(bbsDTO.getNum());
+			boardFileDTO.setFileName(fileName);
+			boardFileDTO.setOriName(multipartFile.getOriginalFilename());
+					
+			result=qnaDAO.setBoardFileAdd(boardFileDTO);
+					
+		}		
+		
+		
+		
+		return result;
 	}
 
 	@Override
@@ -94,9 +137,8 @@ public class QnaService implements BbsService{
 	@Override
 	public BbsDTO getBoardDetail(BbsDTO bbsDTO) throws Exception {
 		// TODO Auto-generated method stub
-		return null;
+		return qnaDAO.getBoardDetail(bbsDTO);
 	}
-
 	
 	
 	

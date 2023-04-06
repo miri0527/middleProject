@@ -26,9 +26,8 @@ public class ProductService {
 	// 저장관리는 os가 존재하는데, os와 통신하는 과정을 하는 역할
 	private ServletContext servletContext;
 
-	public List<ProductDTO> getProductList(ProductDTO productDTO) throws Exception {
-		List<ProductDTO> ar = productDAO.getProductList(productDTO);
-
+	public List<ProductOptionDTO> getProductList(ProductDTO productDTO) throws Exception {
+		List<ProductOptionDTO> ar = productDAO.getProductList(productDTO);
 		return ar;
 	}
 
@@ -40,6 +39,10 @@ public class ProductService {
 		return productDAO.getOption(productOptionDTO);
 	}
 
+	public int setProductOptionAdd(ProductDTO productDTO) throws Exception {
+		return productDAO.setProductOptionAdd(productDTO);
+		
+	}
 	public int setProductAdd(ProductDTO productDTO, MultipartFile[] pic, HttpSession session) throws Exception {
 
 		int result = productDAO.setProductAdd(productDTO);
@@ -76,7 +79,8 @@ public class ProductService {
 	  
 	  List<ProductDTO> ar = productDAO.getMemberProductList(pager);
 	  
-	  return ar; }
+	  return ar; 
+	  }
 
 
 	public int setProductUpdate(ProductDTO productDTO, MultipartFile[] pic, Long[] fileNums, HttpSession session)

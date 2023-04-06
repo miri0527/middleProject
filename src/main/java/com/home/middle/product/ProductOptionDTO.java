@@ -1,6 +1,9 @@
 package com.home.middle.product;
 
 import java.sql.Date;
+import java.util.List;
+
+import com.home.middle.cart.CartDTO;
 
 public class ProductOptionDTO {
 	
@@ -15,6 +18,15 @@ public class ProductOptionDTO {
 	private Long ref;
 	private Long depth;
 	
+	private List<CartDTO> cartDTOs;
+	
+	
+	public List<CartDTO> getCartDTOs() {
+		return cartDTOs;
+	}
+	public void setCartDTOs(List<CartDTO> cartDTOs) {
+		this.cartDTOs = cartDTOs;
+	}
 	///getters setters
 	public Date getProductDate() {
 		return productDate;

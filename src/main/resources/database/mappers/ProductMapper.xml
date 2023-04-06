@@ -34,6 +34,9 @@
 	WHERE P.PRODUCTNUM = #{productNum}
    </select> 
  	
+ 	
+ 	
+ 	
  <!--type=""에는 최종리턴타입  -->
    <resultMap type="ProductDTO" id="productDetailResult">
    
@@ -107,7 +110,6 @@
 			 ORDER BY PRODUCTNUM DESC) 
 			)
 		N)
-		
 		WHERE R BETWEEN #{startRow} AND #{lastRow} 	
 		
 	</select>	

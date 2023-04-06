@@ -14,7 +14,7 @@
 
 <div class="container-fluid">
 	<div class="row my-5">
-		<h1>리뷰 List</h1>
+		<h1>${boardName} List</h1>
 	</div>
 
 	<div class="row">
@@ -32,6 +32,14 @@
 					<td>${dto.id}</td>
 					<td>${dto.regDate}</td>
 					<td>${dto.productNum}</td>
+					<td> <form action="./delete" id="frmde">
+					 <input type="hidden" name="num" value="${dto.num}">
+					 <button id="delete" type="button" class="btn btn-info">DELETE</button>
+					</form>
+					</td>
+					<td>
+					 <a class="btn btn-info"  href ="./update?num=${dto.num}">update</a>
+					</td>
 				</tr>
 				</c:forEach>
 			</tbody>
@@ -74,7 +82,6 @@
 			        <span aria-hidden="true">&raquo;</span>
 			      </a>
 			    </li>
-			    
 			  </ul>
 			</nav>
 		</div>
@@ -99,16 +106,12 @@
 				  <button type="submit" class="btn btn-primary mb-3">검색</button>
 				</div>
 			</form>
-		
 					<div class="row">
 						<a href="./add" class="btn btn-primary">글작성</a>
-					</div>
-					 <div>
-     
-      </div>
+					 </div>
+			     <div>    
+             </div>
 		</div>
-		
-	
 </div>
 
 <script type="text/javascript" src="../resources/js/boardForm.js"></script>

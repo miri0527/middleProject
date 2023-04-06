@@ -50,6 +50,6 @@
 		</div>
 	</div>
 	<script src="/resources/js/cartAdd.js"></script>
-	<c:import url="../template/common_js.jsp"></c:import>
+	<c:import url="../template/cart_common_js.jsp"></c:import>
 </body>
 </html>

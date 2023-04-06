@@ -2,7 +2,7 @@ package com.home.middle.cart;
 
 import java.util.List;
 
-public class ProductDTO {
+public class ProductDTO1 {
 	private Long productNum;
 	private String productName;
 	private Long productPrice;

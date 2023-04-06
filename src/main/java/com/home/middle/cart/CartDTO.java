@@ -4,9 +4,9 @@ import java.sql.Date;
 
 import com.home.middle.product.ProductDTO;
 
+
 public class CartDTO {
 	private Long orderNum;
-	
 	private String id;
 	private Long totalPrice;
 	private Long productEa;
@@ -19,6 +19,13 @@ public class CartDTO {
 	
 	
 	
+	
+	public ProductDTO getProductDTO() {
+		return productDTO;
+	}
+	public void setProductDTO(ProductDTO productDTO) {
+		this.productDTO = productDTO;
+	}
 	public Long getPaymentCheck() {
 		return paymentCheck;
 	}
@@ -30,13 +37,6 @@ public class CartDTO {
 	}
 	public void setOptionNum(Long optionNum) {
 		this.optionNum = optionNum;
-	}
-	
-	public ProductDTO getProductDTO() {
-		return productDTO;
-	}
-	public void setProductDTO(ProductDTO productDTO) {
-		this.productDTO = productDTO;
 	}
 	public Long getOrderNum() {
 		return orderNum;
