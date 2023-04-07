@@ -217,9 +217,9 @@ public class MemberController {
 		auto.setAutoStatus(1L);
 		int a = memberService.setMemberAuto(auto);
 		
-		mv.addObject("message", "신청 되었습니다");
-		mv.addObject("url", "./memberDetail");
+		mv.addObject("result", "신청이 완료되었습니다");
 		mv.setViewName("common/result");
+		mv.addObject("url", "../");
 		return mv;
 	}
 }
