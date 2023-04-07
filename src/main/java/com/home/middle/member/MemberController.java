@@ -222,4 +222,6 @@ public class MemberController {
 		mv.addObject("url", "../");
 		return mv;
 	}
+	
+
 }
