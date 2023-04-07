@@ -166,6 +166,7 @@
                 
                 <div class="row">
                     <img src="resources/js/img/main/main1.jpg">    
+                    <h6 class="product-title"> </h6>
                     <!-- <div class="col-lg-12">
                         <div class="slider-desc-3 text-center">
                             <div class="wow rotateInDownLeft" data-wow-duration="2s" data-wow-delay="0.5s">
@@ -194,20 +195,20 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="section-title text-center mb-50">
-                                <h2 class="uppercase">놓치면 후회하는 오늘의 특가 </h2>
-                                <h6>There are many variations of passages of brands available,</h6>
+                                <h2 class="uppercase">지금, 가장 많이 구매하고 있어요 </h2>
+                                <h6>링크몰이 알려주는 이번주 특가 상품 지금이 바로 득템  기회! </h6>
                             </div>
                             <div class="featured-product">
                                 <div class="active-featured-product slick-arrow-2">
                                     <div class="product-item">
                                         <div class="product-img">
                                             <a href="single-product.html">
-                                                <img src="resources/js/img/product/1.jpg" alt=""/>
+                                                <img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fshop1.phinf.naver.net%2F20210806_31%2F1628210933956VPn1t_JPEG%2F29346832665611787_1791030869.jpg&type=a340" height="270" width="300" alt=""/>
                                             </a>
                                         </div>
                                         <div class="product-info">
                                             <h6 class="product-title">
-                                                <a href="single-product.html">Product Name</a>
+                                                <a href="single-product.html">에이서노트북 Swift 1(SF114-34-P3WR) 울트라북 14인치 FHD(관부가세 포함)</a>
                                             </h6>
                                             <div class="pro-rating">
                                                 <a href="#"><i class="zmdi zmdi-star"></i></a>
@@ -216,19 +217,19 @@
                                                 <a href="#"><i class="zmdi zmdi-star-half"></i></a>
                                                 <a href="#"><i class="zmdi zmdi-star-outline"></i></a>
                                             </div>
-                                            <h3 class="pro-price">$ 869.00</h3>
+                                            <h3 class="pro-price">1,490,000원</h3>
                                     
                                         </div>
                                     </div>
                                     <div class="product-item">
                                         <div class="product-img">
                                             <a href="single-product.html">
-                                                <img src="resources/js/img/product/2.jpg" alt=""/>
+                                                <img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fshop1.phinf.naver.net%2F20230201_222%2F1675224832137oBmul_JPEG%2F76360674836118067_427281721.jpg&type=sc960_832" height="270" width="300"  alt=""/>
                                             </a>
                                         </div>
                                         <div class="product-info">
                                             <h6 class="product-title">
-                                                <a href="single-product.html">Product Name</a>
+                                                <a href="single-product.html">레노버 요가 Slim7 Pro 14IAP7 82SV0058KR (SSD 512GB)</a>
                                             </h6>
                                             <div class="pro-rating">
                                                 <a href="#"><i class="zmdi zmdi-star"></i></a>
@@ -237,19 +238,19 @@
                                                 <a href="#"><i class="zmdi zmdi-star-half"></i></a>
                                                 <a href="#"><i class="zmdi zmdi-star-outline"></i></a>
                                             </div>
-                                            <h3 class="pro-price">$ 869.00</h3>
+                                            <h3 class="pro-price">2,199,000원</h3>
                     
                                         </div>
                                     </div>
                                     <div class="product-item">
                                         <div class="product-img">
                                             <a href="single-product.html">
-                                                <img src="resources/js/img/product/3.jpg" alt=""/>
+                                                <img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fshop1.phinf.naver.net%2F20230308_110%2F1678283215235FCFQy_JPEG%2Fmain_3MR_53277_5.jpg&type=a340" height="270" width="300"  alt=""/>
                                             </a>
                                         </div>
                                         <div class="product-info">
                                             <h6 class="product-title">
-                                                <a href="single-product.html">Product Name</a>
+                                                <a href="single-product.html">ASUS ROG STRIX G18 G814JV-N5002 (SSD 512GB)</a>
                                             </h6>
                                             <div class="pro-rating">
                                                 <a href="#"><i class="zmdi zmdi-star"></i></a>
@@ -258,19 +259,19 @@
                                                 <a href="#"><i class="zmdi zmdi-star-half"></i></a>
                                                 <a href="#"><i class="zmdi zmdi-star-outline"></i></a>
                                             </div>
-                                            <h3 class="pro-price">$ 869.00</h3>
+                                            <h3 class="pro-price">680,450원</h3>
                                        
                                         </div>
                                     </div>
                                     <div class="product-item">
                                         <div class="product-img">
                                             <a href="single-product.html">
-                                                <img src="resources/js/img/product/4.jpg" alt=""/>
+                                                <img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fshop1.phinf.naver.net%2F20220928_281%2F16643428937970a8oe_JPEG%2F71807603926506570_1690952332.jpg&type=sc960_832" height="270" width="300" alt=""/>
                                             </a>
                                         </div>
                                         <div class="product-info">
                                             <h6 class="product-title">
-                                                <a href="single-product.html">Product Name</a>
+                                                <a href="single-product.html">한성컴퓨터 Bossmonster GTX73 N9X6Q24</a>
                                             </h6>
                                             <div class="pro-rating">
                                                 <a href="#"><i class="zmdi zmdi-star"></i></a>
@@ -279,19 +280,19 @@
                                                 <a href="#"><i class="zmdi zmdi-star-half"></i></a>
                                                 <a href="#"><i class="zmdi zmdi-star-outline"></i></a>
                                             </div>
-                                            <h3 class="pro-price">$ 869.00</h3>
+                                            <h3 class="pro-price">1,420,000원</h3>
                                         
                                         </div>
                                     </div>
                                     <div class="product-item">
                                         <div class="product-img">
                                             <a href="single-product.html">
-                                                <img src="resources/js/img/product/4.jpg" alt=""/>
+                                                <img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fshop1.phinf.naver.net%2F20230312_280%2F1678631863794dMSQN_JPEG%2FB09QMP2TB9_7.jpg&type=sc960_832" height="270" width="300" alt=""/>
                                             </a>
                                         </div>
                                         <div class="product-info">
                                             <h6 class="product-title">
-                                                <a href="single-product.html">Product Name</a>
+                                                <a href="single-product.html">MSI 모던시리즈 모던15 B5M-R7</a>
                                             </h6>
                                             <div class="pro-rating">
                                                 <a href="#"><i class="zmdi zmdi-star"></i></a>
@@ -300,7 +301,7 @@
                                                 <a href="#"><i class="zmdi zmdi-star-half"></i></a>
                                                 <a href="#"><i class="zmdi zmdi-star-outline"></i></a>
                                             </div>
-                                            <h3 class="pro-price">$ 869.00</h3>
+                                            <h3 class="pro-price">3,273,490원</h3>
                                        
                                         </div>
                                     </div>
@@ -318,16 +319,16 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="section-title text-center mb-50">
-                                <h2 class="uppercase">By Brands</h2>
-                                <h6>There are many variations of passages of brands available,</h6>
+                                <h2 class="uppercase">APPLE 브랜드 대전</h2>
+                                <h6>애플 브랜드 상품 최대 20% 할인</h6>
                             </div>
                             <div class="by-brand-product">
                                 <div class="active-by-brand slick-arrow-2">
                                     <div class="brand-item">
                                         <div class="single-brand-product">
-                                            <a href="single-product.html"><img src="resources/js/img/product/5.jpg" alt=""></a>
+                                            <a href="single-product.html"><img src="https://search.pstatic.net/sunny/?src=http%3A%2F%2Fimg4.tmon.kr%2Fcdn4%2Fdeals%2F2022%2F09%2F14%2F13523008218%2F13523008218_front_a09d8502ff.jpg&type=a340"  height="270" width="300"alt=""></a>
                                             <h3 class="brand-title text-gray">
-                                                <a href="#">Brand name</a>
+                                                <a href="#">애플 워치 SE </a>
                                             </h3>
                                         </div>
                                     </div>
@@ -376,52 +377,10 @@
                 <div class="container">
                     <div class="row">
                         <!-- up-comming-pro -->
-                        <div class="col-lg-8">
-                            <div class="up-comming-pro gray-bg clearfix">
-                                <div class="up-comming-pro-img f-left">
-                                    <a href="#">
-                                        <img src="resources/js/img/up-comming/1.jpg" alt="">
-                                    </a>
-                                </div>
-                                <div class="up-comming-pro-info f-left">
-                                    <h3><a href="#">Dummy Product Name</a></h3>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elitest, sed do eiusmod tempor incididunt ut labore et dolores top magna aliqua. Ut enim ad minim veniam, quis nostrud exer citation ullamco laboris nisi ut aliquip ex ea commodo consequat. laborum. </p>
-                                    <div class="up-comming-time">
-                                     
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 d-block d-md-none d-lg-block">
-                            <div class="banner-item banner-1">
-                                <div class="ribbon-price">
-                                    <span>$ 896.00</span>
-                                </div>
-                                <div class="banner-img">
-                                    <a href="#"><img src="img/banner/1.jpg" alt=""></a>
-                                </div>
-                                <div class="banner-info">
-                                    <h3><a href="#">Product Name</a></h3>
-                                    <ul class="banner-featured-list">
-                                        <li>
-                                            <i class="zmdi zmdi-check"></i><span>Lorem ipsum dolor</span>
-                                        </li>
-                                        <li>
-                                            <i class="zmdi zmdi-check"></i><span>amet, consectetur</span>
-                                        </li>
-                                        <li>
-                                            <i class="zmdi zmdi-check"></i><span>adipisicing elitest,</span>
-                                        </li>
-                                        <li>
-                                            <i class="zmdi zmdi-check"></i><span>eiusmod tempor</span>
-                                        </li>
-                                        <li>
-                                            <i class="zmdi zmdi-check"></i><span>labore et dolore.</span>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
+                     
+                            
+                                <img src="resources/js/img/up-comming/1.jpg" alt="">
+                    
                     </div>
                 </div>
             </div>
@@ -460,7 +419,7 @@
                                                 </div>
                                                 <div class="product-info">
                                                     <h6 class="product-title">
-                                                        <a href="single-product.html">Product Name</a>
+                                                        <a href="single-product.html">레노버 요가 Slim7 Pro 14IAP7 82SV0058KR (SSD 512GB) </a>
                                                     </h6>
                                                     <div class="pro-rating">
                                                         <a href="#"><i class="zmdi zmdi-star"></i></a>
@@ -469,7 +428,7 @@
                                                         <a href="#"><i class="zmdi zmdi-star-half"></i></a>
                                                         <a href="#"><i class="zmdi zmdi-star-outline"></i></a>
                                                     </div>
-                                                    <h3 class="pro-price">$ 869.00</h3>
+                                                    <h3 class="pro-price">1,490,000원</h3>
                                                  
                                                 </div>
                                             </div>
@@ -485,7 +444,7 @@
                                                 </div>
                                                 <div class="product-info">
                                                     <h6 class="product-title">
-                                                        <a href="single-product.html">Product Name</a>
+                                                        <a href="single-product.html">MSI GP시리즈 Vector GP66 12UGSO QHD (SSD 1TB) </a>
                                                     </h6>
                                                     <div class="pro-rating">
                                                         <a href="#"><i class="zmdi zmdi-star"></i></a>
@@ -494,7 +453,7 @@
                                                         <a href="#"><i class="zmdi zmdi-star-half"></i></a>
                                                         <a href="#"><i class="zmdi zmdi-star-outline"></i></a>
                                                     </div>
-                                                    <h3 class="pro-price">$ 869.00</h3>
+                                                    <h3 class="pro-price">2,199,000원</h3>
                                                   
                                                 </div>
                                             </div>
@@ -510,7 +469,7 @@
                                                 </div>
                                                 <div class="product-info">
                                                     <h6 class="product-title">
-                                                        <a href="single-product.html">Product Name</a>
+                                                        <a href="single-product.html">ASUS ROG STRIX G18 G814JV-N5002 (SSD 512GB) </a>
                                                     </h6>
                                                     <div class="pro-rating">
                                                         <a href="#"><i class="zmdi zmdi-star"></i></a>
@@ -519,7 +478,7 @@
                                                         <a href="#"><i class="zmdi zmdi-star-half"></i></a>
                                                         <a href="#"><i class="zmdi zmdi-star-outline"></i></a>
                                                     </div>
-                                                    <h3 class="pro-price">$ 869.00</h3>
+                                                    <h3 class="pro-price">680,450원</h3>
                                      
                                                 </div>
                                             </div>
@@ -535,7 +494,7 @@
                                                 </div>
                                                 <div class="product-info">
                                                     <h6 class="product-title">
-                                                        <a href="single-product.html">Product Name</a>
+                                                        <a href="single-product.html">삼성전자 갤럭시북2 NT550XEZ-A58A 16GB램 </a>
                                                     </h6>
                                                     <div class="pro-rating">
                                                         <a href="#"><i class="zmdi zmdi-star"></i></a>
@@ -544,7 +503,7 @@
                                                         <a href="#"><i class="zmdi zmdi-star-half"></i></a>
                                                         <a href="#"><i class="zmdi zmdi-star-outline"></i></a>
                                                     </div>
-                                                    <h3 class="pro-price">$ 869.00</h3>
+                                                    <h3 class="pro-price">3,273,490원</h3>
                                                
                                                 </div>
                                             </div>
@@ -560,7 +519,7 @@
                                                 </div>
                                                 <div class="product-info">
                                                     <h6 class="product-title">
-                                                        <a href="single-product.html">Product Name</a>
+                                                        <a href="single-product.html">LG전자 2022 그램16(12세대) 16ZD95Q-GX56K WIN11 </a>
                                                     </h6>
                                                     <div class="pro-rating">
                                                         <a href="#"><i class="zmdi zmdi-star"></i></a>
@@ -569,7 +528,7 @@
                                                         <a href="#"><i class="zmdi zmdi-star-half"></i></a>
                                                         <a href="#"><i class="zmdi zmdi-star-outline"></i></a>
                                                     </div>
-                                                    <h3 class="pro-price">$ 869.00</h3>
+                                                    <h3 class="pro-price">1,312,920원</h3>
                                                    
                                                 </div>
                                             </div>
@@ -585,7 +544,7 @@
                                                 </div>
                                                 <div class="product-info">
                                                     <h6 class="product-title">
-                                                        <a href="single-product.html">Product Name</a>
+                                                        <a href="single-product.html">MSI 모던시리즈 모던15 B5M-R7 </a>
                                                     </h6>
                                                     <div class="pro-rating">
                                                         <a href="#"><i class="zmdi zmdi-star"></i></a>
@@ -594,7 +553,7 @@
                                                         <a href="#"><i class="zmdi zmdi-star-half"></i></a>
                                                         <a href="#"><i class="zmdi zmdi-star-outline"></i></a>
                                                     </div>
-                                                    <h3 class="pro-price">$ 869.00</h3>
+                                                    <h3 class="pro-price">598,990원</h3>
                                                 
                                                 </div>
                                             </div>
@@ -619,7 +578,7 @@
                                                         <a href="#"><i class="zmdi zmdi-star-half"></i></a>
                                                         <a href="#"><i class="zmdi zmdi-star-outline"></i></a>
                                                     </div>
-                                                    <h3 class="pro-price">$ 869.00</h3>
+                                                    <h3 class="pro-price">1,390,000원</h3>
                                            
                                                 </div>
                                             </div>
@@ -635,7 +594,7 @@
                                                 </div>
                                                 <div class="product-info">
                                                     <h6 class="product-title">
-                                                        <a href="single-product.html">Product Name</a>
+                                                        <a href="single-product.html">한성컴퓨터 Bossmonster GTX73 N9X6Q24 </a>
                                                     </h6>
                                                     <div class="pro-rating">
                                                         <a href="#"><i class="zmdi zmdi-star"></i></a>
@@ -644,7 +603,7 @@
                                                         <a href="#"><i class="zmdi zmdi-star-half"></i></a>
                                                         <a href="#"><i class="zmdi zmdi-star-outline"></i></a>
                                                     </div>
-                                                    <h3 class="pro-price">$ 869.00</h3>
+                                                    <h3 class="pro-price">1,420,000원</h3>
                                                
                                                 </div>
                                             </div>
@@ -666,7 +625,7 @@
                                                 </div>
                                                 <div class="product-info">
                                                     <h6 class="product-title">
-                                                        <a href="single-product.html">Product Name</a>
+                                                        <a href="single-product.html"> APPLE 2023 맥북프로14 MPHE3KH/A </a>
                                                     </h6>
                                                     <div class="pro-rating">
                                                         <a href="#"><i class="zmdi zmdi-star"></i></a>
@@ -675,7 +634,7 @@
                                                         <a href="#"><i class="zmdi zmdi-star-half"></i></a>
                                                         <a href="#"><i class="zmdi zmdi-star-outline"></i></a>
                                                     </div>
-                                                    <h3 class="pro-price">$ 869.00</h3>
+                                                    <h3 class="pro-price">2,539,190원</h3>
                                                   
                                                 </div>
                                             </div>
@@ -1284,8 +1243,8 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="section-title text-center mb-50">
-                                <h2 class="uppercase">Latest blog</h2>
-                                <h6>There are many variations of passages of brands available,</h6>
+                                <h2 class="uppercase">event list</h2>
+                                <h6>링크몰의 풍성하고 다양한 이벤트로 더 큰 혜택을 누리세요.</h6>
                             </div>
                             <div class="blog">
                                 <div class="active-blog">
@@ -1343,8 +1302,12 @@
                                             <img src="resources/js/img/logo/logo.png" alt="">
                                         </div>
                                         <div class="footer-brief">
-                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the subas industry's standard dummy text ever since the 1500s,</p>
-                                            <p>When an unknown printer took a galley of type and If you are going to use a passage of Lorem Ipsum scrambled it to make.</p>
+                                            <p>주소 (우)11102 서울특별시 금천구 가산디지털1로 151지번서울특별시 금천구 가산동 371-47 (세진이노플렉스) 대표: 김희진
+                                                사업자번호: 111-81-00011 통신판매업: 제2023-서울가디-00222호부가통신사업: 제003331호사업자정보확인
+                                            </p>
+                                            <p>(주)링크몰은 상품판매와 직접적인 관련이 없으며, 모든 상거래의 책임은 구매자와 판매자에게 있습니다.
+                                                이에 대해 (주)링크몰은 일체의 책임을 지지 않습니다.</p>
+                                                
                                         </div>
                                         <ul class="footer-social">
                                             <li>

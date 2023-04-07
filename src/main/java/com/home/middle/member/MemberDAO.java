@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import com.home.middle.product.ProductDTO;
 import com.home.middle.util.Pager;
 
+
 @Repository
 public class MemberDAO {
 	
@@ -49,6 +50,9 @@ public class MemberDAO {
 	
 	public int setMemberDelete(MemberDTO memberDTO) throws Exception {
 		return sqlSession.delete(NAMESPACE + "setMemberDelete", memberDTO);
+	}
+	public int setMemberAuto(MemberDTO memberDTO)throws Exception{
+		return sqlSession.update(NAMESPACE+"setMemberAuto", memberDTO);
 	}
 	
 	public int setSellerApplication(MemberDTO memberDTO) throws Exception {

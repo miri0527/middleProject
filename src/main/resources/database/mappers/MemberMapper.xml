@@ -97,12 +97,9 @@
 
   	</resultMap>
   	
-  	<update id="setSellerApplication" parameterType="MemberDTO">
-  		UPDATE MEMBER SET AUTOSTATUS=1 WHERE ID=#{id}
-  	</update>
-  	
-  	<update id="setSellerApprove" parameterType="MemberDTO">
-  		UPDATE MEMBER SET AUTOSTATUS=2, ROLENUM = 2 WHERE ID=#{id}
+ 
+  	<update id="setMemberAuto" parameterType="MemberDTO">
+  	UPDATE MEMBER SET AUTOSTATUS=#{autoStatus} WHERE ID=#{id}
   	</update>
   	
   </mapper>

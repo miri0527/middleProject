@@ -30,23 +30,23 @@ public class CartController {
 		//member 연동해서 아이디에 따른 장바구니 가져오기
 		ModelAndView mv = new ModelAndView();
 		//임시 아이디 설정
-		MemberDTO memberDTO = new MemberDTO();
-		memberDTO.setId("TEST2");
-	
-		List<CartDTO> ar = cartService.getCartList(memberDTO);
-		System.out.println(ar.size());
-		mv.addObject("list", ar);
-		mv.setViewName("/cart/cartList");
-//		if(session.getAttribute("member")!=null) {
-//			MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
-//			
-//			List<CartDTO> ar = cartService.getCartList(memberDTO);
-//			
-//			mv.addObject("list", ar);
-//			mv.setViewName("/cart/cartPayment");
-//		}else {
-//			mv.setViewName("redirect:../");
-//		}
+//		MemberDTO memberDTO = new MemberDTO();
+//		memberDTO.setId("TEST2");
+////	
+//		List<CartDTO> ar = cartService.getCartList(memberDTO);
+//		System.out.println(ar.size());
+//		mv.addObject("list", ar);
+//		mv.setViewName("/cart/cartList");
+		if(session.getAttribute("member")!=null) {
+			MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+			
+			List<CartDTO> ar = cartService.getCartList(memberDTO);
+			
+			mv.addObject("list", ar);
+			mv.setViewName("/cart/cartList");
+		}else {
+			mv.setViewName("redirect:../");
+		}
 		return mv;
 	}
 	

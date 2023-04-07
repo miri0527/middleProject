@@ -12,6 +12,18 @@ public class MemberDTO {
 	private RoleDTO roleDTO;
 	private Long autoStatus;
 	
+	
+	
+	
+	
+	
+	
+	public Long getAutoStatus() {
+		return autoStatus;
+	}
+	public void setAutoStatus(Long autoStatus) {
+		this.autoStatus = autoStatus;
+	}
 	public Integer getRoleNum() {
 		return roleNum;
 	}

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.home.middle.product.ProductDTO;
 import com.home.middle.util.Pager;
 
+
 @Service
 public class MemberService {
 	
@@ -93,6 +94,9 @@ public class MemberService {
 			int result=memberDAO.setMemberPwChange(memberDTO);
 		}
 		return s;
+	}
+	public int setMemberAuto(MemberDTO memberDTO)throws Exception{
+		return memberDAO.setMemberAuto(memberDTO);
 	}
 	
 	public int setSellerApplication(MemberDTO memberDTO) throws Exception {

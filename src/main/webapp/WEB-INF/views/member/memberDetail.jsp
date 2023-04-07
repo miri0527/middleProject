@@ -9,7 +9,7 @@
 <c:import url="../template/common_css.jsp"></c:import>
 </head>
 <body>
-	<%-- <c:import url="../template/header.jsp"></c:import> --%>
+	<c:import url="../template/header.jsp"></c:import>
 
 
 	<div class="container-fluid md-auto">
@@ -65,75 +65,12 @@
 		</div>
 
 		<a href="./memberPwCheck" class="btn btn-danger offset-md-6">수정</a>
-
+		<a href="./memberAuto"><button class="submit-btn-1 mt-20 btn-hover-1 f-right"
+										type="reset">권한 신청</button></a>
 	</div>
 	
 	
-	<div class="card mb-15">
-		<div class="card-header" id="headingOne">
-			<h4 class="card-title">
-				<a data-bs-toggle="collapse" data-bs-target="#collapseOne"
-					aria-expanded="true" aria-controls="collapseOne">My Personal
-					Information</a>
-			</h4>
-		</div>
-		<div id="collapseOne" class="collapse show"
-			aria-labelledby="headingOne" data-bs-parent="#accordion">
-			<div class="card-body">
-				<form action="#">
-					<div class="new-customers">
-						<div class="p-30">
-							<div class="row">
-								<div class="col-sm-6">
-									<input type="text" readonly class="form-control-plaintext"
-										id="memberID" value="${dto.id}">
-								</div>
-								<div class="col-sm-6">
-									<input type="text" readonly class="form-control-plaintext"
-					id="memberRoleName" value="${dto.roleDTO.roleName}">
-								</div>
-								<div class="col-sm-6">
-									<input type="text" readonly class="form-control-plaintext"
-					id="memberName" value="${dto.name}">
-								</div>
-								<div class="col-sm-6">
-									<input type="text" readonly class="form-control-plaintext"
-					id="memberAddress" value="${dto.address}">
-								</div>
-								<div class="col-sm-6">
-									<input type="text" readonly class="form-control-plaintext"
-					id="memberPhone" value="${dto.phone}">
-								</div>
-								<div class="col-sm-6">
-									<input type="text" readonly class="form-control-plaintext"
-					id="memberEmail" value="${dto.email}">
-								</div>
-							</div>
-							
-							
-							<div class="row">
-								<div class="col-md-6">
-									<button class="submit-btn-1 mt-20 btn-hover-1" type="submit"
-										value="register">Save</button>
-								</div>
-								<div class="col-md-6">
-								<a href="./memberPwCheck"><button class="submit-btn-1 mt-20 btn-hover-1 f-right"
-										type="reset">수정</button></a>
-										
-								</div>
-							</div>
-						</div>
-					</div>
-				</form>
-				<form action="./sellerApplication" method="post">
-					<input type="hidden" name="id" value="${dto.id}" >
-					<c:if test="${dto.autoStatus eq 0 && dto.roleDTO.roleName eq 'MEMBER'}">
-						<button type="submit" class="btn btn-primary">판매자승인신청</button>
-					</c:if>
-				</form>
-			</div>
-		</div>
-	</div>
+	
 
 
 	<c:import url="../template/common_js.jsp"></c:import>

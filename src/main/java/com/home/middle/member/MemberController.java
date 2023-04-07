@@ -16,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.home.middle.email.MailSendController;
 import com.home.middle.email.MailSendService;
 
+
 @Controller
 @RequestMapping(value="/member/*")
 public class MemberController {
@@ -209,36 +210,14 @@ public class MemberController {
 		mv.setViewName("common/result");
 		return mv;
 	}
-	
-	@PostMapping("sellerApplication")
-	public ModelAndView setSellerApplication(MemberDTO memberDTO) throws Exception {
+	@GetMapping("memberAuto")
+	public ModelAndView setMemberAuto(HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView();
+		MemberDTO auto =(MemberDTO)session.getAttribute("member");
+		auto.setAutoStatus(1L);
+		int a = memberService.setMemberAuto(auto);
 		
-		int result =  memberService.setSellerApplication(memberDTO);
-		
-		if(result > 0) {
-			mv.addObject("result", "신청이 완료되었습니다");
-			mv.setViewName("common/result");
-			mv.addObject("url", "../");
-		}
-		
+		mv.setViewName("redirect:./memberDetail");
 		return mv;
 	}
-	
-	@PostMapping("sellerApprove")
-	public ModelAndView setSellerApprove(MemberDTO memberDTO) throws Exception {
-		ModelAndView mv = new ModelAndView();
-		
-		int result = memberService.setSellerApprove(memberDTO);
-		
-		if(result > 0) {
-			mv.addObject("result", "승인이 완료되었습니다");
-			mv.setViewName("common/result");
-			mv.addObject("url", "../manager/memberList");
-		}
-		
-		return mv;
-		
-	}
-	
 }
