@@ -2,6 +2,7 @@ package com.home.middle.member;
 
 import java.util.List;
 
+import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -33,11 +34,7 @@ public class MemberService {
 		return ar;
 		
 	}
-	
-	public MemberDTO getMemberApplication(MemberDTO memberDTO) throws Exception {
-		memberDTO = memberDAO.getMenberApplication(memberDTO);
-		return memberDTO;
-	}
+
 
 	public MemberDTO getMemberDetail(MemberDTO memberDTO) throws Exception{
 		return memberDAO.getMemberLogin(memberDTO);
@@ -98,4 +95,11 @@ public class MemberService {
 		return s;
 	}
 	
+	public int setSellerApplication(MemberDTO memberDTO) throws Exception {
+		return memberDAO.setSellerApplication(memberDTO);
+	}
+	
+	public int setSellerApprove(MemberDTO memberDTO) throws Exception {
+		return memberDAO.setSellerApprove(memberDTO);
+	}
 }

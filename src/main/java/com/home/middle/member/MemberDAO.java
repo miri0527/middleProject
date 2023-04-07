@@ -30,11 +30,6 @@ public class MemberDAO {
 		return ar;
 	}
 	
-	public MemberDTO getMenberApplication(MemberDTO memberDTO) throws Exception {
-		memberDTO = sqlSession.selectOne(NAMESPACE + "getMemberApplication", memberDTO);
-		return memberDTO;
-	}
-	
 	public MemberDTO getMemberLogin(MemberDTO memberDTO) throws Exception{
 		return sqlSession.selectOne(NAMESPACE+"getMemberLogin", memberDTO);
 	}
@@ -56,4 +51,11 @@ public class MemberDAO {
 		return sqlSession.delete(NAMESPACE + "setMemberDelete", memberDTO);
 	}
 	
+	public int setSellerApplication(MemberDTO memberDTO) throws Exception {
+		return sqlSession.update(NAMESPACE + "setSellerApplication", memberDTO);
+	}
+	
+	public int setSellerApprove(MemberDTO memberDTO) throws Exception {
+		return sqlSession.update(NAMESPACE + "setSellerApprove", memberDTO);
+	}
 }

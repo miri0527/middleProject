@@ -210,34 +210,35 @@ public class MemberController {
 		return mv;
 	}
 	
-	@GetMapping("memberApplication")
-	public ModelAndView getMemberApplication (MemberDTO memberDTO) throws Exception {
+	@PostMapping("sellerApplication")
+	public ModelAndView setSellerApplication(MemberDTO memberDTO) throws Exception {
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("member/memberApplication");
 		
+		int result =  memberService.setSellerApplication(memberDTO);
+		
+		if(result > 0) {
+			mv.addObject("result", "신청이 완료되었습니다");
+			mv.setViewName("common/result");
+			mv.addObject("url", "../");
+		}
 		
 		return mv;
 	}
 	
-	@PostMapping("memberApplication")
-	public ModelAndView getMemberApplication(MemberDTO memberDTO, HttpSession session) throws Exception {
+	@PostMapping("sellerApprove")
+	public ModelAndView setSellerApprove(MemberDTO memberDTO) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		
-		MemberDTO check = (MemberDTO)session.getAttribute("member");
-		if(check.getId().equals(memberDTO.getId()) &&  
-				check.getName().equals(memberDTO.getName()) && check.getEmail().equals(memberDTO.getEmail()) && check.getPhone().equals(memberDTO.getPhone())) {
-			memberDTO = memberService.getMemberApplication(memberDTO);
-			session.setAttribute("application", memberDTO);
-			mv.setViewName("redirect:../");
-		}else if(!check.getId().equals(memberDTO.getId())||!check.getName().equals(memberDTO.getName()) || !check.getEmail().equals(memberDTO.getEmail())
-				|| !check.getPhone().equals(memberDTO.getPhone())) {
-			String message = "정보를 다시 입력하세요";
-			
-			mv.addObject("result",message);
+		int result = memberService.setSellerApprove(memberDTO);
+		
+		if(result > 0) {
+			mv.addObject("result", "승인이 완료되었습니다");
 			mv.setViewName("common/result");
-			mv.addObject("url", "./memberApplication");
-			
+			mv.addObject("url", "../manager/memberList");
 		}
+		
 		return mv;
+		
 	}
+	
 }

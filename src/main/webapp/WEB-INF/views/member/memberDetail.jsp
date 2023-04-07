@@ -9,7 +9,7 @@
 <c:import url="../template/common_css.jsp"></c:import>
 </head>
 <body>
-	<c:import url="../template/header.jsp"></c:import>
+	<%-- <c:import url="../template/header.jsp"></c:import> --%>
 
 
 	<div class="container-fluid md-auto">
@@ -119,11 +119,17 @@
 								<div class="col-md-6">
 								<a href="./memberPwCheck"><button class="submit-btn-1 mt-20 btn-hover-1 f-right"
 										type="reset">수정</button></a>
-									
+										
 								</div>
 							</div>
 						</div>
 					</div>
+				</form>
+				<form action="./sellerApplication" method="post">
+					<input type="hidden" name="id" value="${dto.id}" >
+					<c:if test="${dto.autoStatus eq 0 && dto.roleDTO.roleName eq 'MEMBER'}">
+						<button type="submit" class="btn btn-primary">판매자승인신청</button>
+					</c:if>
 				</form>
 			</div>
 		</div>

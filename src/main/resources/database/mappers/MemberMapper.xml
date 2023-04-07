@@ -52,7 +52,7 @@
   	</resultMap>
   	
   	<update id="setMemberUpdate" parameterType="MemberDTO">
-  		UPDATE MEMBER SET PW=#{pw},NAME=#{name},ADDRESS=#{address},PHONE=#{phone},EMAIL=#{email},AUTOSTATUS=#{autoStatus} WHERE ID=#{id}
+  		UPDATE MEMBER SET PW=#{pw},NAME=#{name},ADDRESS=#{address},PHONE=#{phone},EMAIL=#{email} WHERE ID=#{id}
   	</update>
   	
   	<update id="setAdminMemberUpdate" parameterType="MemberDTO">
@@ -97,12 +97,12 @@
 
   	</resultMap>
   	
-  	<select id="getMemberApplication" parameterType="MemberDTO" resultType="MemberDTO">
-  		SELECT NAME,EMAIL,PW,PHONE
-  		FROM MEMBER
-  		WHERE ID=#{id}
-  	</select>
- 
+  	<update id="setSellerApplication" parameterType="MemberDTO">
+  		UPDATE MEMBER SET AUTOSTATUS=1 WHERE ID=#{id}
+  	</update>
   	
+  	<update id="setSellerApprove" parameterType="MemberDTO">
+  		UPDATE MEMBER SET AUTOSTATUS=2, ROLENUM = 2 WHERE ID=#{id}
+  	</update>
   	
   </mapper>

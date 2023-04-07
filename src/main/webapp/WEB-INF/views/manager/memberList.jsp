@@ -29,6 +29,7 @@
 					<th>이름</th>
 					<th>회원등급</th>	
 					<th>신청여부</th>
+					<th>신청</th>
 				</tr>
 				<c:forEach items="${list}" var="dto">
 					<tr>
@@ -42,6 +43,15 @@
 							<c:if test="${dto.autoStatus eq 0 }">미신청</c:if>
 							<c:if test="${dto.autoStatus eq 1 }">신청중</c:if>
 							<c:if test="${dto.autoStatus eq 2 }">신청완료</c:if>
+						</td>
+						<td>
+							<c:if test="${dto.autoStatus eq 1}">
+								<form action="../member/sellerApprove" method="post" id="application">
+									<input type="hidden" name="id" value="${dto.id}">
+									<button class="btn btn-primary" type="submit">승인</button>
+									<button class="btn btn-danger" id="refuse">거절</button>
+								</form>	
+							</c:if>
 						</td>
 					</tr>
 				</c:forEach>

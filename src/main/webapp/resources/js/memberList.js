@@ -80,8 +80,9 @@ $(document).ready(() => {
 }) 
    
 
-
-
+$("#refuse").click(() => {
+    
+})
     
     
 
