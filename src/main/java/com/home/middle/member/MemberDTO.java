@@ -13,11 +13,6 @@ public class MemberDTO {
 	private Long autoStatus;
 	
 	
-	
-	
-	
-	
-	
 	public Long getAutoStatus() {
 		return autoStatus;
 	}
@@ -72,12 +67,6 @@ public class MemberDTO {
 	}
 	public void setEmail(String email) {
 		this.email = email;
-	}
-	public Long getAutoStatus() {
-		return autoStatus;
-	}
-	public void setAutoStatus(Long autoStatus) {
-		this.autoStatus = autoStatus;
 	}
 	
 	

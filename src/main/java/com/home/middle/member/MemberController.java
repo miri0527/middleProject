@@ -217,7 +217,9 @@ public class MemberController {
 		auto.setAutoStatus(1L);
 		int a = memberService.setMemberAuto(auto);
 		
-		mv.setViewName("redirect:./memberDetail");
+		mv.addObject("message", "신청 되었습니다");
+		mv.addObject("url", "./memberDetail");
+		mv.setViewName("common/result");
 		return mv;
 	}
 }
