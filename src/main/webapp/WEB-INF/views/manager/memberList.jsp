@@ -12,14 +12,14 @@
 
 <div class="container-fluid">
 	<div class="row my-5">
-		<h1>회원리스트</h1>
+		<h1><a href="./memberList">회원리스트</a></h1>
 	</div>
 	회원등급
 	<input type="checkbox" id="allRole" name="roleName" value=""  checked > 전체
 	<input type="checkbox" id="memberRole" name="roleName" value="MEMBER">일반회원
 	<input type="checkbox" id="sellerRole" name="roleName" value="SELLER">판매자
 	<input type="checkbox" id="adminRole" name="roleName" value="ADMIN">관리자	
-	
+		
 	
 		<div class="row">
 			<table class="table table-hover text-center">
@@ -28,28 +28,31 @@
 					<th>아이디</th>
 					<th>이름</th>
 					<th>회원등급</th>	
-					<th>신청여부</th>
+					<th>판매자신청여부</th>
 					<th>신청</th>
 				</tr>
 				<c:forEach items="${list}" var="dto">
 					<tr>
 						<td>
-							<input class="form-check-input mt-0"  type="checkbox" name="chkList" value="${dto.id}" aria-label="Checkbox for following text input">
+							<input class="form-check-input mt-0 chkList"  type="checkbox" data-id="${dto.id}" aria-label="Checkbox for following text input">
 						</td>
 						<td><a href="./memberDetail?id=${dto.id}">${dto.id}</a></td>
 						<td>${dto.name}</td>
 						<td>${dto.roleDTO.roleName }</td>
 						<td>
-							<c:if test="${dto.autoStatus eq 0 }">미신청</c:if>
-							<c:if test="${dto.autoStatus eq 1 }">신청중</c:if>
-							<c:if test="${dto.autoStatus eq 2 }">신청완료</c:if>
+						<c:if test="${dto.roleDTO.roleNum ne 1 }">
+							<c:if test="${dto.autoStatus eq '미신청' && dto.roleDTO.roleNum eq 3}">미신청</c:if>
+							<c:if test="${dto.autoStatus eq '승인대기'}">승인대기</c:if>
+							<c:if test="${dto.autoStatus eq '승인완료'}">승인완료</c:if>
+							<c:if test="${dto.autoStatus eq '승인거절'}">승인거절</c:if>
+						</c:if>	
 						</td>
 						<td>
-							<c:if test="${dto.autoStatus eq 1}">
+							<c:if test="${dto.autoStatus eq '승인대기' && dto.roleDTO.roleNum eq 3}">
 								<form action="../member/sellerApprove" method="post" id="application">
 									<input type="hidden" name="id" value="${dto.id}">
 									<button class="btn btn-primary" type="submit">승인</button>
-									<button class="btn btn-danger" id="refuse">거절</button>
+									<button class="btn btn-danger" type="submit" id="refuse">거절</button>
 								</form>	
 							</c:if>
 						</td>
@@ -105,7 +108,7 @@
 	               <select class="form-select" name="kind" id="kind" aria-label="Default select example">
 	               <!--검색했을 때 s  -->
 	                  <option value="id" ${pager.kind eq 'id' ? 'selected' : ''}>회원아이디 </option>
-	                 
+	                 <option value="autoStatus" ${pager.kind eq 'autoStatus' ? 'selected' : ''} > 판매자신청여부</option>
 	               </select>
 	            </div>
 	            <div class="col-auto">
@@ -123,14 +126,6 @@
 			<button type="button" class="btn btn-danger" onclick="deleteValue()">탈퇴처리</button>	
 		</div>
 		
-		
-		<!-- <script type="text/javascript">
-			console.log("${list.get(0).roleDTO.roleName}")
-			let list = ${list};
-			for(let i=0; i<${list.size()}; i++) {
-				console.log("${list.get(i).roleDTO.roleName}")
-			}
-		</script> -->
 <c:import url="../template/common_js.jsp"	></c:import>	
 
 

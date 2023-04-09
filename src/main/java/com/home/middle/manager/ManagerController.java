@@ -42,8 +42,13 @@ public class ManagerController {
 		
 		mv.addObject("list", ar);
 		
-		mv.setViewName("manager/memberList");
-		System.out.println("RoleName : " + ar.get(0).getRoleDTO().getRoleName());
+		if (ar.size() !=0) {
+			System.out.println("RoleName : " + ar.get(0).getRoleDTO().getRoleName());
+			mv.setViewName("manager/memberList");
+		}
+		
+		
+		
 		
 		
 		return mv;
@@ -51,13 +56,13 @@ public class ManagerController {
 	}
 	
 	@GetMapping("cartList")
-	public ModelAndView getCartList(HttpSession session) throws Exception {
+	public ModelAndView getCartList(HttpSession session, Pager pager) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		
 		if(session.getAttribute("member")!=null) {
 			MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
 		
-		List<CartDTO> ar = cartService.getMemberCartList(memberDTO);
+		List<CartDTO> ar = cartService.getMemberCartList(pager);
 		
 		mv.addObject("list", ar);
 		mv.setViewName("manager/cartList");
@@ -98,10 +103,15 @@ public class ManagerController {
 	}
 	
 	@PostMapping("memberDelete")
-	public ModelAndView setMemberDelete(MemberDTO memberDTO) throws Exception {
+	public ModelAndView setMemberDelete(String[]chkList) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		
-		int result =  memberService.setMemberDelete(memberDTO);
+		for(int i=0; i<chkList.length; i++) {
+			MemberDTO memberDTO = new MemberDTO();
+			memberDTO.setId(chkList[i]);
+			memberService.setMemberDelete(memberDTO);
+		}
+		
 		
 		mv.setViewName("redirect:./memberList");
 		

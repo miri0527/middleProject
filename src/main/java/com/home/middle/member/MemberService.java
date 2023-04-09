@@ -99,11 +99,11 @@ public class MemberService {
 		return memberDAO.setMemberAuto(memberDTO);
 	}
 	
-	public int setSellerApplication(MemberDTO memberDTO) throws Exception {
-		return memberDAO.setSellerApplication(memberDTO);
-	}
-	
 	public int setSellerApprove(MemberDTO memberDTO) throws Exception {
 		return memberDAO.setSellerApprove(memberDTO);
+	}
+	
+	public int setSellerRefuse(MemberDTO memberDTO) throws Exception {
+		return memberDAO.setSellerRefuse(memberDTO);
 	}
 }

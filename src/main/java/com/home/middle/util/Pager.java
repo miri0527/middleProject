@@ -12,15 +12,14 @@ public class Pager {
 	private String name;
 	private String[] roleName;
 	private Long orderNum;
-	private Long autoStatus;
+	private String autoStatus;
 	
-	
-	
-	public Long getAutoStatus() {
+
+	public String getAutoStatus() {
 		return autoStatus;
 	}
 
-	public void setAutoStatus(Long autoStatus) {
+	public void setAutoStatus(String autoStatus) {
 		this.autoStatus = autoStatus;
 	}
 

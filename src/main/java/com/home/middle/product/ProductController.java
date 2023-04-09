@@ -1,5 +1,6 @@
 package com.home.middle.product;
 
+import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -156,17 +157,18 @@ public class ProductController {
 	}
 	
 	@PostMapping("delete")
-	public ModelAndView setProductDelete(@RequestParam(value="chkList",required = false) ProductDTO productDTO, HttpSession session) throws Exception {
+	public ModelAndView setProductDelete(String chkList[],HttpSession session) throws Exception {
 		ModelAndView mv = new ModelAndView();
-			productDTO.setProductNum(productDTO.getProductNum());
-			int result = productService.setProductDelete(session,productDTO) ;
-					
+			
+			for(int i = 0; i < chkList.length; i ++) {
+				ProductDTO productDTO = new ProductDTO();
+				productDTO.setProductNum(Long.parseLong(chkList[i]));
+				productService.setProductDelete(session, productDTO);
+			}
+			mv.setViewName("redirect:./memberProductList");
+			return mv;
+		}
 		
-		mv.setViewName("redirect:./memberProductList");
-		
-		return mv;
-	}
-	
 	
 	
 	

@@ -32,7 +32,7 @@
                <c:if test="${member.roleDTO.roleName eq 'ADMIN' }">
                
                <td>
-                  <input class="form-check-input mt-0" type="checkbox" name="chkList" value="${dto.productNum }" aria-label="Checkbox for following text input">
+                  <input class="form-check-input mt-0 chkList" type="checkbox" data-productNum="${dto.productNum}" aria-label="Checkbox for following text input">
                </td>
                
                </c:if>

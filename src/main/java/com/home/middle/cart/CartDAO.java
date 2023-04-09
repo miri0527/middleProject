@@ -22,8 +22,8 @@ public class CartDAO {
 		return sqlSession.selectList(NAMESPACE + "getCartList", memberDTO);
 	}
 	
-	public List<CartDTO> getMemberCartList(MemberDTO memberDTO) throws Exception {
-		List<CartDTO> ar =  sqlSession.selectList(NAMESPACE + "getMemberCartList",memberDTO);
+	public List<CartDTO> getMemberCartList(Pager pager) throws Exception {
+		List<CartDTO> ar =  sqlSession.selectList(NAMESPACE + "getMemberCartList",pager);
 		return ar;
 	}
 	
