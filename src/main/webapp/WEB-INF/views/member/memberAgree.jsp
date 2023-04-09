@@ -19,9 +19,10 @@
     }
 
 </style>
+<c:import url="../template/common_css.jsp"></c:import>
 </head>
 <body>
-<c:import url="../template/common_css.jsp"></c:import>
+<c:import url="../template/header.jsp"></c:import>
 <div class="container-fluid">
 	<div class="row col-md-6 mx-auto my-5">
 		<div class="form-check">

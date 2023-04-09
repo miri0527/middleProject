@@ -13,6 +13,7 @@
 </head>
 
 <body>
+<c:import url="../template/header.jsp"></c:import>
 <!-- 서버 내부 주소, 상대 경로  -->
 	<div class="container-fluid my-5">
 	<div class="row mb-4 border-bottom border-dark">

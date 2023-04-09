@@ -211,7 +211,7 @@
                                                 <a href="single-product.html">에이서노트북 Swift 1(SF114-34-P3WR) 울트라북 14인치 FHD(관부가세 포함)</a>
                                             </h6>
                                             <div class="pro-rating">
-                                                <a href="#"><i class="zmdi zmdi-star"></i></a>
+                                                <a href="#"><i class="  zmdi-star"></i></a>
                                                 <a href="#"><i class="zmdi zmdi-star"></i></a>
                                                 <a href="#"><i class="zmdi zmdi-star"></i></a>
                                                 <a href="#"><i class="zmdi zmdi-star-half"></i></a>
@@ -334,9 +334,9 @@
                                     </div>
                                     <div class="brand-item">
                                         <div class="single-brand-product">
-                                            <a href="single-product.html"><img src="resources/js/img/product/6.jpg" alt=""></a>
+                                            <a href="single-product.html"><img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fshop1.phinf.naver.net%2F20221216_232%2F1671162320401fv4c0_JPEG%2F72298104118622986_875260104.jpg&type=a340" height="270" width="300" alt=""></a>
                                             <h3 class="brand-title text-gray">
-                                                <a href="#">Brand name</a>
+                                                <a href="#">APPLE 아이패드 아이패드 프로 11 매직 키보드 MJQJ3KE/A 화이트(영문버전)</a>
                                             </h3>
                                         </div>
                                     </div>

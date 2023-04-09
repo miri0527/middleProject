@@ -11,6 +11,7 @@
 
 		<body>
 			<div class="container-fluid">
+			<c:import url="../template/header.jsp"></c:import>
 				<div class="row col-md-10 mx-auto my-5">
 					<table class="table table-hover">
 						<thead>

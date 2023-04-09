@@ -17,24 +17,54 @@
                         <div class="col-lg-6 col-md-6">
                             <div class="top-link clearfix">
                                 <ul class="link f-right">
-                                    <li>
-                                        <a href="/member/memberDetail">
+                                    
+                                    	<c:choose>
+                                    		<c:when test="${empty member}">
+                                    	<li>
+                                    	<a href="/member/memberAgree">
+                                            <i class="zmdi zmdi-account-o"></i>
+                                           	Join
+                                        </a>
+                                        </li>
+                                        <li>
+                                        <a href="/cart/cartList">
+                                            <i class="zmdi zmdi-favorite"></i>
+                                            Wish List (0)
+                                        </a>
+                                    </li>
+                                        <li>
+                                        <a href="/member/memberLogin">
+                                            <i class="zmdi zmdi-lock-open"></i>
+                                            Login
+                                        </a>
+                                    </li>
+                                        </c:when>
+                                        <c:otherwise>
+                                        <li>
+                                       	 <a href="/member/memberDetail">
                                             <i class="zmdi zmdi-account"></i>
                                             My Account
                                         </a>
-                                    </li>
-                                    <li>
+                                        </li>
+                                        <li>
                                         <a href="wishlist.html">
                                             <i class="zmdi zmdi-favorite"></i>
                                             Wish List (0)
                                         </a>
                                     </li>
-                                    <li>
-                                        <a href="/member/memberLogin">
+                                        <li>
+                                        <a href="/member/memberLogout">
                                             <i class="zmdi zmdi-lock"></i>
-                                            Login
+                                            Logout
                                         </a>
-                                    </li>
+                                        	
+                                        
+                                        </li>
+                                        </c:otherwise>
+                                        </c:choose>
+                                    
+                                    
+                                    
                                 </ul>
                             </div>
                         </div>
@@ -49,8 +79,8 @@
                             <!-- logo -->
                             <div class="col-lg-2 col-md-4">
                                 <div class="logo">
-                                    <a href="index.html">
-                                        <img src="resources/js/img/logo/logo.png" alt="main logo">
+                                    <a href="/">
+                                        <img src="/resources/js/img/logo/logo.png" alt="main logo">
                                     </a>
                                 </div>
                             </div>

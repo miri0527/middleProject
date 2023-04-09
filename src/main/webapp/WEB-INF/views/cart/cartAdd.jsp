@@ -9,7 +9,9 @@
 <c:import url="../template/common_css.jsp"></c:import>
 </head>
 <body>
+	
 	<div class="container-fluid">
+	<c:import url="../template/header.jsp"></c:import>
 		<div class="row col-md-10 mx-auto my-5">		
 			<h1 class="mb-3">CartAdd</h1>
 			<form action="./cartAdd" method = "post">

@@ -20,7 +20,9 @@
 		</head>
 
 		<body>
+		
 			<div class="container-fluid">
+			<c:import url="../template/header.jsp"></c:import>
 				<div class="col-lg-10 mx-auto">
 					<!-- Tab panes -->
 					<div class="tab-content">

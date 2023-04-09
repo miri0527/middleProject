@@ -6,9 +6,10 @@
 <head>
 <meta charset="UTF-8">
 <title>회원수정</title>
+<c:import url="../template/common_css.jsp"></c:import>
 </head>
 <body>
-<c:import url="../template/common_css.jsp"></c:import>
+<c:import url="../template/header.jsp"></c:import>
 	
 	<section class="bg-light">
         <div class="container py-4">
