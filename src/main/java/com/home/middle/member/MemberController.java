@@ -44,7 +44,6 @@ public class MemberController {
 	public ModelAndView getMemberIdFind(String email)throws Exception{
 		ModelAndView mv = new ModelAndView();
 		
-		
 		List<String> names=memberService.getMemberIdFind(email);
 		
 		mv.addObject("name", names);
@@ -214,7 +213,7 @@ public class MemberController {
 	public ModelAndView setMemberAuto(HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		MemberDTO auto =(MemberDTO)session.getAttribute("member");
-		auto.setAutoStatus(1L);
+		auto.setAutoStatus("승인대기");
 		int a = memberService.setMemberAuto(auto);
 		
 		mv.addObject("result", "신청이 완료되었습니다");
@@ -237,5 +236,20 @@ public class MemberController {
 		
 		return mv;
 		
+	}
+	
+	@PostMapping("sellerRefuse")
+	public ModelAndView setSellerRefuse(MemberDTO memberDTO) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		
+		int result = memberService.setSellerRefuse(memberDTO);
+		
+		if(result > 0) {
+			mv.addObject("result", "승인이 거절되었습니다");
+			mv.setViewName("common/result");
+			mv.addObject("url", "../manager/memberList");
+		}
+		
+		return mv;
 	}
 }

@@ -19,8 +19,8 @@ public class CartService {
 		return cartDAO.getCartList(memberDTO);
 	}
 	
-	public List<CartDTO> getMemberCartList(MemberDTO memberDTO) throws Exception {
-		return cartDAO.getMemberCartList(memberDTO);
+	public List<CartDTO> getMemberCartList(Pager pager) throws Exception {
+		return cartDAO.getMemberCartList(pager);
 	}
 	
 	public int setCartAdd(CartDTO cartDTO) throws Exception{

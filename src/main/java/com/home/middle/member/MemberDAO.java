@@ -27,7 +27,6 @@ public class MemberDAO {
 	
 	public List<MemberDTO> getMemberList(Pager pager) throws Exception {
 		List<MemberDTO> ar = sqlSession.selectList(NAMESPACE + "getMemberList", pager);
-		System.out.println("AUTOSTATUS: " + ar.get(0).getAutoStatus());
 		return ar;
 	}
 	
@@ -55,11 +54,11 @@ public class MemberDAO {
 		return sqlSession.update(NAMESPACE+"setMemberAuto", memberDTO);
 	}
 	
-	public int setSellerApplication(MemberDTO memberDTO) throws Exception {
-		return sqlSession.update(NAMESPACE + "setSellerApplication", memberDTO);
-	}
-	
 	public int setSellerApprove(MemberDTO memberDTO) throws Exception {
 		return sqlSession.update(NAMESPACE + "setSellerApprove", memberDTO);
+	}
+	
+	public int setSellerRefuse(MemberDTO memberDTO) throws Exception {
+		return sqlSession.update(NAMESPACE + "setSellerRefuse", memberDTO);
 	}
 }

@@ -10,7 +10,12 @@
 	  			ID LIKE '%' || #{search} || '%' 
 	  			
 	  			</if>
-	  		
+	  			
+	  			<if test="kind == 'autoStatus'">
+	  			AUTOSTATUS LIKE '%' || #{search} || '%' 
+	  			
+	  			</if>
+	  			
 	  			<if test="roleName != null">
 	  				ROLENUM IN (SELECT ROLENUM FROM MEMBERROLE WHERE ROLENAME IN 
 		  			<foreach collection="roleName" item="role" index="index" open="(" close=")" separator=",">
@@ -28,7 +33,7 @@
  	</select>
   	
   	<insert id="setMemberJoin" parameterType="MemberDTO">
-  		INSERT INTO MEMBER VALUES(#{id},3,#{pw},#{name},#{address},#{phone},#{email},0)
+  		INSERT INTO MEMBER VALUES(#{id},3,#{pw},#{name},#{address},#{phone},#{email},'미신청')
   	</insert>
   	<select id="getMemberLogin" parameterType="MemberDTO" resultMap="MemberLogin">
   	SELECT * FROM  MEMBER M
@@ -100,6 +105,14 @@
  
   	<update id="setMemberAuto" parameterType="MemberDTO">
   	UPDATE MEMBER SET AUTOSTATUS=#{autoStatus} WHERE ID=#{id}
+  	</update>
+  	
+  	<update id="setSellerApprove" parameterType="MemberDTO">
+  		UPDATE MEMBER SET AUTOSTATUS='승인완료', ROLENUM = 2 WHERE ID=#{id}
+  	</update>
+  	
+  	<update id="setSellerRefuse" parameterType="MemberDTO">
+  		UPDATE MEMBER SET AUTOSTATUS='승인거절' WHERE ID=#{id}
   	</update>
   	
   </mapper>

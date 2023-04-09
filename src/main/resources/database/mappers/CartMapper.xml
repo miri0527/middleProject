@@ -40,7 +40,7 @@
 		ORDER BY PO.ORDERNUM DESC
 	</select>
 	
-	<select id="getMemberCartList" parameterType="MemberDTO" resultMap="ProductCartList">
+	<select id="getMemberCartList" parameterType="Pager" resultMap="ProductCartList">
 		SELECT * FROM
 			(SELECT ROWNUM R, N.* FROM
 				(SELECT * FROM PRODUCTORDER PO
@@ -70,7 +70,7 @@
  		<result column="PAYMENTCHECK" property="paymentCheck"/>
  		<result column="OPTIONNUM" property="optionNum"/>
  		
- 		<association property="ProductDTO" javaType="ProductDTO">
+ 		<association property="productDTO" javaType="ProductDTO1">
  			<id column="PRODUCTNUM" property="productNum"></id>
  			<result column="PRODUCTNAME" property="productName"/>
  			<result column="OPTIONNUM" property="optionNum"/>
