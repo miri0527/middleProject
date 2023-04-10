@@ -1,3 +1,9 @@
+let allRole = document.getElementById("allRole")
+let memberRole = document.getElementById("memberRole")
+let sellerRole = document.getElementById("sellerRole")
+let adminRole = document.getElementById("adminRole")
+let check = document.getElementsByClassName("check")
+
 function deleteValue() {
     let check = [];
     $(".chkList").each(function(i, v){
@@ -38,49 +44,30 @@ function deleteValue() {
 }
 
 
-
 $(document).ready(() => {
     let checkArr = []
-    // const frm = new FormData();
-
-    // frm.append
-
-    
-   $("#allRole").change(() => {
-
-    
-    $('input:checkbox[name="roleName"]:checked').each(function(i) {
-        checkArr.push($(this).val())
-    }) 
-        
-    
-    location.href = "memberList?roleName=" + checkArr
-        
-   })
-
-
-   $("#memberRole").change(() => {
-        if($("#memberRole").is(":checked")) {
-          
-
-        }
-   })
-
-   $("#sellerRole").change(() => {
-        if($("#sellerRole").is(":checked")) {
-            console.log("seller")
-        }
-   })
-
-   $("#adminRole").change(() => {
-        if($("#adminRole").is(":checked")) {
-            console.log("admin")
-        }
-   })
 
    
-}) 
+    $('input:checkbox[class="check"]').click(() => {
+        allRole.checked = false
+        $('input:checkbox[name="roleName"]:checked').each(function(i) {
+            checkArr.push($(this).val())
+        }) 
+            
+        location.href = "memberList?roleName=" + checkArr
+      
+    })
+
    
+     
+    
+   
+})
+
+
+
+
+
 
 $("#refuse").click(() => {
     let check =  window.confirm("정말 거절하시겠습니까?");

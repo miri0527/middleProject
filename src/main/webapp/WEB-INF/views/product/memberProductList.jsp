@@ -9,25 +9,28 @@
 <c:import url="../template/common_css.jsp"></c:import>
 </head>
 <body>
-
+<c:import url="../template/managerHeader.jsp"></c:import>
 <div class="container-fluid">
-   <div class="row my-5">
-      <h1>상품리스트</h1>
+   <div class="row col-md-4 mx-auto text-center border-bottom border-dark pb-2">
+     <p class="fs-2" style="font-family: 'Impact'">상품리스트</p>
    </div>
 
    <div class="row">
-      <table class="table table hover text-center">
-            
-         <tr>
+      <table class="table table-hover text-center">
+      <thead class="thead-dark">
+      	  <tr>
             <c:if test="${member.roleDTO.roleName eq 'ADMIN' }">
                <th></th>
             </c:if>
                <th>번호</th>
                <th>상품명</th>
                <th>판매여부</th>
+               <th>등록일</th>
             
          </tr>
-         <c:forEach items="${list}" var="dto">
+      </thead>
+      <tbody>
+      	<c:forEach items="${list}" var="dto">
             <tr>
                <c:if test="${member.roleDTO.roleName eq 'ADMIN' }">
                
@@ -38,9 +41,19 @@
                </c:if>
                <td>${dto.r}</td>
                <td><a href="./detail?productNum=${dto.productNum}"> ${dto.productName}</a></td>
-               <td>${dto.productSales}</td>
+               <td>
+               	<c:if test="${dto.productSales eq 1 }">판매중</c:if>
+               	<c:if test="${dto.productSales eq 0 }">판매중단</c:if>
+               	</td>
+               	<td>
+               		<div class="small mb-1">업로드 날짜 : ${dto.productOptionDTOs.productDate}</div>
+               	</td>
             </tr>
          </c:forEach>
+      </tbody>
+            
+       
+         
       </table>
    </div>   
 </div>   

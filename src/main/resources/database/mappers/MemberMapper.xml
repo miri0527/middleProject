@@ -50,6 +50,7 @@
   		<result column="PHONE" property="phone"/>
   		<result column="EMAIL" property="email"/>
   		<result column="AUTOSTATUS" property="autoStatus"/>
+  		
   		<association property="roleDTO" javaType="RoleDTO">
   			<id column="ROLENUM" property="roleNum"/>
   			<result column="ROLENAME" property="roleName"/>

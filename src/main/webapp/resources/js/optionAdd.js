@@ -1,4 +1,3 @@
-
 const frm = document.getElementById("frm");
 
 let count=1;
@@ -35,6 +34,8 @@ $(document).on("click",".opv",function(e){
 
 
 $("#frm").on("click",".opc",function(e){
+    console.log("11")
+    
     let depth = 1;
     let na=
     '<div class="opa offset-md-2">'
@@ -138,7 +139,6 @@ $('#btnFinish').click(function(){
         let countList = [];
         let countList2 = [];
         let price = [];
-        
         let stock = [];
         
         optionName.push($('.optionName0').val());
@@ -150,6 +150,7 @@ $('#btnFinish').click(function(){
             
             optionName.push($('.optionName2').val());
         }
+
         
     
         $('.optionValue').each(function(i, v){
@@ -193,7 +194,7 @@ $('#btnFinish').click(function(){
         console.log(optionValue1);
         console.log(optionValue2);
         $.ajax({
-            url : "/test/productOptionAdd",
+            url : "/product/productOptionAdd",
             type : "POST",
             traditional:true,
             data:{
@@ -204,7 +205,8 @@ $('#btnFinish').click(function(){
                 "countList" : countList,
                 "countList2" : countList2,
                 "price" : price,
-                "stock" : stock
+                "stock" : stock,
+              
             }
             });
     }

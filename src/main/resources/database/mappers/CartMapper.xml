@@ -6,8 +6,8 @@
 
 	<sql id="CartCondition">
 		<where>
-			<if test="kind == orderNum">
-				 ORDERNUM LIKE '%' || #{search} || '%'
+			<if test="kind == id">
+				 PO.ID LIKE '%' || #{search} || '%'
 			</if>
 		</where>
 	</sql>
@@ -41,18 +41,19 @@
 	</select>
 	
 	<select id="getMemberCartList" parameterType="Pager" resultMap="ProductCartList">
-		SELECT * FROM
-			(SELECT ROWNUM R, N.* FROM
-				(SELECT * FROM PRODUCTORDER PO
-				LEFT OUTER JOIN PRODUCT P
-				ON(PO.PRODUCTNUM = P.PRODUCTNUM)
+	SELECT * FROM 
+	(SELECT ROWNUM R, N.* FROM
+		(SELECT * FROM PRODUCTORDER PO
+			LEFT OUTER JOIN PRODUCT P
+			ON(PO.PRODUCTNUM = P.PRODUCTNUM)
 				LEFT OUTER JOIN PRODUCTOPTION "POP"
 				ON(PO.OPTIONNUM  = "POP".OPTIONNUM)
-				WHERE PO.ID = #{id} AND BUYCHECK = 1
 				<include refid="CartCondition"></include>
-				
-			ORDER BY PO.ORDERNUM DESC) 
-			N)	
+				AND PAYMENTCHECK = 1
+				ORDER BY PO.OPTIONNUM DESC
+				)
+	N);
+	
 			WHERE R BETWEEN #{startRow} AND #{lastRow}
 	</select>
 	

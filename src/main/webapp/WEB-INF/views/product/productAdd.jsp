@@ -6,18 +6,26 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+ <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Subas || Home-3</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 <c:import url="../template/common_css.jsp"></c:import>
 </head>
 <body>
-<div class="container-fluid my-5">
+
+	<c:import url="../template/managerHeader.jsp"></c:import>
+       
+      	<div class="container-fluid my-5">
  	<div class="row col-md-4 mx-auto text-center border-bottom border-dark pb-2">
      <p class="fs-2" style="font-family: 'Impact'">상품 등록</p>
    </div>
 	<form action="./add" method="post" enctype="multipart/form-data">	
 		<input type="hidden" value="${member.id }" name="id">
 		<div class="fw-bold fs-5 col-12">
-			<p>상품종류</p>
-		 	<select name="categoryNum" class="form-select form-select-sm" aria-label=".form-select-sm example"><br>
+			<p class="text-center">상품종류</p>
+		 	<select name="categoryNum" class="form-select form-select-sm text-center" aria-label=".form-select-sm example"><br>
 				<option value="1" selected >컴퓨터</option>
 				<option value="2">노트북</option>
 				<option value="3">모니터</option>
@@ -34,17 +42,7 @@
 			<input type="text" name="productName">
 		</div>
 		
-		상품옵션 : <br>
-		
-		<div class="fw-bold fs-5 col-12">
-			<p>할인율</p>
-			<input type="text" name="discountPercent">
-		</div>	
-		
-		<div class="fw-bold fs-5 col-12">
-			<p>할인가격</p>
-			<input type="text" name="discount">
-		</div>	
+	
 		  <fieldset class="mb-4">
             <legend class="fw-bold fs-5">판매 여부</legend>
             <div class="form-check form-check-inline">
@@ -64,7 +62,8 @@
 		<button type="submit" class="btn btn-primary" id="submit">상품등록</button>
 	</form>
 </div>
-<script src="../resources/js/productAdd.js"></script>	
+<script src="../resources/js/productAdd.js"></script>
 <c:import url="../template/common_js.jsp"></c:import>	
+
 </body>
 </html>

@@ -9,20 +9,20 @@
 <c:import url="../template/common_css.jsp"></c:import>
 </head>
 <body>
-<c:import url="../template/header.jsp"></c:import>
+<c:import url="../template/managerHeader.jsp"></c:import>
 <div class="container-fluid">
-	<div class="row my-5">
-		<h1><a href="./memberList">회원리스트</a></h1>
-	</div>
+	 <div class="row col-md-4 mx-auto text-center border-bottom border-dark pb-2">
+     <p class="fs-2" style="font-family: 'Impact'">회원리스트</p>
+   </div>
 	회원등급
-	<input type="checkbox" id="allRole" name="roleName" value=""  checked > 전체
-	<input type="checkbox" id="memberRole" name="roleName" value="MEMBER">일반회원
-	<input type="checkbox" id="sellerRole" name="roleName" value="SELLER">판매자
-	<input type="checkbox" id="adminRole" name="roleName" value="ADMIN">관리자	
+	<input type="checkbox" id="allRole" name="roleName" value="" checked > 전체
+	<input type="checkbox" id="memberRole" name="roleName" class="check" value="MEMBER">일반회원
+	<input type="checkbox" id="sellerRole" name="roleName"class="check" value="SELLER">판매자
+	<input type="checkbox" id="adminRole" name="roleName" class="check"value="ADMIN">관리자	
 		
 	
 		<div class="row">
-			<table class="table table-hover text-center">
+			<table class="table table-hover text-center">	
 				<tr>
 					<th></th>
 					<th>아이디</th>

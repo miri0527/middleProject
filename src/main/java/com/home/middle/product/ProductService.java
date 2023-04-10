@@ -136,8 +136,17 @@ public class ProductService {
 		return result;
 	}
 
+	public List<ProductOptionDTO> getProductOptionList(ProductOptionDTO productOptionDTO) throws Exception{
+		return productDAO.getProductOptionList(productOptionDTO);
+	}
+	
+	public int setProductOptionDelete(ProductOptionDTO productOptionDTO) throws Exception{
+		return productDAO.setProductOptionDelete(productOptionDTO);
+	}
+	
 	public int productOptionAdd(String[] optionValue0, String[] optionValue1, String[] optionValue2,
 			String[] optionName, int[] countList, int[] countList2, String[] price, String[] stock) throws Exception {
+		
 		List<Long> optionNum0 = new ArrayList<Long>();
 
 		List<List<Long>> optionNum1 = new ArrayList<List<Long>>();
@@ -231,7 +240,7 @@ public class ProductService {
 			productOptionDTO.setOptionNum(optionNum);
 			productOptionDTO.setOptionName(optionName[0]);
 			productOptionDTO.setOptionValue(optionValue0[i]);
-			productOptionDTO.setProductNum(1L);// 상품 번호 넘어오는거 받아서 수정할것
+			productOptionDTO.setProductNum(118L);// 상품 번호 넘어오는거 받아서 수정할것
 			productOptionDTO.setDepth(0L);
 			productOptionDTO.setProductPrice(tempPrice2);// 배열로 값 넘어온거 적용해줄것
 			productOptionDTO.setProductStock(tempStock2);// 배열로 값 넘어온거 적용해줄것
@@ -260,7 +269,7 @@ public class ProductService {
 					productOptionDTO.setOptionNum(optionNum);
 					productOptionDTO.setOptionName(optionName[1]);
 					productOptionDTO.setOptionValue(optionValue11.get(i).get(j));
-					productOptionDTO.setProductNum(1L);// 상품 번호 넘어오는거 받아서 수정할것
+					productOptionDTO.setProductNum(118L);// 상품 번호 넘어오는거 받아서 수정할것
 					productOptionDTO.setDepth(1L);
 					productOptionDTO.setProductPrice(tempPrice);// 배열로 값 넘어온거 적용해줄것
 					productOptionDTO.setProductStock(tempStock);// 배열로 값 넘어온거 적용해줄것
@@ -283,7 +292,7 @@ public class ProductService {
 						productOptionDTO.setOptionNum(optionNum);
 						productOptionDTO.setOptionName(optionName[2]);
 						productOptionDTO.setOptionValue(optionValue22.get(i).get(j).get(k));
-						productOptionDTO.setProductNum(1L);// 상품 번호 넘어오는거 받아서 수정할것
+						productOptionDTO.setProductNum(118L);// 상품 번호 넘어오는거 받아서 수정할것
 						productOptionDTO.setDepth(2L);
 						productOptionDTO.setProductPrice(Long.parseLong(price11.get(i).get(j).get(k)));// 배열로 값 넘어온거
 																										// 적용해줄것

@@ -10,7 +10,7 @@
         </head>
 
         <body>
-
+      <c:import url="../template/header.jsp"></c:import>
             <h1>Detail Page</h1>
             <!-- Product section-->
 
@@ -26,7 +26,7 @@
                         </div>
 
                         <div class="col-md-6">
-                            <form action="../cart/cartAdd" method="post">
+                            <form action="../cart/cartAdd" method="post" id="frm">
                                 <!-- 옵션 dto의 횟수 만큼 돌지 않도록 loop_flag 설정-->
                                 <c:set var="loop_flag" value="false" />
                                 <c:forEach items="${dto.productOptionDTOs}" var="productOptionDTO">
@@ -69,14 +69,15 @@
                                         <i class="bi-cart-fill me-1"></i>
                                         Add to cart
                                     </button>
+                                    <a href="/product/productOptionAdd?productNum=${dto.productNum}"><button class="btn btn-outline-dark flex-shrink-0" type="button" id="option">옵션추가</button></a>
                                 </div>
 
                                 
                                 <!-- db에 인서트해주는 폼 -->
-                                <div id="cartform">
-                                    <input type="text" class="form-control" id="id" name="id" value="${member.id}" readonly>
+                                <div id="cartform" >
+                                    <input type="text" class="form-control" id="id" name="id" value="${member.id}" readonly >
                                     <input type="text" class="form-control" id="productNum" name="productNum" value="${dto.productNum}" readonly>
-                                    <input type="text" class="form-control" id="totalPrice" name="totalPrice" value="0" readonly>
+                                    <input type="text" class="form-control" id="totalPrice" name="totalPrice" value="5000" readonly>
                                   
                                     
                                 </div>
@@ -106,7 +107,4 @@
 
         </html>
 
-
-
-
-        
+     

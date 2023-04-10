@@ -44,7 +44,6 @@ public class MemberService {
 	public MemberDTO getMemberLogin(MemberDTO memberDTO) throws Exception{
 		MemberDTO loginDTO=memberDAO.getMemberLogin(memberDTO);
 		
-		
 		if(loginDTO!=null &&loginDTO.getPw().equals(memberDTO.getPw())) {
 //			memberDTO.setRoleDTO(loginDTO.getRoleDTO());
 //			memberDTO.setPw(null);
