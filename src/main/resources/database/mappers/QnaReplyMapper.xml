@@ -2,10 +2,9 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-   <mapper namespace="com.home.middle.board.review.ReviewDAO">
-    
-    
-     <sql id="reviewCondition">
+   <mapper namespace="com.home.middle.board.qna.QnaReplyDAO">
+
+	<sql id="qnaReplyCondition">
   		<where>
   			<if test="kind=='contents'">
   				CONTENTS LIKE '%'||#{search}||'%'
@@ -17,17 +16,23 @@
   	</sql>
   
 	<select id="getTotalCount" resultType="Long">
-  		SELECT COUNT(NUM) FROM REVIEW
+  		SELECT COUNT (NUM) FROM QNAREPLY
   		
   	</select>
-    
-      <select id="getBoardList" parameterType="Pager" resultType="ReviewDTO">
+  	
+    <update id="setBoardUpdate" parameterType="BbsDTO">
+  		UPDATE QNAREPLY SET TITLE=#{title}, CONTENTS=#{contents} WHERE NUM=#{num}
+  	</update>
+  	
+  	
+  	
+      <select id="getBoardList" parameterType="Pager" resultType="QnaReplyDTO">
 	 	  	SELECT * FROM
 	  	(
 		  	SELECT ROWNUM R, N.* FROM
 		  		(
-			  		SELECT NUM, ID ,PRODUCTNUM,CONTENTS,REGDATE,DEPTH FROM REVIEW
-			  		<include refid="reviewCondition"></include>
+			  		SELECT NUM, ID ,PRODUCTNUM,TITLE,CONTENTS, REGDATE,DEPTH FROM QNAREPLY
+			  		<include refid="qnaReplyCondition"></include>
 			  		ORDER BY DEPTH DESC
 		  		) N
 	  	 )
@@ -36,48 +41,50 @@
     
     
     <!--글쓰기 -->
-    <insert id="setBoardAdd" parameterType="ReviewDTO"  >
+    <insert id="setBoardAdd" parameterType="QnaReplyDTO"  >
     <!--파일 추가같이하고 싶으면 넣어라 -->
  	<!-- <selectKey keyProperty="num" resultType="Long" order="BEFORE">
       SELECT REVIEW_SEQ.NEXTVAL FROM DUAL
     </selectKey> -->
     
-    INSERT INTO REVIEW (NUM,ID,CONTENTS,REGDATE,DEPTH,PRODUCTNUM)
-	VALUES(REVIEW_SEQ.NEXTVAL,#{id},#{contents},sysdate,0,#{productNum})
+    INSERT INTO QNAREPLY (REPLYNUM,NUM,ID,TITLE,CONTENTS,REGDATE,HIT,DEPTH,PRODUCTNUM)
+	VALUES(QNAREPLY_SEQ.NEXTVAL,#{num},#{id},#{title},#{contents},sysdate,0,0,#{productNum})
     </insert>
     
-    <select id="getBoardFileList" parameterType="BbsDTO" resultType="BoardFileDTO">
-  	SELECT * FROM REVIEWFILES WHERE NUM=#{num}
-  	</select>
-  	
+    
+   <delete id="setBoardDelete" parameterType="BbsDTO">
+	DELETE QNAREPLY WHERE  NUM = #{num}
+	</delete>
+    
     <!--파일 추가-->
-    <insert id="setBoardFileAdd" parameterType="ReviewDTO">
-	INSERT INTO REVIEWFILES
-	VALUES (REVIEW_FILE_SEQ.NEXTVAL, #{num}, #{fileName}, #{oriName})
+    <insert id="setProductFileAdd" parameterType="QnaReplyDTO">
+	INSERT INTO QNAFILES
+	VALUES (QNA_FILE_SEQ.NEXTVAL, #{num}, #{fileName}, #{oriName})
 	</insert>
-    
-   <!--글삭제-->
-   <delete id="setBoardDelete" parameterType="ReviewDTO">
-	DELETE REVIEW WHERE NUM = #{num}
-   </delete>
-    
-     <update id="setBoardUpdate" parameterType="BbsDTO">
-  		UPDATE REVIEW SET CONTENTS=#{contents} WHERE NUM=#{num}
-  	</update>
-     <select id="getBoardDetail" parameterType="BbsDTO" resultMap="getBoardDetailResult"> 
+	
+	<select id="getBoardFileList" parameterType="BbsDTO" resultType="BoardFileDTO">
+  		SELECT * FROM QNAFILES WHERE NUM=#{num}
+  	</select>
+      
+      
+      
+   <select id="getBoardDetail" parameterType="BbsDTO" resultMap="getBoardDetailResult"> 
    		SELECT Q.*, QF.*
-   		FROM REVIEW Q
+   		FROM QNAREPLY Q
    			LEFT JOIN
-   			REVIEWFILES QF
+   			QNAFILES QF
    			ON (Q.NUM = QF.NUM)
    			WHERE Q.NUM=#{num}
    </select>
-     <resultMap type="REVIEWDTO" id="getBoardDetailResult">
+   
+      <resultMap type="QnaReplyDTO" id="getBoardDetailResult">
    	<!--select된 것들중에 pk를 id에다가 써줘  -->
         <id column="num" property="num"/>
+  		<result column="title" property="title"/>
   		<result column="id" property="id"/>
   		<result column="contents" property="contents"/>
   		<result column="regDate" property="regDate"/>
+  		<result column="hit" property="hit"/>
   		<result column="depth" property="depth"/>
 	     <result column="productNum" property="productNum"/>
 	<!--type에 멤버메서드중에서 속성을 넣어주기  -->
@@ -89,4 +96,4 @@
 	</collection>
 	
    </resultMap>
-   </mapper>
+</mapper>

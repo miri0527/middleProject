@@ -38,9 +38,6 @@
 	WHERE P.PRODUCTNUM = #{productNum}
    </select> 
  	
- 	
- 	
- 	
  <!--type=""에는 최종리턴타입  -->
    <resultMap type="ProductDTO" id="productDetailResult">
    
@@ -63,7 +60,6 @@
     	<result  column="OPTIONVALUE" property="optionValue"/>
     	<result  column="REF" property="ref"/>
     	<result  column="DEPTH" property="depth"/>
-    	<result  column="STEP" property="step"/>
  	   </collection>
  	 
  	   <collection property="productImgDTOs" javaType="List" ofType="ProductImgDTO" >
@@ -103,23 +99,20 @@
 		VALUES (PRODUCTFILES_SEQ.NEXTVAL, #{productNum}, #{fileName}, #{oriName})
 	</insert>  
 	
- 	<select id="getMemberProductList" resultMap="productListResult" parameterType="Pager" >
-		SELECT * FROM
+		<select id="getMemberProductList" resultType="ProductDTO" parameterType="Pager" >
+		SELECT * FROM 
+		(
+			SELECT ROWNUM R, N.* FROM
 			(
-				SELECT ROWNUM R,N.* FROM
-					(
-						SELECT * 
-						FROM PRODUCT P
-						LEFT JOIN PRODUCTOPTION PO
-						USING(PRODUCTNUM)
-						<include refid="ProductCondition"></include>
-						ORDER BY PRODUCTNUM DESC
-					)
-			N)	
-			
+			(SELECT * FROM PRODUCT 
+				<include refid="ProductCondition"></include>
+			 ORDER BY PRODUCTNUM DESC) 
+			)
+		N)
 		WHERE R BETWEEN #{startRow} AND #{lastRow} 	
 		
 	</select>	
+		
 	
 	 <resultMap type="ProductDTO" id="productListResult">
    

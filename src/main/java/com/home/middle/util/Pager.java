@@ -1,8 +1,6 @@
 package com.home.middle.util;
 
 
-import com.home.middle.member.MemberDTO;
-
 public class Pager {
 	
 	
@@ -15,7 +13,6 @@ public class Pager {
 	private Long orderNum;
 	private String autoStatus;
 	
-
 	public String getAutoStatus() {
 		return autoStatus;
 	}

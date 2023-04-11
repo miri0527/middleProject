@@ -5,7 +5,6 @@ import java.util.List;
 import com.home.middle.util.Pager;
 
 
-
 public interface BbsDAO {
 
 	//totalCount

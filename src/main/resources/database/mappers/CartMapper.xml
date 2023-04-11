@@ -58,7 +58,12 @@
 	</select>
 	
 	<select id="getCartPaymentDetail" parameterType="CartDTO" resultMap="ProductCartList">
-		
+		SELECT * FROM PRODUCTORDER PO
+		LEFT OUTER JOIN PRODUCT P
+		ON(PO.PRODUCTNUM = P.PRODUCTNUM)
+		LEFT OUTER JOIN PRODUCTOPTION "POP"
+		ON(PO.OPTIONNUM  = "POP".OPTIONNUM)
+		WHERE ORDERNUM = #{orderNum}
 	</select>
 	
 	<resultMap type="CartDTO" id="ProductCartList">
@@ -74,9 +79,9 @@
  		<association property="productDTO" javaType="ProductDTO">
  			<id column="PRODUCTNUM" property="productNum"></id>
  			<result column="PRODUCTNAME" property="productName"/>
+ 			<result column="PRODUCTPRICE" property="productPrice"/>
  			<result column="OPTIONNUM" property="optionNum"/>
  			<result column="OPTIONNAME" property="optionName"/>
-
  		</association>
 	</resultMap>
 	

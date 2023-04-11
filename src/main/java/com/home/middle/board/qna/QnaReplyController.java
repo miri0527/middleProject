@@ -15,31 +15,30 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.home.middle.board.BbsDTO;
-import com.home.middle.board.review.ReviewDTO;
 import com.home.middle.product.ProductDTO;
 import com.home.middle.util.Pager;
 
 
 @Controller
-@RequestMapping("/qna/**")
-public class QnaController {
+@RequestMapping("/qnaReply/**")
+public class QnaReplyController {
 	
 	@Autowired
-	private QnaService qnaService;
+	private  QnaReplyService  qnaReplyService;
 	
 	@ModelAttribute("boardName")
 	public String getBoardName() {
-		return "qna";
+		return "qnaReply";
 	}
 	
 	@GetMapping("list")
 	public ModelAndView getBoardList(Pager pager)throws Exception {
 	ModelAndView mv = new ModelAndView();
 
-	List<BbsDTO> ar = qnaService.getBoardList(pager);
+	List<QnaReplyDTO> ar = qnaReplyService.getBoardList(pager);
 
 	mv.addObject("pager",pager);
-	mv.addObject("list2",ar);
+	mv.addObject("list3",ar);
 	mv.setViewName("product/detail");
 		
 	return mv;			
@@ -49,7 +48,7 @@ public class QnaController {
 	public ModelAndView getBoardListdetail(Pager pager)throws Exception {
 	ModelAndView mv = new ModelAndView();
 
-	List<BbsDTO> ar = qnaService.getBoardList(pager);
+	List<QnaReplyDTO> ar = qnaReplyService.getBoardList(pager);
 
 	mv.addObject("pager",pager);
 	mv.addObject("list",ar);
@@ -69,9 +68,9 @@ public class QnaController {
 	}
 	
 	@PostMapping("add")
-	public ModelAndView setBoardAdd(QnaDTO qnaDTO, MultipartFile [] files, HttpSession session)throws Exception{
+	public ModelAndView setBoardAdd(QnaReplyDTO qnaDTO, MultipartFile [] files, HttpSession session)throws Exception{
 	ModelAndView mv = new ModelAndView();
-	int result = qnaService.setBoardAdd(qnaDTO, files, session);
+	int result = qnaReplyService.setBoardAdd(qnaDTO, files, session);
 	String message = "등록이 실패했습니다.";
 	if(result>0) {
 		 message = "등록을 성공했습니다.";
@@ -84,11 +83,11 @@ public class QnaController {
 	}	
 	
 	@PostMapping("delete")
-	public ModelAndView setBoardDelete(BbsDTO bbsDTO, HttpSession session)throws Exception{
+	public ModelAndView setBoardDelete(QnaReplyDTO bbsDTO, HttpSession session)throws Exception{
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("common/result");
 
-		int result = qnaService.setBoardDelete(bbsDTO, session);
+		int result = qnaReplyService.setBoardDelete(bbsDTO, session);
 
 		String message="삭제 실패";
 
@@ -103,18 +102,18 @@ public class QnaController {
 	}
 	
 	@GetMapping("update")
-	public ModelAndView setBoardUpdate(BbsDTO bbsDTO) throws Exception{
+	public ModelAndView setBoardUpdate(QnaReplyDTO bbsDTO) throws Exception{
 	ModelAndView mv = new ModelAndView();
-	bbsDTO = qnaService.getBoardDetail(bbsDTO);
+	bbsDTO = qnaReplyService.getBoardDetail(bbsDTO);
 	mv.addObject("dto", bbsDTO);
 	mv.setViewName("board/update");
 	return mv;
 
 	}
 	@PostMapping("update")
-	public ModelAndView setBoardUpdate(BbsDTO bbsDTO, MultipartFile [] addFiles, HttpSession session, Long [] fileNum)throws Exception{
+	public ModelAndView setBoardUpdate(QnaReplyDTO bbsDTO, MultipartFile [] addFiles, HttpSession session, Long [] fileNum)throws Exception{
 		ModelAndView mv = new ModelAndView();
-		int result = qnaService.setBoardUpdate(bbsDTO, addFiles, session, fileNum);
+		int result = qnaReplyService.setBoardUpdate(bbsDTO, addFiles, session, fileNum);
 		
 		mv.setViewName("common/result");
 		mv.addObject("result", "수정 성공");
@@ -130,7 +129,7 @@ public class QnaController {
 	ModelAndView mv = new ModelAndView();
 	pager.setPerPage(5L);
 	
-	List<BbsDTO> ar = qnaService.getBoardList(pager);
+	List<QnaReplyDTO> ar = qnaReplyService.getBoardList(pager);
 	
 	mv.addObject("list", ar);
 	mv.setViewName("common/qnaResult");
@@ -139,9 +138,9 @@ public class QnaController {
 	}
 	
 	@GetMapping("detail")
-	public ModelAndView getBoardDetail(QnaDTO qnaDTO) throws Exception {
+	public ModelAndView getBoardDetail(QnaReplyDTO qnaDTO) throws Exception {
 		ModelAndView mv = new ModelAndView(); 
-		 BbsDTO bbsDTO = qnaService.getBoardDetail(qnaDTO);
+		 BbsDTO bbsDTO = qnaReplyService.getBoardDetail(qnaDTO);
 		 mv.addObject("dto", bbsDTO);
 		 mv.setViewName("board/detail");
 		 return mv;

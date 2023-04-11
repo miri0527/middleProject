@@ -7,10 +7,19 @@ import com.home.middle.board.BoardFileDTO;
 
 
 
-public class QnaDTO extends BbsDTO{
+public class QnaReplyDTO extends BbsDTO{
 	private Long productNum;
 	private List<BoardFileDTO> boardFileDTOs;
+	private Long replyNum;
 	
+	public Long getReplyNum() {
+		return replyNum;
+	}
+
+	public void setReplyNum(Long replyNum) {
+		this.replyNum = replyNum;
+	}
+
 	public List<BoardFileDTO> getBoardFileDTOs() {
 		return boardFileDTOs;
 	}

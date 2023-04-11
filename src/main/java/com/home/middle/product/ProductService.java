@@ -26,7 +26,11 @@ public class ProductService {
 	// 저장관리는 os가 존재하는데, os와 통신하는 과정을 하는 역할
 	private ServletContext servletContext;
 
-	public List<ProductOptionDTO> getProductList(ProductDTO productDTO) throws Exception {
+	public List<ProductOptionDTO> getProductList(ProductDTO productDTO,Pager pager ) throws Exception {
+		
+		pager.makeNum(productDAO.getTotalCount(pager));
+		pager.makeRow();
+		
 		List<ProductOptionDTO> ar = productDAO.getProductList(productDTO);
 		return ar;
 	}
@@ -144,11 +148,9 @@ public class ProductService {
 		return productDAO.setProductOptionDelete(productOptionDTO);
 	}
 	
-	public int productOptionAdd(String[] optionValue0, String[] optionValue1, String[] optionValue2,
-			String[] optionName, int[] countList, int[] countList2, String[] price, String[] stock) throws Exception {
-		
+	public int productOptionAdd(String[] optionValue0, String[] optionValue1, String[] optionValue2, String[] optionName, int[] countList, int[] countList2, String[] price, String[] stock, Long productNum) throws Exception{
 		List<Long> optionNum0 = new ArrayList<Long>();
-
+		
 		List<List<Long>> optionNum1 = new ArrayList<List<Long>>();
 		List<ArrayList<String>> optionValue11 = new ArrayList<ArrayList<String>>();
 		List<ArrayList<ArrayList<String>>> optionValue22 = new ArrayList<ArrayList<ArrayList<String>>>();
@@ -157,18 +159,20 @@ public class ProductService {
 		List<ArrayList<ArrayList<String>>> price11 = new ArrayList<ArrayList<ArrayList<String>>>();
 		List<ArrayList<String>> stock1 = new ArrayList<ArrayList<String>>();
 		List<ArrayList<ArrayList<String>>> stock11 = new ArrayList<ArrayList<ArrayList<String>>>();
-
-		for (int i = 0; i < optionValue1.length; i++) {
+		
+		
+		
+		for(int i = 0; i < optionValue1.length; i ++) {
 			String str = optionValue1[i];
 			StringTokenizer st1 = new StringTokenizer(str, ",");
 			ArrayList<String> pstr = new ArrayList<String>();
-			while (st1.hasMoreTokens()) {
-				pstr.add(st1.nextToken());
+			while(st1.hasMoreTokens()){
+			    pstr.add(st1.nextToken());
 			}
 			optionValue11.add(pstr);
 		}
-
-		for (int i = 0; i < optionValue2.length; i++) {
+		
+		for(int i = 0; i < optionValue2.length; i ++) {
 			String str = optionValue2[i];
 			String str2 = price[i];
 			String str3 = stock[i];
@@ -178,88 +182,90 @@ public class ProductService {
 			ArrayList<String> pstr = new ArrayList<String>();
 			ArrayList<String> pstr2 = new ArrayList<String>();
 			ArrayList<String> pstr3 = new ArrayList<String>();
-			while (st1.hasMoreTokens()) {
-				pstr.add(st1.nextToken());
+			while(st1.hasMoreTokens()){
+			    pstr.add(st1.nextToken());
 			}
-			while (st2.hasMoreTokens()) {
+			while(st2.hasMoreTokens()) {
 				pstr2.add(st2.nextToken());
 			}
-			while (st3.hasMoreTokens()) {
-				pstr3.add(st3.nextToken());
+			while(st3.hasMoreTokens()){
+			    pstr3.add(st3.nextToken());
 			}
 			optionValue222.add(pstr);
 			price1.add(pstr2);
 			stock1.add(pstr3);
 		}
-
+		
 		int countidx = 0;
 		int count = 0;
-		for (int i = 0; i < countList2.length; i++) {
+		for(int i = 0; i < countList2.length; i ++) {
 			List<ArrayList<String>> optionValue223 = new ArrayList<ArrayList<String>>();
 			List<ArrayList<String>> price12 = new ArrayList<ArrayList<String>>();
 			List<ArrayList<String>> stock12 = new ArrayList<ArrayList<String>>();
 			count = countidx + countList2[i];
-
-			for (int j = countidx; j < count; j++) {
+			
+			for(int j = countidx; j < count; j ++) {
 				optionValue223.add(optionValue222.get(j));
 				price12.add(price1.get(j));
 				stock12.add(stock1.get(j));
-
+				
 			}
 			countidx += countList2[i];
 			optionValue22.add((ArrayList<ArrayList<String>>) optionValue223);
 			price11.add((ArrayList<ArrayList<String>>) price12);
 			stock11.add((ArrayList<ArrayList<String>>) stock12);
 		}
-
-		for (int i = 0; i < optionValue0.length; i++) {
+		
+		for(int i = 0; i < optionValue0.length; i ++) {
 			long tempStock2 = 0;
 			long tempPrice2 = 0;
-			for (int j = 0; j < stock11.get(i).size(); j++) {
+			for(int j = 0; j < stock11.get(i).size(); j ++) {
 				long tempStock = 0;
 				long tempPrice = 0;
-				for (int k = 0; k < stock11.get(i).get(j).size(); k++) {
+				for(int k = 0; k < stock11.get(i).get(j).size(); k ++) {
 					tempStock += Long.parseLong(stock11.get(i).get(j).get(k));
-					if (tempPrice == 0) {
+					if(tempPrice == 0) {
 						tempPrice = Long.parseLong(price11.get(i).get(j).get(k));
-					} else if (tempPrice > Long.parseLong(price11.get(i).get(j).get(k))) {
+					}else if(tempPrice > Long.parseLong(price11.get(i).get(j).get(k))) {
 						tempPrice = Long.parseLong(price11.get(i).get(j).get(k));
 					}
 				}
-				if (tempPrice2 == 0) {
+				if(tempPrice2 == 0) {
 					tempPrice2 = tempPrice;
-				} else if (tempPrice2 > tempPrice) {
+				}else if(tempPrice2 > tempPrice) {
 					tempPrice2 = tempPrice;
 				}
 				tempStock2 += tempStock;
 			}
-
+			
 			Long optionNum = productDAO.productOptionNum();
+			
+			
 			optionNum0.add(optionNum);
 			ProductOptionDTO productOptionDTO = new ProductOptionDTO();
 			productOptionDTO.setOptionNum(optionNum);
 			productOptionDTO.setOptionName(optionName[0]);
 			productOptionDTO.setOptionValue(optionValue0[i]);
-			productOptionDTO.setProductNum(118L);// 상품 번호 넘어오는거 받아서 수정할것
+			productOptionDTO.setProductNum(productNum);//상품 번호 넘어오는거 받아서 수정할것
 			productOptionDTO.setDepth(0L);
-			productOptionDTO.setProductPrice(tempPrice2);// 배열로 값 넘어온거 적용해줄것
-			productOptionDTO.setProductStock(tempStock2);// 배열로 값 넘어온거 적용해줄것
+			productOptionDTO.setProductPrice(tempPrice2);//배열로 값 넘어온거 적용해줄것
+			productOptionDTO.setProductStock(tempStock2);//배열로 값 넘어온거 적용해줄것
 			productOptionDTO.setRef(optionNum);
 			productDAO.productOptionAdd0(productOptionDTO);
-
+			
 		}
-
-		for (int i = 0; i < optionValue11.size(); i++) {
+		
+		for(int i = 0; i < optionValue11.size(); i ++) {
 			List<Long> tempNum = new ArrayList<Long>();
-			for (int j = 0; j < optionValue11.get(i).size(); j++) {
-				if (optionValue11.get(i).get(j) != null) {
+			for(int j = 0; j < optionValue11.get(i).size(); j ++) {
+				if(optionValue11.get(i).get(j) != null) {
 					long tempStock = 0;
 					long tempPrice = 0;
-					for (int k = 0; k < stock11.get(i).get(j).size(); k++) {
+					for(int k = 0; k < stock11.get(i).get(j).size(); k ++) {
 						tempStock += Long.parseLong(stock11.get(i).get(j).get(k));
-						if (tempPrice == 0) {
+						if(tempPrice == 0) {
 							tempPrice = Long.parseLong(price11.get(i).get(j).get(k));
-						} else if (tempPrice > Long.parseLong(price11.get(i).get(j).get(k))) {
+						}else if(tempPrice > Long.parseLong(price11.get(i).get(j).get(k))) {
 							tempPrice = Long.parseLong(price11.get(i).get(j).get(k));
 						}
 					}
@@ -269,37 +275,35 @@ public class ProductService {
 					productOptionDTO.setOptionNum(optionNum);
 					productOptionDTO.setOptionName(optionName[1]);
 					productOptionDTO.setOptionValue(optionValue11.get(i).get(j));
-					productOptionDTO.setProductNum(118L);// 상품 번호 넘어오는거 받아서 수정할것
+					productOptionDTO.setProductNum(productNum);//상품 번호 넘어오는거 받아서 수정할것
 					productOptionDTO.setDepth(1L);
-					productOptionDTO.setProductPrice(tempPrice);// 배열로 값 넘어온거 적용해줄것
-					productOptionDTO.setProductStock(tempStock);// 배열로 값 넘어온거 적용해줄것
+					productOptionDTO.setProductPrice(tempPrice);//배열로 값 넘어온거 적용해줄것
+					productOptionDTO.setProductStock(tempStock);//배열로 값 넘어온거 적용해줄것
 					productOptionDTO.setRef(optionNum0.get(i));
-
+					
 					productDAO.productOptionAdd0(productOptionDTO);
 				}
-
+				
 			}
 			optionNum1.add(tempNum);
 		}
-
-		for (int i = 0; i < optionValue22.size(); i++) {
-			for (int j = 0; j < optionValue22.get(i).size(); j++) {
-				for (int k = 0; k < optionValue22.get(i).get(j).size(); k++) {
-					if (optionValue22.get(i).get(j).get(k) != null) {
-
+		
+		for(int i = 0; i < optionValue22.size(); i ++){
+			for(int j = 0; j < optionValue22.get(i).size(); j++) {
+				for(int k = 0; k < optionValue22.get(i).get(j).size(); k ++) {
+					if(optionValue22.get(i).get(j).get(k) != null) {
+						
 						Long optionNum = productDAO.productOptionNum();
 						ProductOptionDTO productOptionDTO = new ProductOptionDTO();
 						productOptionDTO.setOptionNum(optionNum);
 						productOptionDTO.setOptionName(optionName[2]);
 						productOptionDTO.setOptionValue(optionValue22.get(i).get(j).get(k));
-						productOptionDTO.setProductNum(118L);// 상품 번호 넘어오는거 받아서 수정할것
+						productOptionDTO.setProductNum(productNum);//상품 번호 넘어오는거 받아서 수정할것
 						productOptionDTO.setDepth(2L);
-						productOptionDTO.setProductPrice(Long.parseLong(price11.get(i).get(j).get(k)));// 배열로 값 넘어온거
-																										// 적용해줄것
-						productOptionDTO.setProductStock(Long.parseLong(stock11.get(i).get(j).get(k)));// 배열로 값 넘어온거
-																										// 적용해줄것
+						productOptionDTO.setProductPrice(Long.parseLong(price11.get(i).get(j).get(k)));//배열로 값 넘어온거 적용해줄것
+						productOptionDTO.setProductStock(Long.parseLong(stock11.get(i).get(j).get(k)));//배열로 값 넘어온거 적용해줄것
 						productOptionDTO.setRef(optionNum1.get(i).get(j));
-
+						
 						productDAO.productOptionAdd0(productOptionDTO);
 					}
 				}
@@ -307,5 +311,4 @@ public class ProductService {
 		}
 		return 1;
 	}
-
 }

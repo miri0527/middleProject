@@ -22,6 +22,10 @@ public class ProductDAO {
 		return l;
 	}
 	
+	public Long getProductNum() throws Exception {
+		return sqlSession.selectOne(NAMESPACE + "getProductNum", NAMESPACE);
+	}
+	
 	public List<ProductOptionDTO> getProductList(ProductDTO productDTO)throws Exception{
 		return sqlSession.selectList(NAMESPACE+"getProductList",productDTO);
 	}
@@ -52,8 +56,9 @@ public class ProductDAO {
 	
 	
 	 public List<ProductDTO> getMemberProductList(Pager pager) throws Exception {
-	 List<ProductDTO> ar = sqlSession.selectList(NAMESPACE + "getMemberProductList", pager);
-	 return ar; 
+		 
+		 List<ProductDTO> ar = sqlSession.selectList(NAMESPACE + "getMemberProductList", pager);
+		 return ar; 
 	 }
 	
 	//장바구니 

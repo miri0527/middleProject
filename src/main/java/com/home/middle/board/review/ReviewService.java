@@ -24,9 +24,19 @@ public class ReviewService implements BbsService {
 
 	@Override
 	public List<BbsDTO> getBoardList(Pager pager) throws Exception {
-		
+		System.out.println("pagerService :"+pager.getPage());
 		pager.makeNum(reviewDAO.getTotalCount());
 		pager.makeRow();
+		
+		return reviewDAO.getBoardList(pager);
+	}
+	
+	
+	public List<BbsDTO> getBoardListdetail(Pager pager) throws Exception {
+		System.out.println("pagerService :"+pager.getPage());
+		pager.makeNum(reviewDAO.getTotalCount());
+		pager.makeRow();
+		
 		return reviewDAO.getBoardList(pager);
 	}
 	

@@ -34,15 +34,28 @@ public class ReviewController {
 				return "review";
 			}
 			
-			@RequestMapping(value="list", method = RequestMethod.GET)
-			public ModelAndView getBoardList(Pager pager)throws Exception {
-			ModelAndView mv = new ModelAndView();
+			@RequestMapping(value="listdetail", method = RequestMethod.GET)
+			public ModelAndView getBoardListdetail(Pager pager)throws Exception {
+		    ModelAndView mv = new ModelAndView();
 	
 			List<BbsDTO> ar = reviewService.getBoardList(pager);
-		
+	
 			mv.addObject("pager",pager);
 			mv.addObject("list",ar);
 			mv.setViewName("board/review");
+				
+			return mv;			
+			}
+			
+			@GetMapping("list")
+			public ModelAndView getBoardList(Pager pager)throws Exception {
+			ModelAndView mv = new ModelAndView();
+			
+			List<BbsDTO> ar = reviewService.getBoardList(pager);
+		
+			mv.addObject("pager",pager);
+			mv.addObject("list1",ar);
+			mv.setViewName("product/detail");
 				
 			return mv;			
 			}
@@ -63,7 +76,7 @@ public class ReviewController {
 				
 				mv.setViewName("common/result");
 				mv.addObject("result", "수정 성공");
-				mv.addObject("url", "./list");
+				mv.addObject("url", "./listdetail");
 				
 				return mv;
 			}
@@ -87,7 +100,7 @@ public class ReviewController {
 			}
 			
 			mv.addObject("result", result);
-			mv.addObject("url", "./list");
+			mv.addObject("url", "./listdetail");
 			mv.setViewName("common/result");
 			return mv;
 			}	
@@ -106,7 +119,7 @@ public class ReviewController {
 				}
 
 				mv.addObject("result", message);
-				mv.addObject("url", "./list");
+				mv.addObject("url", "./listdetail");
 
 				return mv;
 			}

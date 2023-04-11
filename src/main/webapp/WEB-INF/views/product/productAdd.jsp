@@ -24,8 +24,8 @@
 	<form action="./add" method="post" enctype="multipart/form-data">	
 		<input type="hidden" value="${member.id }" name="id">
 		<div class="fw-bold fs-5 col-12">
-			<p class="text-center">상품종류</p>
-		 	<select name="categoryNum" class="form-select form-select-sm text-center" aria-label=".form-select-sm example"><br>
+			<p>상품종류</p>
+		 	<select name="categoryNum" class="form-select form-select-sm" aria-label=".form-select-sm example"><br>
 				<option value="1" selected >컴퓨터</option>
 				<option value="2">노트북</option>
 				<option value="3">모니터</option>

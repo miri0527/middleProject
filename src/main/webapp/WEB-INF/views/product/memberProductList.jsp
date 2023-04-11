@@ -25,7 +25,6 @@
                <th>번호</th>
                <th>상품명</th>
                <th>판매여부</th>
-               <th>등록일</th>
             
          </tr>
       </thead>
@@ -45,9 +44,7 @@
                	<c:if test="${dto.productSales eq 1 }">판매중</c:if>
                	<c:if test="${dto.productSales eq 0 }">판매중단</c:if>
                	</td>
-               	<td>
-               		<div class="small mb-1">업로드 날짜 : ${dto.productOptionDTOs.productDate}</div>
-               	</td>
+               
             </tr>
          </c:forEach>
       </tbody>

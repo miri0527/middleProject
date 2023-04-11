@@ -20,7 +20,6 @@
 	<input type="checkbox" id="sellerRole" name="roleName"class="check" value="SELLER">판매자
 	<input type="checkbox" id="adminRole" name="roleName" class="check"value="ADMIN">관리자	
 		
-	
 		<div class="row">
 			<table class="table table-hover text-center">	
 				<tr>

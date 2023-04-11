@@ -1,10 +1,10 @@
 const frm = document.getElementById("frm");
 
+
 let count=1;
 let jsoncount=1;
 let count2 = 1;
 let count3 = 1;
-    
     
 
 $(".oi").click(function(){
@@ -34,8 +34,6 @@ $(document).on("click",".opv",function(e){
 
 
 $("#frm").on("click",".opc",function(e){
-    console.log("11")
-    
     let depth = 1;
     let na=
     '<div class="opa offset-md-2">'
@@ -139,6 +137,7 @@ $('#btnFinish').click(function(){
         let countList = [];
         let countList2 = [];
         let price = [];
+        
         let stock = [];
         
         optionName.push($('.optionName0').val());
@@ -150,7 +149,6 @@ $('#btnFinish').click(function(){
             
             optionName.push($('.optionName2').val());
         }
-
         
     
         $('.optionValue').each(function(i, v){
@@ -205,8 +203,8 @@ $('#btnFinish').click(function(){
                 "countList" : countList,
                 "countList2" : countList2,
                 "price" : price,
-                "stock" : stock,
-              
+                "stock" : stock
+               
             }
             });
     }

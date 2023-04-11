@@ -17,6 +17,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.home.middle.board.BbsDTO;
+import com.home.middle.board.qna.QnaService;
+import com.home.middle.board.review.ReviewService;
 import com.home.middle.cart.CartDTO;
 import com.home.middle.util.Pager;
 
@@ -26,13 +29,17 @@ public class ProductController {
 	
 	@Autowired
 	private ProductService productService;
+	@Autowired
+	private ReviewService reviewService;
+	@Autowired
+	private QnaService qnaService;
 	
-	@RequestMapping(value="list" , method=RequestMethod.GET)
-	public ModelAndView getProductList(ProductDTO productDTO) throws Exception{
+	@GetMapping("list")
+	public ModelAndView getProductList(ProductDTO productDTO,Pager pager ) throws Exception{
 	
 		ModelAndView mv = new ModelAndView();
 
-		List<ProductOptionDTO> ar = productService.getProductList(productDTO);
+		List<ProductOptionDTO> ar = productService.getProductList(productDTO,pager);
 	  
 		mv.setViewName("product/productList");
 		mv.addObject("list",ar);
@@ -41,19 +48,30 @@ public class ProductController {
 		return mv;
 	}
 	
-	@RequestMapping(value="detail",method=RequestMethod.GET)
-	public ModelAndView getProductDetail(ProductDTO productDTO, Model model) throws Exception{
+	@GetMapping("detail")
+	public ModelAndView getProductDetail(ProductDTO productDTO, Model model,Pager pager) throws Exception{
 		//파라미터 이름과 setter의 이름과 같아야함 
 		
 		 System.out.println("Product detail");
 		 ModelAndView mv = new ModelAndView();
 		 productDTO = productService.getProductDetail(productDTO);
-		
+		 System.out.println("pagerCo :"+ pager.getPage());
 		 System.out.println(productDTO!=null);
 		
 		 mv.setViewName("/product/productDetail");
 		 mv.addObject("dto",productDTO);
-		
+		// review 리스트 
+		 List<BbsDTO> ar = reviewService.getBoardList(pager);
+		 //qna 리스트
+		 List<BbsDTO> ar2 = qnaService.getBoardList(pager);		
+		 // review 리스트 
+		 mv.addObject("pager",pager);
+		 mv.addObject("list1",ar);
+		 
+		 // qna 리스트 
+		 mv.addObject("pager",pager);
+		 mv.addObject("list2",ar2);
+			
 	   return mv;		
 	}
 	
@@ -76,7 +94,6 @@ public class ProductController {
 	      ModelAndView mv = new ModelAndView();
 	      
 	      List<ProductDTO> ar =  productService.getMemberProductList(pager);
-	      
 	     
 	      mv.setViewName("product/memberProductList");
 	      mv.addObject("list", ar);
@@ -173,7 +190,7 @@ public class ProductController {
 		
 
 	@GetMapping("productOptionAdd")
-	public ModelAndView setProductAddOption(ProductDTO productDTO) throws Exception{
+	public ModelAndView setProductAddOption() throws Exception{
 		
 		ModelAndView mv = new ModelAndView();
 		
@@ -184,13 +201,13 @@ public class ProductController {
 	}
 	
 	@PostMapping("productOptionAdd")
-	public ModelAndView productOptionAdd(String[] optionValue0, String[] optionValue1, String[] optionValue2, String[] optionName, int[] countList, int[] countList2, String[] price, String[] stock) throws Exception{
+	public ModelAndView productOptionAdd(String[] optionValue0, String[] optionValue1, String[] optionValue2, String[] optionName, int[] countList, int[] countList2, String[] price, String[] stock, Long productNum) throws Exception{
 		
 		ModelAndView mv = new ModelAndView();
 		
-		productService.productOptionAdd(optionValue0,optionValue1,optionValue2,optionName, countList, countList2, price, stock);
+		int result =  productService.productOptionAdd(optionValue0,optionValue1,optionValue2,optionName, countList, countList2, price, stock, productNum);
 		
-		mv.setViewName("/product/productOptionAdd");
+		mv.setViewName("/test/testjson");
 		
 		return mv;
 	}
@@ -215,23 +232,22 @@ public class ProductController {
 		mv.addObject("dto0", dto0);
 		mv.addObject("dto1", dto1);
 		mv.addObject("dto2", dto2);
-		mv.setViewName("/product/productOptionUpdate");
+		mv.setViewName("/test/productOptionUpdate");
 		
 		return mv;
 	}
 	@PostMapping("productOptionUpdate")
-	public ModelAndView setproductOptionUpdate(ProductOptionDTO productOptionDTO, String[] optionValue0, String[] optionValue1, String[] optionValue2, String[] optionName, int[] countList, int[] countList2, String[] price, String[] stock) throws Exception{
+	public ModelAndView setproductOptionUpdate(ProductOptionDTO productOptionDTO, String[] optionValue0, String[] optionValue1, String[] optionValue2, String[] optionName, int[] countList, int[] countList2, String[] price, String[] stock, Long productNum) throws Exception{
 		
 		ModelAndView mv = new ModelAndView();
 		
 		productService.setProductOptionDelete(productOptionDTO);
 		
-		productService.productOptionAdd(optionValue0,optionValue1,optionValue2,optionName, countList, countList2, price, stock);
+		productService.productOptionAdd(optionValue0,optionValue1,optionValue2,optionName, countList, countList2, price, stock,productNum);
 		
-		mv.setViewName("/product/productOptionAdd");
+		mv.setViewName("/test/testjson");
 		
 		return mv;
 	}
-	
 	
 }

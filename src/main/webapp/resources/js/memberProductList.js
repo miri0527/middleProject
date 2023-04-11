@@ -21,7 +21,7 @@ function deleteValue() {
             data: {
                 chkList : check, // 삭제할 상품 번호를 담은 배열을 서버에 전송
             },
-            success: function (result) { // 요청이 성공하면 실행될 함수
+            success: function () { // 요청이 성공하면 실행될 함수
                     alert("상품이 삭제되었습니다") // 알림창 띄움
                     location.replace("./memberProductList") // 상품 목록 페이지로 이동
                 

@@ -31,6 +31,14 @@ public class ReviewDAO implements BbsDAO {
 		return sqlSession.selectList(NAMESPACE+"getBoardList",pager);
 	}
 	
+	
+	public List<BbsDTO> getBoardListdetail(Pager pager) throws Exception {
+		// TODO Auto-generated  method stub
+		return sqlSession.selectList(NAMESPACE+"getBoardList",pager);
+	}
+	
+	
+	
 	@Override
 	public int setBoardAdd(BbsDTO bbsDTO) throws Exception {
 		// TODO Auto-generated method stub

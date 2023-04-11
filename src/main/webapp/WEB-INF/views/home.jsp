@@ -22,142 +22,7 @@
     <!-- Body main wrapper start -->
    
 
-        <!-- START MOBILE MENU AREA -->
-        <div class="mobile-menu-area d-block d-lg-none section">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="mobile-menu">
-                            <nav id="dropdown">
-                                <ul>
-                                    <li><a href="index.html">Home</a>
-                                        <ul>
-                                            <li>
-                                                <a href="index.html">Home Version 1</a>
-                                            </li>
-                                            <li>
-                                                <a href="index-2.html">Home Version 2</a>
-                                            </li>
-                                            <li>
-                                                <a href="index-3.html">Home Version 3</a>
-                                            </li>
-                                            <li>
-                                                <a href="index-4.html">Home 4 Animated Text</a>
-                                            </li>
-                                            <li>
-                                                <a href="index-5.html">Home 5 Animated Text Ovlerlay</a>
-                                            </li>
-                                            <li>
-                                                <a href="index-6.html">Home 6 Background Video</a>
-                                            </li>
-                                            <li>
-                                                <a href="index-7.html">Home 7 BG-Video Ovlerlay</a>
-                                            </li>
-                                            <li>
-                                                <a href="index-8.html">Home 8 Boxed-1</a>
-                                            </li>
-                                            <li>
-                                                <a href="index-9.html">Home 9 Gradient</a>
-                                            </li>
-                                            <li>
-                                                <a href="index-10.html">Home 10 Boxed-2</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <a href="shop.html">Products</a>
-                                    </li>
-                                    <li><a href="#">Pages</a>
-                                        <ul>
-                                            <li>
-                                                <a href="shop.html">Shop</a>
-                                            </li>
-                                            <li>
-                                                <a href="shop-left-sidebar.html">Shop Left Sidebar</a>
-                                            </li>
-                                            <li>
-                                                <a href="shop-right-sidebar.html">Shop Right Sidebar</a>
-                                            </li>
-                                            <li>
-                                                <a href="shop-list.html">Shop List</a>
-                                            </li>
-                                            <li>
-                                                <a href="shop-list-right-sidebar.html">Shop List Right Sidebar</a>
-                                            </li>
-                                            <li>
-                                                <a href="single-product.html">Single Product</a>
-                                            </li>
-                                            <li>
-                                                <a href="single-product-left-sidebar.html">Single Product Left Sidebar</a>
-                                            </li>
-                                            <li>
-                                                <a href="single-product-no-sidebar.html">Single Product No Sidebar</a>
-                                            </li>
-                                            <li>
-                                                <a href="cart.html">Shopping Cart</a>
-                                            </li>
-                                            <li>
-                                                <a href="wishlist.html">Wishlist</a>
-                                            </li>
-                                            <li>
-                                                <a href="checkout.html">Checkout</a>
-                                            </li>
-                                            <li>
-                                                <a href="order.html">Order</a>
-                                            </li>
-                                            <li>
-                                                <a href="login.html">Login</a>
-                                            </li>
-                                            <li>
-                                                <a href="/member/memberDetail">My Account</a>
-                                            </li>
-                                            <li>
-                                                <a href="about.html">About us</a>
-                                            </li>
-                                            <li>
-                                                <a href="404.html">404</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="blog.html">Blog</a>
-                                        <ul>
-                                            <li>
-                                                <a href="blog.html">Blog</a>
-                                            </li>
-                                            <li>
-                                                <a href="blog-left-sidebar.html">Blog Left Sidebar</a>
-                                            </li>
-                                            <li>
-                                                <a href="blog-right-sidebar.html">Blog Right Sidebar</a>
-                                            </li>
-                                            <li>
-                                                <a href="blog-2.html">Blog style 2</a>
-                                            </li>
-                                            <li>
-                                                <a href="blog-2-left-sidebar.html">Blog 2 Left Sidebar</a>
-                                            </li>
-                                            <li>
-                                                <a href="blog-2-right-sidebar.html">Blog 2 Right Sidebar</a>
-                                            </li>
-                                            <li>
-                                                <a href="single-blog.html">Blog Details</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <a href="about.html">About Us</a>
-                                    </li>
-                                    <li>
-                                        <a href="contact.html">Contact</a>
-                                    </li>
-                                </ul>
-                            </nav>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- END MOBILE MENU AREA -->
+  <c:import url="./template/mobileheader.jsp"></c:import>     
 
         <!-- START SLIDER AREA -->
         <div>
@@ -183,7 +48,7 @@
                     </div> -->
                 </div>
             </div>
-        </div>
+        </div> 	
         <!-- END SLIDER AREA -->
 
         <!-- Start page content -->
@@ -229,7 +94,7 @@
                                         </div>
                                         <div class="product-info">
                                             <h6 class="product-title">
-                                                <a href="single-product.html">레노버 요가 Slim7 Pro 14IAP7 82SV0058KR (SSD 512GB)</a>
+                                                <a href="single-product.html">블루벤트 가정용 공기청정기 UV-C 살균 21평형 AHP-UV600 </a>
                                             </h6>
                                             <div class="pro-rating">
                                                 <a href="#"><i class="zmdi zmdi-star"></i></a>
@@ -238,7 +103,7 @@
                                                 <a href="#"><i class="zmdi zmdi-star-half"></i></a>
                                                 <a href="#"><i class="zmdi zmdi-star-outline"></i></a>
                                             </div>
-                                            <h3 class="pro-price">2,199,000원</h3>
+                                            <h3 class="pro-price">139,000원</h3>
                     
                                         </div>
                                     </div>
@@ -342,25 +207,25 @@
                                     </div>
                                     <div class="brand-item">
                                         <div class="single-brand-product">
-                                            <a href="single-product.html"><img src="resources/js/img/product/7.jpg" alt=""></a>
+                                            <a href="single-product.html"><img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fshop1.phinf.naver.net%2F20230314_107%2F1678737157563KTRwW_JPEG%2F79872992396475192_1899806522.jpg&type=sc960_832" height="270" width="300" alt=""></a>
                                             <h3 class="brand-title text-gray">
-                                                <a href="#">Brand name</a>
+                                                <a href="#">애플 정품 에어팟 프로 신상품 2세대 1세대 에어팟 3세대 2세대 유선충전</a>
                                             </h3>
                                         </div>
                                     </div>
                                     <div class="brand-item">
                                         <div class="single-brand-product">
-                                            <a href="single-product.html"><img src="resources/js/img/product/8.jpg" alt=""></a>
+                                            <a href="single-product.html"><img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fshop1.phinf.naver.net%2F20221130_71%2F1669773110072fqEBq_JPEG%2F70908937886923124_1015814584.jpg&type=sc960_832" height="270" width="300" alt=""></a>
                                             <h3 class="brand-title text-gray">
-                                                <a href="#">Brand name</a>
+                                                <a href="#">애플 아이폰 14 512기가 미드나이트 (국내 정식 발매 제품) MPWW3KH/A</a>
                                             </h3>
                                         </div>
                                     </div>
                                     <div class="brand-item">
                                         <div class="single-brand-product">
-                                            <a href="single-product.html"><img src="resources/js/img/product/8.jpg" alt=""></a>
+                                            <a href="single-product.html"><img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMjA0MTJfMTA5%2FMDAxNjQ5NzM5NzU0NjA2.2I5WOBQRI4Cl8WyKLOjfTLFHrNskJMhGLrmEUBYCLiMg.KWXt4AQ3IhZs8ct6t6UqAQLrDBvYrPAjbg8rQDWRG-8g.PNG.ha-yasi%2F%25B8%25C6%25BD%25BA_2.png_%25A4%25B7%25A4%25B7.png&type=sc960_832" height="270" width="300" alt=""></a>
                                             <h3 class="brand-title text-gray">
-                                                <a href="#">Brand name</a>
+                                                <a href="#">Apple 에어팟 맥스 블루투스헤드셋</a>
                                             </h3>
                                         </div>
                                     </div>
@@ -392,17 +257,11 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="section-title text-center mb-0">
-                                <h2 class="uppercase">product list</h2>
-                                <h6>There are many variations of passages of brands available,</h6>
+                                <h2 class="uppercase">여름아 부탁해~ 여름 가전 모음</h2>
+                                <h6>곧 여름이 와요 여름 가전 미리 준비하세요</h6>
                             </div>
                             <div class="product-tab pro-tab-menu pro-tab-menu-2 text-center">
-                                <!-- Nav tabs -->
-                                <ul class="nav" >
-                                    <li><a class="active" href="#popular-product" data-bs-toggle="tab">Popular Products </a></li>
-                                    <li><a href="#new-arrival" data-bs-toggle="tab">New Arrival</a></li>
-                                    <li><a href="#best-seller"  data-bs-toggle="tab">Best Seller</a></li>
-                                    <li><a href="#special-offer"  data-bs-toggle="tab">Special Offer</a></li>
-                                </ul>
+                
                             </div>
                             <!-- Tab panes -->                    
                             <div class="tab-content">
@@ -414,12 +273,12 @@
                                             <div class="product-item">
                                                 <div class="product-img">
                                                     <a href="single-product.html">
-                                                        <img src="resources/js/img/product/7.jpg" alt="" />
+                                                        <img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fshop1.phinf.naver.net%2F20230114_151%2F1673628996184A7PsG_JPEG%2F74764894895192733_1177817715.jpg&type=sc960_832" height="270" width="300"> </a>
                                                     </a>
                                                 </div>
                                                 <div class="product-info">
                                                     <h6 class="product-title">
-                                                        <a href="single-product.html">레노버 요가 Slim7 Pro 14IAP7 82SV0058KR (SSD 512GB) </a>
+                                                         
                                                     </h6>
                                                     <div class="pro-rating">
                                                         <a href="#"><i class="zmdi zmdi-star"></i></a>
@@ -439,12 +298,12 @@
                                             <div class="product-item">
                                                 <div class="product-img">
                                                     <a href="single-product.html">
-                                                        <img src="resources/js/img/product/2.jpg" alt="" />
+                                                        <img src="https://search.pstatic.net/common/?src=https%3A%2F%2Fshopping-phinf.pstatic.net%2Fmain_8549722%2F85497224207.jpg&type=sc960_832" height="270" width="300" alt="" />
                                                     </a>
                                                 </div>
                                                 <div class="product-info">
                                                     <h6 class="product-title">
-                                                        <a href="single-product.html">MSI GP시리즈 Vector GP66 12UGSO QHD (SSD 1TB) </a>
+                                                        <a href="">공기살균기 Ouyaju 의료 공기 청정기 가정용 소독 기계 지능형 음성 실내 살균 바이러스 살균기 상업 </a>
                                                     </h6>
                                                     <div class="pro-rating">
                                                         <a href="#"><i class="zmdi zmdi-star"></i></a>
@@ -453,7 +312,7 @@
                                                         <a href="#"><i class="zmdi zmdi-star-half"></i></a>
                                                         <a href="#"><i class="zmdi zmdi-star-outline"></i></a>
                                                     </div>
-                                                    <h3 class="pro-price">2,199,000원</h3>
+                                                    <h3 class="pro-price">350,430원 </h3>
                                                   
                                                 </div>
                                             </div>
@@ -464,12 +323,12 @@
                                             <div class="product-item">
                                                 <div class="product-img">
                                                     <a href="single-product.html">
-                                                        <img src="resources/js/img/product/9.jpg" alt="" />
+                                                        <img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fshop1.phinf.naver.net%2F20230306_62%2F1678084217903432LJ_JPEG%2F79220051725824972_64293270.jpg&type=sc960_832" height="270" width="300" alt="" />
                                                     </a>
                                                 </div>
                                                 <div class="product-info">
                                                     <h6 class="product-title">
-                                                        <a href="single-product.html">ASUS ROG STRIX G18 G814JV-N5002 (SSD 512GB) </a>
+                                                        <a href=""> 삼성 Q9000 홈멀티형 에어컨 (56.9+18.7㎡) </a>
                                                     </h6>
                                                     <div class="pro-rating">
                                                         <a href="#"><i class="zmdi zmdi-star"></i></a>
@@ -478,7 +337,7 @@
                                                         <a href="#"><i class="zmdi zmdi-star-half"></i></a>
                                                         <a href="#"><i class="zmdi zmdi-star-outline"></i></a>
                                                     </div>
-                                                    <h3 class="pro-price">680,450원</h3>
+                                                    <h3 class="pro-price">2,058,000원</h3>
                                      
                                                 </div>
                                             </div>
@@ -489,12 +348,12 @@
                                             <div class="product-item">
                                                 <div class="product-img">
                                                     <a href="single-product.html">
-                                                        <img src="resources/js/img/product/4.jpg" alt="" />
+                                                        <img src="https://search.pstatic.net/sunny/?src=https%3A%2F%2Fdnvefa72aowie.cloudfront.net%2Fbusiness-profile%2FbizPlatform%2Fprofile%2F13724283%2F1615954892829%2F1557fc519405af3083cc3e31bee3fa06fe656d00180b69da2ffc3fbccfaa53c5.jpeg%3Fq%3D95%26s%3D1440x1440%26t%3Dinside&type=sc960_832" height="270" width="300" alt="" />
                                                     </a>
                                                 </div>
                                                 <div class="product-info">
                                                     <h6 class="product-title">
-                                                        <a href="single-product.html">삼성전자 갤럭시북2 NT550XEZ-A58A 16GB램 </a>
+                                                        <a href=""">쿨드 벽걸이형 에어컨 </a>
                                                     </h6>
                                                     <div class="pro-rating">
                                                         <a href="#"><i class="zmdi zmdi-star"></i></a>
@@ -503,7 +362,7 @@
                                                         <a href="#"><i class="zmdi zmdi-star-half"></i></a>
                                                         <a href="#"><i class="zmdi zmdi-star-outline"></i></a>
                                                     </div>
-                                                    <h3 class="pro-price">3,273,490원</h3>
+                                                    <h3 class="pro-price">9,000,000원  </h3>
                                                
                                                 </div>
                                             </div>
@@ -514,12 +373,12 @@
                                             <div class="product-item">
                                                 <div class="product-img">
                                                     <a href="single-product.html">
-                                                        <img src="resources/js/img/product/10.jpg" alt="" />
+                                                        <img src="https://search.pstatic.net/common/?src=https%3A%2F%2Fshopping-phinf.pstatic.net%2Fmain_2867957%2F28679571569.jpg&type=sc960_832" height="270" width="300" alt="" />
                                                     </a>
                                                 </div>
                                                 <div class="product-info">
                                                     <h6 class="product-title">
-                                                        <a href="single-product.html">LG전자 2022 그램16(12세대) 16ZD95Q-GX56K WIN11 </a>
+                                                        <a href="single-product.html">삼성 세탁기 13Kg WA13T5262BW </a>
                                                     </h6>
                                                     <div class="pro-rating">
                                                         <a href="#"><i class="zmdi zmdi-star"></i></a>
@@ -528,7 +387,7 @@
                                                         <a href="#"><i class="zmdi zmdi-star-half"></i></a>
                                                         <a href="#"><i class="zmdi zmdi-star-outline"></i></a>
                                                     </div>
-                                                    <h3 class="pro-price">1,312,920원</h3>
+                                                    <h3 class="pro-price">500,000원</h3>
                                                    
                                                 </div>
                                             </div>
@@ -539,12 +398,12 @@
                                             <div class="product-item">
                                                 <div class="product-img">
                                                     <a href="single-product.html">
-                                                        <img src="resources/js/img/product/11.jpg" alt="" />
+                                                        <img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fshop1.phinf.naver.net%2F20230309_187%2F1678346641280v28PS_JPEG%2F24118057635918338_1971596154.jpeg&type=sc960_832" height="270" width="300" alt="" />
                                                     </a>
                                                 </div>
                                                 <div class="product-info">
                                                     <h6 class="product-title">
-                                                        <a href="single-product.html">MSI 모던시리즈 모던15 B5M-R7 </a>
+                                                        <a href="single-product.html">대우 저소음 스탠드 선풍기 14인치 가정용 업소용 DEF-RK530 </a>
                                                     </h6>
                                                     <div class="pro-rating">
                                                         <a href="#"><i class="zmdi zmdi-star"></i></a>
@@ -553,7 +412,7 @@
                                                         <a href="#"><i class="zmdi zmdi-star-half"></i></a>
                                                         <a href="#"><i class="zmdi zmdi-star-outline"></i></a>
                                                     </div>
-                                                    <h3 class="pro-price">598,990원</h3>
+                                                    <h3 class="pro-price">47,800원</h3>
                                                 
                                                 </div>
                                             </div>
@@ -564,12 +423,12 @@
                                             <div class="product-item">
                                                 <div class="product-img">
                                                     <a href="single-product.html">
-                                                        <img src="resources/js/img/product/8.jpg" alt="" />
+                                                        <img src="https://search.pstatic.net/common/?src=https%3A%2F%2Fshopping-phinf.pstatic.net%2Fmain_3833488%2F38334884912.jpg&type=sc960_832"  height="270" width="300" alt="" />
                                                     </a>
                                                 </div>
                                                 <div class="product-info">
                                                     <h6 class="product-title">
-                                                        <a href="single-product.html">Product Name</a>
+                                                        <a href="single-product.html">다이슨 쿨 공기청정기(화이트실버)TP07</a>
                                                     </h6>
                                                     <div class="pro-rating">
                                                         <a href="#"><i class="zmdi zmdi-star"></i></a>
@@ -578,7 +437,7 @@
                                                         <a href="#"><i class="zmdi zmdi-star-half"></i></a>
                                                         <a href="#"><i class="zmdi zmdi-star-outline"></i></a>
                                                     </div>
-                                                    <h3 class="pro-price">1,390,000원</h3>
+                                                    <h3 class="pro-price">569,000원</h3>
                                            
                                                 </div>
                                             </div>
@@ -589,12 +448,12 @@
                                             <div class="product-item">
                                                 <div class="product-img">
                                                     <a href="single-product.html">
-                                                        <img src="resources/js/img/product/12.jpg" alt="" />
+                                                        <img src="https://search.pstatic.net/common/?src=https%3A%2F%2Fshopping-phinf.pstatic.net%2Fmain_3572577%2F35725772620.20221109112118.jpg&type=sc960_832" height="270" width="300" alt="" />
                                                     </a>
                                                 </div>
                                                 <div class="product-info">
                                                     <h6 class="product-title">
-                                                        <a href="single-product.html">한성컴퓨터 Bossmonster GTX73 N9X6Q24 </a>
+                                                        <a href="single-product.html">Lg전자 스타일러 오브제컬렉션 S5MPNU 5QJF 블랙틴트미러 신형 G </a>
                                                     </h6>
                                                     <div class="pro-rating">
                                                         <a href="#"><i class="zmdi zmdi-star"></i></a>
@@ -1236,7 +1095,6 @@
                 </div>
             </div>
             <!-- PRODUCT TAB SECTION END -->
-
             <!-- BLOG SECTION START -->
             <div class="blog-section mb-50">
                 <div class="container">
@@ -1288,7 +1146,6 @@
             <!-- BLOG SECTION END -->                
         </section>
         <!-- End page content -->
-
         <!-- START FOOTER AREA -->
         <footer id="footer" class="footer-area section">
             <div class="footer-top">
@@ -1408,7 +1265,6 @@
                                     <div class="copyright-text">
                                         <p class="copy-text"> © 2022 <strong>Subas</strong> Made With <i class="zmdi zmdi-favorite" style="color: red;" aria-hidden="true"></i> By <a class="company-name" href="#">
                                 <strong> SubasTeam</strong></a>.</p>
-
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -1434,7 +1290,6 @@
             </div>
         </footer>
         <!-- END FOOTER AREA -->
-
         <!-- START QUICKVIEW PRODUCT -->
         <div id="quickview-wrapper">
             <!-- Modal -->
@@ -1513,7 +1368,6 @@
             <!-- END Modal -->
         </div>
         <!-- END QUICKVIEW PRODUCT -->  
-
         <!--style-customizer start -->
         <div class="style-customizer closed">
         
@@ -1566,9 +1420,9 @@
             </div>
         </div>
         <!--style-customizer end --> 
+        
     
    <c:import url="./template/common_js.jsp"></c:import>
    
-
 </body>
 </html>

@@ -8,43 +8,41 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import com.home.middle.board.BbsDTO;
-import com.home.middle.board.BbsService;
 import com.home.middle.board.BoardFileDTO;
-import com.home.middle.board.review.ReviewDAO;
 import com.home.middle.util.FileManager;
 import com.home.middle.util.Pager;
 
 
 @Service
-public class QnaService implements BbsService{
+public class QnaReplyService {
 	
 	@Autowired
-	private QnaDAO qnaDAO;
+	private QnaReplyDAO qnaReplyDAO;
 	
 	@Autowired
 	private FileManager fileManager;
 
-	@Override
-	public List<BbsDTO> getBoardList(Pager pager) throws Exception {
-		pager.makeNum(qnaDAO.getTotalCount(pager));
+	
+	public List<QnaReplyDTO> getBoardList(Pager pager) throws Exception {
+		pager.makeNum(qnaReplyDAO.getTotalCount(pager));
 		pager.makeRow();
 		
-		return qnaDAO.getBoardList(pager);
+		return qnaReplyDAO.getBoardList(pager);
 	}
 	
 	
-	public List<BbsDTO> getBoardListdetail(Pager pager) throws Exception {
-		pager.makeNum(qnaDAO.getTotalCount(pager));
+	public List<QnaReplyDTO> getBoardListdetail(Pager pager) throws Exception {
+		pager.makeNum(qnaReplyDAO.getTotalCount(pager));
 		pager.makeRow();
 		
-		return qnaDAO.getBoardList(pager);
+		return qnaReplyDAO.getBoardList(pager);
 	}
 	
 	
-	@Override
-	public int setBoardAdd(BbsDTO bbsDTO, MultipartFile[] multipartFiles , HttpSession session) throws Exception {
+
+	public int setBoardAdd(QnaReplyDTO bbsDTO, MultipartFile[] multipartFiles , HttpSession session) throws Exception {
 		// TODO Auto-generated method stub
-		int result = qnaDAO.setBoardAdd(bbsDTO);
+		int result = qnaReplyDAO.setBoardAdd(bbsDTO);
 		
 		String realPath = session.getServletContext().getRealPath("resources/upload/qna/");
 		System.out.println(realPath);
@@ -63,28 +61,24 @@ public class QnaService implements BbsService{
 		boardFileDTO.setFileName(fileName);
 		boardFileDTO.setOriName(multipartFile.getOriginalFilename());
 		
-		result = qnaDAO.setBoardFileAdd(boardFileDTO);
+		result = qnaReplyDAO.setBoardFileAdd(boardFileDTO);
 		}
 		//file을 hdd에 저장
 		return result;
 	}
 	
-	@Override
-	public int setBoardUpdate(BbsDTO bbsDTO) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 
 
-	public int setBoardUpdate(BbsDTO bbsDTO, MultipartFile[] multipartFiles, HttpSession session, Long[] fileNums)
+
+	public int setBoardUpdate(QnaReplyDTO bbsDTO, MultipartFile[] multipartFiles, HttpSession session, Long[] fileNums)
 			throws Exception {
 		//qna Update
-		int result = qnaDAO.setBoardUpdate(bbsDTO);
+		int result = qnaReplyDAO.setBoardUpdate(bbsDTO);
 		
 		//qnaFiles Delete
 		if(fileNums != null) {
 			for(Long fileNum : fileNums) {
-				qnaDAO.setBoardFileDelete(fileNum);
+				qnaReplyDAO.setBoardFileDelete(fileNum);
 				
 			}
 		}
@@ -108,7 +102,7 @@ public class QnaService implements BbsService{
 			boardFileDTO.setFileName(fileName);
 			boardFileDTO.setOriName(multipartFile.getOriginalFilename());
 					
-			result=qnaDAO.setBoardFileAdd(boardFileDTO);
+			result=qnaReplyDAO.setBoardFileAdd(boardFileDTO);
 					
 		}		
 		
@@ -117,11 +111,11 @@ public class QnaService implements BbsService{
 		return result;
 	}
 
-	@Override
-	public int setBoardDelete(BbsDTO bbsDTO, HttpSession session) throws Exception {
+
+	public int setBoardDelete(QnaReplyDTO bbsDTO, HttpSession session) throws Exception {
 		// TODO Auto-generated method stub
-		List<BoardFileDTO> ar = qnaDAO.getBoardFileList(bbsDTO);
-		int result =  qnaDAO.setBoardDelete(bbsDTO);
+		List<BoardFileDTO> ar = qnaReplyDAO.getBoardFileList(bbsDTO);
+		int result =  qnaReplyDAO.setBoardDelete(bbsDTO);
 		
 		if(result>0) {
 			
@@ -136,17 +130,17 @@ public class QnaService implements BbsService{
 	}
 
 
-	@Override
+
 	public BoardFileDTO getBoardFileDetail(BoardFileDTO boardFileDTO) throws Exception {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 
-	@Override
-	public BbsDTO getBoardDetail(BbsDTO bbsDTO) throws Exception {
+
+	public QnaReplyDTO getBoardDetail(QnaReplyDTO qnaReplyDTO) throws Exception {
 		// TODO Auto-generated method stub
-		return qnaDAO.getBoardDetail(bbsDTO);
+		return qnaReplyDAO.getBoardDetail(qnaReplyDTO);
 	}
 	
 	

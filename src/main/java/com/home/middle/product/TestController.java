@@ -32,7 +32,7 @@ public class TestController {
 	public ModelAndView setProductAddOption() throws Exception{
 		
 		ModelAndView mv = new ModelAndView();
-		
+	
 		mv.setViewName("/test/testjson");
 		
 		return mv;

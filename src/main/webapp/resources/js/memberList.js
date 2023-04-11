@@ -2,7 +2,7 @@ let allRole = document.getElementById("allRole")
 let memberRole = document.getElementById("memberRole")
 let sellerRole = document.getElementById("sellerRole")
 let adminRole = document.getElementById("adminRole")
-let check = document.getElementsByClassName("check")
+
 
 function deleteValue() {
     let check = [];
@@ -44,10 +44,10 @@ function deleteValue() {
 }
 
 
+
 $(document).ready(() => {
     let checkArr = []
 
-   
     $('input:checkbox[class="check"]').click(() => {
         allRole.checked = false
         $('input:checkbox[name="roleName"]:checked').each(function(i) {
@@ -57,10 +57,6 @@ $(document).ready(() => {
         location.href = "memberList?roleName=" + checkArr
       
     })
-
-   
-     
-    
    
 })
 
@@ -70,9 +66,9 @@ $(document).ready(() => {
 
 
 $("#refuse").click(() => {
-    let check =  window.confirm("정말 거절하시겠습니까?");
+    let check3 =  window.confirm("정말 거절하시겠습니까?");
 
-    if(check) {
+    if(check3) {
         $("#application").attr("action", "../member/sellerRefuse")
         $("#application").attr("method","post")
         
