@@ -11,7 +11,7 @@
 <c:import url="../template/common_css.jsp"></c:import>
 </head>
 <body>
-
+<c:import url="../template/header.jsp"></c:import>
 <div class="container-fluid">
 	<div class="row my-5">
 		<h1>${boardName} List</h1>
@@ -23,16 +23,16 @@
 				<tr>
 					<th>NUM</th><th>CONTENTS</th><th>TITLE</th><th>ID</th><th>DATE</th><th>삭제</th><th>수정</th>
 				</tr>
-			</thead>
-			<tbody>
-				<c:forEach items="${list}" var="dto">
+			</thead><c:forEach items="${list}" var="dto">
 				<tr>
 					<td>${dto.num}</td>
 					<td>${dto.contents}</td>
 					<td>${dto.id}</td>
 					<td>${dto.regDate}</td>
 					<td>${dto.productNum}</td>
-					<td> <form action="./delete" id="frmde">
+					<td> 
+					 <c:if test="${member.id eq dto.id or member.roleDTO.roleNum < 3 }">
+					<form action="./delete" id="frmde">
 					 <input type="hidden" name="num" value="${dto.num}">
 					 <button id="delete" type="button" class="btn btn-info">DELETE</button>
 					</form>
@@ -40,8 +40,11 @@
 					<td>
 					 <a class="btn btn-info"  href ="./update?num=${dto.num}">update</a>
 					</td>
+					</c:if>
 				</tr>
 				</c:forEach>
+			<tbody>
+				
 			</tbody>
 		
 		</table>
@@ -113,7 +116,7 @@
              </div>
 		</div>
 </div>
-
+<c:import url="../template/footer.jsp"></c:import>
 <script type="text/javascript" src="../resources/js/boardForm.js"></script>
 <c:import url="../template/common_js.jsp"></c:import>
 <script src="../resources/js/pageing.js"></script>

@@ -111,6 +111,7 @@ public class QnaController {
 	return mv;
 
 	}
+	
 	@PostMapping("update")
 	public ModelAndView setBoardUpdate(BbsDTO bbsDTO, MultipartFile [] addFiles, HttpSession session, Long [] fileNum)throws Exception{
 		ModelAndView mv = new ModelAndView();

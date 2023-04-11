@@ -48,7 +48,7 @@
     </selectKey> -->
     
     INSERT INTO QNAREPLY (REPLYNUM,NUM,ID,TITLE,CONTENTS,REGDATE,HIT,DEPTH,PRODUCTNUM)
-	VALUES(QNAREPLY_SEQ.NEXTVAL,#{num},#{id},#{title},#{contents},sysdate,0,0,#{productNum})
+	VALUES(QNAREPLY_SEQ.NEXTVAL,#{num},#{id},#{title},#{contents},sysdate,0,1,#{productNum})
     </insert>
     
     

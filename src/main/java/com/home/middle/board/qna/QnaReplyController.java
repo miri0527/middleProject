@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.home.middle.board.BbsDTO;
 import com.home.middle.product.ProductDTO;
 import com.home.middle.util.Pager;
 
@@ -28,7 +27,7 @@ public class QnaReplyController {
 	
 	@ModelAttribute("boardName")
 	public String getBoardName() {
-		return "qnaReply";
+		return "QnaReply";
 	}
 	
 	@GetMapping("list")
@@ -59,10 +58,19 @@ public class QnaReplyController {
 	
 	
 	//글쓰기 
+//	@GetMapping("add")
+//	public ModelAndView SetBoardAdd(ProductDTO productDTO) throws Exception{
+//	ModelAndView mv = new ModelAndView();
+//	mv.addObject("dto",productDTO);
+//	mv.setViewName("board/add");
+//	return mv;
+//	}
+//	
+	
 	@GetMapping("add")
-	public ModelAndView SetBoardAdd(ProductDTO productDTO) throws Exception{
+	public ModelAndView SetBoardAdd(QnaReplyDTO qnaReplyDTO) throws Exception{
 	ModelAndView mv = new ModelAndView();
-	mv.addObject("dto",productDTO);
+	mv.addObject("dto",qnaReplyDTO);
 	mv.setViewName("board/add");
 	return mv;
 	}
@@ -140,7 +148,7 @@ public class QnaReplyController {
 	@GetMapping("detail")
 	public ModelAndView getBoardDetail(QnaReplyDTO qnaDTO) throws Exception {
 		ModelAndView mv = new ModelAndView(); 
-		 BbsDTO bbsDTO = qnaReplyService.getBoardDetail(qnaDTO);
+		 QnaReplyDTO bbsDTO = qnaReplyService.getBoardDetail(qnaDTO);
 		 mv.addObject("dto", bbsDTO);
 		 mv.setViewName("board/detail");
 		 return mv;
