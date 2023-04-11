@@ -1,10 +1,10 @@
 const frm = document.getElementById("frm");
 
-
 let count=1;
 let jsoncount=1;
 let count2 = 1;
 let count3 = 1;
+    
     
 
 $(".oi").click(function(){
@@ -192,7 +192,7 @@ $('#btnFinish').click(function(){
         console.log(optionValue1);
         console.log(optionValue2);
         $.ajax({
-            url : "/product/productOptionAdd",
+            url : "/test/productOptionAdd",
             type : "POST",
             traditional:true,
             data:{
@@ -204,7 +204,6 @@ $('#btnFinish').click(function(){
                 "countList2" : countList2,
                 "price" : price,
                 "stock" : stock
-               
             }
             });
     }

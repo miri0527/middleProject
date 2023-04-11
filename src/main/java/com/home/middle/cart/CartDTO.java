@@ -18,8 +18,6 @@ public class CartDTO {
 	
 	
 	
-	
-	
 	public ProductDTO getProductDTO() {
 		return productDTO;
 	}

@@ -198,7 +198,7 @@
                                                             <i class="bi-cart-fill me-1"></i>
                                                             Add to cart
                                                         </button>
-                                                        <a href="./productOptionAdd?productNum=${dto.productNum }"><button class="btn btn-outline-dark flex-shrink-0" type="button" id="btn">
+                                                        <a href="/test/productOption/productNum=	${dto.productNum }"><button class="btn btn-outline-dark flex-shrink-0" type="button" id="btn">
                                                             <i class="bi-cart-fill me-1"></i>
                                                             옵션추가
                                                         </button>
@@ -666,8 +666,8 @@
  
 	
 			<script src="../resources/js/pageing.js"></script>
-            <script src="../resources/js/reviewTop5.js"></script>
-            <script src="../resources/js/qnaTop5.js"></script>
+            <!-- <script src="../resources/js/reviewTop5.js"></script> -->
+            <!-- <script src="../resources/js/qnaTop5.js"></script> -->
             <script src="../resources/js/productDetail.js"></script>
             <c:import url="../template/common_js.jsp"></c:import>
         </body>

@@ -21,7 +21,6 @@
 			   </div>
 			    <input type="hidden" name="json1" id="json1">
 			    
-			    
 			    <div class="opi">
 			        <button type="button" class="oi">옵션 이름</button>
 			        	<div class="op1">
@@ -39,9 +38,6 @@
 		<button type="button" id="btnFinish">옵션 생성하기</button>
 	</form>
 
-<script src="/resources/js/optionAdd.js"></script>
-<c:import url="../template/common_js.jsp"></c:import>
-<c:import url="../template/cart_common_js.jsp"></c:import>
 
 </body>
 </html>
