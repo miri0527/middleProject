@@ -10,7 +10,7 @@
   		<typeAlias type="com.home.middle.product.ProductImgDTO" alias="ProductImgDTO" />
   	    <typeAlias type="com.home.middle.product.ProductOptionDTO" alias="ProductOptionDTO" />
   	    
-  	    
+  	    <typeAlias type="com.home.middle.cart.ProductPaymentDTO" alias="ProductPaymentDTO"/>
   	    
   	    <typeAlias type="com.home.middle.board.BbsDTO" alias="BbsDTO" />
   	    <typeAlias type="com.home.middle.board.boardCommentDTO" alias="boardCommentDTO" />

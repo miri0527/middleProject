@@ -4,6 +4,7 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace = "com.home.middle.cart.CartDAO">
 
+
 	<sql id="CartCondition">
 		<where>
 			<if test="kind == id">
@@ -17,8 +18,21 @@
 		SELECT P.PRODUCTNUM, P.PRODUCTNAME, "POP".OPTIONNUM, "POP".OPTIONNAME, "POP".PRODUCTPRICE FROM PRODUCT P
 		LEFT OUTER JOIN PRODUCTOPTION "POP"
 		ON(P.PRODUCTNUM = "POP".PRODUCTNUM)
-		WHERE P.PRODUCTNUM = #{productNum} AND "POP".OPTIONNUM = 121
+
+	<select id="getPaymentCheck" resultType="CartDTO">
+		SELECT * FROM PRODUCTORDER WHERE ORDERNUM = #{orderNum}
+
 	</select>
+	
+	<select id="getPaymentNum" resultType="Long">
+		SELECT PRODUCTPAYMENT_SEQ.NEXTVAL FROM DUAL
+	</select>
+	<insert id="setPaymentInsert" parameterType="ProductPaymentDTO">
+		INSERT INTO PRODUCTPAYMENT VALUES(#{paymentNum},#{paymentName})
+	</insert>
+	<update id="setCartUpdate" parameterType="CartDTO">
+		UPDATE PRODUCTORDER SET BUYCHECK = #{buyCheck}, PAYMENTCHECK = #{paymentCheck}, PAYMENTNUM = #{paymentNum} WHERE ORDERNUM = #{orderNum}
+	</update>
 
 	<select id="getCartList" parameterType="MemberDTO" resultMap="ProductCartList">
 		SELECT * FROM PRODUCTORDER PO
@@ -112,7 +126,7 @@
 	</update>
 	
 	<update id="setCartPaymentCancel" parameterType="CartDTO">
-		UPDATE PRODUCTORDER SET BUYCHECK = 0 WHERE ORDERNUM = #{orderNum}
+		UPDATE PRODUCTORDER SET BUYCHECK = 0, PAYMENTNUM = NULL, PAYMENTCHECK = 2 WHERE ORDERNUM = #{orderNum}
 	</update>
 	
 	<update id="getCartUpdate" parameterType="CartDTO">

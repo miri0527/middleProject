@@ -1,19 +1,33 @@
 package com.home.middle.cart;
 
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
+import javax.mail.Session;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.home.middle.member.MemberDTO;
 import com.home.middle.product.ProductDTO;
 import com.home.middle.product.ProductService;
+import com.siot.IamportRestClient.IamportClient;
+import com.siot.IamportRestClient.exception.IamportResponseException;
+import com.siot.IamportRestClient.response.IamportResponse;
+import com.siot.IamportRestClient.response.Payment;
+
+import oracle.net.aso.m;
 
 @Controller
 @RequestMapping("/cart/*")
@@ -24,6 +38,20 @@ public class CartController {
 	
 	@Autowired
 	private ProductService productService;
+	
+	//수정 REST API Key, REST API Secret
+	private IamportClient api = new IamportClient("","");
+	
+	@ResponseBody
+	@RequestMapping(value="/verifyIamport/{imp_uid}")
+	public IamportResponse<Payment> paymentByImpUid(
+			Model model
+			, Locale locale
+			, HttpSession session
+			, @PathVariable(value= "imp_uid") String imp_uid) throws IamportResponseException, IOException
+	{	
+			return api.paymentByImpUid(imp_uid);
+	}
 	
 	@GetMapping("cartList")
 	public ModelAndView getCartList(HttpSession session) throws Exception{
@@ -237,17 +265,69 @@ public class CartController {
 	}
 	
 	@GetMapping("cartPaymentList")
-	public ModelAndView setCartPaymentList() throws Exception{
+	public ModelAndView setCartPaymentList(HttpSession session) throws Exception{
 		//member 연동해서 아이디에 따른 장바구니 가져오기
 		ModelAndView mv = new ModelAndView();
 		//임시 아이디 설정
 		MemberDTO memberDTO = new MemberDTO();
-		memberDTO.setId("TEST2");
-				
-		List<CartDTO> ar = cartService.getCartPaymentList(memberDTO);
+		if(session.getAttribute("member")!=null) {
+			memberDTO = (MemberDTO)session.getAttribute("member");
+			List<CartDTO> ar = cartService.getCartPaymentList(memberDTO);
+			
+			mv.addObject("list", ar);
+			mv.setViewName("/cart/cartPaymentList");
+		}else {
+			mv.setViewName("redirect:../");
+		}
 		
-		mv.addObject("list", ar);
 				
+		return mv;
+	}
+	@PostMapping("paymentCheck")
+	@ResponseBody
+	public Object getPaymentCheck(String check[], String amount, HttpSession session) throws Exception{
+		
+		List<CartDTO> cartDTOs = new ArrayList<CartDTO>();
+		
+		for(int i = 0; i < check.length; i ++) {
+			CartDTO cartDTO = new CartDTO();
+			cartDTO.setOrderNum(Long.parseLong(check[i]));
+			cartDTOs.add(cartDTO);
+		}
+		MemberDTO dto = (MemberDTO)session.getAttribute("member");
+		
+		int result = cartService.getPaymentCheck(cartDTOs, amount);
+		List<Object> ar = new ArrayList<Object>();
+		ar.add(result);//사전 검증(가격만 비교함)
+		ar.add("주문 테스트");//(주문 이름)
+		ar.add(dto.getEmail());//로그인 된 계정의 이메일
+		ar.add(dto.getName());//로그인 된 계정의 이름
+		ar.add(dto.getPhone());//로그인 된 계정의 핸드폰 번호
+		ar.add(dto.getAddress());//로그인 된 계정의 주소
+		return ar;
+	}
+	
+	
+	@PostMapping("setPayment")
+	public ModelAndView setPayment(String check[], String ea[], String opNum[], HttpSession session) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		MemberDTO memberDTO = new MemberDTO();
+		List<CartDTO> cartDTOs = new ArrayList<CartDTO>();
+		for(int i = 0; i < check.length; i ++) {
+			CartDTO cartDTO = new CartDTO();
+			cartDTO.setOrderNum(Long.parseLong(check[i]));
+			cartDTO.setProductEa(Long.parseLong(ea[i]));
+			cartDTO.setOptionNum(Long.parseLong(opNum[i]));
+			cartDTOs.add(cartDTO);
+		}
+		if(session.getAttribute("member")!=null) {
+			memberDTO = (MemberDTO)session.getAttribute("member");
+			cartService.setPayment(cartDTOs, memberDTO);
+			//mv.setViewName("/cart/cartPaymentList");
+		}else {
+			mv.setViewName("redirect:../");
+		}
+			
 		return mv;
 	}
 }

@@ -47,7 +47,7 @@
                                         </a>
                                         </li>
                                         <li>
-                                        <a href="wishlist.html">
+                                        <a href="/cart/cartList">
                                             <i class="zmdi zmdi-favorite"></i>
                                             Wish List (0)
                                         </a>

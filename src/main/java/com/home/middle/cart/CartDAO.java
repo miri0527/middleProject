@@ -18,6 +18,10 @@ public class CartDAO {
 	
 	private final String NAMESPACE = "com.home.middle.cart.CartDAO.";
 	
+	public CartDTO getPaymentCheck(CartDTO cartDTO) throws Exception{
+		return sqlSession.selectOne(NAMESPACE + "getPaymentCheck", cartDTO);
+	}
+	
 	public List<CartDTO> getCartList(MemberDTO memberDTO)throws Exception{
 		return sqlSession.selectList(NAMESPACE + "getCartList", memberDTO);
 	}
@@ -65,9 +69,9 @@ public class CartDAO {
 	public List<CartDTO> getCartPaymentList(MemberDTO memberDTO) throws Exception{
 		return sqlSession.selectList(NAMESPACE + "getCartPaymentList", memberDTO);
 	}
-	//임시로 가져오는거임
-	public ProductDTO getProductDetail(ProductDTO productDTO) throws Exception{
-		return sqlSession.selectOne(NAMESPACE + "getProductDetail", productDTO);
+	
+	public Long getPaymentNum() throws Exception{
+		return sqlSession.selectOne(NAMESPACE + "getPaymentNum");
 	}
 	
 }

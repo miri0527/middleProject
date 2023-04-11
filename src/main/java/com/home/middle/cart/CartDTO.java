@@ -16,10 +16,19 @@ public class CartDTO {
 	private Long optionNum;
 	private ProductDTO productDTO;
 	
+	private Long paymentNum;
 	
 	
 	
 	
+	
+	
+	public Long getPaymentNum() {
+		return paymentNum;
+	}
+	public void setPaymentNum(Long paymentNum) {
+		this.paymentNum = paymentNum;
+	}
 	public ProductDTO getProductDTO() {
 		return productDTO;
 	}

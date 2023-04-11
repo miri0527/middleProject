@@ -65,7 +65,8 @@
 		</div>
 
 		<a href="./memberPwCheck" class="btn btn-danger offset-md-6">수정</a>
-		<c:if test="${dto.roleDTO.roleName eq 'MEMBER' }">
+		<a href="../cart/cartPaymentList"><button class="submit-btn-1 mt-20 btn-hover-1 f-right mx-1"
+										type="reset">결제 취소 페이지</button></a>
 		<a href="./memberAuto"><button class="submit-btn-1 mt-20 btn-hover-1 f-right"
 										type="reset">권한 신청</button></a>
 		</c:if>								
