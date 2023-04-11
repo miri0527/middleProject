@@ -1,4 +1,4 @@
-
+document.getElementById("cartform").style.display = "none";
 ///AJAX를 이용한 상품 하위 옵션 구현
 
 
@@ -8,10 +8,11 @@ $("#selectForm1").on("change", function(){
   let opNum = $(this).val();
   let proNum = $("#option").attr("data-productnum");
   let a = $(this);
-  console.log(opNum);
-  console.log(proNum);
+  console.log("op :",opNum);
+  console.log("op2 :",proNum);
+  
   $.ajax({
-      url : "./optionList",
+      url: "/product/optionList",
       type : "POST",
       data:{
           productNum : proNum,
@@ -24,6 +25,7 @@ $("#selectForm1").on("change", function(){
           a.next().remove();
           // 부모 div의 아래에 생성 
           a.parent().append(data);
+          console.log(data)
       }
   })
 
@@ -35,7 +37,7 @@ $("#depth0").on("change", "#depth1", function() {
   const proNum = $("#option").attr("data-productnum");
   const a = $(this);
   $.ajax({
-    url: "./optionList",
+    url: "/product/optionList",
     type: "POST",
     data: {
       productNum: proNum,

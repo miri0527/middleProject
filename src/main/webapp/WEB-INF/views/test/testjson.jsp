@@ -27,6 +27,9 @@
 		<button type="button" id="btnFinish">옵션 생성하기</button>
 	</form>
 
+<script src="/resources/js/optionAdd.js"></script>
+<c:import url="../template/common_js.jsp"></c:import>
+<c:import url="../template/cart_common_js.jsp"></c:import>
 
 
 </body>
