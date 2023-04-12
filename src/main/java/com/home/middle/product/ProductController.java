@@ -128,7 +128,7 @@ public class ProductController {
 		System.out.println(ar.size());
 		mv.addObject("list", ar);
 		mv.setViewName("/product/selectOption");
-
+		
 		return mv;
 	}		
 	

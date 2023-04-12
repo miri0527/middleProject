@@ -80,8 +80,8 @@
             <!-- ADDRESS SECTION END -->
 
             <!-- GOOGLE MAP SECTION START -->
-            <div class="col-md-10 mx-auto">
-            	<div class="mx-auto" id="map" style="width:500px;height:400px;"></div>
+            <div class="col-md-10 mx-auto mb-5">
+            	<div class="mx-auto" id="map" style="width:1000px;height:400px;"></div>
             </div>
             <!-- GOOGLE MAP SECTION END -->
         </section>
