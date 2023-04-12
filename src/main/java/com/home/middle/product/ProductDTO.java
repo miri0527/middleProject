@@ -18,7 +18,7 @@ public class ProductDTO {
 	private String optionName;
 	private List<ProductOptionDTO> productOptionDTOs;
 	private List<ProductImgDTO> productImgDTOs;
-		1
+	
 	public Long getProductPrice() {
 		return productPrice;
 	}
