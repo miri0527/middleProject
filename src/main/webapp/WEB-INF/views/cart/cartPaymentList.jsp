@@ -77,18 +77,6 @@
 														data-all-idx="${i.count}">${dto.totalPrice}</td>
 													<td class="product-remove buttons">
 
-														<c:if test="${dto.buyCheck == 0 }">
-															<button type="button" class="btn btn-danger cartDelete"
-																id="delete-${i.count}">Delete</button>
-															<button type="button" class="btn btn-danger cartPayment"
-																id="delete-${i.count}">PAYMENT</button>
-														</c:if>
-														<c:if test="${dto.buyCheck == 1 }">
-															<button type="button"
-																class="btn btn-danger cartPaymentCancel"
-																id="delete-${i.count}">PAYMENTCANCEL</button>
-														</c:if>
-
 													</td>
 												</tr>
 											</c:forEach>
@@ -98,13 +86,14 @@
 
 								</div>
 								<button class="btn btn-primary selectPaymentCancel float-end mx-2">PaymentCancel Selected</button>
-								<button class="btn btn-primary selectedDelete float-end">Delete Selected</button>
+								
 							</div>
 						</div>
 						<!-- shopping-cart end -->
 					</div>
 				</div>
 			</div>
+			<script src="https://cdn.iamport.kr/v1/iamport.js"></script>
 			<script src="/resources/js/cartUpdate1.js"></script>
 			<c:import url="../template/cart_common_js.jsp"></c:import>
 		</body>

@@ -15,6 +15,40 @@ public class CartService {
 	@Autowired
 	private CartDAO cartDAO;
 	
+	public int getPaymentCheck(List<CartDTO> cartDTOs, String amount) throws Exception{
+		
+		long sum = 0;
+		
+		for(CartDTO cartDTO : cartDTOs) {
+			cartDTO = cartDAO.getPaymentCheck(cartDTO);
+			sum = sum + cartDTO.getTotalPrice();
+		}
+		
+		long a = Long.parseLong(amount);
+		
+		if(sum == a) {
+			return 1;
+		}else {
+			return 0;
+		}
+		
+	}
+	
+	public void setPayment(List<CartDTO> cartDTOs, MemberDTO memeberDTO) throws Exception{
+		ProductPaymentDTO productPaymentDTO = new ProductPaymentDTO();
+		Long a = cartDAO.getPaymentNum();
+		productPaymentDTO.setPaymentNum(a);
+		productPaymentDTO.setPaymentName(Long.toString(a));
+		
+		for(CartDTO cartDTO : cartDTOs) {
+			cartDTO.setId(memeberDTO.getId());
+			cartDTO.setPaymentCheck(1L);
+			cartDTO.setBuyCheck(1L);
+			cartDTO.setPaymentNum(a);
+			cartDAO.setCartUpdate(cartDTO);
+		}
+	}
+	
 	public List<CartDTO> getCartList(MemberDTO memberDTO) throws Exception{
 		return cartDAO.getCartList(memberDTO);
 	}

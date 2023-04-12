@@ -18,9 +18,10 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.home.middle.board.BbsDTO;
+import com.home.middle.board.qna.QnaReplyDTO;
+import com.home.middle.board.qna.QnaReplyService;
 import com.home.middle.board.qna.QnaService;
 import com.home.middle.board.review.ReviewService;
-import com.home.middle.cart.CartDTO;
 import com.home.middle.util.Pager;
 
 @Controller
@@ -33,6 +34,10 @@ public class ProductController {
 	private ReviewService reviewService;
 	@Autowired
 	private QnaService qnaService;
+	@Autowired
+	private QnaReplyService qnaReplyService;
+	
+	
 	
 	@GetMapping("list")
 	public ModelAndView getProductList(ProductDTO productDTO,Pager pager ) throws Exception{
@@ -64,6 +69,10 @@ public class ProductController {
 		 List<BbsDTO> ar = reviewService.getBoardList(pager);
 		 //qna 리스트
 		 List<BbsDTO> ar2 = qnaService.getBoardList(pager);		
+		
+		 //qna 답글 리스트 
+		  List<QnaReplyDTO> ar3 = qnaReplyService.getBoardList(pager);	
+		  
 		 // review 리스트 
 		 mv.addObject("pager",pager);
 		 mv.addObject("list1",ar);
@@ -72,6 +81,11 @@ public class ProductController {
 		 mv.addObject("pager",pager);
 		 mv.addObject("list2",ar2);
 			
+		 // qna 답글 리스트
+		 mv.addObject("pager",pager);
+		 mv.addObject("list3",ar3);
+			
+		 
 	   return mv;		
 	}
 	
@@ -101,7 +115,7 @@ public class ProductController {
 	      return mv;
 	   }
 	
-//////////////////////////////////////////////////////////////상품 하위 옵션 구현//////////////////////////////////////////////////////	
+//////////////////////////////////////////////////////////////상품 하위 옵션 구현//////////////////////////////////////////////////////////////////////	
 
 
 	//ajax의 post url "./optionList" 

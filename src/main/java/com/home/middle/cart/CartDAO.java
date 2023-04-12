@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.home.middle.member.MemberDTO;
 import com.home.middle.product.ProductDTO;
-import com.home.middle.util.Pager;
+import com.home.middle.product.ProductOptionDTO;
 
 @Repository
 public class CartDAO {
@@ -17,6 +17,10 @@ public class CartDAO {
 	private SqlSession sqlSession;
 	
 	private final String NAMESPACE = "com.home.middle.cart.CartDAO.";
+	
+	public CartDTO getPaymentCheck(CartDTO cartDTO) throws Exception{
+		return sqlSession.selectOne(NAMESPACE + "getPaymentCheck", cartDTO);
+	}
 	
 	public List<CartDTO> getCartList(MemberDTO memberDTO)throws Exception{
 		return sqlSession.selectList(NAMESPACE + "getCartList", memberDTO);
@@ -65,9 +69,18 @@ public class CartDAO {
 	public List<CartDTO> getCartPaymentList(MemberDTO memberDTO) throws Exception{
 		return sqlSession.selectList(NAMESPACE + "getCartPaymentList", memberDTO);
 	}
-	//임시로 가져오는거임
-	public ProductDTO getProductDetail(ProductDTO productDTO) throws Exception{
-		return sqlSession.selectOne(NAMESPACE + "getProductDetail", productDTO);
+	
+	public Long getPaymentNum() throws Exception{
+		return sqlSession.selectOne(NAMESPACE + "getPaymentNum");
 	}
+	
+	public int setPaymentInsert(ProductPaymentDTO productPaymentDTO) throws Exception{
+		return sqlSession.selectOne(NAMESPACE + "setPaymentInsert", productPaymentDTO);
+	}
+	
+	public int setCartUpdate(CartDTO cartDTO) throws Exception{
+		return sqlSession.update(NAMESPACE + "setCartUpdate", cartDTO);
+	}
+	
 	
 }

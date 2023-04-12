@@ -12,6 +12,7 @@
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
 </head>
 <body>
+<c:import url="../template/header.jsp"></c:import>
    <div class="container fluid my-5">
    <div class= "row mb-4 ">
    
@@ -24,13 +25,27 @@
 	<form class = "row g-3 ms-auto" action="./add" method="post" enctype="multipart/form-data" >
  		<div class="col-12">
     		<label for="title" class="form-label">아이디</label>
-    		<input type="text" class="form-control" id="id" name="id" placeholder="id" value="id">
+    		<input type="text" class="form-control" id="id" name="id" placeholder="id" value="${member.id}">
   		</div>
   		
+  		<c:if test="${boardName eq 'qna'}">
   		<div class="col-12">
     		<label for="contents" class="form-label">제목</label>
     		<input type="text" class="form-control" id="title" name="title" placeholder="제목">
   		</div> 
+  		</c:if>
+  		
+  		<c:if test="${boardName eq 'QnaReply'}">
+  		<div class="col-12">
+    		<label for="contents" class="form-label">제목</label>
+    		<input type="text" class="form-control" id="title" name="title" placeholder="제목">
+  		</div> 
+  		<div class="col-12">
+    		<label for="contents" class="form-label">원글번호</label>
+    		<input type="text" class="form-control" id="num" name="num" placeholder="원글 번호" value="1">
+  		</div> 
+  		</c:if>
+  		
   		
      	<div class="col-12">
     		<label for="contents" class="form-label">내용</label>
@@ -44,7 +59,7 @@
   		
   			<div class="col-12">
     		<label for="contents" class="form-label">상품번호</label>
-    		<input type="text" class="form-control" id="productNum" name="productNum" readonly value="${dto.productNum}">
+    		<input type="text" class="form-control" id="productNum" name="productNum" value="${dto.productNum}">
   		</div>
 
 		<!-- <div id="fileList" class="my-5">
@@ -58,11 +73,11 @@
 	  
 	</form>
    </div>
-   
+   <c:import url="../template/footer.jsp"></c:import>
   
    <c:import url="../template/common_js.jsp"></c:import>
-<script>
-   //라이브러리 summernote안에 있는 함수 호출 
-	$("#contents").summernote();</script>
+ <script>
+		$("#contents").summernote();
+	</script>
 </body>
 </html>

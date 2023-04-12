@@ -19,6 +19,16 @@
 		ON(P.PRODUCTNUM = "POP".PRODUCTNUM)
 		WHERE P.PRODUCTNUM = #{productNum} AND "POP".OPTIONNUM = 121
 	</select>
+	
+	<select id="getPaymentNum" resultType="Long">
+		SELECT PRODUCTPAYMENT_SEQ.NEXTVAL FROM DUAL
+	</select>
+	<insert id="setPaymentInsert" parameterType="ProductPaymentDTO">
+		INSERT INTO PRODUCTPAYMENT VALUES(#{paymentNum},#{paymentName})
+	</insert>
+	<update id="setCartUpdate" parameterType="CartDTO">
+		UPDATE PRODUCTORDER SET BUYCHECK = #{buyCheck}, PAYMENTCHECK = #{paymentCheck}, PAYMENTNUM = #{paymentNum} WHERE ORDERNUM = #{orderNum}
+	</update>
 
 	<select id="getCartList" parameterType="MemberDTO" resultMap="ProductCartList">
 		SELECT * FROM PRODUCTORDER PO
@@ -112,7 +122,7 @@
 	</update>
 	
 	<update id="setCartPaymentCancel" parameterType="CartDTO">
-		UPDATE PRODUCTORDER SET BUYCHECK = 0 WHERE ORDERNUM = #{orderNum}
+		UPDATE PRODUCTORDER SET BUYCHECK = 0, PAYMENTNUM = NULL, PAYMENTCHECK = 2 WHERE ORDERNUM = #{orderNum}
 	</update>
 	
 	<update id="getCartUpdate" parameterType="CartDTO">

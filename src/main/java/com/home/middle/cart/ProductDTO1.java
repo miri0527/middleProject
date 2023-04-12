@@ -9,13 +9,13 @@ public class ProductDTO1 {
 	private Long optionNum;
 	private String optionName;
 	
-	private List<ProductOptionDTO> productOptionDTOs;
+	private List<ProductOptionDTO1> productOptionDTOs;
 	
 	
-	public List<ProductOptionDTO> getProductOptionDTOs() {
+	public List<ProductOptionDTO1> getProductOptionDTOs() {
 		return productOptionDTOs;
 	}
-	public void setProductOptionDTOs(List<ProductOptionDTO> productOptionDTOs) {
+	public void setProductOptionDTOs(List<ProductOptionDTO1> productOptionDTOs) {
 		this.productOptionDTOs = productOptionDTOs;
 	}
 	public Long getOptionNum() {

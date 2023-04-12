@@ -1,6 +1,10 @@
 document.getElementById("cartform").style.display = "none";
 ///AJAX를 이용한 상품 하위 옵션 구현
 
+// 계산할 값 가져오기
+
+
+
 
 //두번째 하위 옵션 
 // change를 이용해 값이 변하면 자식 옵션이 생성되도록 하였음
@@ -77,17 +81,35 @@ $("#depth0").on("change", "#depth1", function() {
 
 // });
 
+ 
 
-$("#inputQuantity").on("change", function(){
-  let ea = $("#inputQuantity").val();
-  let price = $("#depth2 option:selected").attr("data-productprice");
-  let tp =ea*price
-  console.log($("#depth2 option:selected").attr("data-productprice"));
-  console.log(ea);
+ $("#inputQuantity").on("change", function(){
+   let ea = $("#inputQuantity").val();
+   let price = $("#depth2 option:selected").attr("data-productprice");
+   let tp =ea*price
+   console.log($("#depth2 option:selected").attr("data-productprice"));
+   console.log(ea);
   console.log(ea*price);
 
-  $("#totalPrice").val(tp);
+   $("#totalPrice").val(tp);
 
-});
+ });
+ 
+
+ $("#qtybutton").on("click", function(){
+   let ea = $("#inputQuantity").val();
+   let price = $("#depth2 option:selected").attr("data-productprice");
+   let tp =ea*price
+   console.log($("#depth2 option:selected").attr("data-productprice"));
+   console.log(ea);
+  console.log(ea*price);
+
+   $("#totalPrice").val(tp);
+
+ });
+
+ document.getElementById("cartform").style.display = "none";
+
+
 
 

@@ -1,6 +1,6 @@
 package com.home.middle.cart;
 
-public class ProductOptionDTO {
+public class ProductOptionDTO1 {
 	private Long optionNum;
 	private Long productNum;
 	private String optionName;

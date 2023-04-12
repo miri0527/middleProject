@@ -50,11 +50,13 @@
 													</td>
 													<td class="product-thumbnail orderNum" id="orderNum-${i.count}">
 														<div class="pro-thumbnail-img">
-															<img src="https://shop-phinf.pstatic.net/20230317_262/1679040584256kQrbw_JPEG/80176479993578269_2030409830.JPG?type=m510">
+															<img src="/resources/LG전자 스탠바이미.webp">
 														</div>
-														<p class="orderNum">${dto.orderNum}</p>
-														${dto.productDTO.productName}
-														<p class="optionNum">${dto.optionNum}</p>
+														
+															<p class="orderNum text-center">${dto.orderNum}</p>
+															<p class="text-center">${dto.productDTO.productName}</p>
+															<p class="optionNum text-center">${dto.optionNum}</p>
+														
 														<!-- 이미지 추가 -->
 														<input type="hidden" value="${dto.productDTO.productPrice}"
 															id="price-${i.count}">
@@ -100,6 +102,20 @@
 									</table>
 
 								</div>
+								<div class="row">
+                                                    <div class="payment-details box-shadow p-30 mb-50">
+                                                        <h6 class="widget-title border-left mb-20">payment details</h6>
+                                                        <table>
+                                                            <tbody>
+                                                            <tr>
+                                                                <td class="order-total">Order Total</td>
+                                                                <td class="order-total-price">0</td><!-- ₩ -->
+                                                            </tr>
+                                                        </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>								
+								<button onclick="test()">결제하기</button>
 								<button class="btn btn-primary selectPayment float-end mx-2">Payment Selected</button>
 								
 								<button class="btn btn-primary selectedDelete float-end">Delete Selected</button>
@@ -110,9 +126,11 @@
 				</div>
 
 			</div>
-
+			
+			<script src="https://cdn.iamport.kr/v1/iamport.js"></script>
 			<script src="/resources/js/cartUpdate1.js"></script>
 			<c:import url="../template/cart_common_js.jsp"></c:import>
+			
 		</body>
 
 		</html>

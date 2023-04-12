@@ -207,7 +207,7 @@ public class Pager {
 	}
 
 	public Pager() {
-		this.perPage=10L;
+		this.perPage=5L;
 	}
 	
 	   //startRow, lastRow 계산 하는 메서드
@@ -222,7 +222,7 @@ public class Pager {
 	
 	public Long getPerPage() {
 		if(this.perPage==null || this.perPage<1) {
-		this.perPage=10L;
+		this.perPage=5L;
 	}
 		return perPage;
 	}

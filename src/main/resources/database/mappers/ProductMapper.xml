@@ -26,6 +26,8 @@
   	SELECT PRODUCTNUM , PRODUCTNAME FROM PRODUCT
   	WHERE CATEGORYNUM = #{categoryNum}
   	
+  	
+  	
   	</select>
 
  	<select id="getProductDetail" parameterType="ProductDTO" resultMap="productDetailResult">

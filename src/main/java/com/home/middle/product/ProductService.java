@@ -22,9 +22,7 @@ public class ProductService {
 	private ProductDAO productDAO;
 	@Autowired
 	private FileManager fileManager;
-	@Autowired
-	// 저장관리는 os가 존재하는데, os와 통신하는 과정을 하는 역할
-	private ServletContext servletContext;
+	
 
 	public List<ProductOptionDTO> getProductList(ProductDTO productDTO,Pager pager ) throws Exception {
 		
