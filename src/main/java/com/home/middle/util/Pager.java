@@ -11,10 +11,20 @@ public class Pager {
 	private String name;
 	private String[] roleName;
 	private Long categoryNum;
+	private String autoStatus;
+	private Long orderNum;
 	
 	
 	
 	
+	public String getAutoStatus() {
+		return autoStatus;
+	}
+
+	public void setAutoStatus(String autoStatus) {
+		this.autoStatus = autoStatus;
+	}
+
 	public Long getCategoryNum() {
 		return categoryNum;
 	}

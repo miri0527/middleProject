@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.home.middle.member.MemberDTO;
 import com.home.middle.product.ProductDTO;
+import com.home.middle.product.ProductOptionDTO;
 import com.home.middle.util.Pager;
 
 @Repository
@@ -58,6 +59,10 @@ public class CartDAO {
 	
 	public int setCartPaymentCancel(CartDTO cartDTO) throws Exception{
 		return sqlSession.update(NAMESPACE + "setCartPaymentCancel", cartDTO);
+	}
+	
+	public int setCartUpdate(CartDTO cartDTO) throws Exception {
+		return sqlSession.update(NAMESPACE + "setCartUpdate", cartDTO);
 	}
 	
 	public CartDTO getCartPaymentDetail(CartDTO cartDTO) throws Exception{

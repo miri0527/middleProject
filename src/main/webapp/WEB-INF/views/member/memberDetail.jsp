@@ -69,7 +69,7 @@
 										type="reset">결제 취소 페이지</button></a>
 		<a href="./memberAuto"><button class="submit-btn-1 mt-20 btn-hover-1 f-right"
 										type="reset">권한 신청</button></a>
-		</c:if>								
+									
 	</div>
 	
 	
