@@ -21,7 +21,6 @@ import com.home.middle.board.qna.QnaReplyDTO;
 import com.home.middle.board.qna.QnaReplyService;
 import com.home.middle.board.qna.QnaService;
 import com.home.middle.board.review.ReviewService;
-import com.home.middle.member.MemberDTO;
 import com.home.middle.util.Pager;
 
 
@@ -106,8 +105,8 @@ public class ProductController {
 	   
 	
 
+	
 //////////////////////////////////////////////////////////////상품 하위 옵션 구현//////////////////////////////////////////////////////////////////////	
-
 
 	//ajax의 post url "./optionList" 
 	@PostMapping("optionList")
@@ -175,98 +174,26 @@ public class ProductController {
 		
 		mv.addObject("result", message);
 		mv.setViewName("common/result");
-		mv.addObject("url", "./list");
+		mv.addObject("url", "./list?categoryNum=" + productDTO.getCategoryNum());
 		
 		return mv;
 	}
 	
 	@PostMapping("delete")
-	public ModelAndView setProductDelete(@RequestParam(value="chkList",required = false) ProductDTO[] productDTOs, HttpSession session) throws Exception {
+	public ModelAndView  setProductDelete(ProductDTO productDTO, HttpSession session) throws Exception {
 		ModelAndView mv = new ModelAndView();
+		int result = productService.setProductDelete(session, productDTO);
 		
-		for (ProductDTO productDTO2 : productDTOs) {
-			productDTO2.setProductNum(productDTO2.getProductNum());
-			System.out.println(productDTO2.getProductNum());
-			int result = productService.setProductDelete(session, productDTO2) ;
-			
-		}		
-		
-		mv.setViewName("redirect:./memberProductList");
-		
-		return mv;
-	}
-	
-	@GetMapping("productOptionAdd")
-	public ModelAndView setProductOptionAdd(ProductDTO productDTO, HttpSession session)throws Exception{
-		ModelAndView mv = new ModelAndView();
-		
-//		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
-//		String id = productService.getProductId(productDTO);
-//		if(memberDTO != null) {
-//			if(memberDTO.getId().equals(id)){			
-//				mv.addObject("dto", productDTO);
-//				mv.setViewName("product/productOptionAdd");
-//			}else {
-//				mv.setViewName("redirect:/");
-//			}
-//		}else {
-//			mv.setViewName("redirect:/");
-//		}
-		mv.addObject("dto", productDTO);
-		mv.setViewName("product/productOptionAdd");
-		
-		return mv;
-	}
-	
-	@PostMapping("productOptionAdd")
-	public ModelAndView productOptionAdd(String[] optionValue0, String[] optionValue1, String[] optionValue2, String[] optionName, int[] countList, int[] countList2, String[] price, String[] stock, String productNum) throws Exception{
-		
-		ModelAndView mv = new ModelAndView();
-		
-		productService.productOptionAdd(optionValue0,optionValue1,optionValue2,optionName, countList, countList2, price, stock, productNum);
-		
-		mv.setViewName("/test/testjson");
-		
-		return mv;
-	}
-	@GetMapping("productOptionUpdate")
-	public ModelAndView productOptionAdd(ProductOptionDTO productOptionDTO) throws Exception{
-		
-		ModelAndView mv = new ModelAndView();
-		List<ProductOptionDTO> dto0 = new ArrayList<ProductOptionDTO>();
-		List<ProductOptionDTO> dto1 = new ArrayList<ProductOptionDTO>();
-		List<ProductOptionDTO> dto2 = new ArrayList<ProductOptionDTO>();
-		for(long i = 0; i < 3; i++) {
-			productOptionDTO.setDepth(i);
-			if(i == 0) {				
-				dto0 = productService.getProductOptionList(productOptionDTO);
-			}else if(i == 1) {
-				dto1 = productService.getProductOptionList(productOptionDTO);
-			}else if(i == 2) {
-				dto2 = productService.getProductOptionList(productOptionDTO);
-			}
+		String message = "삭제실패";
+		if(result > 0) {
+			message = "상품이 삭제되었습니다";
 		}
 		
-		mv.addObject("dto0", dto0);
-		mv.addObject("dto1", dto1);
-		mv.addObject("dto2", dto2);
-		mv.setViewName("/test/productOptionUpdate");
+		mv.addObject("result", message);
+		mv.setViewName("common/result");
+		mv.addObject("url", "./list?categoryNum=" + 1);
 		
 		return mv;
 	}
-	@PostMapping("productOptionUpdate")
-	public ModelAndView setproductOptionUpdate(ProductOptionDTO productOptionDTO, String[] optionValue0, String[] optionValue1, String[] optionValue2, String[] optionName, int[] countList, int[] countList2, String[] price, String[] stock, String productNum) throws Exception{
-		
-		ModelAndView mv = new ModelAndView();
-		
-		productService.setProductOptionDelete(productOptionDTO);
-		
-		productService.productOptionAdd(optionValue0,optionValue1,optionValue2,optionName, countList, countList2, price, stock, productNum);
-		
-		mv.setViewName("/test/testjson");
-		
-		return mv;
-	}
-	
 	
 }

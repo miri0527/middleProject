@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.home.middle.cart.CartDTO;
 import com.home.middle.util.FileManager;
 import com.home.middle.util.Pager;
 
@@ -36,6 +37,7 @@ public class ProductService {
 	public ProductDTO getProductDetail(ProductDTO productDTO) throws Exception {
 		return productDAO.getProductDetail(productDTO);
 	}
+	
 
 	public List<ProductOptionDTO> getOption(ProductOptionDTO productOptionDTO) throws Exception {
 		return productDAO.getOption(productOptionDTO);
@@ -83,6 +85,13 @@ public class ProductService {
 	  
 	  return ar; 
 	  }
+	  
+	  public List<ProductOptionDTO> getMemberCartDetail(ProductOptionDTO productOptionDTO) throws Exception {
+		  System.out.println("product"+productOptionDTO.getProductNum());
+		  List<ProductOptionDTO> ar =  productDAO.getMemberCartDetail(productOptionDTO);
+		  System.out.println("ar :"+ar.get(0).getOptionNum());
+		  return ar;
+	  }		
 
 
 	public int setProductUpdate(ProductDTO productDTO, MultipartFile[] pic, Long[] fileNums, HttpSession session)
@@ -108,7 +117,7 @@ public class ProductService {
 
 				productImgDTO.setFileName(fileName);
 				productImgDTO.setOriName(pics.getOriginalFilename());
-				productImgDTO.setProductNum(productDTO.getProductNum());
+				productImgDTO.setProductNum(1L);
 
 				result = productDAO.setProductFileAdd(productImgDTO);
 
@@ -328,7 +337,7 @@ public class ProductService {
 			productOptionDTO.setOptionNum(optionNum);
 			productOptionDTO.setOptionName(optionName[0]);
 			productOptionDTO.setOptionValue(optionValue0[i]);
-			productOptionDTO.setProductNum(Long.parseLong(productNum));// 상품 번호 넘어오는거 받아서 수정할것
+			productOptionDTO.setProductNum(1L);// 상품 번호 넘어오는거 받아서 수정할것
 			productOptionDTO.setDepth(0L);
 			productOptionDTO.setProductPrice(tempPrice2);// 배열로 값 넘어온거 적용해줄것
 			productOptionDTO.setProductStock(tempStock2);// 배열로 값 넘어온거 적용해줄것
@@ -359,7 +368,7 @@ public class ProductService {
 					productOptionDTO.setOptionNum(optionNum);
 					productOptionDTO.setOptionName(optionName[1]);
 					productOptionDTO.setOptionValue(optionValue11.get(i).get(j));
-					productOptionDTO.setProductNum(Long.parseLong(productNum));// 상품 번호 넘어오는거 받아서 수정할것
+					productOptionDTO.setProductNum(1L);// 상품 번호 넘어오는거 받아서 수정할것
 					productOptionDTO.setDepth(1L);
 					productOptionDTO.setProductPrice(tempPrice);// 배열로 값 넘어온거 적용해줄것
 					productOptionDTO.setProductStock(tempStock);// 배열로 값 넘어온거 적용해줄것
@@ -397,6 +406,10 @@ public class ProductService {
 			}
 		}
 		return 1;	
+	}
+	
+	public List<ProductOptionDTO> getProductOptionDetail(ProductDTO productDTO) throws Exception {
+		return productDAO.getProductOptionDetail(productDTO);
 	}
 
 	public List<ProductOptionDTO> getProductOptionDetail(ProductDTO productDTO) throws Exception {

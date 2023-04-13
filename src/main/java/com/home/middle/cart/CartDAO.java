@@ -19,6 +19,12 @@ public class CartDAO {
 	
 	private final String NAMESPACE = "com.home.middle.cart.CartDAO.";
 	
+	
+	public Long getTotalCount(Pager pager) throws Exception {
+		Long l= sqlSession.selectOne(NAMESPACE + "getTotalCount", pager);
+		return l;
+	}
+	
 	public CartDTO getPaymentCheck(CartDTO cartDTO) throws Exception{
 		return sqlSession.selectOne(NAMESPACE + "getPaymentCheck", cartDTO);
 	}
@@ -33,8 +39,7 @@ public class CartDAO {
 	}
 	
 	public List<CartDTO> getMemberCartList(Pager pager) throws Exception {
-		System.out.println(pager.getStartRow());
-		List<CartDTO> ar =  sqlSession.selectList(NAMESPACE + "getMemberCartList",pager);
+		List<CartDTO> ar =  sqlSession.selectList(NAMESPACE + "getMemberCartList", pager);
 		
 		return ar;
 	}
@@ -83,5 +88,14 @@ public class CartDAO {
 	public Long getPaymentNum() throws Exception{
 		return sqlSession.selectOne(NAMESPACE + "getPaymentNum");
 	}
+	
+	public int setPaymentInsert(ProductPaymentDTO productPaymentDTO) throws Exception{
+		return sqlSession.selectOne(NAMESPACE + "setPaymentInsert", productPaymentDTO);
+	}
+	
+	public int setCartUpdate(CartDTO cartDTO) throws Exception{
+		return sqlSession.update(NAMESPACE + "setCartUpdate", cartDTO);
+	}
+	
 	
 }

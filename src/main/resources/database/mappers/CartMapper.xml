@@ -130,9 +130,11 @@
 			USING(PRODUCTNUM)
 				<include refid="CartCondition"></include>
 				<if test="search == null">
-					WHERE PAYMENTCHECK=1
+					WHERE BUYCHECK=1
 				</if>
-				 AND PAYMENTCHECK=1
+				<if test="search == ''">
+				 AND BUYCHECK=1
+				 </if>
 				ORDER BY ORDERNUM DESC
 				)
 	N)
@@ -140,11 +142,4 @@
 	</select>
 
 	
-	<select id="setCartOptionRef" parameterType="Long" resultType="Long">
-        SELECT REF FROM PRODUCTOPTION WHERE OPTIONNUM=#{optionNum}
-     </select>
-
-	<select id="setCartOptionName" parameterType="Long" resultType="String">
-        SELECT OPTIONVALUE FROM PRODUCTOPTION WHERE OPTIONNUM=#{optionNum}
-     </select>
 </mapper>

@@ -76,3 +76,4 @@ public class QnaReplyDAO{
 		return sqlSession.delete(NAMESPACE+"setBoardFileDelete", fileNum);
 	}
 }
+

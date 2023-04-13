@@ -77,8 +77,14 @@ public class CartService {
 	}
 	
 	public List<CartDTO> getMemberCartList(Pager pager) throws Exception {
+		  pager.makeRow();
+		  
+		  pager.makeNum(cartDAO.getTotalCount(pager));
+		  
 		return cartDAO.getMemberCartList(pager);
 	}
+	
+	
 	
 	public int setCartAdd(CartDTO cartDTO) throws Exception{
 		return cartDAO.setCartAdd(cartDTO);

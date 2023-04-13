@@ -13,7 +13,7 @@
 
 <div class="mb-3 row">
 
-	<input type="hidden" name="id" value="${id.id}">
+	<input type="hidden" name="id" value="${dto.id}">
     <label for="memberID" class="col-sm-2 col-form-label">Id</label>
     <div class="col-sm-10">
       <input type="text" readonly class="form-control-plaintext" id="adMemberID" value="${dto.id}">

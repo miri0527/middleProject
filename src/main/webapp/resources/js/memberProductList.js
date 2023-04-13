@@ -23,7 +23,7 @@ function deleteValue() {
             },
             success: function () { // 요청이 성공하면 실행될 함수
                     alert("상품이 삭제되었습니다") // 알림창 띄움
-                    location.replace("./memberProductList") // 상품 목록 페이지로 이동
+                    location.replace("/manager/productList") // 상품 목록 페이지로 이동
                 
                 
             }
