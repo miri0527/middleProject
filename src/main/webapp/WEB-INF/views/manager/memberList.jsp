@@ -50,7 +50,7 @@ table.type09 td {
 <div class="container-fluid">
 	 <div class="row col-md-4 mx-auto text-center border-bottom border-dark pb-2">
      <p class="fs-2" style="font-family: 'Impact'">회원리스트</p>
-   </div>
+   	</div>
 	회원등급
 	<input type="checkbox" id="allRole" name="roleName" value="" checked > 전체
 	<input type="checkbox" id="memberRole	" name="roleName" class="check" value="MEMBER">일반회원

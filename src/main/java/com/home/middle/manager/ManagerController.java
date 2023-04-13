@@ -32,8 +32,6 @@ public class ManagerController {
 	@Autowired
 	private ProductService productService;
 	
-	@Autowired
-	private ProductService productService;
 	
 	@GetMapping("memberList")
 	public ModelAndView getMemberList(Pager pager, @RequestParam(name = "roleName", required = false) String [] roleName) throws Exception {
