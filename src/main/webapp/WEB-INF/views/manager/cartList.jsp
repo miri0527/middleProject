@@ -7,12 +7,34 @@
 <meta charset="UTF-8">
 <title>결제 리스트</title>
 <c:import url="../template/common_css.jsp"></c:import>
+<style type="text/css">
+	.paging {
+	margin-top : 20px;
+} 
+
+.button {
+	margin-top : 30px;
+}
+
+.search2 {
+	padding-top : 30px;
+}
+
+.search1 {
+	padding-top : 33px;
+}
+
+.search3 {
+	padding-top : 33px;
+}
+</style>
 </head>
 <body>
+<c:import url="../template/managerHeader.jsp"></c:import>
 <div class="container-fluid">
-	<div class="row my-5">
-		<h1>결제리스트</h1>
-	</div>
+	 <div class="row col-md-4 mx-auto text-center border-bottom border-dark pb-2">
+    	 <p class="fs-2" style="font-family: 'Impact'">구매리스트</p>
+   	 </div>
 	
 	
 		<div class="row">
@@ -29,7 +51,7 @@
 					<tr>
 						<td>${dto.orderNum }</td>
 						<td>${dto.id}</td>
-						<td><a href = "./cartDetail?productNum=${dto.productDTO.productNum}">${dto.productDTO.productName}</a></td>
+						<td>${dto.productDTO.productName}</td>
 						<td>${dto.totalPrice }</td>
 						<td>${dto.productEa }</td>
 						<td>${dto.orderDate }</td>
@@ -81,18 +103,18 @@
 	      <form action="./cartList" method="get" class="row g-3" id="searchForm">
 	      	<input type="hidden" name="page" value="1" id="page">
 	         <div class="row justify-content-center mx-auto">
-	            <div class="col-auto">
+	            <div class="col-auto search1">
 	               <label for="kind" class="visually-hidden">회원아이디</label>
 	               <select class="form-select" name="kind" id="kind" aria-label="Default select example">
 	               <!--검색했을 때 s  -->
 	                  <option value="id" ${pager.kind eq 'id' ? 'selected' : ''}>회원아이디 </option>
 	               </select>
 	            </div>
-	            <div class="col-auto">
+	            <div class="col-auto search2">
 	               <label for="search" class="visually-hidden">Search</label>
 	               <input type="text" class="form-control" value="${pager.search}" name="search" id="search" placeholder="검색어를 입력하세요.">
 	            </div>	
-	            <div class="col-auto">
+	            <div class="col-auto search3">
 	               <button type="submit" class="btn btn-outline-primary mb-3">검색</button>
 	            </div>
 	         </div>

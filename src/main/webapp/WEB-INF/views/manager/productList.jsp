@@ -17,9 +17,6 @@ thead {
 	color : white;
 }
 	
-th:nth-child(2n), td:nth-child(2n) {
-   	background-color: #bbdefb;
- }
  
 .paging {
 	margin-top : 20px;
@@ -146,12 +143,11 @@ th:nth-child(2n), td:nth-child(2n) {
          </form>
       </div>
 
-   <c:if test="${member.roleDTO.roleName eq 'ADMIN'}">
       <div class="col text-center button">
          <a href="../product/add"><button type="button" class="btn btn-primary" style="color:white;" id="add">상품등록</button></a>
          <button type="button" class="btn btn-danger" onclick="deleteValue()">상품삭제</button>
       </div>   
-   </c:if>   
+    
 <script src="../resources/js/memberProductList.js"></script>
 <c:import url="../template/common_js.jsp"></c:import>   
 <script src="../resources/js/pageing.js"></script>
