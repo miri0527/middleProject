@@ -108,10 +108,10 @@
                                         <li><a href="/manager/memberList">회원리스트</a>
                                           
                                         </li>
-                                        <li class="mega-parent"><a href="/product/memberProductList">상품리스트</a>
+                                        <li class="mega-parent"><a href="/manager/productList">상품리스트</a>
                                          
                                         </li>
-                                        <li class="mega-parent"><a href="shop.html">구매리스트</a>
+                                        <li class="mega-parent"><a href="/manager/cartList">구매리스트</a>
                         
                                         </li>
                                         <li class="mega-parent"><a href="/product/add">상품등록</a>

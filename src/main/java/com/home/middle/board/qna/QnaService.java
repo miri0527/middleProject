@@ -45,8 +45,8 @@ public class QnaService implements BbsService{
 	public int setBoardAdd(BbsDTO bbsDTO, HttpSession session) throws Exception {
 		// TODO Auto-generated method stub
 		int result = qnaDAO.setBoardAdd(bbsDTO);
+		System.out.println("result: " + result);
 		
-		//file을 hdd에 저장
 		return result;
 	}
 	
@@ -66,26 +66,15 @@ public class QnaService implements BbsService{
 
 	@Override
 	public int setBoardUpdate(BbsDTO bbsDTO) throws Exception {
+		int result = qnaDAO.setBoardUpdate(bbsDTO);
 		// TODO Auto-generated method stub
-		return 0;
+		return result;
 	}
 
 
 	public int setBoardUpdate(BbsDTO bbsDTO, MultipartFile[] multipartFiles, HttpSession session, Long[] fileNums)
 			throws Exception {
-		//qna Update
-		int result = qnaDAO.setBoardUpdate(bbsDTO);
-		
-		
-		//qnaFiles Insert
-		//file HDD에 저장
-		
-	
-					
-		
-		
-		
-		return result;
+		return 0;
 	}
 
 	@Override

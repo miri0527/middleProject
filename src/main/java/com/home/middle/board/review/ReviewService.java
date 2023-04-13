@@ -44,10 +44,7 @@ public class ReviewService implements BbsService {
 	public int setBoardAdd(BbsDTO bbsDTO,  HttpSession session) throws Exception {
 		// TODO Auto-generated method stub
 		int result = reviewDAO.setBoardAdd(bbsDTO);
-		
-		String realPath = session.getServletContext().getRealPath("resources/upload/review/");
-		System.out.println(realPath);
-		
+	
 	
 		return result;
 	}
@@ -60,22 +57,15 @@ public class ReviewService implements BbsService {
 	
 	@Override
 	public int setBoardUpdate(BbsDTO bbsDTO) throws Exception {
+		int result = reviewDAO.setBoardUpdate(bbsDTO);
 		// TODO Auto-generated method stub
-		return 0;
+		return result;
 	}
 
 
 	public int setBoardUpdate(BbsDTO bbsDTO,MultipartFile[] multipartFiles, HttpSession session, Long[] fileNums)
 			throws Exception {
-		//qna Update
-		int result = reviewDAO.setBoardUpdate(bbsDTO);
-		
-		
-		
-		//qnaFiles Insert
-
-		
-		return result;
+	return 0;
 	}
 	@Override
 	public int setBoardDelete(BbsDTO bbsDTO, HttpSession session) throws Exception {

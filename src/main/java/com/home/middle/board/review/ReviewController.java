@@ -93,9 +93,9 @@ public class ReviewController {
 			}
 			
 			@PostMapping("add")
-			public ModelAndView setBoardAdd(ReviewDTO reviewDTO, MultipartFile [] files, HttpSession session)throws Exception{
+			public ModelAndView setBoardAdd(ReviewDTO reviewDTO, HttpSession session)throws Exception{
 			ModelAndView mv = new ModelAndView();
-			int result = reviewService.setBoardAdd(reviewDTO, files, session);
+			int result = reviewService.setBoardAdd(reviewDTO, session);
 			String message = "등록이 실패했습니다.";
 			if(result>0) {
 				 message = "등록을 성공했습니다.";

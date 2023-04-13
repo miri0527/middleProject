@@ -138,6 +138,7 @@
 	N)
 		WHERE R BETWEEN #{startRow} AND #{lastRow}
 	</select>
+
 	
 	<select id="setCartOptionRef" parameterType="Long" resultType="Long">
         SELECT REF FROM PRODUCTOPTION WHERE OPTIONNUM=#{optionNum}

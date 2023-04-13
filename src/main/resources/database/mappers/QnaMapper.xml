@@ -51,9 +51,6 @@
 	DELETE QNA WHERE  NUM = #{num}
 	</delete>
     
-   
-	
-      
    <select id="getBoardDetail" parameterType="BbsDTO" resultMap="getBoardDetailResult"> 
    		SELECT * FROM QNA
    			WHERE NUM=#{num}

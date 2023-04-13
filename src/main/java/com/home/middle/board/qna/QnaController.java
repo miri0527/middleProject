@@ -79,9 +79,9 @@ public class QnaController {
 	}
 	
 	@PostMapping("add")
-	public ModelAndView setBoardAdd(QnaDTO qnaDTO, MultipartFile [] files, HttpSession session)throws Exception{
+	public ModelAndView setBoardAdd(QnaDTO qnaDTO, HttpSession session)throws Exception{
 	ModelAndView mv = new ModelAndView();
-	int result = qnaService.setBoardAdd(qnaDTO, files, session);
+	int result = qnaService.setBoardAdd(qnaDTO,session);
 	String message = "등록이 실패했습니다.";
 	if(result>0) {
 		 message = "등록을 성공했습니다.";

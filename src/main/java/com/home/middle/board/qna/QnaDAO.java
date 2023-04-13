@@ -33,7 +33,6 @@ public class QnaDAO implements BbsDAO{
 	
 	@Override
 	public int setBoardAdd(BbsDTO bbsDTO) throws Exception {
-		// TODO Auto-generated method stub
 	    return sqlSession.insert(NAMESPACE+"setBoardAdd", bbsDTO);
 	}
 

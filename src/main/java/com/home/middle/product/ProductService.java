@@ -399,4 +399,7 @@ public class ProductService {
 		return 1;	
 	}
 
+	public List<ProductOptionDTO> getProductOptionDetail(ProductDTO productDTO) throws Exception {
+		return productDAO.getProductOptionDetail(productDTO);
+	}
 }

@@ -15,7 +15,9 @@ import org.springframework.web.servlet.ModelAndView;
 import com.home.middle.cart.CartDTO;
 import com.home.middle.cart.CartService;
 import com.home.middle.member.MemberDTO;
-import com.home.middle.member.MemberService;
+import com.home.middle.member.MemberService;import com.home.middle.product.ProductDTO;
+import com.home.middle.product.ProductOptionDTO;
+import com.home.middle.product.ProductService;
 import com.home.middle.util.Pager;
 
 @Controller
@@ -26,6 +28,8 @@ public class ManagerController {
 	private MemberService memberService;
 	@Autowired
 	private CartService cartService;
+	@Autowired
+	private ProductService productService;
 	
 	@GetMapping("memberList")
 	public ModelAndView getMemberList(Pager pager, @RequestParam(name = "roleName", required = false) String [] roleName) throws Exception {
@@ -55,6 +59,30 @@ public class ManagerController {
 		
 	}
 	
+	@GetMapping("productList")
+	   public ModelAndView getMemberProductList(Pager pager) throws Exception {
+	      ModelAndView mv = new ModelAndView();
+	      
+	      List<ProductDTO> ar =  productService.getMemberProductList(pager);
+	     
+	      mv.setViewName("manager/productList");
+	      mv.addObject("list", ar);
+	      
+	      return mv;
+	   }
+	
+	@GetMapping("productDetail")
+	public ModelAndView getProductOptionDetail(ProductDTO productDTO) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		
+		List<ProductOptionDTO> ar = productService.getProductOptionDetail(productDTO);
+		
+		mv.setViewName("manager/productDetail");
+		mv.addObject("list", ar);
+		
+		return mv;
+	}
+	
 	@GetMapping("cartList")
 	public ModelAndView getCartList(HttpSession session, Pager pager) throws Exception {
 		ModelAndView mv = new ModelAndView();
@@ -64,8 +92,9 @@ public class ManagerController {
 		
 		List<CartDTO> ar = cartService.getMemberCartList(pager);
 		
-		mv.addObject("list", ar);
+		
 		mv.setViewName("manager/cartList");
+		mv.addObject("list", ar);
 		}
 		return mv;
 	}
