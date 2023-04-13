@@ -35,7 +35,28 @@ public class CartService {
 		}
 		
 	}
-	
+	public List<CartDTO> getCartOptionName(MemberDTO memberDTO) throws Exception{
+	      List<CartDTO> arr = cartDAO.getCartList(memberDTO);
+	      
+	      int result=0;
+	      for(int i =0; i<arr.size(); i++) {
+	        
+	         
+	         Long num = cartDAO.setCartOptionRef(arr.get(i).getOptionNum());
+	         
+	         String name=cartDAO.setCartOptionName(arr.get(i).getOptionNum());
+	         
+	         name=cartDAO.setCartOptionName(num)+"-"+name;
+	         num=cartDAO.setCartOptionRef(num);
+	         
+	         name=cartDAO.setCartOptionName(num)+"-"+name;
+	         num=cartDAO.setCartOptionRef(num);
+	         
+	         arr.get(i).setOptionName(name);
+	      }
+	      
+	      return arr;
+	   }
 	public void setPayment(List<CartDTO> cartDTOs, MemberDTO memeberDTO) throws Exception{
 		ProductPaymentDTO productPaymentDTO = new ProductPaymentDTO();
 		Long a = cartDAO.getPaymentNum();

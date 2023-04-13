@@ -108,7 +108,7 @@ public class ProductService {
 
 				productImgDTO.setFileName(fileName);
 				productImgDTO.setOriName(pics.getOriginalFilename());
-				productImgDTO.setProductNum(232L);
+				productImgDTO.setProductNum(productDTO.getProductNum());
 
 				result = productDAO.setProductFileAdd(productImgDTO);
 
@@ -137,38 +137,126 @@ public class ProductService {
 
 		return result;
 	}
-
 	public List<ProductOptionDTO> getProductOptionList(ProductOptionDTO productOptionDTO) throws Exception{
 		return productDAO.getProductOptionList(productOptionDTO);
 	}
-	
 	public int setProductOptionDelete(ProductOptionDTO productOptionDTO) throws Exception{
 		return productDAO.setProductOptionDelete(productOptionDTO);
 	}
-	
+	public String getProductId(ProductDTO productDTO) throws Exception{
+		return productDAO.getProductId(productDTO);
+	}
 	public int productOptionAdd(String[] optionValue0, String[] optionValue1, String[] optionValue2,
-			String[] optionName, int[] countList, int[] countList2, String[] price, String[] stock) throws Exception {
+			String[] optionName, int[] countList, int[] countList2, String[] price, String[] stock, String productNum) throws Exception {
 		List<Long> optionNum0 = new ArrayList<Long>();
-
 		List<List<Long>> optionNum1 = new ArrayList<List<Long>>();
 		List<ArrayList<String>> optionValue11 = new ArrayList<ArrayList<String>>();
+		List<String> optionValue111 = new ArrayList<String>();
 		List<ArrayList<ArrayList<String>>> optionValue22 = new ArrayList<ArrayList<ArrayList<String>>>();
 		List<ArrayList<String>> optionValue222 = new ArrayList<ArrayList<String>>();
 		List<ArrayList<String>> price1 = new ArrayList<ArrayList<String>>();
 		List<ArrayList<ArrayList<String>>> price11 = new ArrayList<ArrayList<ArrayList<String>>>();
 		List<ArrayList<String>> stock1 = new ArrayList<ArrayList<String>>();
 		List<ArrayList<ArrayList<String>>> stock11 = new ArrayList<ArrayList<ArrayList<String>>>();
+		
+		
+//				for (int i = 0; i < optionValue1.length; i++) {
+//					String str = optionValue1[i];		
+//					StringTokenizer st1 = new StringTokenizer(str, ",");
+//					while (st1.hasMoreTokens()) {
+//						optionValue111.add(st1.nextToken());
+//					}
+//				}
+//				
+//				int countidx = 0;
+//				int count = 0;
+//				
+//				for(int i = 0; i < countList2.length; i ++) {		
+//					List<String> optionValue112 = new ArrayList<String>();
+//					count = countidx + countList2[i];
+//					for(int j = countidx; j < count; j ++) {
+//						optionValue112.add(optionValue111.get(j));
+//					}
+//					
+//					optionValue11.add((ArrayList<String>) optionValue112);
+//					countidx += countList2[i];
+//				}
+//				
+//				
+//			for (int i = 0; i < optionValue2.length; i++) {
+//				String str = optionValue2[i];
+//				String str2 = price[i];
+//				String str3 = stock[i];
+//				StringTokenizer st1 = new StringTokenizer(str, ",");
+//				StringTokenizer st2 = new StringTokenizer(str2, ",");
+//				StringTokenizer st3 = new StringTokenizer(str3, ",");
+//				ArrayList<String> pstr = new ArrayList<String>();
+//				ArrayList<String> pstr2 = new ArrayList<String>();
+//				ArrayList<String> pstr3 = new ArrayList<String>();
+//				while (st1.hasMoreTokens()) {
+//					pstr.add(st1.nextToken());
+//				}
+//				while (st2.hasMoreTokens()) {
+//					pstr2.add(st2.nextToken());
+//				}
+//				while (st3.hasMoreTokens()) {
+//					pstr3.add(st3.nextToken());
+//				}
+//				optionValue222.add(pstr);
+//				price1.add(pstr2);
+//				stock1.add(pstr3);
+//			}
+//
+//			countidx = 0;
+//			count = 0;
+//			for (int i = 0; i < countList2.length; i++) {
+//				List<ArrayList<String>> optionValue223 = new ArrayList<ArrayList<String>>();
+//				List<ArrayList<String>> price12 = new ArrayList<ArrayList<String>>();
+//				List<ArrayList<String>> stock12 = new ArrayList<ArrayList<String>>();
+//				count = countidx + countList2[i];
+//
+//				for (int j = countidx; j < count; j++) {
+//					optionValue223.add(optionValue222.get(j));
+//					price12.add(price1.get(j));
+//					stock12.add(stock1.get(j));
+//
+//				}
+//				countidx += countList2[i];
+//				optionValue22.add((ArrayList<ArrayList<String>>) optionValue223);
+//				price11.add((ArrayList<ArrayList<String>>) price12);
+//				stock11.add((ArrayList<ArrayList<String>>) stock12);
+//			}
+//		
+//		
+//		System.out.println(optionValue11);
+//		System.out.println(optionValue22);
+//		System.out.println(price1);
+//		System.out.println(price11);
+//		System.out.println(stock1);
+//		System.out.println(stock11);
+//		return 1;
 
+		
 		for (int i = 0; i < optionValue1.length; i++) {
-			String str = optionValue1[i];
+			String str = optionValue1[i];		
 			StringTokenizer st1 = new StringTokenizer(str, ",");
-			ArrayList<String> pstr = new ArrayList<String>();
 			while (st1.hasMoreTokens()) {
-				pstr.add(st1.nextToken());
+				optionValue111.add(st1.nextToken());
 			}
-			optionValue11.add(pstr);
 		}
-
+		int countidx = 0;
+		int count = 0;
+			
+		for(int i = 0; i < countList2.length; i ++) {		
+			List<String> optionValue112 = new ArrayList<String>();
+			count = countidx + countList2[i];
+			for(int j = countidx; j < count; j ++) {
+				optionValue112.add(optionValue111.get(j));
+			}
+				
+			optionValue11.add((ArrayList<String>) optionValue112);
+			countidx += countList2[i];
+		}
 		for (int i = 0; i < optionValue2.length; i++) {
 			String str = optionValue2[i];
 			String str2 = price[i];
@@ -193,8 +281,8 @@ public class ProductService {
 			stock1.add(pstr3);
 		}
 
-		int countidx = 0;
-		int count = 0;
+		countidx = 0;
+		count = 0;
 		for (int i = 0; i < countList2.length; i++) {
 			List<ArrayList<String>> optionValue223 = new ArrayList<ArrayList<String>>();
 			List<ArrayList<String>> price12 = new ArrayList<ArrayList<String>>();
@@ -205,7 +293,6 @@ public class ProductService {
 				optionValue223.add(optionValue222.get(j));
 				price12.add(price1.get(j));
 				stock12.add(stock1.get(j));
-
 			}
 			countidx += countList2[i];
 			optionValue22.add((ArrayList<ArrayList<String>>) optionValue223);
@@ -241,21 +328,22 @@ public class ProductService {
 			productOptionDTO.setOptionNum(optionNum);
 			productOptionDTO.setOptionName(optionName[0]);
 			productOptionDTO.setOptionValue(optionValue0[i]);
-			productOptionDTO.setProductNum(232L);// 상품 번호 넘어오는거 받아서 수정할것
+			productOptionDTO.setProductNum(Long.parseLong(productNum));// 상품 번호 넘어오는거 받아서 수정할것
 			productOptionDTO.setDepth(0L);
 			productOptionDTO.setProductPrice(tempPrice2);// 배열로 값 넘어온거 적용해줄것
 			productOptionDTO.setProductStock(tempStock2);// 배열로 값 넘어온거 적용해줄것
-			productOptionDTO.setRef(optionNum);
+			productOptionDTO.setRef(0L);
 			productDAO.productOptionAdd0(productOptionDTO);
 
 		}
-
+			
 		for (int i = 0; i < optionValue11.size(); i++) {
 			List<Long> tempNum = new ArrayList<Long>();
 			for (int j = 0; j < optionValue11.get(i).size(); j++) {
 				if (optionValue11.get(i).get(j) != null) {
 					long tempStock = 0;
 					long tempPrice = 0;
+						
 					for (int k = 0; k < stock11.get(i).get(j).size(); k++) {
 						tempStock += Long.parseLong(stock11.get(i).get(j).get(k));
 						if (tempPrice == 0) {
@@ -265,48 +353,50 @@ public class ProductService {
 						}
 					}
 					Long optionNum = productDAO.productOptionNum();
+						
 					tempNum.add(optionNum);
 					ProductOptionDTO productOptionDTO = new ProductOptionDTO();
 					productOptionDTO.setOptionNum(optionNum);
 					productOptionDTO.setOptionName(optionName[1]);
 					productOptionDTO.setOptionValue(optionValue11.get(i).get(j));
-					productOptionDTO.setProductNum(232L);// 상품 번호 넘어오는거 받아서 수정할것
+					productOptionDTO.setProductNum(Long.parseLong(productNum));// 상품 번호 넘어오는거 받아서 수정할것
 					productOptionDTO.setDepth(1L);
 					productOptionDTO.setProductPrice(tempPrice);// 배열로 값 넘어온거 적용해줄것
 					productOptionDTO.setProductStock(tempStock);// 배열로 값 넘어온거 적용해줄것
 					productOptionDTO.setRef(optionNum0.get(i));
 
 					productDAO.productOptionAdd0(productOptionDTO);
+					optionNum1.add(tempNum);
 				}
-
+					
 			}
-			optionNum1.add(tempNum);
+				
 		}
-
+			
+			
 		for (int i = 0; i < optionValue22.size(); i++) {
 			for (int j = 0; j < optionValue22.get(i).size(); j++) {
 				for (int k = 0; k < optionValue22.get(i).get(j).size(); k++) {
 					if (optionValue22.get(i).get(j).get(k) != null) {
-
 						Long optionNum = productDAO.productOptionNum();
 						ProductOptionDTO productOptionDTO = new ProductOptionDTO();
 						productOptionDTO.setOptionNum(optionNum);
 						productOptionDTO.setOptionName(optionName[2]);
 						productOptionDTO.setOptionValue(optionValue22.get(i).get(j).get(k));
-						productOptionDTO.setProductNum(232L);// 상품 번호 넘어오는거 받아서 수정할것
+						productOptionDTO.setProductNum(Long.parseLong(productNum));// 상품 번호 넘어오는거 받아서 수정할것
 						productOptionDTO.setDepth(2L);
 						productOptionDTO.setProductPrice(Long.parseLong(price11.get(i).get(j).get(k)));// 배열로 값 넘어온거
-																										// 적용해줄것
+																											// 적용해줄것
 						productOptionDTO.setProductStock(Long.parseLong(stock11.get(i).get(j).get(k)));// 배열로 값 넘어온거
-																										// 적용해줄것
-						productOptionDTO.setRef(optionNum1.get(i).get(j));
+																											// 적용해줄것
+						productOptionDTO.setRef(optionNum1.get(j).get(i));
 
 						productDAO.productOptionAdd0(productOptionDTO);
 					}
 				}
 			}
 		}
-		return 1;
+		return 1;	
 	}
 
 }

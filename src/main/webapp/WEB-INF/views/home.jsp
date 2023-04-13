@@ -192,42 +192,46 @@
                                     <div class="brand-item">
                                         <div class="single-brand-product">
                                             <a href="single-product.html"><img src="https://search.pstatic.net/sunny/?src=http%3A%2F%2Fimg4.tmon.kr%2Fcdn4%2Fdeals%2F2022%2F09%2F14%2F13523008218%2F13523008218_front_a09d8502ff.jpg&type=a340"  height="270" width="300"alt=""></a>
-                                            <h3 class="brand-title text-gray">
-                                                <a href="#">애플 워치 SE </a>
-                                            </h3>
-                                        </div>
+                                        </div> <h3 class="brand-title text-gray">
+                                            <a href="#">애플 워치 SE </a>       
+                                        </h3>
+                                       
                                     </div>
                                     <div class="brand-item">
                                         <div class="single-brand-product">
                                             <a href="single-product.html"><img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fshop1.phinf.naver.net%2F20221216_232%2F1671162320401fv4c0_JPEG%2F72298104118622986_875260104.jpg&type=a340" height="270" width="300" alt=""></a>
-                                            <h3 class="brand-title text-gray">
-                                                <a href="#">APPLE 아이패드 아이패드 프로 11 매직 키보드 MJQJ3KE/A 화이트(영문버전)</a>
-                                            </h3>
+                                            
                                         </div>
+                                        <h3 class="brand-title text-gray">
+                                            <a href="#">APPLE 아이패드 아이패드 프로 11 매직 키보드 MJQJ3KE/A 화이트(영문버전)</a>
+                                        </h3>
                                     </div>
                                     <div class="brand-item">
                                         <div class="single-brand-product">
                                             <a href="single-product.html"><img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fshop1.phinf.naver.net%2F20230314_107%2F1678737157563KTRwW_JPEG%2F79872992396475192_1899806522.jpg&type=sc960_832" height="270" width="300" alt=""></a>
-                                            <h3 class="brand-title text-gray">
-                                                <a href="#">애플 정품 에어팟 프로 신상품 2세대 1세대 에어팟 3세대 2세대 유선충전</a>
-                                            </h3>
+                                           
                                         </div>
+                                        <h3 class="brand-title text-gray">
+                                            <a href="#">애플 정품 에어팟 프로 신상품 2세대 1세대 에어팟 3세대 2세대 유선충전</a>
+                                        </h3>
                                     </div>
                                     <div class="brand-item">
                                         <div class="single-brand-product">
                                             <a href="single-product.html"><img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fshop1.phinf.naver.net%2F20221130_71%2F1669773110072fqEBq_JPEG%2F70908937886923124_1015814584.jpg&type=sc960_832" height="270" width="300" alt=""></a>
-                                            <h3 class="brand-title text-gray">
-                                                <a href="#">애플 아이폰 14 512기가 미드나이트 (국내 정식 발매 제품) MPWW3KH/A</a>
-                                            </h3>
+                                           
                                         </div>
+                                        <h3 class="brand-title text-gray">
+                                            <a href="#">애플 아이폰 14 512기가 미드나이트 (국내 정식 발매 제품) MPWW3KH/A</a>
+                                        </h3>
                                     </div>
                                     <div class="brand-item">
                                         <div class="single-brand-product">
                                             <a href="single-product.html"><img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMjA0MTJfMTA5%2FMDAxNjQ5NzM5NzU0NjA2.2I5WOBQRI4Cl8WyKLOjfTLFHrNskJMhGLrmEUBYCLiMg.KWXt4AQ3IhZs8ct6t6UqAQLrDBvYrPAjbg8rQDWRG-8g.PNG.ha-yasi%2F%25B8%25C6%25BD%25BA_2.png_%25A4%25B7%25A4%25B7.png&type=sc960_832" height="270" width="300" alt=""></a>
-                                            <h3 class="brand-title text-gray">
-                                                <a href="#">Apple 에어팟 맥스 블루투스헤드셋</a>
-                                            </h3>
+                                         
                                         </div>
+                                        <h3 class="brand-title text-gray">
+                                            <a href="#">Apple 에어팟 맥스 블루투스헤드셋</a>
+                                        </h3>
                                     </div>
                                 </div>
                             </div>

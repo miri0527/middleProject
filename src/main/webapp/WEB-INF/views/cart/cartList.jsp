@@ -56,7 +56,7 @@
 															<p class="orderNum text-center">${dto.orderNum}</p>
 															<p class="text-center">${dto.productDTO.productName}</p>
 															<p class="optionNum text-center">${dto.optionNum}</p>
-														
+															<p class="optionName text-center">${list2[i.index].optionName}</p>
 														<!-- 이미지 추가 -->
 														<input type="hidden" value="${dto.productDTO.productPrice}"
 															id="price-${i.count}">

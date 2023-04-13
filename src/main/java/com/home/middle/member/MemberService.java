@@ -45,11 +45,11 @@ public class MemberService {
 		MemberDTO loginDTO=memberDAO.getMemberLogin(memberDTO);
 		
 		if(loginDTO!=null &&loginDTO.getPw().equals(memberDTO.getPw())) {
-//			memberDTO.setRoleDTO(loginDTO.getRoleDTO());
-//			memberDTO.setPw(null);
-//			return memberDTO;
-			loginDTO.setPw(null);
-			return loginDTO;
+			memberDTO.setRoleDTO(loginDTO.getRoleDTO());
+			memberDTO.setPw(null);
+			return memberDTO;
+//			loginDTO.setPw(null);
+//			return loginDTO;
 		}
 		return null;
 	}

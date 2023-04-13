@@ -198,7 +198,7 @@ $(".selectPayment").on("click", function(){
     })
     let rTotal = $(".order-total-price").html()*1;
     let total = 100; //결제 실험용 amount
-    let payNum = 8;
+    let payNum = 101;
     function requestPay(){
         //사전 검증 방식 -> 선택된 것들의 값이 db에 입력된 값과 같은지 확인하고 결제창 띄우기
         $.ajax({

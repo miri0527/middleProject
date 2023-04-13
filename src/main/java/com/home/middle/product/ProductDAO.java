@@ -21,11 +21,15 @@ public class ProductDAO {
 		Long l= sqlSession.selectOne(NAMESPACE + "getTotalCount", pager);
 		return l;
 	}
-	
+	public List<ProductOptionDTO> getProductOptionList(ProductOptionDTO productOptionDTO) throws Exception{
+		return sqlSession.selectList(NAMESPACE + "getProductOptionList", productOptionDTO);
+	}
 	public List<ProductOptionDTO> getProductList(ProductDTO productDTO )throws Exception{
 		return sqlSession.selectList(NAMESPACE+"getProductList",productDTO);
 	}
-	
+	public int setProductOptionDelete(ProductOptionDTO productOptionDTO) throws Exception{
+		return sqlSession.delete(NAMESPACE + "setProductOptionDelete", productOptionDTO);
+	}
 	//1개는 selectOne으로 받기 검색하려면 변수가 필요하니깐 뒤에 추가로 매개변수 dto 선언 
 	public ProductDTO getProductDetail(ProductDTO productDTO) throws Exception {		
 		return sqlSession.selectOne(NAMESPACE+"getProductDetail", productDTO);
@@ -52,9 +56,8 @@ public class ProductDAO {
 	
 	
 	 public List<ProductDTO> getMemberProductList(Pager pager) throws Exception {
-		 
-		 List<ProductDTO> ar = sqlSession.selectList(NAMESPACE + "getMemberProductList", pager);
-		 return ar; 
+	 List<ProductDTO> ar = sqlSession.selectList(NAMESPACE + "getMemberProductList", pager);
+	 return ar; 
 	 }
 	
 	//장바구니 
@@ -86,15 +89,9 @@ public class ProductDAO {
 		return sqlSession.selectOne(NAMESPACE + "productOptionNum");
 	}
 	
-	public List<ProductOptionDTO> getProductOptionList(ProductOptionDTO productOptionDTO) throws Exception{
-		return sqlSession.selectList(NAMESPACE + "getProductOptionList", productOptionDTO);
+	public String getProductId(ProductDTO productDTO) throws Exception{
+		return sqlSession.selectOne(NAMESPACE + "getProductId", productDTO);
 	}
-	
-	public int setProductOptionDelete(ProductOptionDTO productOptionDTO) throws Exception{
-		return sqlSession.delete(NAMESPACE + "setProductOptionDelete", productOptionDTO);
-	}
-	
-	
 	
 	
 }

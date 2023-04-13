@@ -137,9 +137,9 @@ $('#btnFinish').click(function(){
         let countList = [];
         let countList2 = [];
         let price = [];
-        
+        let productNum = $('.productNumC').val();
         let stock = [];
-        
+        console.log(productNum);
         optionName.push($('.optionName0').val());
         if($('.optionName1').length != 0){
             
@@ -191,8 +191,10 @@ $('#btnFinish').click(function(){
         console.log(optionValue0);
         console.log(optionValue1);
         console.log(optionValue2);
+        console.log(countList);
+        console.log(countList2);
         $.ajax({
-            url : "/test/productOptionAdd",
+            url : "/product/productOptionAdd",
             type : "POST",
             traditional:true,
             data:{
@@ -203,7 +205,8 @@ $('#btnFinish').click(function(){
                 "countList" : countList,
                 "countList2" : countList2,
                 "price" : price,
-                "stock" : stock
+                "stock" : stock,
+                "productNum" : productNum
             }
             });
     }

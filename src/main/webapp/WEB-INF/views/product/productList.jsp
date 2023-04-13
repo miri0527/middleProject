@@ -22,10 +22,17 @@
         <!-- BREADCRUMBS SETCTION START -->
         <div class="breadcrumbs-section plr-200 mb-80 section">
             <img src="/resources/js/img/others/ad.png" alt=""/>
+            
          </div>
 
         <!-- BREADCRUMBS SETCTION END -->
-
+<%--   <div>
+                                                    <c:forEach items="${list.productImgDTOs}" var="productImgDTO">
+                                                        <img id="zoom_03"
+                                                            src="../resources/upload/product/${productImgDTO.fileName}"
+                                                            height="270" width="450" />
+                                                    </c:forEach>
+                                                </div> --%>
         <!-- Start page content -->
         <div id="page-content" class="page-wrapper section">
 
@@ -76,20 +83,21 @@
                                             <!-- product-item start -->
                                             <div class="col-lg-4 col-md-6">
                                                 <div class="product-item">
-
+													<c:choose>
+													<c:when test="${not empty dto.productImgDTOs[0].fileName}">
                                                     <div class="product-img">
-                                                    <c:forEach items="${dto.productImgDTOs}" var="productImgDTO">
                                                         <img class="card-img-top mb-5 mb-md-0"
-                                                        src="../resources/upload/product/${productImgDTO.fileName}" />
-                                                     요기요기 오류나여   ${productImgDTO.fileName}
-                                                     </c:forEach>
+                                                        src="../resources/upload/product/${dto.productImgDTOs[0].fileName}"  height="270" width="300"/>
                                                     </div>
+                                                    </c:when>
+                                                    <c:otherwise>
                                                     <div class="product-img">
                                                         <a href="./detail?productNum=${dto.productNum}">
                                                             <img src="/resources/js/img/product/7.jpg" alt=""/>
                                                         </a>
                                                     </div>
-                                                    
+                                                    </c:otherwise>
+                                                    </c:choose>
                                                     <div class="product-info">
                                                         <h6 class="product-title">
                                                             <a href="./detail?productNum=${dto.productNum}"> ${pageScope.dto.productName}</a>
@@ -140,6 +148,10 @@
                                     <li class="active"><a href="#"><i class="zmdi zmdi-chevron-right"></i></a></li>
                                 </ul>
                                 <!-- shop-pagination end -->
+                                <c:if test="${member.roleDTO.roleNum<3}">
+                                <a href="add" class="btn">상품 추가</a>
+                                </c:if>
+                                
                             </div>
                         </div>
                         <div class="col-lg-3 order-lg-1 order-2">
@@ -376,10 +388,10 @@
 
         <!--style-customizer start -->
         <div class="style-customizer closed">
-            <div class="buy-button">
+            <!-- <div class="buy-button">
                 <a href="index.html" class="customizer-logo"><img src="/resources/js/images/logo/logo.png" alt="Theme Logo"></a>
                 <a class="opener" href="#"><i class="zmdi zmdi-settings"></i></a>
-            </div>
+            </div> -->
             <div class="clearfix content-chooser">
                 <h3>Layout Options</h3>
                 <p>Which layout option you want to use?</p>

@@ -11,7 +11,7 @@
                     <div class="row">
                         <div class="col-lg-6 col-md-6 d-none d-md-block">
                             <div class="call-us">
-                                <p class="mb-0 roboto">0123456789</p>
+                                <p class="mb-0 roboto"></p>
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6">
@@ -244,96 +244,15 @@
                                                 </div>
                                             </div>
                                         </li> -->
-                                        <li class="mega-parent"><a href="">Products</a>
-                                            <div class="mega-menu-area clearfix">
-                                                <div class="mega-menu-link f-left">
-                                                    <ul class="single-mega-item">
-                                                        <li class="menu-title">상품</li>
-                                                        <li>
-                                                            <a href="/product/detail?productNum=1">Products Detail</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#">Smart phones</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#">Android Mobiles</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#">Windows Mobiles</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#">Refurbished Mobiles</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#">All Mobile Accessories</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#">Cases & Covers</a>
-                                                        </li>
-                                                    </ul>
-                                                    <ul class="single-mega-item">
-                                                        <li class="menu-title">Note Book</li>
-                                                        <li>
-                                                            <a href="">All Note Books</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="">Smart notebooks</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="">Android Note Book</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="">Windows Note Books</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="">Refurbished Note Books</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="">Note Books Accessories</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="">Cases & Covers</a>
-                                                        </li>
-                                                    </ul>
-                                                    <ul class="single-mega-item">
-                                                        <li class="menu-title">Tablets</li>
-                                                        <li>
-                                                            <a href="">All Tablets</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="">Smart tablets</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="">Android Tablets</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="">Windows Tablets</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="">Refurbished Tablets</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="">Tablets Accessories</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="">Cases & Covers</a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <div class="mega-menu-photo f-left">
-                                                    <a href="#">
-                                                        <img src="/resources/js/img/mega-menu/1.jpg" alt="mega menu image">
-                                                    </a>
-                                                </div>
-                                            </div>
+                                        <li class="mega-parent"><a href="/product/detail?productNum=1">Products</a>
                                         </li>
                                         <li class="mega-parent"><a href="/qna/listdetail">Qna</a>
                                         </li>
                                         <li><a a href="/review/listdetail">Review</a>
                                         </li>
-                                        <li>
+                                        <!-- <li>
                                             <a href="about.html">About us</a>
-                                        </li>
+                                        </li> -->
                                         <li>
                                             <a href="/contact">Contact</a>
                                         </li>

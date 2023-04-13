@@ -3,26 +3,14 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace = "com.home.middle.cart.CartDAO">
-
-
-	<sql id="CartCondition">
-		<where>
-			<if test="kind == id">
-				 PO.ID LIKE '%' || #{search} || '%'
-			</if>
-		</where>
-	</sql>
-	
-	<!-- 나중에 삭제하기 -->
-	<select id="getProductDetail" parameterType="ProductDTO" resultType="ProductDTO">
-		SELECT P.PRODUCTNUM, P.PRODUCTNAME, "POP".OPTIONNUM, "POP".OPTIONNAME, "POP".PRODUCTPRICE FROM PRODUCT P
-		LEFT OUTER JOIN PRODUCTOPTION "POP"
-		ON(P.PRODUCTNUM = "POP".PRODUCTNUM)
-	</select>	
-
+	<select id="setCartOptionRef" parameterType="Long" resultType="Long">
+        SELECT REF FROM PRODUCTOPTION WHERE OPTIONNUM=#{optionNum}
+     </select>
+	<select id="setCartOptionName" parameterType="Long" resultType="String">
+        SELECT OPTIONVALUE FROM PRODUCTOPTION WHERE OPTIONNUM=#{optionNum}
+     </select>
 	<select id="getPaymentCheck" resultType="CartDTO">
 		SELECT * FROM PRODUCTORDER WHERE ORDERNUM = #{orderNum}
-
 	</select>
 	
 	<select id="getPaymentNum" resultType="Long">
@@ -53,23 +41,6 @@
 		ON(PO.OPTIONNUM  = "POP".OPTIONNUM)
 		WHERE PO.ID = #{id} AND BUYCHECK = 1
 		ORDER BY PO.ORDERNUM DESC
-	</select>
-	
-	<select id="getMemberCartList" parameterType="Pager" resultMap="ProductCartList">
-	SELECT * FROM 
-	(SELECT ROWNUM R, N.* FROM
-		(SELECT * FROM PRODUCTORDER PO
-			LEFT OUTER JOIN PRODUCT P
-			ON(PO.PRODUCTNUM = P.PRODUCTNUM)
-				LEFT OUTER JOIN PRODUCTOPTION "POP"
-				ON(PO.OPTIONNUM  = "POP".OPTIONNUM)
-				<include refid="CartCondition"></include>
-				AND PAYMENTCHECK = 1
-				ORDER BY PO.OPTIONNUM DESC
-				)
-	N);
-	
-			WHERE R BETWEEN #{startRow} AND #{lastRow}
 	</select>
 	
 	<select id="getCartPaymentDetail" parameterType="CartDTO" resultMap="ProductCartList">

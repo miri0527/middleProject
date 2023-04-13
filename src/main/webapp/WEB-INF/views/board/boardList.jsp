@@ -1,6 +1,7 @@
 <%@page import="com.home.middle.board.BbsDTO"%>
 <%@page import="java.util.List"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!DOCTYPE html>
 <html>
@@ -8,53 +9,78 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <c:import url="../template/common_css.jsp"></c:import>
-
-</head>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@400;800;900&display=swap');
+</style>
 <body>
 <c:import url="../template/header.jsp"></c:import>
-
-	
-	<div class="row mx-auto" style="max-width: 30000px;">
-	<div class="row my-5-auto">
-	${member.id}님 환영합니다
-		<h1>${boardName} List</h1>
+<div class="container-fluid col-md-9">
+	<div class="row my-5">
+		<h1 style="font-family: 'Lexend', sans-serif">${boardName} List</h1> <p>${member.id}님 환영합니다.</p>
 	</div>
-	
-	  <div class="container">
-		<table class="table table-striped">
+
+	<div class="row">
+		<table class="table table-hover">
 			<thead>
 				<tr>
-					 <th>NUM</th><th>CONTENTS</th><th>TITLE</th><th>ID</th><th>DATE</th><th>상품번호</th><c:if test="${member.id eq dto.id or member.roleDTO.roleNum < 3}"><th>삭제</th><th>수정</th> </c:if>
+					<th>NUM</th><th>CONTENTS</th><th>TITLE</th><th>TITLE</th><th>ID</th><th>DATE</th>
+					 
+					 <c:if test="${member.id eq list[0].id or member.roleDTO.roleNum < 3 }">
+					<th>삭제</th><th>수정</th>
+					</c:if>
+				    <th>댓글</th>
+					
 				</tr>
-			</thead>
-			<tbody>
-			
-			<c:forEach items="${list}" var="dto">
+			</thead><c:forEach items="${list}" var="dto">
+			 
 				<tr>
+					
 					<td>${dto.num}</td>
-					<td>${dto.contents}</td>
+					<td width="650px">
+					<h5 style="font-weight: bold; "> [문의 내용] </h5> <p style="font-weight: bold; text-align: initial; background-color: #FFE794;"> ${dto.contents}</p>  
+						<c:forEach items="${list1}" var="dto1"> 
+						<br></br>
+					   <h5 style="font-weight: bold; text-align: right; "> [답변 내용] </h5>
+					   <p style="font-weight: bold; text-align: initial; background-color: #FFF0D0;">${dto1.contents}</p>
+					    </c:forEach>
+					 </td>
 					<td>${dto.title}</td>
 					<td>${dto.id}</td>
 					<td>${dto.regDate}</td>
-					<td>${dto.productNum} ${product.list.productNum}</td>
+					<td>${dto.productNum}</td>
+					<td> 
 					 <c:if test="${member.id eq dto.id or member.roleDTO.roleNum < 3 }">
-					<td>
 					<form action="./delete" id="frmde">
-						 <input type="hidden" name="num" value="${dto.num}">
-						 <button id="delete" type="button" class="btn btn-info">DELETE</button>
-				    </form>
-				   </td>
-					<td>
-					 <a class="btn btn-info"  href ="./update?num=${dto.num}">update</a>
+					 <input type="hidden" name="num" value="${dto.num}">
+					 <button id="delete" type="button" class="btn btn-warning">DELETE</button>
+					</form>
 					</td>
-		          </c:if>
+					<td>
+					 <a class="btn btn-warning"  href ="./update?num=${dto.num}">UPDATE</a>
+					</td>
+					</c:if>
+		         <c:if test="${member.roleDTO.roleNum < 3 }">
+		         <div>
+		            <td width="86px" >
+					  <a href="/qnaReply/add?productNum=${dto.num}" class="btn btn-warning" >댓글</a>
+					</td>
+					</div>
+					
+					</c:if>
+				<%-- 	<c:if test="${member.roleDTO.roleNum < 2 }">
+					<div class="col-auto justify-content-end">
+					 <a href="/qnaReply/add" class="btn btn-warning">글작성</a>
+					</div>  
+					</c:if> --%>
 				</tr>
-			</c:forEach>
+				
+				</c:forEach>
+			<tbody>
+				
 			</tbody>
 		
 		</table>
 	</div>
-</div>	
 			<!-- paging -->
 		<div class="row">
 			<nav aria-label="Page navigation example">
@@ -64,6 +90,7 @@
 			        <span aria-hidden="true">&laquo;</span>
 			      </a>
 			    </li>
+			  
 			  
 			    <li class="page-item ${pager.before?'disabled':''}">
 			      <a class="page-link" href="#" aria-label="Previous" data-board-page="${pager.startNum-1}">
@@ -90,13 +117,13 @@
 			        <span aria-hidden="true">&raquo;</span>
 			      </a>
 			    </li>
-			    
 			  </ul>
 			</nav>
 		</div>
 		
 		<!-- 검색창 -->
-		<div class="row">
+		<!-- <div class="row">
+			<div class="col-auto">
 			<form class="row g-3" action="./list" method="get" id="searchForm">
 				<input type="hidden" name="page" value="1" id="page">
 				<div class="col-auto">
@@ -107,19 +134,47 @@
 					<option value="writer" ${pager.kind eq 'writer'? 'selected':''}>Writer</option>
 				  </select>
 				</div>
-				<div class="col-auto">
-				  <label for="search" class="visually-hidden">Search</label>
-				  <input type="text" class="form-control" value="${pager.search}" name="search" id="search" placeholder="검색어를 입력하세요">
-				</div>
-				<div class="col-auto">
-				  <button type="submit" class="btn btn-primary mb-3">검색</button>
-				</div>
 			</form>
-		
-			<div class="row">
-				<a href="./add" class="btn btn-primary">글작성</a>
-			</div>		
+		    </div>
+			<div>
+			<div class="col-auto">
+				<label for="search" class="visually-hidden">Search</label>
+				<input type="text" class="form-control" value="${pager.search}" name="search" id="search" placeholder="검색어를 입력하세요">
+			
+			 <div class="col-auto">
+				<button type="submit" class="btn btn-warning mb-3">검색</button>
+				<div class="col-auto text-lg-end">  <a href="./add" class="btn btn-warning">글작성</a></div>  
+			</div>  
+		    </div>
 		</div>
+</div> -->
+		
+<div class="row">
+	<div class="col-auto">
+	  <form class="row g-3" action="./list" method="get" id="searchForm">
+		<input type="hidden" name="page" value="1" id="page">
+		<div class="col-auto">
+		  <label for="kind" class="visually-hidden">Kind</label>
+		  <select class="form-select" name="kind" id="kind" aria-label="Default select example">
+			<option value="title" ${pager.kind eq 'title'? 'selected':''}>Title</option>
+			<option value="contents" ${pager.kind eq 'contents'? 'selected':''}>Contents</option>
+			<option value="writer" ${pager.kind eq 'writer'? 'selected':''}>Writer</option>
+		  </select>
+		</div>
+		<div class="col-auto">
+		  <label for="search" class="visually-hidden">Search</label>
+		  <input type="text" class="form-control" value="${pager.search}" name="search" id="search" placeholder="검색어를 입력하세요">
+		</div>
+		<div class="col-auto">
+		  <button type="submit" class="btn btn-warning mb-3">검색</button>
+		</div>
+		<div class="col-auto justify-content-end">
+		  <a href="./add" class="btn btn-warning">글작성</a>
+		</div>  
+	  </form>
+	</div>
+  </div>
+  
 
 <c:import url="../template/footer.jsp"></c:import>
 <script type="text/javascript" src="../resources/js/boardForm.js"></script>
@@ -129,4 +184,4 @@
 /* 	setData('${pager.search}') */
 </script>
 </body>
-</html>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
+</html>

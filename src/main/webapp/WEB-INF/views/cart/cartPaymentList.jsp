@@ -55,6 +55,7 @@
 														<!-- 이미지 추가 -->
 														<input type="hidden" value="${dto.productDTO.productPrice}"
 															id="price-${i.count}">
+														<p class="optionName text-center">${list2[i.index].optionName}</p>
 													</td>
 													<td class="product-price">${dto.productDTO.productPrice}</td>
 													<td class="product-quantity">

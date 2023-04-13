@@ -6,18 +6,10 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
- <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Subas || Home-3</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
 <c:import url="../template/common_css.jsp"></c:import>
 </head>
 <body>
-
-	<c:import url="../template/managerHeader.jsp"></c:import>
-       
-      	<div class="container-fluid my-5">
+<div class="container-fluid my-5">
  	<div class="row col-md-4 mx-auto text-center border-bottom border-dark pb-2">
      <p class="fs-2" style="font-family: 'Impact'">상품 등록</p>
    </div>
@@ -42,7 +34,9 @@
 			<input type="text" name="productName">
 		</div>
 		
-	
+		상품옵션 : <br>
+		
+		
 		  <fieldset class="mb-4">
             <legend class="fw-bold fs-5">판매 여부</legend>
             <div class="form-check form-check-inline">
@@ -62,8 +56,7 @@
 		<button type="submit" class="btn btn-primary" id="submit">상품등록</button>
 	</form>
 </div>
-<script src="../resources/js/productAdd.js"></script>
+<script src="../resources/js/productAdd.js"></script>	
 <c:import url="../template/common_js.jsp"></c:import>	
-
 </body>
 </html>

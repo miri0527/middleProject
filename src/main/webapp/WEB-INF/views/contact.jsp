@@ -27,23 +27,12 @@
         
 
         <!-- BREADCRUMBS SETCTION START -->
-        <div class="breadcrumbs-section plr-200 mb-80 section">
-            <div class="breadcrumbs overlay-bg">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="breadcrumbs-inner">
-                                <h1 class="breadcrumbs-title">Contact</h1>
-                                <ul class="breadcrumb-list">
-                                    <li><a href="index.html">Home</a></li>
-                                    <li>Contact</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+       
+         <!-- BREADCRUMBS SETCTION START -->
+            <div class="breadcrumbs-section plr-200 mb-80 section text-center">
+                <img src="/resources/js/img/others/ad.png" alt="" class="mx-auto">
             </div>
-        </div>
+  
         <!-- BREADCRUMBS SETCTION END -->
 
         <!-- Start page content -->

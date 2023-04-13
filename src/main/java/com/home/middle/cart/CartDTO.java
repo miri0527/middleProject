@@ -17,12 +17,18 @@ public class CartDTO {
 	private ProductDTO productDTO;
 	
 	private Long paymentNum;
+	private String optionName;
 	
 	
 	
 	
 	
-	
+	public String getOptionName() {
+		return optionName;
+	}
+	public void setOptionName(String optionName) {
+		this.optionName = optionName;
+	}
 	public Long getPaymentNum() {
 		return paymentNum;
 	}

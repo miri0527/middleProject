@@ -4,7 +4,13 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
  <mapper namespace="com.home.middle.product.ProductDAO">
- 
+ 	<select id="getProductId" resultType="String">
+ 		SELECT ID FROM PRODUCT WHERE PRODUCTNUM = #{productNum}
+ 	</select>
+ 	
+ 	<select id="productOptionNum" resultType="Long">
+		SELECT PRODUCTOPTION_SEQ.NEXTVAL FROM DUAL
+	</select>
  	  <sql id="ProductCondition">
       <where>
          <if test="kind == 'productName'">
@@ -12,27 +18,53 @@
          </if>
       </where>
    	</sql>
-   	
-   	<select id="productOptionNum" resultType="Long">
-		SELECT PRODUCTOPTION_SEQ.NEXTVAL FROM DUAL
-	</select>
- 
+ 	
  	<select id="getProductNum" resultType="Long">
   		SELECT PRODUCT_SEQ.NEXTVAL FROM DUAL
   	</select>
+  	<insert id="productOptionAdd0" parameterType="ProductOptionDTO">
+ 		INSERT INTO PRODUCTOPTION (OPTIONNUM, PRODUCTNUM, OPTIONNAME, OPTIONVALUE, PRODUCTPRICE, PRODUCTSTOCK, REF, DEPTH)
+ 		VALUES (#{optionNum}, #{productNum}, #{optionName}, #{optionValue}, #{productPrice}, #{productStock}, #{ref}, #{depth})
+ 	</insert>
   	
-  	
-  	<select id="getProductList" resultType="ProductDTO" parameterType="Pager">
-  
-  	
+  	<select id="getProductList" resultMap="productList11" parameterType="Pager">
+
 	
-	SELECT PRODUCTNUM , PRODUCTNAME , DISCOUNT , DISCOUNTPERCENT FROM PRODUCT
+	SELECT * FROM PRODUCT
+	LEFT JOIN 
+	PRODUCTFILES
+	USING(PRODUCTNUM)
   	WHERE CATEGORYNUM = #{categoryNum}
   	
-  	
-  	
+ 
   	</select>
-
+  	
+  	<resultMap type="ProductDTO" id="productList11">
+   
+	   <!--Primary Key  -->
+	   <id column="PRODUCTNUM" property="productNum" />
+	   <!-- 그외 나머지 -->
+	   <result column="PRODUCTNAME" property="productName" />
+	   <result column="PRODUCTSALES" property="productSales" />
+	   <result column="CATEGORYNUM" property="categoryNum" />
+	   
+ 	 
+ 	 
+ 	   <collection property="productImgDTOs" javaType="List" ofType="ProductImgDTO" >
+ 	    <id  column="FILENUM"  property="fileNum" />
+        <result  column="NUM" property="num"/>
+    	<result  column="FILENAME" property="fileName"/>
+    	<result  column="ORINAME" property="oriName"/>
+ 	   </collection>
+ 	   
+ 	    <!-- 1:1 관계일 때 -->
+    	<!--<association property="" javaType="">-->
+   </resultMap>
+  	
+  	
+	<select id="getProductOptionList" parameterType="ProductOptionDTO" resultType="ProductOptionDTO">
+		SELECT * FROM PRODUCTOPTION WHERE PRODUCTNUM = #{productNum} AND DEPTH = #{depth} ORDER BY OPTIONNUM ASC
+	</select>
  	<select id="getProductDetail" parameterType="ProductDTO" resultMap="productDetailResult">
 
 	SELECT P.*, PO.* ,FI.* FROM PRODUCT P
@@ -51,9 +83,10 @@
 	   <id column="PRODUCTNUM" property="productNum" />
 	   <!-- 그외 나머지 -->
 	   <result column="PRODUCTNAME" property="productName" />
+	   
 	   <result column="PRODUCTSALES" property="productSales" />
 	   <result column="CATEGORYNUM" property="categoryNum" />
-	   <result column="ID" property="id"/>
+	   <result column="ID" property="id" />
 	   
  	   <!-- 1:n 관계일 때  -->
  	   <collection property="productOptionDTOs" javaType="List" ofType="ProductOptionDTO">
@@ -66,6 +99,7 @@
     	<result  column="OPTIONVALUE" property="optionValue"/>
     	<result  column="REF" property="ref"/>
     	<result  column="DEPTH" property="depth"/>
+    	<result  column="STEP" property="step"/>
  	   </collection>
  	 
  	   <collection property="productImgDTOs" javaType="List" ofType="ProductImgDTO" >
@@ -96,8 +130,8 @@
 		<selectKey keyProperty="productNum" resultType="Long" order="BEFORE">
 			SELECT PRODUCT_SEQ.NEXTVAL FROM DUAL
 		</selectKey>
-		INSERT INTO PRODUCT 
-		VALUES (#{productNum}, #{productName}, #{productSales}, #{categoryNum},#{id})
+		INSERT INTO PRODUCT (PRODUCTNUM , PRODUCTNAME, PRODUCTSALES, ID, CATEGORYNUM)
+		VALUES (#{productNum}, #{productName},#{productSales},#{id}, #{categoryNum})
 	</insert>
 	
 	<insert id="setProductFileAdd" parameterType="ProductImgDTO">
@@ -105,7 +139,7 @@
 		VALUES (PRODUCTFILES_SEQ.NEXTVAL, #{productNum}, #{fileName}, #{oriName})
 	</insert>  
 	
-		<select id="getMemberProductList" resultType="ProductDTO" parameterType="Pager" >
+ 	<select id="getMemberProductList" resultType="ProductDTO" parameterType="Pager" >
 		SELECT * FROM 
 		(
 			SELECT ROWNUM R, N.* FROM
@@ -118,32 +152,6 @@
 		WHERE R BETWEEN #{startRow} AND #{lastRow} 	
 		
 	</select>	
-		
-	
-	 <resultMap type="ProductDTO" id="productListResult">
-   
-	   <!--Primary Key  -->
-	   <id column="PRODUCTNUM" property="productNum" />
-	   <!-- 그외 나머지 -->
-	   <result column="PRODUCTNAME" property="productName" />
-	   <result column="PRODUCTSALES" property="productSales" />
-	   <result column="CATEGORYNUM" property="categoryNum" />
-	   <result column="ID" property="id"/>
-	   
- 	   <!-- 1:n 관계일 때  -->
- 	   <collection property="productOptionDTOs" javaType="List" ofType="ProductOptionDTO">
- 	    <id  column="OPTIONNUM"  property="optionNum" />
- 	    <result  column="PRODUCTNUM" property="productNum"/>
-        <result  column="PRODUCTPRICE" property="productPrice"/>
-    	<result  column="PRODUCTSTOCK" property="productStock"/>
-    	<result  column="OPTIONNAME" property="optionName"/>
-    	<result  column="PRODUCTDATE" property="productDate"/>
-    	<result  column="OPTIONVALUE" property="optionValue"/>
-    	<result  column="REF" property="ref"/>
-    	<result  column="DEPTH" property="depth"/>
-    	
- 	   </collection>
- 	  </resultMap> 
 	 
 	<select id="getProductFileList" resultType="ProductImgDTO">
 		SELECT * FROM PRODUCTFILES
@@ -165,21 +173,7 @@
 	<delete id="setProductDelete" parameterType="ProductDTO">
 		DELETE PRODUCT WHERE PRODUCTNUM = #{productNum}
 	</delete>
-	
-	<select id="getProductOptionList" parameterType="ProductOptionDTO" resultType="ProductOptionDTO">
-		SELECT * FROM PRODUCTOPTION WHERE PRODUCTNUM = #{productNum} AND DEPTH = #{depth} ORDER BY OPTIONNUM ASC
-	</select>
-	
-	<insert id="productOptionAdd0" parameterType="ProductOptionDTO">
- 		INSERT INTO PRODUCTOPTION (OPTIONNUM, PRODUCTNUM, OPTIONNAME, OPTIONVALUE, PRODUCTPRICE, PRODUCTSTOCK, REF, DEPTH)
- 		VALUES (#{optionNum}, #{productNum}, #{optionName}, #{optionValue}, #{productPrice}, #{productStock}, #{ref}, #{depth})
- 	</insert>
- 	
- 	<insert id="setProductCategoryAdd" parameterType="ProductDTO">
- 		INSERT INTO PRODUCT CATEGORYNUM = #{categoryNum} WHERE PRODUCTNUM = #{productNum}
- 	</insert>
- 	
- 	<delete id="setProductOptionDelete" parameterType="ProductOptionDTO">
+	<delete id="setProductOptionDelete" parameterType="ProductOptionDTO">
  		DELETE PRODUCTOPTION WHERE PRODUCTNUM = #{productNum}
  	</delete>
 	</mapper>  

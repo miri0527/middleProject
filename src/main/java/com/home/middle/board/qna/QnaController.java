@@ -27,6 +27,9 @@ public class QnaController {
 	@Autowired
 	private QnaService qnaService;
 	
+	@Autowired
+	private QnaReplyService qnaReplyService;
+	
 	@ModelAttribute("boardName")
 	public String getBoardName() {
 		return "qna";
@@ -50,9 +53,16 @@ public class QnaController {
 	ModelAndView mv = new ModelAndView();
 
 	List<BbsDTO> ar = qnaService.getBoardList(pager);
-
+	List<QnaReplyDTO> ar1 = qnaReplyService.getBoardList(pager);
+	
+	//qna 
 	mv.addObject("pager",pager);
 	mv.addObject("list",ar);
+	
+	//qna 답변 
+	mv.addObject("pager",pager);
+	mv.addObject("list1",ar1);
+	
 	mv.setViewName("board/boardList");
 		
 	return mv;			

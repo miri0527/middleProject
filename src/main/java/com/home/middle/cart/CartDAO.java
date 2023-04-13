@@ -22,7 +22,12 @@ public class CartDAO {
 	public CartDTO getPaymentCheck(CartDTO cartDTO) throws Exception{
 		return sqlSession.selectOne(NAMESPACE + "getPaymentCheck", cartDTO);
 	}
-	
+	public Long setCartOptionRef(Long optionNum) throws Exception{
+	      return sqlSession.selectOne(NAMESPACE+"setCartOptionRef", optionNum);
+	}
+	public String setCartOptionName(Long optionNum) throws Exception{
+	      return sqlSession.selectOne(NAMESPACE+"setCartOptionName", optionNum);
+	}
 	public List<CartDTO> getCartList(MemberDTO memberDTO)throws Exception{
 		return sqlSession.selectList(NAMESPACE + "getCartList", memberDTO);
 	}

@@ -1,8 +1,10 @@
 package com.home.middle.board.review;
 
 import java.lang.System.Logger;
+import java.net.http.HttpRequest;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.LoggerFactory;
@@ -34,7 +36,7 @@ public class ReviewController {
 				return "review";
 			}
 			
-			@RequestMapping(value="listdetail", method = RequestMethod.GET)
+			@GetMapping("listdetail")
 			public ModelAndView getBoardListdetail(Pager pager)throws Exception {
 		    ModelAndView mv = new ModelAndView();
 	
@@ -106,20 +108,40 @@ public class ReviewController {
 			}	
 			
 			@PostMapping("delete")
-			public ModelAndView setBoardDelete(BbsDTO bbsDTO, HttpSession session)throws Exception{
+			public ModelAndView setBoardDelete(BbsDTO bbsDTO, HttpSession session,ProductDTO productDTO)throws Exception{
 				ModelAndView mv = new ModelAndView();
-				mv.setViewName("common/result");
-
-				int result = reviewService.setBoardDelete(bbsDTO, session);
-
 				String message="삭제 실패";
+				
+				if(productDTO.getProductNum() !=null) {
+					mv.setViewName("common/result");
 
-				if(result>0) {
-					message="삭제 성공";
+					
+					int result = reviewService.setBoardDelete(bbsDTO, session);
+
+					
+
+					if(result>0) {
+						message="삭제 성공";
+					}
+					mv.addObject("result", message);
+					mv.addObject("url", "../product/detail?productNum="+productDTO.getProductNum());
+					}else {
+					mv.setViewName("common/result");
+					
+					
+					int result = reviewService.setBoardDelete(bbsDTO, session);
+
+					
+
+					if(result>0) {
+						message="삭제 성공";
+					}
+					mv.addObject("result", message);
+					mv.addObject("url", "./listdetail");
 				}
-
-				mv.addObject("result", message);
-				mv.addObject("url", "./listdetail");
+				
+				
+				
 
 				return mv;
 			}
