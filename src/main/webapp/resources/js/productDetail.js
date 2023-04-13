@@ -110,6 +110,16 @@ $("#depth0").on("change", "#depth1", function() {
 
  document.getElementById("cartform").style.display = "none";
 
+let frm =  document.getElementById("frm")
+let deleteBtn = document.getElementById("deleteBtn")
+let updateBtn = document.getElementById("updateBtn")
 
+deleteBtn.addEventListener("click", function() {
+  let check = confirm("정말 삭제하시겠습니까?")
+  if(check) {
+    frm.setAttribute("action", "./delete")
+    frm.submit()
+  }
+})
 
 

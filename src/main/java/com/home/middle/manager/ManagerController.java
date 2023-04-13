@@ -16,6 +16,9 @@ import com.home.middle.cart.CartDTO;
 import com.home.middle.cart.CartService;
 import com.home.middle.member.MemberDTO;
 import com.home.middle.member.MemberService;
+import com.home.middle.product.ProductDTO;
+import com.home.middle.product.ProductOptionDTO;
+import com.home.middle.product.ProductService;
 import com.home.middle.util.Pager;
 
 @Controller
@@ -26,6 +29,9 @@ public class ManagerController {
 	private MemberService memberService;
 	@Autowired
 	private CartService cartService;
+	
+	@Autowired
+	private ProductService productService;
 	
 	@GetMapping("memberList")
 	public ModelAndView getMemberList(Pager pager, @RequestParam(name = "roleName", required = false) String [] roleName) throws Exception {
@@ -55,21 +61,54 @@ public class ManagerController {
 		
 	}
 	
-	@GetMapping("cartList")
-	public ModelAndView getCartList(HttpSession session, Pager pager) throws Exception {
+	@GetMapping("productList")
+	   public ModelAndView getMemberProductList(Pager pager) throws Exception {
+	      ModelAndView mv = new ModelAndView();
+	      
+	      List<ProductDTO> ar =  productService.getMemberProductList(pager);
+	     
+	      mv.setViewName("manager/productList");
+	      mv.addObject("list", ar);
+	      
+	      return mv;
+	   }
+	
+	@GetMapping("productDetail")
+	public ModelAndView getProductOptionDetail(ProductDTO productDTO) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		
-		if(session.getAttribute("member")!=null) {
-			MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+		List<ProductOptionDTO> ar = productService.getProductOptionDetail(productDTO);
+		
+		mv.setViewName("manager/productDetail");
+		mv.addObject("list", ar);
+		
+		return mv;
+	}
+	
+	@GetMapping("cartList")
+	public ModelAndView getCartList(Pager pager) throws Exception {
+		ModelAndView mv = new ModelAndView();
 		
 		List<CartDTO> ar = cartService.getMemberCartList(pager);
 		
-		mv.addObject("list", ar);
 		mv.setViewName("manager/cartList");
-		}
+		mv.addObject("list", ar);
+		
 		return mv;
 	}
+	
 		
+	@GetMapping("cartDetail")
+	public ModelAndView getMemberCartDetail(ProductOptionDTO productOptionDTO) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		System.out.println("con1"+productOptionDTO.getProductNum());
+		List<ProductOptionDTO> ar = productService.getMemberCartDetail(productOptionDTO);
+		
+		mv.setViewName("manager/cartDetail");
+		mv.addObject("list", ar);
+		
+		return mv;
+	}
 	
 	@GetMapping("memberDetail")
 	public ModelAndView getAdminMemberDetail(MemberDTO memberDTO) throws Exception {
@@ -118,6 +157,20 @@ public class ManagerController {
 		return mv;
 		
 	}
+	
+	@PostMapping("delete")
+	public ModelAndView setProductDelete(String chkList[],HttpSession session) throws Exception {
+		ModelAndView mv = new ModelAndView();
+			
+			for(int i = 0; i < chkList.length; i ++) {
+				ProductDTO productDTO = new ProductDTO();
+				productDTO.setProductNum(Long.parseLong(chkList[i]));
+				productService.setProductDelete(session, productDTO);
+			}
+			mv.setViewName("redirect:./productList");
+			return mv;
+		}
+	
 	
 	
 	

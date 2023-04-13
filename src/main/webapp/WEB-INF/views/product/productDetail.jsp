@@ -117,7 +117,7 @@
                                         <!-- single-product-info start -->
                                         <div class="col-lg-7"> 
                                         <div class="single-product-info">
-                                        <form action="../cart/cartAdd" method="post">
+                                        <form action="../cart/cartAdd" method="post" id="frm">
                                       
                                             <c:set var="loop_flag" value="false" />
                                             <c:forEach items="${dto.productOptionDTOs}" var="productOptionDTO">    
@@ -219,6 +219,15 @@
                                                               QNA 작성
                                                             </a>
                                                         </button>
+                                                        
+                                                        <c:if test="${dto.id eq member.id || member.roleNum eq 1}">
+                                                        	<button class="btn btn-outline-dark flex-shrink-0" type="button" id="deleteBtn">
+                                                        	상품삭제
+                                                        	</button>
+                                                         </c:if>	
+                                                     
+                                                       	
+                                                       
                                                           
                                                     
                                                 

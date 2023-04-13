@@ -103,20 +103,9 @@ public class ProductController {
 //	}
 	   
 	
-	@GetMapping("memberProductList")
-	   public ModelAndView getMemberProductList(Pager pager) throws Exception {
-	      ModelAndView mv = new ModelAndView();
-	      
-	      List<ProductDTO> ar =  productService.getMemberProductList(pager);
-	     
-	      mv.setViewName("product/memberProductList");
-	      mv.addObject("list", ar);
-	      
-	      return mv;
-	   }
+
 	
 //////////////////////////////////////////////////////////////상품 하위 옵션 구현//////////////////////////////////////////////////////////////////////	
-
 
 	//ajax의 post url "./optionList" 
 	@PostMapping("optionList")
@@ -185,22 +174,26 @@ public class ProductController {
 		
 		mv.addObject("result", message);
 		mv.setViewName("common/result");
-		mv.addObject("url", "./list");
+		mv.addObject("url", "./list?categoryNum=" + productDTO.getCategoryNum());
 		
 		return mv;
 	}
 	
 	@PostMapping("delete")
-	public ModelAndView setProductDelete(String chkList[],HttpSession session) throws Exception {
+	public ModelAndView  setProductDelete(ProductDTO productDTO, HttpSession session) throws Exception {
 		ModelAndView mv = new ModelAndView();
-			
-			for(int i = 0; i < chkList.length; i ++) {
-				ProductDTO productDTO = new ProductDTO();
-				productDTO.setProductNum(Long.parseLong(chkList[i]));
-				productService.setProductDelete(session, productDTO);
-			}
-			mv.setViewName("redirect:./memberProductList");
-			return mv;
+		int result = productService.setProductDelete(session, productDTO);
+		
+		String message = "삭제실패";
+		if(result > 0) {
+			message = "상품이 삭제되었습니다";
 		}
+		
+		mv.addObject("result", message);
+		mv.setViewName("common/result");
+		mv.addObject("url", "./list?categoryNum=" + 1);
+		
+		return mv;
+	}
 	
 }

@@ -6,6 +6,7 @@ import com.home.middle.product.ProductDTO;
 
 
 public class CartDTO {
+	private Long r;
 	private Long orderNum;
 	private String id;
 	private Long totalPrice;
@@ -13,16 +14,27 @@ public class CartDTO {
 	private Date orderDate;
 	private Long buyCheck;
 	private Long paymentCheck;
+	private String optionName;
 	private Long optionNum;
 	private ProductDTO productDTO;
-	
 	private Long paymentNum;
 	
 	
 	
 	
 	
-	
+	public String getOptionName() {
+		return optionName;
+	}
+	public void setOptionName(String optionName) {
+		this.optionName = optionName;
+	}
+	public Long getR() {
+		return r;
+	}
+	public void setR(Long r) {
+		this.r = r;
+	}
 	public Long getPaymentNum() {
 		return paymentNum;
 	}

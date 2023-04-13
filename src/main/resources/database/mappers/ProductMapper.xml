@@ -8,7 +8,7 @@
  	  <sql id="ProductCondition">
       <where>
          <if test="kind == 'productName'">
-            PRODUCTNAME LIKE '%' || #{search} || '%'
+           PRODUCTNAME LIKE '%' || #{search} || '%'
          </if>
       </where>
    	</sql>
@@ -25,8 +25,6 @@
   	<select id="getProductList" resultType="ProductDTO" parameterType="ProductDTO">
   	SELECT PRODUCTNUM , PRODUCTNAME FROM PRODUCT
   	WHERE CATEGORYNUM = #{categoryNum}
-  	
-  	
   	
   	</select>
 
@@ -84,8 +82,13 @@
 	</select>
 	
 	<select id="getTotalCount" resultType="Long" parameterType="Pager">
- 		SELECT COUNT(PRODUCTNUM) FROM PRODUCT
- 		<include refid="ProductCondition"></include>
+ 		SELECT COUNT(PRODUCTNUM) FROM
+		(SELECT * FROM PRODUCT P
+			LEFT OUTER JOIN PRODUCTFILES FI
+			USING(PRODUCTNUM)
+			<include refid="ProductCondition"></include>
+		)N
+ 		
  	</select>
 	
 	<insert id="setProductAdd" parameterType="ProductDTO">
@@ -101,22 +104,19 @@
 		VALUES (PRODUCTFILES_SEQ.NEXTVAL, #{productNum}, #{fileName}, #{oriName})
 	</insert>  
 	
-		<select id="getMemberProductList" resultType="ProductDTO" parameterType="Pager" >
-		SELECT * FROM 
-		(
-			SELECT ROWNUM R, N.* FROM
-			(
-			(SELECT * FROM PRODUCT 
-				<include refid="ProductCondition"></include>
-			 ORDER BY PRODUCTNUM DESC) 
-			)
-		N)
-		WHERE R BETWEEN #{startRow} AND #{lastRow} 	
+		<select id="getMemberProductList" resultMap="productListResult" parameterType="Pager" >
+				SELECT * FROM
+					(SELECT ROWNUM R, N.* FROM
+						(SELECT * FROM PRODUCT P
+						LEFT OUTER JOIN PRODUCTFILES FI
+						USING(PRODUCTNUM)
+						<include refid="ProductCondition"></include>
+						ORDER BY PRODUCTNUM) N)
+				WHERE R BETWEEN #{startRow} AND #{lastRow} 	
 		
 	</select>	
-		
-	
-	 <resultMap type="ProductDTO" id="productListResult">
+
+	 <resultMap type="ProductDTO" id="productListResult" >
    
 	   <!--Primary Key  -->
 	   <id column="PRODUCTNUM" property="productNum" />
@@ -127,19 +127,35 @@
 	   <result column="ID" property="id"/>
 	   
  	   <!-- 1:n 관계일 때  -->
- 	   <collection property="productOptionDTOs" javaType="List" ofType="ProductOptionDTO">
- 	    <id  column="OPTIONNUM"  property="optionNum" />
- 	    <result  column="PRODUCTNUM" property="productNum"/>
-        <result  column="PRODUCTPRICE" property="productPrice"/>
-    	<result  column="PRODUCTSTOCK" property="productStock"/>
-    	<result  column="OPTIONNAME" property="optionName"/>
-    	<result  column="PRODUCTDATE" property="productDate"/>
-    	<result  column="OPTIONVALUE" property="optionValue"/>
-    	<result  column="REF" property="ref"/>
-    	<result  column="DEPTH" property="depth"/>
-    	
+ 	    <collection property="productImgDTOs" javaType="List" ofType="ProductImgDTO" >
+ 	    <id  column="FILENUM"  property="fileNum" />
+        <result  column="NUM" property="num"/>
+    	<result  column="FILENAME" property="fileName"/>
+    	<result  column="ORINAME" property="oriName"/>
  	   </collection>
  	  </resultMap> 
+ 	  
+ 	  <select id="getMemberCartDetail" resultMap="ProductCartList2" parameterType="ProductOptionDTO">
+			SELECT * FROM PRODUCTOPTION PO
+			LEFT OUTER JOIN PRODUCTORDER POP
+			USING(PRODUCTNUM)
+			WHERE PAYMENTCHECK=1
+			AND PRODUCTNUM = #{productNum}
+	</select>
+	
+	<resultMap type="ProductOptionDTO" id="ProductCartList2">
+			<id column="OPTIONNUM" property="optionNum"/>
+			<result column="PRODUCTPRICE" property="productPrice"/>
+			<result column="OPTIONNAME" property="optionName"/>
+			<result column="OPTIONVALUE" property="optionValue"/>
+			<result column="DEPTH" property="depth"/>
+			<result column="REF" property="ref"/>
+	 		<collection property="cartDTOs"  javaType="list" ofType="CartDTO">
+	 			<id column="ORDERNUM" property="orderNum"/>
+	 			<result column="PAYMENTCHECK" property="paymentCheck"/>
+	 		</collection>
+ 		
+	</resultMap>
 	 
 	<select id="getProductFileList" resultType="ProductImgDTO">
 		SELECT * FROM PRODUCTFILES

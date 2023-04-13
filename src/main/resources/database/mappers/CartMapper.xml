@@ -6,10 +6,11 @@
 
 	<sql id="CartCondition">
 		<where>
-			<if test="kind == id">
-				 PO.ID LIKE '%' || #{search} || '%'
+			<if test="kind == id ">
+				PO.ID LIKE '%' || #{search} || '%'
 			</if>
-		</where>
+		</where>	
+		
 	</sql>
 	
 	<!-- 나중에 삭제하기 -->
@@ -48,23 +49,6 @@
 		ON(PO.OPTIONNUM  = "POP".OPTIONNUM)
 		WHERE PO.ID = #{id} AND BUYCHECK = 1
 		ORDER BY PO.ORDERNUM DESC
-	</select>
-	
-	<select id="getMemberCartList" parameterType="Pager" resultMap="ProductCartList">
-	SELECT * FROM 
-	(SELECT ROWNUM R, N.* FROM
-		(SELECT * FROM PRODUCTORDER PO
-			LEFT OUTER JOIN PRODUCT P
-			ON(PO.PRODUCTNUM = P.PRODUCTNUM)
-				LEFT OUTER JOIN PRODUCTOPTION "POP"
-				ON(PO.OPTIONNUM  = "POP".OPTIONNUM)
-				<include refid="CartCondition"></include>
-				AND PAYMENTCHECK = 1
-				ORDER BY PO.OPTIONNUM DESC
-				)
-	N);
-	
-			WHERE R BETWEEN #{startRow} AND #{lastRow}
 	</select>
 	
 	<select id="getCartPaymentDetail" parameterType="CartDTO" resultMap="ProductCartList">
@@ -128,4 +112,32 @@
 	<update id="getCartUpdate" parameterType="CartDTO">
 		UPDATE PRODUCTORDER SET PRODUCTEA = #{productEa}, TOTALPRICE=#{totalPrice} WHERE ORDERNUM = #{orderNum}
 	</update>
+		
+	<select id="getTotalCount" resultType="Long" parameterType="Pager">
+	 		SELECT COUNT(PRODUCTNUM) FROM
+			(SELECT * FROM PRODUCT P
+			INNER JOIN PRODUCTORDER PO
+			USING(PRODUCTNUM) 
+		<include refid="CartCondition"></include>
+		)N
+ 	</select>
+		
+		<select id="getMemberCartList"  parameterType="Pager" resultMap="ProductCartList">
+		SELECT * FROM 
+		(SELECT ROWNUM R, N.* FROM
+		(SELECT * FROM PRODUCT P
+			LEFT OUTER JOIN PRODUCTORDER PO
+			USING(PRODUCTNUM)
+				<include refid="CartCondition"></include>
+				<if test="search == null">
+					WHERE PAYMENTCHECK=1
+				</if>
+				 AND PAYMENTCHECK=1
+				ORDER BY ORDERNUM DESC
+				)
+	N)
+		WHERE R BETWEEN #{startRow} AND #{lastRow}
+	</select>
+
+	
 </mapper>

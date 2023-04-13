@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.home.middle.cart.CartDTO;
 import com.home.middle.util.Pager;
 
 @Repository
@@ -56,6 +57,12 @@ public class ProductDAO {
 		 List<ProductDTO> ar = sqlSession.selectList(NAMESPACE + "getMemberProductList", pager);
 		 return ar; 
 	 }
+	 
+	public List<ProductOptionDTO> getMemberCartDetail(ProductOptionDTO produOptionDTO) throws Exception {
+		List<ProductOptionDTO> ar =  sqlSession.selectList(NAMESPACE + "getMemberCartDetail", produOptionDTO);
+		System.out.println(produOptionDTO.getProductNum());
+		return ar;
+	}
 	
 	//장바구니 
 	public int setProductOptionAdd(ProductDTO productDTO) throws Exception {

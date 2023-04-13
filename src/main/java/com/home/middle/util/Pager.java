@@ -1,8 +1,8 @@
 package com.home.middle.util;
 
+import com.home.middle.product.ProductImgDTO;
 
 public class Pager {
-	
 	
 	private Long num;
 	
@@ -13,6 +13,9 @@ public class Pager {
 	private Long orderNum;
 	private String autoStatus;
 	
+	
+
+
 	public String getAutoStatus() {
 		return autoStatus;
 	}

@@ -58,7 +58,7 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="breadcrumbs-inner">
-                               <img alt="" src="../resources/js/img/logo/managerLogo.png" id="img">
+                               <img alt="" src="/resources/js/img/logo/managerLogo.png" id="img">
                             </div>
                         </div>
                     </div>
