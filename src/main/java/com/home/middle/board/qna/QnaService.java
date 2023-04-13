@@ -46,10 +46,6 @@ public class QnaService implements BbsService{
 		// TODO Auto-generated method stub
 		int result = qnaDAO.setBoardAdd(bbsDTO);
 		
-		String realPath = session.getServletContext().getRealPath("resources/upload/qna/");
-		System.out.println(realPath);
-		
-		
 		//file을 hdd에 저장
 		return result;
 	}

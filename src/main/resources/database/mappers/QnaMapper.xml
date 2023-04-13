@@ -42,7 +42,6 @@
  	<!-- <selectKey keyProperty="num" resultType="Long" order="BEFORE">
       SELECT REVIEW_SEQ.NEXTVAL FROM DUAL
     </selectKey> -->
-    
     INSERT INTO QNA (NUM,ID,TITLE,CONTENTS,REGDATE,HIT,DEPTH,PRODUCTNUM)
 	VALUES(QNA_SEQ.NEXTVAL,#{id},#{title},#{contents},sysdate,0,0,#{productNum})
     </insert>

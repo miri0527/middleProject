@@ -105,18 +105,7 @@ public class ProductController {
 //	}
 	   
 	
-	@GetMapping("memberProductList")
-	   public ModelAndView getMemberProductList(Pager pager) throws Exception {
-	      ModelAndView mv = new ModelAndView();
-	      
-	      List<ProductDTO> ar =  productService.getMemberProductList(pager);
-	      
-	      mv.setViewName("product/memberProductList");
-	      mv.addObject("list", ar);
-	      
-	      return mv;
-	   }
-	
+
 //////////////////////////////////////////////////////////////상품 하위 옵션 구현//////////////////////////////////////////////////////////////////////	
 
 
