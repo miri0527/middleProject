@@ -94,7 +94,7 @@ public class QnaController {
 	}	
 	
 	@PostMapping("delete")
-	public ModelAndView setBoardDelete(BbsDTO bbsDTO, HttpSession session)throws Exception{
+	public ModelAndView setBoardDelete(BbsDTO bbsDTO, HttpSession session, Pager pager)throws Exception{
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("common/result");
 

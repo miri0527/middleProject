@@ -43,7 +43,7 @@ public class TestController {
 		
 		ModelAndView mv = new ModelAndView();
 		
-		productService.productOptionAdd(optionValue0,optionValue1,optionValue2,optionName, countList, countList2, price, stock);
+		productService.productOptionAdd(optionValue0,optionValue1,optionValue2,optionName, countList, countList2, price, stock, null);
 		
 		mv.setViewName("/test/testjson");
 		

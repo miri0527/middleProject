@@ -24,6 +24,7 @@ public interface BbsService {
 	public BbsDTO getBoardDetail(BbsDTO bbsDTO) throws Exception;
 	
 	public BoardFileDTO getBoardFileDetail(BoardFileDTO boardFileDTO) throws Exception;
+	int setBoardAdd(BbsDTO bbsDTO, HttpSession session) throws Exception;
 	
 	
 	

@@ -20,11 +20,7 @@
   		
   	</select>
   	
-    <update id="setBoardUpdate" parameterType="BbsDTO">
-  		UPDATE QNA SET TITLE=#{title}, CONTENTS=#{contents} WHERE NUM=#{num}
-  	</update>
-  	
-  	
+
   	
       <select id="getBoardList" parameterType="Pager" resultType="QnaDTO">
 	 	  	SELECT * FROM
@@ -56,25 +52,12 @@
 	DELETE QNA WHERE  NUM = #{num}
 	</delete>
     
-    <!--파일 추가-->
-    <insert id="setProductFileAdd" parameterType="QnaDTO">
-	INSERT INTO QNAFILES
-	VALUES (QNA_FILE_SEQ.NEXTVAL, #{num}, #{fileName}, #{oriName})
-	</insert>
+   
 	
-	<select id="getBoardFileList" parameterType="BbsDTO" resultType="BoardFileDTO">
-  		SELECT * FROM QNAFILES WHERE NUM=#{num}
-  	</select>
-      
-      
       
    <select id="getBoardDetail" parameterType="BbsDTO" resultMap="getBoardDetailResult"> 
-   		SELECT Q.*, QF.*
-   		FROM QNA Q
-   			LEFT JOIN
-   			QNAFILES QF
-   			ON (Q.NUM = QF.NUM)
-   			WHERE Q.NUM=#{num}
+   		SELECT * FROM QNA
+   			WHERE NUM=#{num}
    </select>
    
       <resultMap type="QnaDTO" id="getBoardDetailResult">
@@ -89,11 +72,11 @@
 	     <result column="productNum" property="productNum"/>
 	<!--type에 멤버메서드중에서 속성을 넣어주기  -->
 	<!--of type은 제네릭 타입을 쓰라는 뜻입니다 column은 대소문자구문 하지 않습니다-->
-	<collection property="boardFileDTOs" javaType="List" ofType="BoardFileDTO">
+	<!-- <collection property="boardFileDTOs" javaType="List" ofType="BoardFileDTO">
 		<id column="fileNum" property="fileNum" />
 		<result column="fileName"  property="fileName"/>
 		<result column="oriName" property="oriName" />
-	</collection>
+	</collection> -->
 	
    </resultMap>
 </mapper>

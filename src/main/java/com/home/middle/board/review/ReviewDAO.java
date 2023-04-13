@@ -62,25 +62,9 @@ public class ReviewDAO implements BbsDAO {
 		return null;
 	}
 	
-	public int setBoardFileAdd(BoardFileDTO boardFileDTO) throws Exception {
-		return sqlSession.insert(NAMESPACE + "setBoardFileAdd", boardFileDTO);
-	}
-	
-	public int setBoardFileDelete(Long fileNum) throws Exception {
-		// TODO Auto-generated method stub
-		return sqlSession.delete(NAMESPACE+"setBoardFileDelete", fileNum);
-	}
-	
-	public BoardFileDTO getBoardFileDetail(BoardFileDTO boardFileDTO) throws Exception {
-		// TODO Auto-generated method stub
-		return sqlSession.selectOne(NAMESPACE+"getBoardFileDetail", boardFileDTO);
-	}
 	public BbsDTO getBoardDetail(BbsDTO bbsDTO) throws Exception {
 		// TODO Auto-generated method stub
 		return sqlSession.selectOne(NAMESPACE+"getBoardDetail", bbsDTO);
 	}
-	public List<BoardFileDTO> getBoardFileList(BbsDTO bbsDTO) throws Exception {
-		// TODO Auto-generated method stub
-		return sqlSession.selectList(NAMESPACE+"getBoardFileList", bbsDTO);
-	}
+	
 }
