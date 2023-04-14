@@ -117,11 +117,9 @@
                                         <li class="mega-parent"><a href="/product/add">상품등록</a>
                          
                                         </li>
-                                        <li><a href="/">공지사항</a>
-                              
-                                        </li>
+                               
                                         <li>
-                                            <a href="">QNA</a>
+                                            <a href="/qna/listdetail">QNA</a>
                                         </li>
                                         
                                     </ul>

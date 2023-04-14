@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.home.middle.cart.CartDTO;
@@ -171,7 +172,23 @@ public class ManagerController {
 			return mv;
 		}
 	
-	
+	@PostMapping("update")
+	public ModelAndView setProductUpdate(ProductDTO productDTO, HttpSession session, MultipartFile[] pics, Long[] fileNum) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		
+		int result =  productService.setProductUpdate(productDTO, pics, fileNum, session);
+		String message="등록실패";
+		
+		if(result > 0) {
+			message="글이 수정되었습니다";
+		}
+		
+		mv.addObject("result", message);
+		mv.setViewName("common/result");
+		mv.addObject("url", "./list?categoryNum=" + productDTO.getCategoryNum());
+		
+		return mv;
+	}
 	
 	
 }

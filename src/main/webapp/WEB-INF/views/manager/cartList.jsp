@@ -12,6 +12,9 @@
 	margin-top : 20px;
 } 
 
+table.ta {
+	margin-top : 30px;
+}
 .button {
 	margin-top : 30px;
 }
@@ -38,7 +41,7 @@
 	
 	
 		<div class="row">
-			<table class="table table-hover text-center">
+			<table class="table table-hover text-center ta">
 				<tr>
 					<th>주문번호</th>
 					<th>아이디</th>

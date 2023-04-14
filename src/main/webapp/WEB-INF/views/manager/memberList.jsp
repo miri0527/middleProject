@@ -54,7 +54,7 @@ table.type09 td {
 	회원등급
 	<input type="checkbox" id="allRole" name="roleName" value="" checked > 전체
 	<input type="checkbox" id="memberRole	" name="roleName" class="check" value="MEMBER">일반회원
-	<input type="checkbox" id="sellerRole" name="roleName"class="check" value="SELLER">판매자
+	<input type="checkbox" id="sellerRole" name="roleName"class="check" value="MANAGER">매니저
 	<input type="checkbox" id="adminRole" name="roleName" class="check"value="ADMIN">관리자	
 		
 		<div class="table-content table-responsive mb-50">

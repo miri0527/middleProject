@@ -53,8 +53,8 @@ thead {
             <c:if test="${member.roleDTO.roleName eq 'ADMIN' }">
                <th></th>
             </c:if>
+           		<th>상품명</th>
                <th>상품</th>
-               <th>상품명</th>
                <th>판매여부</th>
             
          </tr>
@@ -66,7 +66,7 @@ thead {
                <td>
                   <input class="form-check-input mt-0 chkList" type="checkbox" data-productNum="${dto.productNum}" aria-label="Checkbox for following text input">
                </td>
-              	<td></td>
+             	<td>${dto.productImgDTOs[0].fileName}</td>
                
                <td><a href="./productDetail?productNum=${dto.productNum}"> ${dto.productName}</a></td>
                <td>

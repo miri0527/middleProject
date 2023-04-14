@@ -48,15 +48,17 @@ function deleteValue() {
 $(document).ready(() => {
     let checkArr = []
 
-    $('input:checkbox[class="check"]').click(() => {
-        allRole.checked = false
+    $("#allRole").change(() => {
+
+    
         $('input:checkbox[name="roleName"]:checked').each(function(i) {
             checkArr.push($(this).val())
         }) 
             
+        
         location.href = "memberList?roleName=" + checkArr
-      
-    })
+            
+       })
    
 })
 

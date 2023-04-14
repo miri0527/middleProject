@@ -220,9 +220,12 @@
                                                             </a>
                                                         </button>
                                                         
-                                                        <c:if test="${dto.id eq member.id || member.roleNum eq 1}">
+                                                       <c:if test="${member.roleDTO.roleName eq 'ADMIN' || dto.id eq member.id}">
                                                         	<button class="btn btn-outline-dark flex-shrink-0" type="button" id="deleteBtn">
                                                         	상품삭제
+                                                        	</button>
+                                                        	<button class="btn btn-outline-dark flex-shrink-0" type="button" id="updateBtn">
+                                                        	상품수정
                                                         	</button>
                                                          </c:if>	
                                                      

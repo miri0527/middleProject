@@ -52,19 +52,8 @@
   <c:import url="../template/common_js.jsp"></c:import>   
   
    <!-- BREADCRUMBS SETCTION START -->
-        <div class="breadcrumbs-section plr-200 mb-80 section">
-            <div class="breadcrumbs overlay-bg">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="breadcrumbs-inner">
-                               <img alt="" src="/resources/js/img/logo/managerLogo.png" id="img">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        
+  		   <img alt="" src="/resources/js/img/logo/managerLogo.png" id="img">
         
           <!-- Start page content -->
         <section id="page-content" class="page-wrapper section">

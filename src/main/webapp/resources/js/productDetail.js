@@ -114,6 +114,7 @@ let frm =  document.getElementById("frm")
 let deleteBtn = document.getElementById("deleteBtn")
 let updateBtn = document.getElementById("updateBtn")
 
+
 deleteBtn.addEventListener("click", function() {
   let check = confirm("정말 삭제하시겠습니까?")
   if(check) {
@@ -122,4 +123,9 @@ deleteBtn.addEventListener("click", function() {
   }
 })
 
+updateBtn.addEventListener("click", function() {
+  frm.setAttribute("action","./update")
+  frm.setAttribute("method","get")
+  frm.submit()
+})
 

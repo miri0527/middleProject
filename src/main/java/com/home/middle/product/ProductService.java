@@ -80,14 +80,12 @@ public class ProductService {
 	  pager.makeRow();
 	  
 	  pager.makeNum(productDAO.getTotalCount(pager));
-	  
+	  System.out.println();
 	  List<ProductDTO> ar = productDAO.getMemberProductList(pager);
-	  
 	  return ar; 
 	  }
 	  
 	  public List<ProductOptionDTO> getMemberCartDetail(ProductOptionDTO productOptionDTO) throws Exception {
-		  System.out.println("product"+productOptionDTO.getProductNum());
 		  List<ProductOptionDTO> ar =  productDAO.getMemberCartDetail(productOptionDTO);
 		  System.out.println("ar :"+ar.get(0).getOptionNum());
 		  return ar;

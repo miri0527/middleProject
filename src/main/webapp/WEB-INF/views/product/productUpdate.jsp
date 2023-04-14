@@ -7,6 +7,41 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <c:import url="../template/common_css.jsp"></c:import>
+<style type="text/css">
+	.div {
+		margin-top : 30px;
+		height : 400px;
+		border : 1px solid black;
+		position: absolute;
+	}
+	.center {
+		padding-top : 20px;
+		margin-left : 300px;
+	
+	
+	}
+	
+	.center2 {
+		padding-top : 20px;
+		margin-left : 300px;
+		
+		
+	}
+	
+	.center3 {
+		float:left;
+		padding-top : 30px;
+		
+		
+	}
+	.btn1 {
+		margin-top : 80px;
+		margin-left : 300px;
+	}
+	.btn2 {
+		margin-top : 80px;
+	}
+</style>
 </head>
 <body>
 <div class="container-fluid my-5">
@@ -15,7 +50,7 @@
     </div>
 	<form action="./update" method="post" enctype="multipart/form-data">
 		<input type="hidden" name="productNum" value="${dto.productNum}">
-		
+		<div class="row col-md-4 mx-auto my-5">
 		<div class="fw-bold fs-5 col-12">
 			<p>상품종류</p>
 			<select name="categoryNum" class="form-select form-select-sm" aria-label=".form-select-sm example"><br>
@@ -28,13 +63,14 @@
 				<option value="7" ${dto.categoryNum eq'7' ? 'selected' : ''}>에어컨</option>
 				<option value="8" ${dto.categoryNum eq'8' ? 'selected' : ''}>공기청정기</option>
 			</select>
+			</div>
 		</div>	
 		<div class="fw-bold fs-5 col-12">
 			<p>상품명</p>
 			<input type="text" name="productName" value="${dto.productName }"><br>
 		</div>
 			
-		 <fieldset class="mb-4">
+		 <fieldset class="mb-4 center3">
             <legend class="fw-bold fs-5">판매 여부</legend>
             <div class="form-check form-check-inline">
                <label for="bs1" class="form-check-labyyel" id="inlineRadio1">판매</label>
