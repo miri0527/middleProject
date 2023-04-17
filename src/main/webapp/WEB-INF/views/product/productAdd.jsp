@@ -57,6 +57,7 @@
      <p class="fs-2" style="font-family: 'Impact'">상품 등록</p>
    </div>
     <form action="./add" method = "post" enctype="multipart/form-data">
+    <input type="hidden" value="${dto.id }" name="id">
       <div class="row col-md-4 mx-auto my-5">
          <div class="fw-bold fs-5 col-12">
             <p>상품등록</p>

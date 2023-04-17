@@ -337,6 +337,9 @@
                                         <li>
                                             <a href="contact.html">Contact</a>
                                         </li>
+                                         <li>
+                                            <a href="/manager/home">Manager</a>
+                                        </li>
                                     </ul>
                                 </nav>
                             </div>

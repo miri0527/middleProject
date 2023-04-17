@@ -224,6 +224,9 @@
                                                         	<button class="btn btn-outline-dark flex-shrink-0" type="button" id="deleteBtn">
                                                         	상품삭제
                                                         	</button>
+                                                        	<button class="btn btn-outline dark-flex shrink-0" type="button" id="updateBTN">
+                                                        	상품수정
+                                                        	</button>
                                                          </c:if>	
                                                      
                                                        	

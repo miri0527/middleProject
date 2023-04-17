@@ -117,12 +117,11 @@
                                         <li class="mega-parent"><a href="/product/add">상품등록</a>
                          
                                         </li>
-                                        <li><a href="/">공지사항</a>
-                              
-                                        </li>
+                                      
                                         <li>
-                                            <a href="">QNA</a>
+                                            <a href="/qna/listdetail">QNA</a>
                                         </li>
+                                        
                                         
                                     </ul>
                                 </nav>
@@ -161,14 +160,12 @@
                                      
                                  
                                     </li>
-                                    <li><a href="/product/add">상품등록</a>
+                                    <li><a href="/product/add">상품등록</a>	
                              
                                     </li>
+                                  
                                     <li>
-                                        <a href="about.html">공지사항</a>
-                                    </li>
-                                    <li>
-                                        <a href="contact.html">QNA</a>
+                                        <a href="/qna/listdetail">QNA</a>
                                     </li>
                                 </ul>
                             </nav>
