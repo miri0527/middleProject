@@ -19,6 +19,7 @@ public interface BbsDAO {
 	//insert(add)
 		public int setBoardAdd(BbsDTO bbsDTO) throws Exception;
 	
+	
 		
 	//update
 		public int setBoardUpdate(BbsDTO bbsDTO) throws Exception;

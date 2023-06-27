@@ -38,17 +38,10 @@
 			 
 				<tr>
 					
-					<td>${dto.num}</td>
+					<td>${dto.r}</td>
 					<td><a href="./detail?num=${dto.num}"> ${dto.title}</a></td>
 					<td>${dto.id}</td>
 					<td>${dto.regDate}</td>
-					
-		         <c:if test="${member.roleDTO.roleNum < 3 }">
-		         
-		         
-					
-					
-					</c:if>
 				<%-- 	<c:if test="${member.roleDTO.roleNum < 2 }">
 					<div class="col-auto justify-content-end">
 					 <a href="/qnaReply/add" class="btn btn-warning">글작성</a>
@@ -128,7 +121,7 @@
 				  <button type="submit" class="btn btn-warning mb-3">검색</button>
 				</div>
 				<div class="col-auto justify-content-end">
-					<c:if test="${member.roleDTO.roleNum < 2 }">
+					<c:if test="${member.roleDTO.roleNum == 1}">
 						<div class="col-auto justify-content-end">
 							 <a href="./add" class="btn btn-warning">글작성</a>
 						</div>  

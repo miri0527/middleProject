@@ -11,6 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.home.middle.board.BbsDTO;
 import com.home.middle.board.BbsService;
 import com.home.middle.board.BoardFileDTO;
+import com.home.middle.util.FileManager;
 import com.home.middle.util.Pager;
 
 @Service
@@ -18,6 +19,9 @@ public class NoticeService implements BbsService {
 
 	@Autowired
 	private NoticeDAO noticeDAO;
+	
+	@Autowired
+	private FileManager fileManager;
 	
 	@Override
 	public List<BbsDTO> getBoardList(Pager pager) throws Exception {
@@ -31,8 +35,28 @@ public class NoticeService implements BbsService {
 
 	@Override
 	public int setBoardAdd(BbsDTO bbsDTO, MultipartFile[] multipartFiles, HttpSession session) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
+		int result = noticeDAO.setBoardAdd(bbsDTO);
+		
+		String realPath = session.getServletContext().getRealPath("resources/upload/notice");
+		
+		for(MultipartFile multipartFile : multipartFiles) {
+			if(multipartFile.isEmpty()) {
+				continue;
+			}
+			
+		String fileName = fileManager.fileSave(multipartFile, realPath);
+		// db에 insert 
+		BoardFileDTO boardFileDTO = new BoardFileDTO();
+		boardFileDTO.setNum(bbsDTO.getNum());
+		System.out.println("NUM:::" + boardFileDTO.getNum());
+		boardFileDTO.setFileName(fileName);
+		boardFileDTO.setOriName(multipartFile.getOriginalFilename());
+		
+		result = noticeDAO.setBoardFileAdd(boardFileDTO);
+		
+		}
+		
+		return result;
 	}
 
 	@Override
