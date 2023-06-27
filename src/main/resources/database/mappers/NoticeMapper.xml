@@ -13,6 +13,9 @@
   			<if test="kind=='id'">
   				ID LIKE '%'||#{search}||'%'
   			</if>
+  			<if test="kind == 'title'">
+  				TITLE LIKE '%' || #{search} || '%'
+  			</if>
   		</where>
   	</sql>
   	
@@ -25,11 +28,16 @@
 	  	(
 		  	SELECT ROWNUM R, N.* FROM
 		  		(
-			  		SELECT NUM, ID ,PRODUCTNUM,TITLE,CONTENTS, REGDATE,DEPTH FROM NOTICE
+			  		SELECT NUM, ID ,TITLE,CONTENTS, REGDATE, HIT FROM NOTICE
 			  		<include refid="noticeCondition"></include>
 			  		ORDER BY DEPTH DESC
 		  		) N
 	  	 )
 	  	WHERE R BETWEEN #{startRow} AND  #{lastRow}	  
   	</select>
+  	
+  	<insert id="setBoardAdd" parameterType="NoticeDTO">
+  		INSERT INTO NOTICE
+  		VALUES(NOTICE_SEQ.NEXTVAL,#{id}, #{title}, #{contents}, sysdate,0,0,)
+  	</insert>
   </mapper>

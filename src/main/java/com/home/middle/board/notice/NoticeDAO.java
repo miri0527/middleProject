@@ -20,18 +20,17 @@ public class NoticeDAO implements BbsDAO{
 	
 	@Override
 	public Long getTotalCount(Pager pager) throws Exception {
-		return sqlSession.selectOne(NAMESPACE + "getTotalCount" + pager);
+		return sqlSession.selectOne(NAMESPACE + "getTotalCount", pager);
 	}
 
 	@Override
 	public List<BbsDTO> getBoardList(Pager pager) throws Exception {
-		return sqlSession.selectList(NAMESPACE + "getBoardList" + pager);
+		return sqlSession.selectList(NAMESPACE + "getBoardList", pager);
 	}
 
 	@Override
 	public int setBoardAdd(BbsDTO bbsDTO) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.insert(NAMESPACE + "setBoardAdd", bbsDTO);
 	}
 
 	@Override
