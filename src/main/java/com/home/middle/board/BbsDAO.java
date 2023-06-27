@@ -2,11 +2,13 @@ package com.home.middle.board;
 
 import java.util.List;
 
+import org.apache.ibatis.session.SqlSession;
+
 import com.home.middle.util.Pager;
 
 
 public interface BbsDAO {
-
+	
 	//totalCount
 	public Long getTotalCount(Pager pager) throws Exception;
 	

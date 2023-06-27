@@ -17,6 +17,7 @@
   	    <typeAlias type="com.home.middle.board.BoardFileDTO" alias="BoardFileDTO" />
   	    <typeAlias type="com.home.middle.board.review.ReviewDTO" alias="ReviewDTO" />
   	     <typeAlias type="com.home.middle.board.qna.QnaDTO" alias="QnaDTO" />
+  	     <typeAlias type="com.home.middle.board.notice.NoticeDTO" alias="NoticeDTO"/>
  			<typeAlias type="com.home.middle.board.qna.QnaReplyDTO" alias="QnaReplyDTO" />
   	     <typeAlias type="com.home.middle.util.Pager" alias="Pager"/>
   	    <typeAlias type="java.lang.Long" alias="Long" />
