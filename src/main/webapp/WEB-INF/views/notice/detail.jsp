@@ -68,6 +68,7 @@
 							<button class="btn btn-primary" type="submit">수정</button>
 							<button class="btn btn-danger" id="deleteBtn">삭제</button>
 						</div>
+					
 					</form>
 				</c:if>
 			</div>

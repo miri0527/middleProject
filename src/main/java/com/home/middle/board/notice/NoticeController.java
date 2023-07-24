@@ -13,6 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.home.middle.board.BbsDTO;
+import com.home.middle.board.BoardFileDTO;
 import com.home.middle.util.Pager;
 
 import oracle.jdbc.proxy.annotation.Post;
@@ -27,6 +28,7 @@ public class NoticeController {
 	
 	@GetMapping("list")
 	public ModelAndView getBoardList(Pager pager) throws Exception {
+		System.out.println("으아아아아 정체가 무엇이냐");
 		ModelAndView mv = new ModelAndView();
 		
 		List<BbsDTO> ar = noticeService.getBoardList(pager);
@@ -41,14 +43,19 @@ public class NoticeController {
 	
 	@GetMapping("detail")
 	public ModelAndView getBoardDetail(BbsDTO bbsDTO, HttpSession session) throws Exception {
+		System.out.println("으아아아아 정체가 무엇이냐");
 		ModelAndView mv = new ModelAndView();
+		
+		
 		
 		bbsDTO = noticeService.getBoardDetail(bbsDTO);
 		
-		int result = noticeService.setBoardHit(bbsDTO);
 
+		int result = noticeService.setBoardHit(bbsDTO);
+		
 		
 		System.out.println("hit:::" + bbsDTO.getHit());
+
 		
 		mv.addObject("boardDTO", bbsDTO);
 		mv.setViewName("notice/detail");
@@ -59,6 +66,7 @@ public class NoticeController {
 	
 	@GetMapping("add")
 	public ModelAndView setBoardAdd() throws Exception {
+		System.out.println("으아아아아 정체가 무엇이냐");
 		ModelAndView mv = new ModelAndView();
 		
 		mv.setViewName("notice/add");
@@ -85,6 +93,19 @@ public class NoticeController {
 		return mv;
 	}
 	
+	@GetMapping("update")
+	public ModelAndView setBoardUpdate(NoticeDTO noticeDTO) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		
+		BbsDTO bbsDTO =  noticeService.getBoardDetail(noticeDTO);
+		
+		mv.addObject("detail", bbsDTO);
+		mv.setViewName("notice/update");
+	
+		return mv;
+		
+		
+	}
 
 	
 

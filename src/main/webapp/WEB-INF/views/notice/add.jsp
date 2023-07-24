@@ -26,6 +26,11 @@
     		<input type="text" class="form-control" id="id" name="id" placeholder="id" value="${member.id}" readonly>
   		</div>
   		
+  		<div class="col-12">
+  			<label for="important">중요 표시</label>
+  			<input type="checkbox" class="" name="important">
+  		</div>
+  		
   		
   		<div class="col-12">
     		<label for="contents" class="form-label">제목</label>
