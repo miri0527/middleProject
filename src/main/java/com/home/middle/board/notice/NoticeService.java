@@ -6,6 +6,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.home.middle.board.BbsDTO;
@@ -15,6 +16,7 @@ import com.home.middle.util.FileManager;
 import com.home.middle.util.Pager;
 
 @Service
+@Transactional
 public class NoticeService implements BbsService {
 
 	@Autowired
@@ -32,6 +34,7 @@ public class NoticeService implements BbsService {
 		return noticeDAO.getBoardList(pager);
 		
 	}
+
 
 	@Override
 	public int setBoardAdd(BbsDTO bbsDTO, MultipartFile[] multipartFiles, HttpSession session) throws Exception {
@@ -67,20 +70,27 @@ public class NoticeService implements BbsService {
 
 	@Override
 	public int setBoardDelete(BbsDTO bbsDTO, HttpSession session) throws Exception {
-		// TODO Auto-generated method stub
 		return 0;
+		
+		
 	}
 
 	@Override
 	public BbsDTO getBoardDetail(BbsDTO bbsDTO) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return noticeDAO.getBoardDetail(bbsDTO);
 	}
 
 	@Override
 	public BoardFileDTO getBoardFileDetail(BoardFileDTO boardFileDTO) throws Exception {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	
+	//조회수 올리기
+	public int setBoardHit(BbsDTO bbsDTO) throws Exception {
+		
+		return noticeDAO.setBoardHit(bbsDTO);
 	}
 
 	

@@ -48,4 +48,29 @@
   		INSERT INTO NOTICEFILE
   		VALUES(NOTICE_FILE_SEQ.NEXTVAL, #{num}, #{fileName},#{oriName} )
   	</insert>
+  	
+  	<select id="getBoardDetail" resultType="NoticeDTO" parameterType="NoticeDTO">
+  		SELECT * FROM NOTICE 
+  			LEFT OUTER JOIN 
+  				NOTICEFILE
+  			USING(NUM)	
+  		WHERE NUM=#{num}
+  	</select>
+  	
+  	<!--HIT 올리기-->
+  	<update id="setBoardHit" parameterType="NoticeDTO"> 
+  		UPDATE NOTICE SET HIT = #{hit} + 1
+  		WHERE NUM=#{num}
+  	</update>
+  	
+  	<!-- 공지사항 삭제 -->
+  	<delete id="setBoardDelete" parameterType="NoticeDTO">
+  		DELETE NOTICE 
+		WHERE NUM= #{num}
+  	</delete>
+  	
+  	<delete id="setBoardFileDelete" parameterType="BoardFileDTO">
+  		DELETE NOTICEFILE
+  		WHERE NUM = #{num}
+  	</delete>
   </mapper>

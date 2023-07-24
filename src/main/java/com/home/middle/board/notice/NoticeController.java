@@ -15,6 +15,9 @@ import org.springframework.web.servlet.ModelAndView;
 import com.home.middle.board.BbsDTO;
 import com.home.middle.util.Pager;
 
+import oracle.jdbc.proxy.annotation.Post;
+import retrofit2.http.HTTP;
+
 @Controller
 @RequestMapping("/notice/**")
 public class NoticeController {
@@ -27,11 +30,31 @@ public class NoticeController {
 		ModelAndView mv = new ModelAndView();
 		
 		List<BbsDTO> ar = noticeService.getBoardList(pager);
+		
+		System.out.println("list Hit ::" + ar.get(0).getHit());
 	
 		mv.addObject("list", ar);
 		mv.setViewName("notice/list");
 		
 		return mv;
+	}
+	
+	@GetMapping("detail")
+	public ModelAndView getBoardDetail(BbsDTO bbsDTO, HttpSession session) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		
+		bbsDTO = noticeService.getBoardDetail(bbsDTO);
+		
+		int result = noticeService.setBoardHit(bbsDTO);
+
+		
+		System.out.println("hit:::" + bbsDTO.getHit());
+		
+		mv.addObject("boardDTO", bbsDTO);
+		mv.setViewName("notice/detail");
+		
+		return mv;
+		
 	}
 	
 	@GetMapping("add")
@@ -61,4 +84,8 @@ public class NoticeController {
 		
 		return mv;
 	}
+	
+
+	
+
 }

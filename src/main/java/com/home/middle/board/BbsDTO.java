@@ -27,10 +27,6 @@ public class BbsDTO {
 	public Long getHit() {
 		return hit;
 	}
-	public void setHit(Long hit) {
-		this.hit = hit;
-	}
-	
 	
 	public String getId() {
 		return id;
@@ -57,5 +53,10 @@ public class BbsDTO {
 	public void setRegDate(Date regDate) {
 		this.regDate = regDate;
 	}
+	
+	public void setHit(Long hit) {
+		this.hit = hit;
+	}
+	
 	
 }

@@ -28,6 +28,15 @@ public class NoticeDAO implements BbsDAO{
 	public List<BbsDTO> getBoardList(Pager pager) throws Exception {
 		return sqlSession.selectList(NAMESPACE + "getBoardList", pager);
 	}
+	
+	public NoticeDTO getBoardDetail(BbsDTO bbsDTO) throws Exception {
+		return sqlSession.selectOne(NAMESPACE + "getBoardDetail", bbsDTO);
+	}
+	
+	//조회수 올리기
+	public int setBoardHit(BbsDTO bbsDTO) throws Exception {
+		return sqlSession.update(NAMESPACE + "setBoardHit", bbsDTO);
+	}
 
 	@Override
 	public int setBoardAdd(BbsDTO bbsDTO) throws Exception {
@@ -46,9 +55,10 @@ public class NoticeDAO implements BbsDAO{
 
 	@Override
 	public int setBoardDelete(BbsDTO bbsDTO) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.delete(NAMESPACE + "setBoardDelete", bbsDTO);
 	}
+	
+	
 
 	
 }

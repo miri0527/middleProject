@@ -9,6 +9,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <c:import url="../template/common_css.jsp"></c:import>
+<meta http-equiv="Cache-Control" content="no-store" />
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@400;800;900&display=swap');
 	#row {
@@ -30,7 +31,7 @@
 		<table class="table table-hover">
 			<thead>
 				<tr>
-					<th>NUM</th><th>TITLE</th><th>WRITER</th><th>DATE</th>
+					<th>NUM</th><th>TITLE</th><th>WRITER</th><th>DATE</th><th>HIT</th>
 				
 					
 				</tr>
@@ -42,6 +43,7 @@
 					<td><a href="./detail?num=${dto.num}"> ${dto.title}</a></td>
 					<td>${dto.id}</td>
 					<td>${dto.regDate}</td>
+					<td>${dto.hit }</td>
 				<%-- 	<c:if test="${member.roleDTO.roleNum < 2 }">
 					<div class="col-auto justify-content-end">
 					 <a href="/qnaReply/add" class="btn btn-warning">글작성</a>
