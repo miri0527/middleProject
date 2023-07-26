@@ -35,10 +35,16 @@ public class NoticeService implements BbsService {
 		return noticeDAO.getBoardList(pager);
 		
 	}
+	
+	public List<NoticeDTO> getImportantList(NoticeDTO noticeDTO) throws Exception {
+		return noticeDAO.getImportantList(noticeDTO);
+				
+	}
 
 
 	@Override
 	public int setBoardAdd(BbsDTO bbsDTO, MultipartFile[] multipartFiles, HttpSession session) throws Exception {
+		
 		int result = noticeDAO.setBoardAdd(bbsDTO);
 		
 		String realPath = session.getServletContext().getRealPath("resources/upload/notice");

@@ -28,7 +28,7 @@
 	  	(
 		  	SELECT ROWNUM R, N.* FROM
 		  		(
-			  		SELECT NUM, ID ,TITLE,CONTENTS, REGDATE, HIT FROM NOTICE
+			  		SELECT * FROM NOTICE
 			  		<include refid="noticeCondition"></include>
 			  		ORDER BY NUM DESC
 		  		) N
@@ -36,12 +36,20 @@
 	  	WHERE R BETWEEN #{startRow} AND  #{lastRow}	  
   	</select>
   	
+	<!-- 주요 공지사항 상단 고정 -->
+	<select id="getImportantList" resultType="NoticeDTO" parameterType="NoticeDTO">
+		SELECT * FROM NOTICE
+  		WHERE IMPORTANT = #{important}
+  		ORDER BY NUM DESC
+	</select>
+	
+	
   	<insert id="setBoardAdd" parameterType="NoticeDTO">
   		<selectKey keyProperty="num" resultType="Long" order="BEFORE">
   			SELECT NOTICE_SEQ.NEXTVAL FROM DUAL
   		</selectKey>
   		INSERT INTO NOTICE
-  		VALUES(#{num},#{id}, #{title}, #{contents}, sysdate,0,0)
+  		VALUES(#{num},#{id}, #{title}, #{contents}, sysdate,0,0, #{important})
   	</insert>
   	
   	<insert id="setBoardFileAdd" parameterType="BoardFileDTO">
@@ -57,7 +65,7 @@
   		WHERE NUM=#{num}
   	</select>
   	
-  	<select id="get"></select>
+ 
   	<!--HIT 올리기-->
   	<update id="setBoardHit" parameterType="NoticeDTO"> 
   		<selectKey keyProperty="hit" resultType="Long" order="AFTER">

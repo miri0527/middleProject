@@ -28,34 +28,38 @@ public class NoticeController {
 	
 	@GetMapping("list")
 	public ModelAndView getBoardList(Pager pager) throws Exception {
-		System.out.println("으아아아아 정체가 무엇이냐");
 		ModelAndView mv = new ModelAndView();
 		
 		List<BbsDTO> ar = noticeService.getBoardList(pager);
 		
-		System.out.println("list Hit ::" + ar.get(0).getHit());
-	
 		mv.addObject("list", ar);
 		mv.setViewName("notice/list");
 		
 		return mv;
 	}
 	
-	@GetMapping("detail")
-	public ModelAndView getBoardDetail(BbsDTO bbsDTO, HttpSession session) throws Exception {
-		System.out.println("으아아아아 정체가 무엇이냐");
+	@GetMapping("importantList")
+	public ModelAndView getImportantList(NoticeDTO noticeDTO) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		
+		List<NoticeDTO> ar = noticeService.getImportantList(noticeDTO);
+		
+		mv.addObject("importantList", ar);
+		mv.addObject("notice/importantList");
+		
+		return mv;
+	}
+	
+	@GetMapping("detail")
+	public ModelAndView getBoardDetail(BbsDTO bbsDTO, HttpSession session) throws Exception {
+	
+		ModelAndView mv = new ModelAndView();
 		
 		
 		bbsDTO = noticeService.getBoardDetail(bbsDTO);
 		
 
 		int result = noticeService.setBoardHit(bbsDTO);
-		
-		
-		System.out.println("hit:::" + bbsDTO.getHit());
-
 		
 		mv.addObject("boardDTO", bbsDTO);
 		mv.setViewName("notice/detail");
@@ -66,7 +70,6 @@ public class NoticeController {
 	
 	@GetMapping("add")
 	public ModelAndView setBoardAdd() throws Exception {
-		System.out.println("으아아아아 정체가 무엇이냐");
 		ModelAndView mv = new ModelAndView();
 		
 		mv.setViewName("notice/add");

@@ -29,6 +29,11 @@ public class NoticeDAO implements BbsDAO{
 		return sqlSession.selectList(NAMESPACE + "getBoardList", pager);
 	}
 	
+	//주요 공지사항 상단 고정
+	public List<NoticeDTO> getImportantList(NoticeDTO noticeDTO) throws Exception {
+		return sqlSession.selectList(NAMESPACE + "getImportantList", noticeDTO);
+	}
+	
 	public NoticeDTO getBoardDetail(BbsDTO bbsDTO) throws Exception {
 		return sqlSession.selectOne(NAMESPACE + "getBoardDetail", bbsDTO);
 	}

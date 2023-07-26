@@ -58,5 +58,7 @@ public class BbsDTO {
 		this.hit = hit;
 	}
 	
+
+	
 	
 }

@@ -26,14 +26,18 @@
     		<input type="text" class="form-control" id="id" name="id" placeholder="id" value="${member.id}" readonly>
   		</div>
   		
-  		<div class="col-12">
-  			<label for="important">중요 표시</label>
-  			<input type="checkbox" class="" name="important">
-  		</div>
+  		<div class="col-md-12 mt-4">
+		  <div style="display: flex; align-items: center;">
+		    <label for="important" class="form-label" style="margin-bottom: 10px; margin-left:5px">중요 표시</label>
+		    <div style="margin-left: 10px;">
+		      <input type="checkbox" name="important" id="important" style="width: 20px; height: 20px; margin-bottom: 10px;" value="0">
+		    </div>
+		  </div>
+		</div>
   		
   		
   		<div class="col-12">
-    		<label for="contents" class="form-label">제목</label>
+    		<label for="title" class="form-label">제목</label>
     		<input type="text" class="form-control" id="title" name="title" placeholder="제목을 입력하세요.">
   		</div> 
   		
@@ -45,7 +49,8 @@
   		</div> 
   		
   		<div class="col-12">
-  			<input type="file" class="custom-file-input" name="addfiles">
+  			<button class="btn btn-info" type="button" id="addBtn">파일 추가</button>
+  			<div id="addFile" style="height : 100px;"></div>
   		</div>
   		
 
@@ -60,10 +65,22 @@
    <c:import url="../template/footer.jsp"></c:import>
    <c:import url="../template/common_js.jsp"></c:import>
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>   
+<script type="text/javascript" src="../resources/js/fileAdd.js"></script>
  <script>
  	$("#contents").summernote({
 		height : 300
 	});
+ 	
+	$("#important").click(function(){
+	 	if($("#important").is(":checked")) {
+	        $("#important").val(1);
+	    } else {
+	        $("#important").val(0);
+	    }
+	})
+
+
+	
 </script>
 </body>
 </html>

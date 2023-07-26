@@ -26,20 +26,22 @@
 	<div class="row my-5">
 		<h1 style="font-family: 'Lexend', sans-serif">Notice List</h1> <p>${member.id}님 환영합니다.</p>
 	</div>
-
 	<div class="row">
 		<table class="table table-hover">
 			<thead>
-				<tr>
-					<th>NUM</th><th>TITLE</th><th>WRITER</th><th>DATE</th><th>HIT</th>
+				<tr style="text-align : center;">
+					<th></th><th >TITLE</th><th>WRITER</th><th>DATE</th><th>HIT</th>
 				
 					
 				</tr>
-			</thead><c:forEach items="${list}" var="dto">
+			</thead>
+		
+			<tbody class="importantList">	
+			
+			<c:forEach items="${list}" var="dto">
 			 
-				<tr>
-					
-					<td>${dto.r}</td>
+				<tr  class="check-item" data-num-important="${dto.important}" style="text-align: center; line-height: 22.5px;">
+					<td >${dto.r}</td>
 					<td><a href="./detail?num=${dto.num}"> ${dto.title}</a></td>
 					<td>${dto.id}</td>
 					<td>${dto.regDate}</td>
@@ -52,8 +54,7 @@
 				</tr>
 				
 				</c:forEach>
-			<tbody>
-				
+			
 			</tbody>
 		
 		</table>
@@ -140,7 +141,7 @@
 	  
 
 <c:import url="../template/footer.jsp"></c:import>
-<script type="text/javascript" src="../resources/js/boardForm.js"></script>
+<script type="text/javascript" src="../resources/js/importantList.js"></script>
 <c:import url="../template/common_js.jsp"></c:import>
 <script src="../resources/js/pageing.js"></script>
 <script>
