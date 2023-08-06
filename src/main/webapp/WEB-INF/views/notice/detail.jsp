@@ -62,8 +62,10 @@
 			         </tr>
 				</table>
 				
+				
 				<c:if test="${boardDTO.id eq member.id }">
 					<form action="./update" id="frm">
+					<input type="hidden" name="num" value="${boardDTO.num}">
 						<div class="wrapper" style="float : right;">
 							<button class="btn btn-primary" type="submit">수정</button>
 							<button class="btn btn-danger" id="deleteBtn">삭제</button>
@@ -79,12 +81,15 @@
 	$("#deleteBtn").click(function() {
 		 let check =  window.confirm("정말 삭제하시겠습니까?");
 
-	    if(check ) {
+	    if(check) {
 	        frm.setAttribute("action", "./delete")
 	        frm.setAttribute("method", "post")
 	        frm.submit();
+	    }else {
+	    	return false;
 	    }
 	})
+	
 </script>
 </body>
 </html>

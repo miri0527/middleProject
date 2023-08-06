@@ -1,5 +1,6 @@
 package com.home.middle.board.notice;
 
+import java.io.File;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -76,7 +77,21 @@ public class NoticeService implements BbsService {
 
 	@Override
 	public int setBoardDelete(BbsDTO bbsDTO, HttpSession session) throws Exception {
-		return 0;
+		List<BoardFileDTO> ar= noticeDAO.getBoardFileList(bbsDTO);
+		
+		int result = noticeDAO.setBoardDelete(bbsDTO);
+	
+		
+		if(result > 0) {
+			String realPath = session.getServletContext().getRealPath("resources/upload/notice");
+			
+			for(BoardFileDTO boardFileDTO : ar) {
+				boolean check = fileManager.fileDelete(realPath, boardFileDTO.getFileName());
+			}
+		}
+		
+		
+		return result;
 		
 		
 	}
@@ -98,6 +113,8 @@ public class NoticeService implements BbsService {
 		
 		return noticeDAO.setBoardHit(bbsDTO);
 	}
+
+
 
 	
 }

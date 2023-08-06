@@ -148,6 +148,8 @@ public class QnaService implements BbsService{
 		// TODO Auto-generated method stub
 		return qnaDAO.getBoardDetail(bbsDTO);
 	}
+
+
 	
 	
 	

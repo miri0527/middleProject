@@ -62,6 +62,13 @@ public class NoticeDAO implements BbsDAO{
 		return sqlSession.delete(NAMESPACE + "setBoardDelete", bbsDTO);
 	}
 	
+	public List<BoardFileDTO> getBoardFileList(BbsDTO bbsDTO) throws Exception {
+		return sqlSession.selectList(NAMESPACE + "getBoardFileList", bbsDTO);
+	}
+	
+
+	
+	
 	
 	
 

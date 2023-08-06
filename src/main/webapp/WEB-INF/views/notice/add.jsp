@@ -49,7 +49,7 @@
   		</div> 
   		
   		<div class="col-12">
-  			<button class="btn btn-info" type="button" id="addBtn">파일 추가</button>
+  			<button class="btn btn-info" type="button" id="addBtn" >파일 추가</button>
   			<div id="addFile" style="height : 100px;"></div>
   		</div>
   		
@@ -78,6 +78,8 @@
 	        $("#important").val(0);
 	    }
 	})
+	
+
 
 
 	

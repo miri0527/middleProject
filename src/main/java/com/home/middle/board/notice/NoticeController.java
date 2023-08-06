@@ -56,12 +56,16 @@ public class NoticeController {
 		ModelAndView mv = new ModelAndView();
 		
 		
-		bbsDTO = noticeService.getBoardDetail(bbsDTO);
+		NoticeDTO noticeDTO = (NoticeDTO)noticeService.getBoardDetail(bbsDTO);
+		
+		System.out.println("important ::" + noticeDTO.getImportant());
 		
 
-		int result = noticeService.setBoardHit(bbsDTO);
+		int result = noticeService.setBoardHit(noticeDTO);
 		
-		mv.addObject("boardDTO", bbsDTO);
+	
+		 
+		mv.addObject("boardDTO", noticeDTO);
 		mv.setViewName("notice/detail");
 		
 		return mv;
@@ -93,6 +97,7 @@ public class NoticeController {
 		
 		mv.addObject("url", "./list");
 		
+		
 		return mv;
 	}
 	
@@ -100,14 +105,36 @@ public class NoticeController {
 	public ModelAndView setBoardUpdate(NoticeDTO noticeDTO) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		
-		BbsDTO bbsDTO =  noticeService.getBoardDetail(noticeDTO);
+		noticeDTO =  (NoticeDTO)noticeService.getBoardDetail(noticeDTO);
 		
-		mv.addObject("detail", bbsDTO);
+		System.out.println("important ::" + noticeDTO.getImportant());
+		System.out.println("contents" + noticeDTO.getContents());
+		
+		mv.addObject("update", noticeDTO);
 		mv.setViewName("notice/update");
 	
 		return mv;
 		
 		
+	}
+	
+	@PostMapping("delete")
+	public ModelAndView setBoardDelete(BbsDTO bbsDTO, HttpSession session) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		
+		int result = noticeService.setBoardDelete(bbsDTO, session);
+		
+		String message="삭제에 실패 하였습니다";
+
+		if(result > 0) {
+			message="삭제가 성공되었습니다";
+		}
+		
+		mv.setViewName("common/result");
+		mv.addObject("result", message);
+		mv.addObject("url", "./list");
+		
+		return mv;
 	}
 
 	

@@ -82,10 +82,10 @@
 		WHERE NUM= #{num}
   	</delete>
   	
-  	<delete id="setBoardFileDelete" parameterType="BoardFileDTO">
-  		DELETE NOTICEFILE
-  		WHERE NUM = #{num}
-  	</delete>
+  	<select id="getBoardFileList" resultType="BoardFileDTO" parameterType="NoticeDTO">
+  		SELECT * FROM NOTICEFILE WHERE NUM=#{num}
+  	</select>
+  	
   	
   	<!-- 공지사항 수정 -->
   	<update id="setBoardUpdate" parameterType="NoticeDTO">
