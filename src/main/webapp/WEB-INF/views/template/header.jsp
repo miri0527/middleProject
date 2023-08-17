@@ -327,6 +327,11 @@
                                                 </div>
                                             </div>
                                         </li>
+                                        
+                                         <li>
+                                            <a href="/notice/list">NOTICE</a>
+                                        </li>
+                                      
                                         <li class="mega-parent"><a href="/qna/listdetail">Qna</a>
                                         </li>
                                         <li><a a href="/review/listdetail">Review</a>

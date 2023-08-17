@@ -58,7 +58,6 @@ public class NoticeController {
 		
 		NoticeDTO noticeDTO = (NoticeDTO)noticeService.getBoardDetail(bbsDTO);
 		
-		System.out.println("important ::" + noticeDTO.getImportant());
 		
 
 		int result = noticeService.setBoardHit(noticeDTO);
@@ -127,7 +126,7 @@ public class NoticeController {
 		String message="삭제에 실패 하였습니다";
 
 		if(result > 0) {
-			message="삭제가 성공되었습니다";
+			message="글이 삭제되었습니다.";
 		}
 		
 		mv.setViewName("common/result");

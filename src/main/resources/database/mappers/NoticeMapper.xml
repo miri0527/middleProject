@@ -64,7 +64,7 @@
   			USING(NUM)	
   		WHERE NUM=#{num}
   	</select>
-  	
+  
  
   	<!--HIT 올리기-->
   	<update id="setBoardHit" parameterType="NoticeDTO"> 

@@ -45,7 +45,7 @@
   		
      	<div class="col-12">
     		<label for="contents" class="form-label">내용</label>
-    		<textarea class="form-control" name="contents" id="contents"></textarea>
+    		<textarea class="form-control" name="contents" id="contents" value="${update.contents}"></textarea>
   		</div> 
   		
   		<div class="col-12">
@@ -83,10 +83,15 @@
 		$("#important").prop("checked", true)
 	}
 	
-	$('#summernote').summernote('code', $('#contents').val());
+	// 기존 내용 가져오기
+	var contents = "${update.contents}";
+
+	// summernote 에디터의 내용 설정하기
+	$('#contents').summernote('code', contents);
 	
-
-
+	// 수정된 내용 가져오기
+	var editedContent = $('#contents').summernote('code');
+	
 	
 </script>
 </body>

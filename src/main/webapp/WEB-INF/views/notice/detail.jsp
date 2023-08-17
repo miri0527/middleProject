@@ -12,6 +12,27 @@
 <meta http-equiv="Cache-Control" content="no-store" />
 <style type="text/css">
 @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@400;800;900&display=swap');
+#root {
+  width: 100%;
+  /* margin: 0 auto; */
+  max-width: 400px;
+  margin-top : 10px;
+}
+
+
+.form textarea {
+  resize: none;
+  border: 1px solid #dbdbdb;
+  padding: 15px 20px;
+  outline: none;
+}
+.form .submit {
+  border: 1px solid #8f8f8f;
+  background-color: #8f8f8f;
+  color: #fff;
+  padding: 5px;
+  cursor: pointer;
+}
 </style>
 </head>
 <body>
@@ -27,8 +48,6 @@
 				
 				<table class="table">
 					<tr>
-						<th width=20% class="text-center warning" style="background-color:	#E2E2E2">조회수</th>
-					    <td width=30% class="text-center">${boardDTO.hit}</td>
 					    <th width=20% class="text-center warning" style="background-color:	#E2E2E2;">작성일</th>
 				        <td width=30% class="text-center">${boardDTO.regDate}</td>
 					</tr>
@@ -62,20 +81,46 @@
 			         </tr>
 				</table>
 				
-				
-				<c:if test="${boardDTO.id eq member.id }">
-					<form action="./update" id="frm">
-					<input type="hidden" name="num" value="${boardDTO.num}">
-						<div class="wrapper" style="float : right;">
-							<button class="btn btn-primary" type="submit">수정</button>
-							<button class="btn btn-danger" id="deleteBtn">삭제</button>
-						</div>
-					
-					</form>
-				</c:if>
 			</div>
 		</div>
 	</div>
+	<div style="margin-top: 10px;">
+	   <p>댓글 보기</p>
+	</div>
+	
+
+   	<div id="replyList"  style="margin-bottom: 30px;">
+		
+   	</div>
+  
+   	
+	
+	<c:if test="${not empty member.id }">
+		<div style="margin-top: 10px;">
+		   <p>댓글 등록</p>
+		</div>
+		
+		<div id="root">
+			  <form class="form comment-form" method="post" action="/noticeReply/add" id="addBtn">
+				  <input type="hidden" name="num" value="${boardDTO.num}">
+				  <input type="hidden" name="id" value="${member.id}">
+				    <textarea placeholder="댓글을 남겨보세요." name="contents" id="contents"></textarea>
+				    <button style="font-weight : bold" id="submit">등록하기</button>
+			  </form>
+	   </div>
+   </c:if>
+  
+  <c:if test="${boardDTO.id eq member.id }">
+	<form action="./update" id="frm">
+	<input type="hidden" name="num" value="${boardDTO.num}">
+		<div class="wrapper" style="float : right; margin-bottom:20px;">
+			<button class="btn btn-primary" type="submit">수정</button>
+			<button class="btn btn-danger" id="deleteBtn">삭제</button>
+		</div>
+	
+	</form>
+  </c:if>
+
 </div>
 <script type="text/javascript">
 	$("#deleteBtn").click(function() {
@@ -89,6 +134,50 @@
 	    	return false;
 	    }
 	})
+	
+		
+	/* 댓글 등록 */
+	
+	$("#submit").click(function() {
+		if($("#contents").val() !='') {
+			addBtn.submit();
+		}else{
+			alert("내용을 입력해주새요.");
+			return false;
+		}
+	})
+	
+
+
+	
+/* 	let xhttpReply = new XMLHttpRequest();
+
+	xhttpReply.open('GET', '/notice/replyList');
+	
+	xhttpReply.send();
+	     	
+	xhttpReply.addEventListener('readystatechange', function(){
+	    if(this.readyState==4 && this.status==200){
+	        document.getElementById("replyList").innerHTML=this.responseText.trim();
+	    }
+	
+	}); */
+	
+	/* 댓글 보기 */
+	
+	$.ajax({
+	    url: '/notice/replyList',
+	    type: 'GET',
+	    data : {
+	    	num : ${boardDTO.num}
+	    },
+	    success: function(response) {
+	        $("#replyList").html(response.trim());
+	    }
+	});
+
+
+
 	
 </script>
 </body>
