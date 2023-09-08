@@ -26,11 +26,14 @@ public class MemberDAO {
 	}
 	
 	public List<MemberDTO> getMemberList(Pager pager) throws Exception {
-		return sqlSession.selectList(NAMESPACE + "getMemberList", pager);
+		List<MemberDTO> ar = sqlSession.selectList(NAMESPACE + "getMemberList", pager);
+		return ar;
 	}
 	
 	public MemberDTO getMemberLogin(MemberDTO memberDTO) throws Exception{
-		return sqlSession.selectOne(NAMESPACE+"getMemberLogin", memberDTO);
+		
+		memberDTO = sqlSession.selectOne(NAMESPACE+"getMemberLogin", memberDTO);
+		return memberDTO;
 	}
 	public int setMemberUpdate(MemberDTO memberDTO) throws Exception{
 		return sqlSession.update(NAMESPACE+"setMemberUpdate", memberDTO);
@@ -53,4 +56,11 @@ public class MemberDAO {
 		return sqlSession.update(NAMESPACE+"setMemberAuto", memberDTO);
 	}
 	
+	public int setSellerApprove(MemberDTO memberDTO) throws Exception {
+		return sqlSession.update(NAMESPACE + "setSellerApprove", memberDTO);
+	}
+	
+	public int setSellerRefuse(MemberDTO memberDTO) throws Exception {
+		return sqlSession.update(NAMESPACE + "setSellerRefuse", memberDTO);
+	}
 }

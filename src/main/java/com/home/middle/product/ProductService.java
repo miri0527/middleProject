@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.home.middle.cart.CartDTO;
 import com.home.middle.util.FileManager;
 import com.home.middle.util.Pager;
 
@@ -36,6 +37,7 @@ public class ProductService {
 	public ProductDTO getProductDetail(ProductDTO productDTO) throws Exception {
 		return productDAO.getProductDetail(productDTO);
 	}
+	
 
 	public List<ProductOptionDTO> getOption(ProductOptionDTO productOptionDTO) throws Exception {
 		return productDAO.getOption(productOptionDTO);
@@ -83,6 +85,13 @@ public class ProductService {
 	  
 	  return ar; 
 	  }
+	  
+	  public List<ProductOptionDTO> getMemberCartDetail(ProductOptionDTO productOptionDTO) throws Exception {
+		  System.out.println("product"+productOptionDTO.getProductNum());
+		  List<ProductOptionDTO> ar =  productDAO.getMemberCartDetail(productOptionDTO);
+		  System.out.println("ar :"+ar.get(0).getOptionNum());
+		  return ar;
+	  }		
 
 
 	public int setProductUpdate(ProductDTO productDTO, MultipartFile[] pic, Long[] fileNums, HttpSession session)
@@ -108,7 +117,7 @@ public class ProductService {
 
 				productImgDTO.setFileName(fileName);
 				productImgDTO.setOriName(pics.getOriginalFilename());
-				productImgDTO.setProductNum(productDTO.getProductNum());
+				productImgDTO.setProductNum(1L);
 
 				result = productDAO.setProductFileAdd(productImgDTO);
 
@@ -413,6 +422,10 @@ public class ProductService {
 			}
 		}
 		return 1;	
+	}
+	
+	public List<ProductOptionDTO> getProductOptionDetail(ProductDTO productDTO) throws Exception {
+		return productDAO.getProductOptionDetail(productDTO);
 	}
 
 }

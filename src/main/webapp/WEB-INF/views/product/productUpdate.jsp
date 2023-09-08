@@ -33,16 +33,7 @@
 			<p>상품명</p>
 			<input type="text" name="productName" value="${dto.productName }"><br>
 		</div>
-		상품옵션 : <br>
-		
-		<div class="fw-bold fs-5 col-12">
-			<p>할인율</p>
-			<input type="text" name="discountPercent" value="${dto.discountPercent}"><br>
-		</div>
-		<div class="fw-bold fs-5 col-12">
-			<p>할인가격</p>
-			<input type="text" name="discount" value="${dto.discount }"><br>
-		</div> 
+			
 		 <fieldset class="mb-4">
             <legend class="fw-bold fs-5">판매 여부</legend>
             <div class="form-check form-check-inline">

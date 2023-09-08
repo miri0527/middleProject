@@ -1,7 +1,8 @@
 package com.home.middle.util;
 
+import com.home.middle.product.ProductImgDTO;
+
 public class Pager {
-	
 	
 	private Long num;
 	
@@ -9,17 +10,25 @@ public class Pager {
 	private String id;
 	private String name;
 	private String[] roleName;
-	private Long categoryNum;
+	private Long orderNum;
+	private String autoStatus;
+	private Long r;
 	
 	
+	public Long getR() {
+		return r;
+	}
 	
-	
-	public Long getCategoryNum() {
-		return categoryNum;
+	public void setR(Long r) {
+		this.r = r;
 	}
 
-	public void setCategoryNum(Long categoryNum) {
-		this.categoryNum = categoryNum;
+	public String getAutoStatus() {
+		return autoStatus;
+	}
+
+	public void setAutoStatus(String autoStatus) {
+		this.autoStatus = autoStatus;
 	}
 
 	public Long getNum() {
@@ -30,9 +39,16 @@ public class Pager {
 		this.num = num;
 	}
                   
-	
 
-	
+	public Long getOrderNum() {
+		return orderNum;
+	}
+
+	public void setOrderNum(Long orderNum) {
+		this.orderNum = orderNum;
+	}
+
+
 
 	//검색 종료(사용할 column)
 	private String kind;

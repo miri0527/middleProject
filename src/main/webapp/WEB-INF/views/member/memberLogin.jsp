@@ -25,6 +25,7 @@
                                 <h6 class="widget-title border-left mb-50">REGISTERED CUSTOMERS</h6>
                                 <form action="./memberLogin" method="post" name="login_frm">
                                     <div class="login-account p-30 box-shadow">
+                                    	
                                         <p>If you have an account with us, Please log in.</p>
                                         <input type="text" class="form-control" id="floatingInput"
 																				placeholder="ID입력" name="id" value="${cookie.remember.value}">

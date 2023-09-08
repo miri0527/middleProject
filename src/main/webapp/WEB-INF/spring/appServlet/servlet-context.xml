@@ -24,13 +24,21 @@
 	<context:component-scan base-package="com.home.middle" />
 	
 		<interceptors>
+			<interceptor>
+				<mapping path="/member/memberDetail"/>
+				<beans:bean class="com.home.middle.interceptors.MemberCheckInterceptor"></beans:bean>
+				
+			</interceptor> 
 		<interceptor>
-			<mapping path="/member/memberDetail"/>
-			
-			<beans:ref bean="memberCheckInterceptor"/>
+			<mapping path="/manager/*"/>
+				<beans:bean class="com.home.middle.interceptors.AdminCheckInterceptor"></beans:bean>
 		</interceptor>
+		
+		
 	
 	</interceptors>
+	
+	
 	
 	
 </beans:beans>

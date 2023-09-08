@@ -2,6 +2,7 @@ package com.home.middle.member;
 
 import java.util.List;
 
+import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -34,7 +35,7 @@ public class MemberService {
 		return ar;
 		
 	}
-	
+
 
 	public MemberDTO getMemberDetail(MemberDTO memberDTO) throws Exception{
 		return memberDAO.getMemberLogin(memberDTO);
@@ -42,7 +43,6 @@ public class MemberService {
 	
 	public MemberDTO getMemberLogin(MemberDTO memberDTO) throws Exception{
 		MemberDTO loginDTO=memberDAO.getMemberLogin(memberDTO);
-		
 		
 		if(loginDTO!=null &&loginDTO.getPw().equals(memberDTO.getPw())) {
 			memberDTO.setRoleDTO(loginDTO.getRoleDTO());
@@ -98,4 +98,11 @@ public class MemberService {
 		return memberDAO.setMemberAuto(memberDTO);
 	}
 	
+	public int setSellerApprove(MemberDTO memberDTO) throws Exception {
+		return memberDAO.setSellerApprove(memberDTO);
+	}
+	
+	public int setSellerRefuse(MemberDTO memberDTO) throws Exception {
+		return memberDAO.setSellerRefuse(memberDTO);
+	}
 }

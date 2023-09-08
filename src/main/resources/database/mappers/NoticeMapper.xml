@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.home.middle.board.notice.NoticeDAO">
+  
+  <sql id="noticeCondition">
+  		<where>
+  			<if test="kind=='contents'">
+  				CONTENTS LIKE '%'||#{search}||'%'
+  			</if>
+  			<if test="kind=='id'">
+  				ID LIKE '%'||#{search}||'%'
+  			</if>
+  			<if test="kind == 'title'">
+  				TITLE LIKE '%' || #{search} || '%'
+  			</if>
+  		</where>
+  	</sql>
+  	
+  	<select id="getTotalCount" resultType="Long">
+  		SELECT COUNT(NUM) FROM NOTICE
+  	</select>
+  	
+  	<select id="getBoardList" resultType="NoticeDTO" parameterType="Pager">
+  		SELECT * FROM
+	  	(
+		  	SELECT ROWNUM R, N.* FROM
+		  		(
+			  		SELECT * FROM NOTICE
+			  		<include refid="noticeCondition"></include>
+			  		ORDER BY NUM DESC
+		  		) N
+	  	 )
+	  	WHERE R BETWEEN #{startRow} AND  #{lastRow}	  
+  	</select>
+  	
+	<!-- 주요 공지사항 상단 고정 -->
+	<select id="getImportantList" resultType="NoticeDTO" parameterType="NoticeDTO">
+		SELECT * FROM NOTICE
+  		WHERE IMPORTANT = #{important}
+  		ORDER BY NUM DESC
+	</select>
+	
+	
+  	<insert id="setBoardAdd" parameterType="NoticeDTO">
+  		<selectKey keyProperty="num" resultType="Long" order="BEFORE">
+  			SELECT NOTICE_SEQ.NEXTVAL FROM DUAL
+  		</selectKey>
+  		INSERT INTO NOTICE
+  		VALUES(#{num},#{id}, #{title}, #{contents}, sysdate,0,0, #{important})
+  	</insert>
+  	
+  	<insert id="setBoardFileAdd" parameterType="BoardFileDTO">
+  		INSERT INTO NOTICEFILE
+  		VALUES(NOTICE_FILE_SEQ.NEXTVAL, #{num}, #{fileName},#{oriName} )
+  	</insert>
+  	
+  	<select id="getBoardDetail" resultType="NoticeDTO" parameterType="NoticeDTO">
+  		SELECT * FROM NOTICE 
+  			LEFT OUTER JOIN 
+  				NOTICEFILE
+  			USING(NUM)	
+  		WHERE NUM=#{num}
+  	</select>
+  
+ 
+  	<!--HIT 올리기-->
+  	<update id="setBoardHit" parameterType="NoticeDTO"> 
+  		<selectKey keyProperty="hit" resultType="Long" order="AFTER">
+  			SELECT HIT FROM NOTICE
+  			WHERE NUM = #{num}
+  		</selectKey>
+  		UPDATE NOTICE SET HIT = #{hit} + 1
+  		WHERE NUM=#{num}
+  	</update>
+  	
+  	<!-- 공지사항 삭제 -->
+  	<delete id="setBoardDelete" parameterType="NoticeDTO">
+  		DELETE NOTICE 
+		WHERE NUM= #{num}
+  	</delete>
+  	
+  	<select id="getBoardFileList" resultType="BoardFileDTO" parameterType="NoticeDTO">
+  		SELECT * FROM NOTICEFILE WHERE NUM=#{num}
+  	</select>
+  	
+  	
+  	<!-- 공지사항 수정 -->
+  	<update id="setBoardUpdate" parameterType="NoticeDTO">
+  		UPDATE NOTICE
+  		SET IMPORTANT = #{important}, TITLE = #{title}, CONTENTS=#{contents}
+  		WHERE NUM=#{num}
+  	</update>
+  </mapper>

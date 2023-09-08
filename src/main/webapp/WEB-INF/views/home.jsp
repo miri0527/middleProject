@@ -48,7 +48,7 @@
                     </div> -->
                 </div>
             </div>
-        </div>
+        </div> 	
         <!-- END SLIDER AREA -->
 
         <!-- Start page content -->
@@ -1099,7 +1099,6 @@
                 </div>
             </div>
             <!-- PRODUCT TAB SECTION END -->
-
             <!-- BLOG SECTION START -->
             <div class="blog-section mb-50">
                 <div class="container">
@@ -1151,7 +1150,6 @@
             <!-- BLOG SECTION END -->                
         </section>
         <!-- End page content -->
-
         <!-- START FOOTER AREA -->
         <footer id="footer" class="footer-area section">
             <div class="footer-top">
@@ -1271,7 +1269,6 @@
                                     <div class="copyright-text">
                                         <p class="copy-text"> © 2022 <strong>Subas</strong> Made With <i class="zmdi zmdi-favorite" style="color: red;" aria-hidden="true"></i> By <a class="company-name" href="#">
                                 <strong> SubasTeam</strong></a>.</p>
-
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -1297,7 +1294,6 @@
             </div>
         </footer>
         <!-- END FOOTER AREA -->
-
         <!-- START QUICKVIEW PRODUCT -->
         <div id="quickview-wrapper">
             <!-- Modal -->
@@ -1376,7 +1372,6 @@
             <!-- END Modal -->
         </div>
         <!-- END QUICKVIEW PRODUCT -->  
-
         <!--style-customizer start -->
         <div class="style-customizer closed">
         
@@ -1433,6 +1428,5 @@
     
    <c:import url="./template/common_js.jsp"></c:import>
    
-
 </body>
 </html>

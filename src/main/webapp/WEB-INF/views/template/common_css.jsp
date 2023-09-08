@@ -25,7 +25,6 @@
     
     <!-- Style customizer (Remove these two lines please) -->
     <link rel="stylesheet" href="/resources/js/css/style-customizer.css">
-    <link href="#" data-style="styles" rel="stylesheet">
     <script src="/resources/js/js/vendor/modernizr-3.11.2.min.js"></script>
     
 

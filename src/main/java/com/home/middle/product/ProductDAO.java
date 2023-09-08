@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.home.middle.cart.CartDTO;
 import com.home.middle.util.Pager;
 
 @Repository
@@ -56,9 +57,16 @@ public class ProductDAO {
 	
 	
 	 public List<ProductDTO> getMemberProductList(Pager pager) throws Exception {
-	 List<ProductDTO> ar = sqlSession.selectList(NAMESPACE + "getMemberProductList", pager);
-	 return ar; 
+		 
+		 List<ProductDTO> ar = sqlSession.selectList(NAMESPACE + "getMemberProductList", pager);
+		 return ar; 
 	 }
+	 
+	public List<ProductOptionDTO> getMemberCartDetail(ProductOptionDTO produOptionDTO) throws Exception {
+		List<ProductOptionDTO> ar =  sqlSession.selectList(NAMESPACE + "getMemberCartDetail", produOptionDTO);
+		System.out.println(produOptionDTO.getProductNum());
+		return ar;
+	}
 	
 	//장바구니 
 	public int setProductOptionAdd(ProductDTO productDTO) throws Exception {
@@ -88,6 +96,15 @@ public class ProductDAO {
 	public Long productOptionNum() throws Exception{
 		return sqlSession.selectOne(NAMESPACE + "productOptionNum");
 	}
+	
+	public List<ProductOptionDTO> getProductOptionList(ProductOptionDTO productOptionDTO) throws Exception{
+		return sqlSession.selectList(NAMESPACE + "getProductOptionList", productOptionDTO);
+	}
+	
+	public int setProductOptionDelete(ProductOptionDTO productOptionDTO) throws Exception{
+		return sqlSession.delete(NAMESPACE + "setProductOptionDelete", productOptionDTO);
+	}
+	
 	
 	public String getProductId(ProductDTO productDTO) throws Exception{
 		return sqlSession.selectOne(NAMESPACE + "getProductId", productDTO);

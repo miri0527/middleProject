@@ -26,7 +26,7 @@ import com.home.middle.util.Pager;
 
 
 @Controller
-@RequestMapping("/product/*")
+@RequestMapping("/product/**")
 public class ProductController {
 	
 	@Autowired
@@ -105,28 +105,18 @@ public class ProductController {
 //	}
 	   
 	
-	@GetMapping("memberProductList")
-	   public ModelAndView getMemberProductList(Pager pager) throws Exception {
-	      ModelAndView mv = new ModelAndView();
-	      
-	      List<ProductDTO> ar =  productService.getMemberProductList(pager);
-	      
-	      mv.setViewName("product/memberProductList");
-	      mv.addObject("list", ar);
-	      
-	      return mv;
-	   }
+
 	
 //////////////////////////////////////////////////////////////상품 하위 옵션 구현//////////////////////////////////////////////////////////////////////	
-
 
 	//ajax의 post url "./optionList" 
 	@PostMapping("optionList")
 	public ModelAndView getOption(ProductOptionDTO productOptionDTO) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		
+	
 		List<ProductOptionDTO> ar = productService.getOption(productOptionDTO);
-		
+	
+		System.out.println(ar.size());
 		mv.addObject("list", ar);
 		mv.setViewName("/product/selectOption");
 		
@@ -154,7 +144,7 @@ public class ProductController {
 		
 		mv.addObject("result", message);
 		mv.setViewName("common/result");
-		mv.addObject("url", "./list");
+		mv.addObject("url", "./list?categoryNum=" + productDTO.getCategoryNum());
 		return mv;
 	}
 	
@@ -186,23 +176,24 @@ public class ProductController {
 		
 		mv.addObject("result", message);
 		mv.setViewName("common/result");
-		mv.addObject("url", "./list");
+		mv.addObject("url", "./list?categoryNum=" + productDTO.getCategoryNum());
 		
 		return mv;
 	}
 	
 	@PostMapping("delete")
-	public ModelAndView setProductDelete(@RequestParam(value="chkList",required = false) ProductDTO[] productDTOs, HttpSession session) throws Exception {
+	public ModelAndView  setProductDelete(ProductDTO productDTO, HttpSession session) throws Exception {
 		ModelAndView mv = new ModelAndView();
+		int result = productService.setProductDelete(session, productDTO);
 		
-		for (ProductDTO productDTO2 : productDTOs) {
-			productDTO2.setProductNum(productDTO2.getProductNum());
-			System.out.println(productDTO2.getProductNum());
-			int result = productService.setProductDelete(session, productDTO2) ;
-			
-		}		
+		String message = "삭제실패";
+		if(result > 0) {
+			message = "상품이 삭제되었습니다";
+		}
 		
-		mv.setViewName("redirect:./memberProductList");
+		mv.addObject("result", message);
+		mv.setViewName("common/result");
+		mv.addObject("url", "./list?categoryNum=" + 1);
 		
 		return mv;
 	}

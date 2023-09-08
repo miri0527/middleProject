@@ -27,7 +27,7 @@
                                         </a>
                                         </li>
                                         <li>
-                                        <a href="/cart/cartList">
+                                        <a href="wishlist.html">
                                             <i class="zmdi zmdi-favorite"></i>
                                             Wish List (0)
                                         </a>
@@ -246,6 +246,11 @@
                                         </li> -->
                                         <li class="mega-parent"><a href="/product/detail?productNum=1">Products</a>
                                         </li>
+                                        
+                                         <li>
+                                            <a href="/notice/list">NOTICE</a>
+                                        </li>
+                                      
                                         <li class="mega-parent"><a href="/qna/listdetail">Qna</a>
                                         </li>
                                         <li><a a href="/review/listdetail">Review</a>
@@ -255,6 +260,9 @@
                                         </li> -->
                                         <li>
                                             <a href="/contact">Contact</a>
+                                        </li>
+                                         <li>
+                                            <a href="/manager/home">Manager</a>
                                         </li>
                                     </ul>
                                 </nav>

@@ -10,18 +10,13 @@ public class MemberDTO {
 	private String email;
 	private Integer roleNum;
 	private RoleDTO roleDTO;
-	private Long autoStatus;
+	private String autoStatus;
 	
 	
-	
-	
-	
-	
-	
-	public Long getAutoStatus() {
+	public String getAutoStatus() {
 		return autoStatus;
 	}
-	public void setAutoStatus(Long autoStatus) {
+	public void setAutoStatus(String autoStatus) {
 		this.autoStatus = autoStatus;
 	}
 	public Integer getRoleNum() {

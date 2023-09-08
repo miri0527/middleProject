@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<c:import url="../template/common_css.jsp"></c:import>
+<c:import url="../template/cart_common_css.jsp"></c:import>
 </head>
 <body>
 
@@ -29,5 +29,8 @@
 
 <script src="/resources/js/optionAdd.js"></script>
 <c:import url="../template/common_js.jsp"></c:import>
+<c:import url="../template/cart_common_js.jsp"></c:import>
+
+
 </body>
 </html>

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.home.middle.member.MemberDTO;
 import com.home.middle.product.ProductDTO;
 import com.home.middle.product.ProductOptionDTO;
+import com.home.middle.util.Pager;
 
 @Service
 public class CartService {
@@ -74,6 +75,16 @@ public class CartService {
 	public List<CartDTO> getCartList(MemberDTO memberDTO) throws Exception{
 		return cartDAO.getCartList(memberDTO);
 	}
+	
+	public List<CartDTO> getMemberCartList(Pager pager) throws Exception {
+		  pager.makeRow();
+		  
+		  pager.makeNum(cartDAO.getTotalCount(pager));
+		  
+		return cartDAO.getMemberCartList(pager);
+	}
+	
+	
 	
 	public int setCartAdd(CartDTO cartDTO) throws Exception{
 		return cartDAO.setCartAdd(cartDTO);
