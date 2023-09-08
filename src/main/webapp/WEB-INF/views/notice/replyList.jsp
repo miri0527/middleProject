@@ -37,9 +37,13 @@
 							
 						</c:if>	
 					</div>
-					<div style="width : 100%;">
-						<div style="color : gray; font-size : 16px;" data-contents = "${reply.contents}" class="contents">${reply.contents }</div>
+ 					
+					<div style="width : 100%;" >
+						<div style="color : gray; font-size : 16px;" data-contents = "${reply.contents}" class="contents" data-replynum=""${replyNum}"" >${reply.contents }</div>
 					</div>
+					
+					
+					
 					<c:if test="${reply.modifyDate eq null }">
 						<div style="font-size : 13px;">
 							<frm:formatDate value="${reply.regDate}" pattern="yyyy-MM-dd.  HH:mm"/>
@@ -52,17 +56,17 @@
 							<a href="javascript:void(0);" data-num="${replyNum}">답글 쓰기</a>
 						</div>
 					</c:if>
+					
 				</div>	
 				
 			</div>
 			
+		
 			
-
 		</c:forEach>
 	
 </div>	
- <div id="replyUpdate"style="margin-bottom: 30px;" >
- </div>
+
 <script type="text/javascript" src="/resources/js/replyList.js"></script>
 <script type="text/javascript">
 
@@ -73,19 +77,19 @@ $(".replyUpdate").on("click", "[data-num]", function () {
 	 let contents = $(this).closest("#parent").find("[data-contents]").data("contents");
 	$.ajax({
 		url : '/noticeReply/update',
-		type : 'GET',
+		type : 'GET',	
 		data : {
 			replyNum : replyNum
 		},
 		success : function(response) {
-			  let updateForm = "<div class='update'><form class='form comment-form' method='post' action='/noticeReply/update' id='updateBtn'>"
+			  		let updateForm = "<div class='update'><form class='form comment-form' method='post' action='/noticeReply/update' id='updateBtn'>"
 	                + "<input type='hidden' name='replyNum' value='" + replyNum + "'>" 
 	                + " <textarea name='contents' id='content'>"+ contents + "</textarea>"
 	                + " <button style='font-weight: bold'>수정</button>"
 	                + " <button style='font-weight: bold' data-num='" + replyNum +"' class='cancel' type='button'>취소</button>"
 	                + "</form></div>";
 
-	            $("#replyUpdate").append(updateForm);
+	               $(".contents").closest("#parent").find("[data-replynum]").append(updateForm);
 			
 		}
 	})
