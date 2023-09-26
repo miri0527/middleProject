@@ -91,6 +91,7 @@ public class ProductDAO {
 	
 	public Long productOptionNum() throws Exception{
 		return sqlSession.selectOne(NAMESPACE + "productOptionNum");
+		
 	}
 	
 	public List<ProductOptionDTO> getProductOptionList(ProductOptionDTO productOptionDTO) throws Exception{

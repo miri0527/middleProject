@@ -39,9 +39,10 @@
 					</div>
  					
 					<div style="width : 100%;" >
-						<div style="color : gray; font-size : 16px;" data-contents = "${reply.contents}" class="contents" data-replynum=""${replyNum}"" >${reply.contents }</div>
+						<div class="contents">
+							<div style="color : gray; font-size : 16px;" class="list" data-replynum=""${replyNum}" data-contents = "${reply.contents}" >${reply.contents }</div>
+						</div>
 					</div>
-					
 					
 					
 					<c:if test="${reply.modifyDate eq null }">
@@ -82,6 +83,7 @@ $(".replyUpdate").on("click", "[data-num]", function () {
 			replyNum : replyNum
 		},
 		success : function(response) {
+					
 			  		let updateForm = "<div class='update'><form class='form comment-form' method='post' action='/noticeReply/update' id='updateBtn'>"
 	                + "<input type='hidden' name='replyNum' value='" + replyNum + "'>" 
 	                + " <textarea name='contents' id='content'>"+ contents + "</textarea>"
@@ -89,7 +91,7 @@ $(".replyUpdate").on("click", "[data-num]", function () {
 	                + " <button style='font-weight: bold' data-num='" + replyNum +"' class='cancel' type='button'>취소</button>"
 	                + "</form></div>";
 
-	               $(".contents").closest("#parent").find("[data-replynum]").append(updateForm);
+	               $(".contents").find("[data-replynum]").append(updateForm);
 			
 		}
 	})
