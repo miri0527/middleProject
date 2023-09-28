@@ -7,13 +7,30 @@ public class Pager {
 	private Long num;
 	
 	private Long productNum;
+	private String productName;
 	private String id;
 	private String name;
 	private String[] roleName;
 	private Long orderNum;
 	private String autoStatus;
 	private Long r;
+	private Long categoryNum;
 	
+	public String getProductName() {
+		return productName;
+	}
+	
+	public void setProductName(String productName) {
+		this.productName = productName;
+	}
+	
+	public Long getCategoryNum() {
+		return categoryNum;
+	}
+
+	public void setCategoryNum(Long categoryNum) {
+		this.categoryNum = categoryNum;
+	}
 	
 	public Long getR() {
 		return r;
