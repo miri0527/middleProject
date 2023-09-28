@@ -10,6 +10,7 @@ import com.home.middle.board.BoardFileDTO;
 public class QnaDTO extends BbsDTO{
 	private Long productNum;
 	private List<BoardFileDTO> boardFileDTOs;
+	private Long r;
 	
 	public List<BoardFileDTO> getBoardFileDTOs() {
 		return boardFileDTOs;
@@ -25,5 +26,13 @@ public class QnaDTO extends BbsDTO{
 
 	public void setProductNum(Long productNum) {
 		this.productNum = productNum;
+	}
+	
+	public Long getR() {
+		return r;
+	}
+	
+	public void setR(Long r) {
+		this.r = r;
 	}
 }

@@ -9,8 +9,12 @@
   			<if test="kind=='contents'">
   				CONTENTS LIKE '%'||#{search}||'%'
   			</if>
-  			<if test="kind=='id'">
+  			<if test="kind=='writer'">
   				ID LIKE '%'||#{search}||'%'
+  			</if>
+  			
+  			<if test="kind == 'title'">
+  				TITLE LIKE '%' || #{search} || '%'
   			</if>
   		</where>
   	</sql>

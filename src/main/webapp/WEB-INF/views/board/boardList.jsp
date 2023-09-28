@@ -23,7 +23,7 @@
 		<table class="table table-hover">
 			<thead>
 				<tr>
-					<th>NUM</th><th>CONTENTS</th><th>TITLE</th><th>TITLE</th><th>ID</th><th>DATE</th>
+					<th>NUM</th><th>CONTENTS</th><th>TITLE</th><th>ID</th><th>DATE</th>
 					 
 					 <c:if test="${member.id eq list[0].id or member.roleDTO.roleNum < 3 }">
 					<th>삭제</th><th>수정</th>
@@ -35,7 +35,7 @@
 			 
 				<tr>
 					
-					<td>${dto.num}</td>
+					<td>${dto.r}</td>
 					<td width="650px">
 					<h5 style="font-weight: bold; "> [문의 내용] </h5> <p style="font-weight: bold; text-align: initial; background-color: #FFE794;"> ${dto.contents}</p>  
 						<c:forEach items="${list1}" var="dto1"> 
@@ -47,7 +47,7 @@
 					<td>${dto.title}</td>
 					<td>${dto.id}</td>
 					<td>${dto.regDate}</td>
-					<td>${dto.productNum}</td>
+				
 					<c:if test="${member.id eq dto.id or member.roleDTO.roleNum < 3 }">
 					<td> 
 					<form action="./delete" id="frmde">
@@ -81,100 +81,91 @@
 		
 		</table>
 	</div>
-	</div>
-			<!-- paging -->
-		<div class="row">
-			<nav aria-label="Page navigation example">
-			  <ul class="pagination">
-			  	<li class="page-item">
-			      <a class="page-link" href="#" aria-label="Previous" data-board-page="1">
-			        <span aria-hidden="true">&laquo;</span>
-			      </a>
-			    </li>
-			  
-			  
-			    <li class="page-item ${pager.before?'disabled':''}">
-			      <a class="page-link" href="#" aria-label="Previous" data-board-page="${pager.startNum-1}">
-			        <span aria-hidden="true">&lsaquo;</span>
-			      </a>
-			    </li>
-			    
-			    <c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
-			    <li class="page-item"><a class="page-link" href="#" data-board-page="${i}"  >${i}</a></li>
-			    </c:forEach>
-			    
-			    <li class="page-item ${pager.after eq false ? 'disabled':''}"><%-- ${pager.after eq false ? 'disabled':''} --%>
-	
-			      <a class="page-link" href="#"  aria-label="Next" data-board-page="${pager.lastNum+1}">
-			      
-			        <span aria-hidden="true">&rsaquo;</span>
-			      </a>
-			    </li>
-			    
-			    <li class="page-item"><%-- ${pager.after eq false ? 'disabled':''} --%>
-	
-			      <a class="page-link" href="#"  aria-label="Next" data-board-page="${pager.totalPage}">
-			      
-			        <span aria-hidden="true">&raquo;</span>
-			      </a>
-			    </li>
-			  </ul>
-			</nav>
-		</div>
+</div>
+		<!-- paging -->
+		<div class="container">
+			<div class="row" style="margin-left : 50px;">
+				 <div class="col-lg-4 offset-lg-4">
+				<nav aria-label="Page navigation example">
+				  <ul class="shop-pagination box-shadow text-center ptblr-10-30">
+				  	<li class="page-item">
+				      <a class="page-link" href="#" aria-label="Previous" data-board-page="1">
+				        <span aria-hidden="true">&laquo;</span>
+				      </a>
+				    </li>
+				  
+				  
+				    <li class="page-item ${pager.before?'disabled':''}">
+				      <a class="page-link" href="#" aria-label="Previous" data-board-page="${pager.startNum-1}">
+				        <span aria-hidden="true">&lsaquo;</span>
+				      </a>
+				    </li>
+				    
+				    <c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
+				    <li class="page-item"><a class="page-link" href="#" data-board-page="${i}">${i}</a></li>
+				    </c:forEach>
+				    
+				    <li class="page-item ${pager.after eq false ? 'disabled':''}"><%-- ${pager.after eq false ? 'disabled':''} --%>
 		
-		<!-- 검색창 -->
-		<!-- <div class="row">
-			<div class="col-auto">
-			<form class="row g-3" action="./list" method="get" id="searchForm">
-				<input type="hidden" name="page" value="1" id="page">
-				<div class="col-auto">
-				  <label for="kind" class="visually-hidden">Kind</label>
-				  <select class="form-select" name="kind" id="kind" aria-label="Default select example">
-					<option value="title" ${pager.kind eq 'title'? 'selected':''}>Title</option>
-					<option value="contents" ${pager.kind eq 'contents'? 'selected':''}>Contents</option>
-					<option value="writer" ${pager.kind eq 'writer'? 'selected':''}>Writer</option>
-				  </select>
+				      <a class="page-link" href="#"  aria-label="Next" data-board-page="${pager.lastNum+1}">
+				      
+				        <span aria-hidden="true">&rsaquo;</span>
+				      </a>
+				    </li>
+				    
+				    <li class="page-item"><%-- ${pager.after eq false ? 'disabled':''} --%>
+		
+				      <a class="page-link" href="#"  aria-label="Next" data-board-page="${pager.totalPage}">
+				      
+				        <span aria-hidden="true">&raquo;</span>
+				      </a>
+				    </li>
+				  </ul>
+				</nav>
 				</div>
-			</form>
-		    </div>
-			<div>
-			<div class="col-auto">
-				<label for="search" class="visually-hidden">Search</label>
-				<input type="text" class="form-control" value="${pager.search}" name="search" id="search" placeholder="검색어를 입력하세요">
-			
-			 <div class="col-auto">
-				<button type="submit" class="btn btn-warning mb-3">검색</button>
-				<div class="col-auto text-lg-end">  <a href="./add" class="btn btn-warning">글작성</a></div>  
-			</div>  
-		    </div>
+			</div>
 		</div>
-</div> -->
 		
-<div class="row">
-	<div class="col-auto">
-	  <form class="row g-3" action="./list" method="get" id="searchForm">
-		<input type="hidden" name="page" value="1" id="page">
-		<div class="col-auto">
-		  <label for="kind" class="visually-hidden">Kind</label>
-		  <select class="form-select" name="kind" id="kind" aria-label="Default select example">
-			<option value="title" ${pager.kind eq 'title'? 'selected':''}>Title</option>
-			<option value="contents" ${pager.kind eq 'contents'? 'selected':''}>Contents</option>
-			<option value="writer" ${pager.kind eq 'writer'? 'selected':''}>Writer</option>
-		  </select>
+
+		<div class="container mt-30">
+		  <!-- Add a container to center the content -->
+		  <div class="row">
+		    <div class="col-lg-6 offset-lg-3">
+		      <!-- Use col-lg-4 (adjust column size as needed) and offset-lg-4 to center the content -->
+		      <form class="row g-3" action="./listdetail" method="get" id="searchForm">
+		        <input type="hidden" name="page" value="1" id="page">
+		        <div class="col-auto" style="display: flex; align-items: center; margin-left : 140px;">
+		          <label for="kind" class="visually-hidden">Kind</label>
+		          <select class="form-select" name="kind" id="kind" aria-label="Default select example" style="height : 35px;  width : 80px; margin-bottom : 19px;">
+		            <option value="title" ${pager.kind eq 'title'? 'selected':''}>Title</option>
+		            <option value="contents" ${pager.kind eq 'contents'? 'selected':''}>Contents</option>
+		            <option value="writer" ${pager.kind eq 'writer'? 'selected':''}>Writer</option>
+		          </select>
+		        
+		          <label for="search" class="visually-hidden">Search</label>
+		          <input type="text" class="form-control" value="${pager.search}" name="search" id="search" style="height : 35px; width : 180px; margin-left : 10px;" placeholder="검색어를 입력하세요">
+		          
+	
+		          <button type="submit" class="btn btn-warning mb-4" style="width : 80px; margin-left : 10px; height : 35px;">검색</button>
+		   
+		        </div>
+		       
+		      </form>
+		       <!--  <div class="col-lg-8 offset-lg-4">
+			     
+		          <a href="./add" class="btn btn-info"  style="width : 100px; margin-bottom : 9px; margin-left : 70px; margin-top : 5px; ">글작성</a>
+			       
+		        </div> -->
+		    </div>
+		  </div>
 		</div>
-		<div class="col-auto">
-		  <label for="search" class="visually-hidden">Search</label>
-		  <input type="text" class="form-control" value="${pager.search}" name="search" id="search" placeholder="검색어를 입력하세요">
-		</div>
-		<div class="col-auto">
-		  <button type="submit" class="btn btn-warning mb-3">검색</button>
-		</div>
-		<div class="col-auto justify-content-end">
-		  <a href="./add" class="btn btn-warning">글작성</a>
-		</div>  
-	  </form>
-	</div>
-  </div>
+
+
+
+
+
+
+
   
 
 <c:import url="../template/footer.jsp"></c:import>
