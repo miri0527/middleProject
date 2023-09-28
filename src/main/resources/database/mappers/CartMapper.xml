@@ -19,6 +19,7 @@
 		LEFT OUTER JOIN PRODUCTOPTION "POP"
 		ON(P.PRODUCTNUM = "POP".PRODUCTNUM)
 		WHERE P.PRODUCTNUM = #{productNum} AND "POP".OPTIONNUM = 121
+	</select>	
 	<select id="setCartOptionRef" parameterType="Long" resultType="Long">
         SELECT REF FROM PRODUCTOPTION WHERE OPTIONNUM=#{optionNum}
      </select>

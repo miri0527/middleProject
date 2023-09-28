@@ -18,7 +18,6 @@ public class CartDTO {
 	private Long optionNum;
 	private ProductDTO productDTO;
 	private Long paymentNum;
-	private String optionName;
 	
 	
 	

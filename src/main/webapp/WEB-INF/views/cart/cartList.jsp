@@ -42,6 +42,7 @@
 											</tr>
 										</thead>
 										<tbody>
+									
 											<c:forEach items="${list}" var="dto" varStatus="i">
 												<tr>
 													<td class="checkbox">
@@ -49,13 +50,10 @@
 															data-orderNum="${dto.orderNum}">
 													</td>
 													<td class="product-thumbnail orderNum" id="orderNum-${i.count}">
-														<div class="pro-thumbnail-img">
-															<img src="/resources/productImg/${dto.productDTO.productName}.webp">
-														</div>
 														
-															<p class="orderNum text-center">${dto.orderNum}</p>
+														
 															<p class="text-center">${dto.productDTO.productName}</p>
-															<p class="optionNum text-center">${dto.optionNum}</p>
+														
 															<p class="optionName text-center">${list2[i.index].optionName}</p>
 														<!-- 이미지 추가 -->
 														<input type="hidden" value="${dto.productDTO.productPrice}"
@@ -83,25 +81,16 @@
 													<td class="product-remove buttons">
 													</td>
 												</tr>
+											
+												
+												
 											</c:forEach>
 
 										</tbody>
 									</table>
 
 								</div>
-								<div class="row">
-                                                    <div class="payment-details box-shadow p-30 mb-50">
-                                                        <h6 class="widget-title border-left mb-20">payment details</h6>
-                                                        <table>
-                                                            <tbody>
-                                                            <tr>
-                                                                <td class="order-total">Order Total</td>
-                                                                <td class="order-total-price">0</td><!-- ₩ -->
-                                                            </tr>
-                                                        </tbody>
-                                                        </table>
-                                                    </div>
-                                                </div>								
+										
 								
 								<button class="btn btn-primary selectPayment float-end mx-2">Payment Selected</button>
 								
@@ -117,7 +106,9 @@
 			<script src="https://cdn.iamport.kr/v1/iamport.js"></script>
 			<script src="/resources/js/cartUpdate1.js"></script>
 			<c:import url="../template/cart_common_js.jsp"></c:import>
+		
 			
 		</body>
 
 		</html>
+		
