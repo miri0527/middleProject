@@ -22,28 +22,30 @@
 	</h1>
 	</div>
 	
-	<form class = "row g-3 ms-auto" action="./add" method="post" enctype="multipart/form-data" >
+	<form class = "row g-3 ms-auto" action="./add" method="post" enctype="multipart/form-data" id="frm" >
  		<div class="col-12">
     		<label for="title" class="form-label">아이디</label>
     		<input type="text" class="form-control" id="id" name="id" placeholder="id" value="${member.id}" readonly>
   		</div>
   		
-  		<c:if test="${boardName eq 'qna'}">
-  		<div class="col-12">
-    		<label for="contents" class="form-label">제목</label>
-    		<input type="text" class="form-control" id="title" name="title" placeholder="제목">
-  		</div> 
+  		<c:if test="${boardName eq 'Qna'}">
+	  		<div class="col-12">
+	    		<label for="contents" class="form-label">제목</label>
+	    		<input type="text" class="form-control" id="title" name="title" placeholder="제목">
+	  		</div> 
   		</c:if>
   		
   		<c:if test="${boardName eq 'QnaReply'}">
-  		<div class="col-12">
-    		<label for="contents" class="form-label">제목</label>
-    		<input type="text" class="form-control" id="title" name="title" placeholder="제목">
-  		</div> 
-  		<div class="col-12">
-    		<label for="contents" class="form-label">원글번호</label>
-    		<input type="text" class="form-control" id="num" name="num" placeholder="원글 번호" value="1">
-  		</div> 
+	  		<div class="col-12">
+	    		<label for="contents" class="form-label">제목</label>
+	    		<input type="text" class="form-control" id="title" name="title" placeholder="제목">
+	  		</div> 
+	  		<div class="col-12">
+	    		<label for="contents" class="form-label">원글 제목</label>
+	    		<input type="text" class="form-control"  value="${title}" readonly="readonly">
+	  		</div> 
+	  		
+	  		<input type="hidden" name="num" value="${dto.num}">
   		</c:if>
   		
   		
@@ -52,23 +54,14 @@
     		<input type="text" class="form-control" id="contents" name="contents" placeholder="상세내용">
   		</div> 
   		
-  			<!-- <div class="mb-3">
-			  <label for="contents" class="form-label">내용</label>
-			  <textarea name="contents" class="form-control" id="contents" placeholder="내용 입력" rows="7"></textarea>
-			</div> -->
-  		
-  			<div class="col-12">
-    		<label for="contents" class="form-label">상품번호</label>
-    		<input type="text" class="form-control" id="productNum" name="productNum" value="${dto.productNum}">
+  		<div class="col-12">
+    		<label for="contents" class="form-label">상품이름</label>
+    		<input type="text" class="form-control" value="${productName}" readonly="readonly">
   		</div>
-
-		<!-- <div id="fileList" class="my-5">
-				<button type="button" class="btn btn-primary" id="fileAdd">ADD</button>
-		</div> -->
-
-
+		<input type="hidden" name="productNum" value="${dto.productNum}">
+	
 	  <div class="col-12">
-	    <button type="submit" class="btn btn-primary">글쓰기</button>
+	    <button type="submit" id="add" class="btn btn-primary">글쓰기</button>
 	  </div>
 	  
 	</form>
@@ -77,7 +70,9 @@
   
    <c:import url="../template/common_js.jsp"></c:import>
  <script>
-		$("#contents").summernote();
-	</script>
+	/* 	$("#contents").summernote(); */
+		
+	
+</script>
 </body>
 </html>
