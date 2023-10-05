@@ -66,9 +66,13 @@ public class ManagerController {
 	      ModelAndView mv = new ModelAndView();
 	      
 	      List<ProductDTO> ar =  productService.getMemberProductList(pager);
+	      List<ProductDTO> ar2 = productService.getMemberProductOption();
+	    
+	      mv.addObject("list", ar);
+	      mv.addObject("list2", ar2);
 	     
 	      mv.setViewName("manager/productList");
-	      mv.addObject("list", ar);
+	    
 	      
 	      return mv;
 	   }
@@ -78,9 +82,12 @@ public class ManagerController {
 		ModelAndView mv = new ModelAndView();
 		
 		List<ProductOptionDTO> ar = productService.getProductOptionDetail(productDTO);
+		List<String> ar3 = productService.getMemberProductOptionName();
+	      
 		
 		mv.setViewName("manager/productDetail");
 		mv.addObject("list", ar);
+		mv.addObject("list2", ar3);
 		
 		return mv;
 	}
