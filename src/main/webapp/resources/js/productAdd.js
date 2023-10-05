@@ -1,7 +1,7 @@
 let idx=0
 let param='pics'
 let count=0
-let max=5
+let max=1
 
 $("#addBtn").click(() => {
     if(count >=max) {
@@ -25,14 +25,39 @@ $('#fileList').on('click', '.del', function(e) {
     count--
 })
 
-$('#submit').click(() => {
-    if(confirm("상품을 등록하시겠습니까?") == true) {
-      
+if($("#productName").blur(function() {
+    if( $("#productName").val() ==  '') {
+        $("#productNameResult").html("<p style='color : red;'>상품명은 필수 사항입니다.</p>")
     }else {
-        return false
+        $("#productNameResult").html("")
     }
-})
+}))
 
+if($("#file").blur(function() {
+    if($("#file").val() == '') {
+        $("#fileResult").html("<p style='color : red;'>파일 첨부는 필수 사항입니다.</p>")
+    }else {
+        $("#fileResult").html("")
+    }
+}))
+
+$('#submit').click((function() {
+    if($("#productName").val() !='' && $("#file").val() !='') {
+        let check =  confirm("상품을 등록하시겠습니까?")
+
+        if(check == true) {
+            console.log("test")
+            $("#submit").attr('type','submit')
+        }else {
+            return;
+        }
+    } else {
+        $("#productNameResult").html("<p style='color : red;'>상품명은 필수 사항입니다.</p>")
+        $("#fileResult").html("<p style='color : red;'>파일 첨부는 필수 사항입니다.</p>")
+      
+    }
+}))
+   
 
 
 
