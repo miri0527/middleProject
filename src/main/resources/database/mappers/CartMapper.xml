@@ -12,14 +12,6 @@
 		</where>	
 		
 	</sql>
-	
-	<!-- 나중에 삭제하기 -->
-	<select id="getProductDetail" parameterType="ProductDTO" resultType="ProductDTO">
-		SELECT P.PRODUCTNUM, P.PRODUCTNAME, "POP".OPTIONNUM, "POP".OPTIONNAME, "POP".PRODUCTPRICE FROM PRODUCT P
-		LEFT OUTER JOIN PRODUCTOPTION "POP"
-		ON(P.PRODUCTNUM = "POP".PRODUCTNUM)
-		WHERE P.PRODUCTNUM = #{productNum} AND "POP".OPTIONNUM = 121
-	</select>	
 	<select id="setCartOptionRef" parameterType="Long" resultType="Long">
         SELECT REF FROM PRODUCTOPTION WHERE OPTIONNUM=#{optionNum}
      </select>
@@ -121,7 +113,7 @@
 	<update id="getCartUpdate" parameterType="CartDTO">
 		UPDATE PRODUCTORDER SET PRODUCTEA = #{productEa}, TOTALPRICE=#{totalPrice} WHERE ORDERNUM = #{orderNum}
 	</update>
-		
+	
 	<select id="getTotalCount" resultType="Long" parameterType="Pager">
 	 		SELECT COUNT(PRODUCTNUM) FROM
 			(SELECT * FROM PRODUCT P
@@ -130,8 +122,8 @@
 		<include refid="CartCondition"></include>
 		)N
  	</select>
-		
-		<select id="getMemberCartList"  parameterType="Pager" resultMap="ProductCartList">
+	
+	<select id="getMemberCartList"  parameterType="Pager" resultMap="ProductCartList">
 		SELECT * FROM 
 		(SELECT ROWNUM R, N.* FROM
 		(SELECT * FROM PRODUCT P
@@ -149,6 +141,4 @@
 	N)
 		WHERE R BETWEEN #{startRow} AND #{lastRow}
 	</select>
-
-	
 </mapper>
