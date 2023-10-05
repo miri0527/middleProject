@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import com.home.middle.board.BbsDTO;
 import com.home.middle.board.BoardFileDTO;
+import com.home.middle.product.ProductDTO;
 import com.home.middle.util.FileManager;
 import com.home.middle.util.Pager;
 
@@ -39,7 +40,14 @@ public class QnaReplyService {
 	}
 	
 	
-
+	public String getProductName(Long productNum)throws Exception {
+		return qnaReplyDAO.getProductName(productNum);
+	}
+	
+	public String getQnaTitle(Long num) throws Exception {
+		return qnaReplyDAO.getQnaTitle(num);
+	}
+	
 	public int setBoardAdd(QnaReplyDTO bbsDTO, MultipartFile[] multipartFiles , HttpSession session) throws Exception {
 		// TODO Auto-generated method stub
 		int result = qnaReplyDAO.setBoardAdd(bbsDTO);
@@ -135,7 +143,14 @@ public class QnaReplyService {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	public List<QnaReplyDTO> getReplyDetail(QnaReplyDTO qnaReplyDTO) throws Exception {
+		return qnaReplyDAO.getReplyDetail(qnaReplyDTO);
+	}
 
+	public QnaReplyDTO getReplyUpdate(QnaReplyDTO qnaReplyDTO) throws Exception {
+		return qnaReplyDAO.getReplyUpdate(qnaReplyDTO);
+	}
 
 
 	public QnaReplyDTO getBoardDetail(QnaReplyDTO qnaReplyDTO) throws Exception {

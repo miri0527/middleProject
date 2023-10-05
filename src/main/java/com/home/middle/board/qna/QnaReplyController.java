@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.home.middle.member.MemberDTO;
 import com.home.middle.product.ProductDTO;
 import com.home.middle.util.Pager;
 
@@ -44,12 +45,13 @@ public class QnaReplyController {
 	}
 	
 	@GetMapping("listdetail")
-	public ModelAndView getBoardListdetail(Pager pager)throws Exception {
+	public ModelAndView getBoardListdetail(QnaReplyDTO qnaReplyDTO)throws Exception {
 	ModelAndView mv = new ModelAndView();
 
-	List<QnaReplyDTO> ar = qnaReplyService.getBoardList(pager);
+	List<QnaReplyDTO> ar = qnaReplyService.getReplyDetail(qnaReplyDTO);
+	
 
-	mv.addObject("pager",pager);
+	/*mv.addObject("pager",pager);*/
 	mv.addObject("list",ar);
 	mv.setViewName("board/boardList");
 		
@@ -58,21 +60,30 @@ public class QnaReplyController {
 	
 	
 	//글쓰기 
-//	@GetMapping("add")
-//	public ModelAndView SetBoardAdd(ProductDTO productDTO) throws Exception{
-//	ModelAndView mv = new ModelAndView();
-//	mv.addObject("dto",productDTO);
-//	mv.setViewName("board/add");
-//	return mv;
-//	}
-//	
-	
 	@GetMapping("add")
-	public ModelAndView SetBoardAdd(QnaReplyDTO qnaReplyDTO) throws Exception{
-	ModelAndView mv = new ModelAndView();
-	mv.addObject("dto",qnaReplyDTO);
-	mv.setViewName("board/add");
-	return mv;
+	public ModelAndView SetBoardAdd(QnaReplyDTO qnaReplyDTO, HttpSession session) throws Exception{
+		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+		ModelAndView mv = new ModelAndView();
+		System.out.println("num ::" + qnaReplyDTO.getNum());
+		
+		ProductDTO productDTO = new ProductDTO();
+		productDTO.setProductNum(qnaReplyDTO.getProductNum());
+		
+		QnaDTO qnaDTO = new QnaDTO();
+		qnaDTO.setNum(qnaReplyDTO.getNum());
+		
+		String productName =  qnaReplyService.getProductName(productDTO.getProductNum());
+		String title = qnaReplyService.getQnaTitle(qnaDTO.getNum());
+		
+		System.out.println("productName::" + productName);
+		System.out.println("title ::" + title);
+		
+		mv.addObject("title", title);
+		mv.addObject("productName", productName);
+		mv.addObject("dto",qnaReplyDTO);
+	
+		mv.setViewName("board/add");
+		return mv;
 	}
 	
 	@PostMapping("add")
@@ -81,11 +92,11 @@ public class QnaReplyController {
 	int result = qnaReplyService.setBoardAdd(qnaDTO, files, session);
 	String message = "등록이 실패했습니다.";
 	if(result>0) {
-		 message = "등록을 성공했습니다.";
+		 message = "등록되었습니다.";
 	}
 	
-	mv.addObject("result", result);
-	mv.addObject("url", "./listdetail");
+	mv.addObject("result", message);
+	mv.addObject("url", "./listdetail?num=" + qnaDTO.getNum());
 	mv.setViewName("common/result");
 	return mv;
 	}	
@@ -100,22 +111,22 @@ public class QnaReplyController {
 		String message="삭제 실패";
 
 		if(result>0) {
-			message="삭제 성공";
+			message="답변이 삭제되었습니다.";
 		}
 
 		mv.addObject("result", message);
-		mv.addObject("url", "./listdetail");
+		mv.addObject("url", "./listdetail?num=" + bbsDTO.getNum());
 
 		return mv;
 	}
 	
 	@GetMapping("update")
-	public ModelAndView setBoardUpdate(QnaReplyDTO bbsDTO) throws Exception{
-	ModelAndView mv = new ModelAndView();
-	bbsDTO = qnaReplyService.getBoardDetail(bbsDTO);
-	mv.addObject("dto", bbsDTO);
-	mv.setViewName("board/update");
-	return mv;
+	public ModelAndView setBoardUpdate(QnaReplyDTO qnaReplyDTO) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		qnaReplyDTO = qnaReplyService.getReplyUpdate(qnaReplyDTO);
+		mv.addObject("dto", qnaReplyDTO);
+		mv.setViewName("board/update");
+		return mv;
 
 	}
 	@PostMapping("update")
@@ -124,8 +135,8 @@ public class QnaReplyController {
 		int result = qnaReplyService.setBoardUpdate(bbsDTO, addFiles, session, fileNum);
 		
 		mv.setViewName("common/result");
-		mv.addObject("result", "수정 성공");
-		mv.addObject("url", "./listdetail");
+		mv.addObject("result", "수정되었습니다.");
+		mv.addObject("url", "./listdetail?num=" + bbsDTO.getNum());
 		
 		return mv;
 	}
@@ -145,14 +156,6 @@ public class QnaReplyController {
 	
 	}
 	
-	@GetMapping("detail")
-	public ModelAndView getBoardDetail(QnaReplyDTO qnaDTO) throws Exception {
-		ModelAndView mv = new ModelAndView(); 
-		 QnaReplyDTO bbsDTO = qnaReplyService.getBoardDetail(qnaDTO);
-		 mv.addObject("dto", bbsDTO);
-		 mv.setViewName("board/detail");
-		 return mv;
-		
-	}
+	
 	
 }

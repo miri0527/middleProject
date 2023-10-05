@@ -4,13 +4,24 @@ import java.util.List;
 
 import com.home.middle.board.BbsDTO;
 import com.home.middle.board.BoardFileDTO;
+import com.home.middle.product.ProductDTO;
 
 
 
 public class QnaReplyDTO extends BbsDTO{
+	private Long r;
 	private Long productNum;
 	private List<BoardFileDTO> boardFileDTOs;
 	private Long replyNum;
+	private ProductDTO productDTO;
+	
+	public Long getR() {
+		return r;
+	}
+	
+	public void setR(Long r) {
+		this.r = r;
+	}
 	
 	public Long getReplyNum() {
 		return replyNum;
@@ -34,5 +45,13 @@ public class QnaReplyDTO extends BbsDTO{
 
 	public void setProductNum(Long productNum) {
 		this.productNum = productNum;
+	}
+	
+	public ProductDTO getProductDTO() {
+		return productDTO;
+	}
+	
+	public void setProductDTO(ProductDTO productDTO) {
+		this.productDTO = productDTO;
 	}
 }

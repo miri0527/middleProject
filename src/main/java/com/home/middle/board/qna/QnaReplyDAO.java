@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 import com.home.middle.board.BbsDAO;
 import com.home.middle.board.BbsDTO;
 import com.home.middle.board.BoardFileDTO;
+import com.home.middle.product.ProductDTO;
 import com.home.middle.util.Pager;
 
 
@@ -31,6 +32,15 @@ public class QnaReplyDAO{
 		return sqlSession.selectList(NAMESPACE+"getBoardList", pager);
 	}
 	
+	//상품 이름 찾기
+	public String getProductName(Long productNum)throws Exception {
+		return sqlSession.selectOne(NAMESPACE + "getProductName", productNum);
+	}
+	
+	//원본 제목 찾기
+	public String getQnaTitle(Long num) throws Exception {
+		return sqlSession.selectOne(NAMESPACE + "getQnaTitle", num);
+	}
 	
 	public int setBoardAdd(QnaReplyDTO qnaReplyDTO) throws Exception {
 		// TODO Auto-generated method stub
@@ -58,6 +68,14 @@ public class QnaReplyDAO{
 		return sqlSession.selectList(NAMESPACE+"getBoardFileList", qnaReplyDTO);
 	}
 	
+	public List<QnaReplyDTO> getReplyDetail(QnaReplyDTO qnaReplyDTO) throws Exception {
+		return sqlSession.selectList(NAMESPACE + "getReplyDetail", qnaReplyDTO);
+	}
+	
+	
+	public QnaReplyDTO getReplyUpdate(QnaReplyDTO qnaReplyDTO) throws Exception {
+		return sqlSession.selectOne(NAMESPACE + "getReplyUpdate", qnaReplyDTO);
+	}
 	
 	public QnaReplyDTO getBoardDetail(QnaReplyDTO bbsDTO) throws Exception {
 		// TODO Auto-generated method stub
