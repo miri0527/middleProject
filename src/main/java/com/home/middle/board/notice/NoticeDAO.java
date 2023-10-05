@@ -34,8 +34,8 @@ public class NoticeDAO implements BbsDAO{
 		return sqlSession.selectList(NAMESPACE + "getImportantList", noticeDTO);
 	}
 	
-	public NoticeDTO getBoardDetail(BbsDTO bbsDTO) throws Exception {
-		return sqlSession.selectOne(NAMESPACE + "getBoardDetail", bbsDTO);
+	public NoticeDTO getBoardDetail(NoticeDTO noticeDTO) throws Exception {
+		return sqlSession.selectOne(NAMESPACE + "getBoardDetail", noticeDTO);
 	}
 	
 	//조회수 올리기

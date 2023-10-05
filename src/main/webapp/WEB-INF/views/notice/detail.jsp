@@ -63,22 +63,20 @@
 			         		<div style="margin-left: 20px;">${boardDTO.title}</div>
 			         	</td>
 					</tr>
-					<tr>
-				         <th width=20% class="text-center warning" style="background-color:#E2E2E2">첨부 파일</th>
-				         <td colspan="3">
-				         	<div style="margin-left: 20px;">
-					         	<c:forEach items="${boardDTO.boardFileDTOs}" var="fileVO">
-									<img class="fileIcon" width="30" height="30" src="${fileVO.fileName }"  style="margin-right: 5px">
-			                       
-		                    	</c:forEach>
-	                    	</div>
-				         </td>
-			        </tr>
+				
 			         <tr>
 				         <td colspan="4" class="text-left" valign="top" height="200">
 				         	<pre style="white-space: pre-wrap;border:none;background-color: white; font-size: 30px;">${boardDTO.contents}</pre>
+				         	<c:forEach items="${boardDTO.boardFileDTOs}" var="fileVO">
+								<img class="fileIcon" width="450" height="550" src="/resources/upload/notice/${fileVO.fileName}"  style="margin-right: 5px">
+			                       
+		                    </c:forEach>
+				         		
 				         </td>   
+				       
 			         </tr>
+			         
+			        
 				</table>
 				
 			</div>

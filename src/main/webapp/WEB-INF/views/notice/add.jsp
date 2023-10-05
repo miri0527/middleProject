@@ -12,7 +12,8 @@
 
 </head>
 <body>
-<c:import url="../template/header.jsp"></c:import>
+
+<c:import url="../template/managerHeader.jsp"></c:import>
    <div class="container fluid my-5">
 	   <div class= "row mb-4 ">
 	   
@@ -48,11 +49,10 @@
     		<textarea class="form-control" name="contents" id="contents" placeholder="내용을 입력하세요."></textarea>
   		</div> 
   		
-  		<div class="col-12">
-  			<button class="btn btn-info" type="button" id="addBtn" >파일 추가</button>
-  			<div id="addFile" style="height : 100px;"></div>
-  		</div>
-  		
+  		 <div id = "fileList">
+            <button type="button" class = "btn btn-info" id="addBtn">파일 추가</button>
+         </div>           
+        
 
 
 	  <div class="col-12">
@@ -65,7 +65,7 @@
    <c:import url="../template/footer.jsp"></c:import>
    <c:import url="../template/common_js.jsp"></c:import>
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>   
-<script type="text/javascript" src="../resources/js/fileAdd.js"></script>
+<script type="text/javascript" src="../resources/js/productAdd.js"></script>
  <script>
  	$("#contents").summernote({
 		height : 300

@@ -51,12 +51,12 @@ public class NoticeController {
 	}
 	
 	@GetMapping("detail")
-	public ModelAndView getBoardDetail(BbsDTO bbsDTO, HttpSession session) throws Exception {
+	public ModelAndView getBoardDetail(NoticeDTO noticeDTO, HttpSession session) throws Exception {
 	
 		ModelAndView mv = new ModelAndView();
 		
 		
-		NoticeDTO noticeDTO = (NoticeDTO)noticeService.getBoardDetail(bbsDTO);
+		noticeDTO = (NoticeDTO) noticeService.getBoardDetail(noticeDTO);
 		
 		
 
@@ -81,10 +81,10 @@ public class NoticeController {
 	}
 	
 	@PostMapping("add")
-	public ModelAndView setBoardAdd(NoticeDTO noticeDTO, MultipartFile[] addfiles, HttpSession session) throws Exception {
+	public ModelAndView setBoardAdd(NoticeDTO noticeDTO, MultipartFile[] pics, HttpSession session) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		
-		int result = noticeService.setBoardAdd(noticeDTO,addfiles, session);
+		int result = noticeService.setBoardAdd(noticeDTO,pics,session);
 		
 		String message = null;
 		if(result > 0) {

@@ -96,10 +96,9 @@ public class NoticeService implements BbsService {
 		
 	}
 
-	@Override
-	public BbsDTO getBoardDetail(BbsDTO bbsDTO) throws Exception {
+	public BbsDTO getBoardDetail(NoticeDTO noticeDTO) throws Exception {
 		
-		return noticeDAO.getBoardDetail(bbsDTO);
+		return noticeDAO.getBoardDetail(noticeDTO);
 	}
 
 	@Override
@@ -112,6 +111,12 @@ public class NoticeService implements BbsService {
 	public int setBoardHit(BbsDTO bbsDTO) throws Exception {
 		
 		return noticeDAO.setBoardHit(bbsDTO);
+	}
+
+	@Override
+	public BbsDTO getBoardDetail(BbsDTO bbsDTO) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 
