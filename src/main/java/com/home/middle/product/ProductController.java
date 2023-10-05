@@ -1,6 +1,7 @@
 package com.home.middle.product;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -44,19 +45,20 @@ public class ProductController {
 	public ModelAndView getProductList(Pager pager) throws Exception{
 	
 		ModelAndView mv = new ModelAndView();
-		pager.setPerPage(10L);
+		
+		
 		List<ProductOptionDTO> ar = productService.getProductList(pager);
 		
+		mv.addObject("list", ar);
 		mv.setViewName("product/productList");
-	
-		mv.addObject("list",ar);
+		
 		//mv.addObject("pager", pager);
 
 		return mv;
 	}
 	
 	@GetMapping("detail")
-	public ModelAndView getProductDetail(ProductDTO productDTO, Model model,Pager pager) throws Exception{
+	public ModelAndView getProductDetail(ProductDTO productDTO, Model model,Pager pager, HttpSession session) throws Exception{
 		//파라미터 이름과 setter의 이름과 같아야함 
 		
 		 System.out.println("Product detail");
@@ -64,6 +66,11 @@ public class ProductController {
 		 productDTO = productService.getProductDetail(productDTO);
 		 System.out.println("pagerCo :"+ pager.getPage());
 		 System.out.println(productDTO!=null);
+		 
+
+		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+		System.out.println("member" + memberDTO);
+	
 		
 		 mv.setViewName("/product/productDetail");
 		 mv.addObject("dto",productDTO);
@@ -74,7 +81,8 @@ public class ProductController {
 		
 		 //qna 답글 리스트 
 		  List<QnaReplyDTO> ar3 = qnaReplyService.getBoardList(pager);	
-		  
+		 
+		
 		 // review 리스트 
 		 mv.addObject("pager",pager);
 		 mv.addObject("list1",ar);
@@ -134,6 +142,10 @@ public class ProductController {
 	@PostMapping("add")
 	public ModelAndView setProductAdd(ProductDTO productDTO, MultipartFile[] pics, HttpSession session) throws Exception {
 		ModelAndView mv = new ModelAndView();
+		
+		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+		
+		productDTO.setId(memberDTO.getId());
 		
 		int result =  productService.setProductAdd(productDTO, pics, session);
 		String message = "등록 실패";
@@ -227,10 +239,11 @@ public class ProductController {
 		
 		productService.productOptionAdd(optionValue0,optionValue1,optionValue2,optionName, countList, countList2, price, stock, productNum);
 		
-		mv.setViewName("/test/testjson");
+		mv.setViewName("/product/detail?productNum=" + productNum);
 		
 		return mv;
 	}
+	
 	@GetMapping("productOptionUpdate")
 	public ModelAndView productOptionAdd(ProductOptionDTO productOptionDTO) throws Exception{
 		
@@ -252,7 +265,7 @@ public class ProductController {
 		mv.addObject("dto0", dto0);
 		mv.addObject("dto1", dto1);
 		mv.addObject("dto2", dto2);
-		mv.setViewName("/test/productOptionUpdate");
+		mv.setViewName("/product/productOptionUpdate");
 		
 		return mv;
 	}
@@ -265,7 +278,7 @@ public class ProductController {
 		
 		productService.productOptionAdd(optionValue0,optionValue1,optionValue2,optionName, countList, countList2, price, stock, productNum);
 		
-		mv.setViewName("/test/testjson");
+		mv.setViewName("/product/detail?productNum=" + productNum);
 		
 		return mv;
 	}

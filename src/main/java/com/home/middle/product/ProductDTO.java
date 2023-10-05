@@ -17,7 +17,7 @@ public class ProductDTO {
    private Long optionNum;
    private String optionName;
    private List<ProductOptionDTO> productOptionDTOs;
-   private List<ProductImgDTO> productImgDTOs;
+   private ProductImgDTO productImgDTO;
    
    public Long getProductPrice() {
       return productPrice;
@@ -37,7 +37,6 @@ public class ProductDTO {
    public void setOptionName(String optionName) {
       this.optionName = optionName;
    }
-   
    
    public String getId() {
       return id;
@@ -96,11 +95,11 @@ public class ProductDTO {
 	public void setProductOptionDTOs(List<ProductOptionDTO> productOptionDTOs) {
 		this.productOptionDTOs = productOptionDTOs;
 	}
-	public List<ProductImgDTO> getProductImgDTOs() {
-		return productImgDTOs;
+	public ProductImgDTO getProductImgDTO() {
+		return productImgDTO;
 	}
-	public void setProductImgDTOs(List<ProductImgDTO> productImgDTOs) {
-		this.productImgDTOs = productImgDTOs;
+	public void setProductImgDTO(ProductImgDTO productImgDTO) {
+		this.productImgDTO = productImgDTO;
 	}
 
 }

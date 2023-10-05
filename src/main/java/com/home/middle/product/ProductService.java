@@ -33,11 +33,15 @@ public class ProductService {
 		List<ProductOptionDTO> ar = productDAO.getProductList(pager);
 		return ar;
 	}
+	
+
+	public List<ProductOptionDTO> getProductOptionDetail(ProductDTO productDTO) throws Exception {
+		return productDAO.getProductOptionDetail(productDTO);
+	}
 
 	public ProductDTO getProductDetail(ProductDTO productDTO) throws Exception {
 		return productDAO.getProductDetail(productDTO);
 	}
-	
 
 	public List<ProductOptionDTO> getOption(ProductOptionDTO productOptionDTO) throws Exception {
 		return productDAO.getOption(productOptionDTO);
@@ -86,13 +90,15 @@ public class ProductService {
 	  return ar; 
 	  }
 	  
-	  public List<ProductOptionDTO> getMemberCartDetail(ProductOptionDTO productOptionDTO) throws Exception {
-		  System.out.println("product"+productOptionDTO.getProductNum());
-		  List<ProductOptionDTO> ar =  productDAO.getMemberCartDetail(productOptionDTO);
-		  System.out.println("ar :"+ar.get(0).getOptionNum());
-		  return ar;
-	  }		
-
+	  public List<ProductDTO> getMemberProductOption() throws Exception {
+		  return productDAO.getMemberProductOption();
+	  }
+	  
+	  public List<String> getMemberProductOptionName() throws Exception {
+		  return productDAO.getMemberProductOptionName();
+	  }
+	  
+	
 
 	public int setProductUpdate(ProductDTO productDTO, MultipartFile[] pic, Long[] fileNums, HttpSession session)
 			throws Exception {
@@ -117,7 +123,7 @@ public class ProductService {
 
 				productImgDTO.setFileName(fileName);
 				productImgDTO.setOriName(pics.getOriginalFilename());
-				productImgDTO.setProductNum(1L);
+				productImgDTO.setProductNum(productDTO.getProductNum());
 
 				result = productDAO.setProductFileAdd(productImgDTO);
 
@@ -354,6 +360,7 @@ public class ProductService {
 			productOptionDTO.setOptionName(optionName[0]);
 			productOptionDTO.setOptionValue(optionValue0[i]);
 			productOptionDTO.setProductNum(Long.parseLong(productNum));// 상품 번호 넘어오는거 받아서 수정할것
+		
 			productOptionDTO.setDepth(0L);
 			productOptionDTO.setProductPrice(tempPrice2);// 배열로 값 넘어온거 적용해줄것
 			productOptionDTO.setProductStock(tempStock2);// 배열로 값 넘어온거 적용해줄것
@@ -423,9 +430,4 @@ public class ProductService {
 		}
 		return 1;	
 	}
-	
-	public List<ProductOptionDTO> getProductOptionDetail(ProductDTO productDTO) throws Exception {
-		return productDAO.getProductOptionDetail(productDTO);
-	}
-
 }

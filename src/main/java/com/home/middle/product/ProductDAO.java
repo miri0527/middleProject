@@ -22,6 +22,8 @@ public class ProductDAO {
 		Long l= sqlSession.selectOne(NAMESPACE + "getTotalCount", pager);
 		return l;
 	}
+	
+	
 	public List<ProductOptionDTO> getProductOptionList(ProductOptionDTO productOptionDTO) throws Exception{
 		return sqlSession.selectList(NAMESPACE + "getProductOptionList", productOptionDTO);
 	}
@@ -56,17 +58,19 @@ public class ProductDAO {
 	}
 	
 	
+	
 	 public List<ProductDTO> getMemberProductList(Pager pager) throws Exception {
-		 
 		 List<ProductDTO> ar = sqlSession.selectList(NAMESPACE + "getMemberProductList", pager);
 		 return ar; 
 	 }
 	 
-	public List<ProductOptionDTO> getMemberCartDetail(ProductOptionDTO produOptionDTO) throws Exception {
-		List<ProductOptionDTO> ar =  sqlSession.selectList(NAMESPACE + "getMemberCartDetail", produOptionDTO);
-		System.out.println(produOptionDTO.getProductNum());
-		return ar;
-	}
+	 public List<ProductDTO> getMemberProductOption() throws Exception {
+		 return sqlSession.selectList(NAMESPACE + "getMemberProductOption");
+	 }
+	 
+	 public List<String> getMemberProductOptionName() throws Exception {
+		 return sqlSession.selectList(NAMESPACE + "getMemberProductOptionName");
+	 }
 	
 	//장바구니 
 	public int setProductOptionAdd(ProductDTO productDTO) throws Exception {
@@ -97,18 +101,10 @@ public class ProductDAO {
 		return sqlSession.selectOne(NAMESPACE + "productOptionNum");
 	}
 	
-	public List<ProductOptionDTO> getProductOptionList(ProductOptionDTO productOptionDTO) throws Exception{
-		return sqlSession.selectList(NAMESPACE + "getProductOptionList", productOptionDTO);
-	}
-	
-	public int setProductOptionDelete(ProductOptionDTO productOptionDTO) throws Exception{
-		return sqlSession.delete(NAMESPACE + "setProductOptionDelete", productOptionDTO);
-	}
-	
-	
 	public String getProductId(ProductDTO productDTO) throws Exception{
 		return sqlSession.selectOne(NAMESPACE + "getProductId", productDTO);
 	}
 	
 	
 }
+	
