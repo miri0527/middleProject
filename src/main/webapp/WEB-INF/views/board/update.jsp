@@ -14,21 +14,25 @@
 <c:import url="../template/header.jsp"></c:import>
 	<h1>${boardName} Update page</h1>
 	<form action="./update" method="post" enctype="multipart/form-data">
+		<c:if test="${boardName eq 'QnaReply'}">
+			<input type="hidden" name="replyNum" value="${dto.replyNum }">
+		</c:if>
 		<input type="hidden" name="num" value="${dto.num}">
 		<input type="hidden" name="productNum" value="${dto.productNum}">
-		<input type="hidden" name="regdate" value="${dto.regDate}">
+		<input type="hidden" name="regDate" value="${dto.regDate}">
 		<div class="mb-3">
 		  <label for="writer" class="form-label">작성자</label>
 		  <input type="text" name="id" readonly value="${dto.id}" class="form-control" id="id">
 		</div>
 		
 		
-		<c:if test="${boardName eq qna}">
-		<div class="mb-3">
-		  <label for="title" class="form-label">제목</label>
-		  <input type="text" name="title" class="form-control" value="${dto.title}" id="title" placeholder="제목 입력">
-		</div>
+		<c:if test="${boardName ne 'review' }">
+			<div class="mb-3">
+			  <label for="title" class="form-label">제목</label>
+			  <input type="text" name="title" class="form-control" value="${dto.title}" id="title" placeholder="제목 입력">
+			</div>
 		</c:if>
+		
 		
 		<div class="mb-3">
 		  <label for="contents" class="form-label">내용</label>
