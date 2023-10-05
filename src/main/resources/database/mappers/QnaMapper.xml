@@ -9,12 +9,15 @@
   			<if test="kind=='contents'">
   				CONTENTS LIKE '%'||#{search}||'%'
   			</if>
-  			<if test="kind=='writer'">
-  				ID LIKE '%'||#{search}||'%'
+  			<if test="kind=='id'">
+  				Q.ID LIKE '%'||#{search}||'%'
   			</if>
   			
   			<if test="kind == 'title'">
   				TITLE LIKE '%' || #{search} || '%'
+  			</if>
+  			<if test="kind == 'productName'">
+  				PRODUCTNAME LIKE '%' || #{search} || '%'
   			</if>
   		</where>
   	</sql>
@@ -30,19 +33,29 @@
   	
   	
   	
-      <select id="getBoardList" parameterType="Pager" resultType="QnaDTO">
+      <select id="getBoardList" parameterType="Pager" resultMap="getBoardDetailResult">
 	 	  	SELECT * FROM
 	  	(
 		  	SELECT ROWNUM R, N.* FROM
 		  		(
-			  		SELECT NUM, ID ,PRODUCTNUM,TITLE,CONTENTS, REGDATE,DEPTH FROM QNA
+			  		SELECT Q.NUM, Q.ID, Q.CONTENTS, Q.REGDATE, Q.DEPTH, Q.PRODUCTNUM, Q.TITLE, P.PRODUCTNAME, P.ID AS PRODUCTID FROM QNA Q
+			  			LEFT JOIN 
+			  				PRODUCT P 
+			  			ON Q.PRODUCTNUM = P.PRODUCTNUM 
 			  		<include refid="qnaCondition"></include>
 			  		ORDER BY DEPTH DESC
 		  		) N
 	  	 )
 	  	WHERE R BETWEEN #{startRow} AND  #{lastRow}	  
   	 </select>
+  	 
+  	
     
+    <!--상품 이름 꺼내기-->
+    <select id="getProductName" parameterType="Long" resultType="String">
+    	SELECT PRODUCTNAME FROM PRODUCT
+    	WHERE PRODUCTNUM=#{productNum}
+    </select>
     
     <!--글쓰기 -->
     <insert id="setBoardAdd" parameterType="QnaDTO"  >
@@ -73,30 +86,34 @@
       
       
    <select id="getBoardDetail" parameterType="BbsDTO" resultMap="getBoardDetailResult"> 
-   		SELECT Q.*, QF.*
-   		FROM QNA Q
-   			LEFT JOIN
-   			QNAFILES QF
-   			ON (Q.NUM = QF.NUM)
-   			WHERE Q.NUM=#{num}
+   	SELECT Q.NUM, Q.ID, Q.CONTENTS, Q.REGDATE, Q.DEPTH, Q.PRODUCTNUM, Q.TITLE, P.PRODUCTNAME FROM QNA Q
+ 			LEFT JOIN 
+ 				PRODUCT P 
+ 			ON Q.PRODUCTNUM = P.PRODUCTNUM 
+  	WHERE Q.NUM=#{num}
    </select>
    
       <resultMap type="QnaDTO" id="getBoardDetailResult">
    	<!--select된 것들중에 pk를 id에다가 써줘  -->
         <id column="num" property="num"/>
-  		<result column="title" property="title"/>
-  		<result column="id" property="id"/>
-  		<result column="contents" property="contents"/>
-  		<result column="regDate" property="regDate"/>
-  		<result column="hit" property="hit"/>
-  		<result column="depth" property="depth"/>
+        <result column="R" property="r"/>
+  		<result column="TITLE" property="title"/>
+  		<result column="ID" property="id"/>
+  		<result column="CONTENTS" property="contents"/>
+  		<result column="REGDATE" property="regDate"/>
+  		<result column="HIT" property="hit"/>
+  		<result column="DEPTH" property="depth"/>
 	     <result column="productNum" property="productNum"/>
+	 <association property="productDTO" javaType="ProductDTO">
+	 	<result column="PRODUCTNAME" property="productName"/>
+	 	<result column="PRODUCTID" property="id"/>
+	 </association>
 	<!--type에 멤버메서드중에서 속성을 넣어주기  -->
 	<!--of type은 제네릭 타입을 쓰라는 뜻입니다 column은 대소문자구문 하지 않습니다-->
 	<collection property="boardFileDTOs" javaType="List" ofType="BoardFileDTO">
-		<id column="fileNum" property="fileNum" />
-		<result column="fileName"  property="fileName"/>
-		<result column="oriName" property="oriName" />
+		<id column="FILENUM" property="fileNum" />
+		<result column="FILENAME"  property="fileName"/>
+		<result column="ORINAME" property="oriName" />
 	</collection>
 	
    </resultMap>
