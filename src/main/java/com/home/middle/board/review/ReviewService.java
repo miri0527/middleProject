@@ -40,6 +40,10 @@ public class ReviewService implements BbsService {
 		return reviewDAO.getBoardList(pager);
 	}
 	
+	public String getProductName(Long productNum) throws Exception {
+		return reviewDAO.getProductName(productNum);
+	}
+	
 	@Override
 	public int setBoardAdd(BbsDTO bbsDTO, MultipartFile[] multipartFiles , HttpSession session) throws Exception {
 		// TODO Auto-generated method stub

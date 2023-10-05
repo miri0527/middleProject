@@ -21,6 +21,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.home.middle.board.BbsDTO;
+import com.home.middle.member.MemberDTO;
 import com.home.middle.product.ProductDTO;
 import com.home.middle.util.Pager;
 
@@ -39,9 +40,10 @@ public class ReviewController {
 			@GetMapping("listdetail")
 			public ModelAndView getBoardListdetail(Pager pager)throws Exception {
 		    ModelAndView mv = new ModelAndView();
+		    
 	
 			List<BbsDTO> ar = reviewService.getBoardList(pager);
-	
+			
 			mv.addObject("pager",pager);
 			mv.addObject("list",ar);
 			mv.setViewName("board/review");
@@ -85,9 +87,17 @@ public class ReviewController {
 			
 			//글쓰기 
 			@GetMapping("add")
-			public ModelAndView SetBoardAdd(ProductDTO productDTO) throws Exception{
+			public ModelAndView SetBoardAdd(ReviewDTO reviewDTO, ProductDTO productDTO) throws Exception{
 			ModelAndView mv = new ModelAndView();
+			
+			productDTO.setProductNum(reviewDTO.getProductNum());
+			
+			String productName = reviewService.getProductName(productDTO.getProductNum());
+			
+			System.out.println("productName::" + productName);
+			
 			mv.addObject("dto",productDTO);
+			mv.addObject("productName", productName);
 			mv.setViewName("board/add");
 			return mv;
 			}
@@ -95,13 +105,19 @@ public class ReviewController {
 			@PostMapping("add")
 			public ModelAndView setBoardAdd(ReviewDTO reviewDTO, MultipartFile [] files, HttpSession session)throws Exception{
 			ModelAndView mv = new ModelAndView();
+			
+			MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+			
+			reviewDTO.setId(memberDTO.getId());
+			
 			int result = reviewService.setBoardAdd(reviewDTO, files, session);
 			String message = "등록이 실패했습니다.";
+			
 			if(result>0) {
-				 message = "등록을 성공했습니다.";
+				message = "등록 되었습니다.";
 			}
 			
-			mv.addObject("result", result);
+			mv.addObject("result", message);
 			mv.addObject("url", "./listdetail");
 			mv.setViewName("common/result");
 			return mv;
