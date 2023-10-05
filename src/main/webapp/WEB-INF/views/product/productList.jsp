@@ -13,80 +13,83 @@
 </head>
 
 <body>
-<c:import url="../template/header.jsp"></c:import>
+<c:if test="${member.roleDTO.roleNum ne 1 }">
+	<c:import url="../template/header.jsp"></c:import>
+</c:if>
+<c:if test="${member.roleDTO.roleNum eq 1 }">
+	<c:import url="../template/managerHeader.jsp"></c:import>
+</c:if>
 
 <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ 원래있던 템플릿 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@  -->
 
   
+		<c:if test="${member.roleDTO.roleNum ne 1 }">
+	        <!-- BREADCRUMBS SETCTION START -->
+	        <div class="breadcrumbs-section plr-200 mb-80 section">
+	            <img src="/resources/js/img/others/ad.png" alt=""/>
+	            
+	         </div>
+        </c:if> 
 
-        <!-- BREADCRUMBS SETCTION START -->
-        <div class="breadcrumbs-section plr-200 mb-80 section">
-            <img src="/resources/js/img/others/ad.png" alt=""/>
-            
-         </div>
-
+		
         <!-- BREADCRUMBS SETCTION END -->
-<%--   <div>
-                                                    <c:forEach items="${list.productImgDTOs}" var="productImgDTO">
-                                                        <img id="zoom_03"
-                                                            src="../resources/upload/product/${productImgDTO.fileName}"
-                                                            height="270" width="450" />
-                                                    </c:forEach>
-                                                </div> --%>
         <!-- Start page content -->
         <div id="page-content" class="page-wrapper section">
-
             <!-- SHOP SECTION START -->
             <div class="shop-section mb-80">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-9 order-lg-2 order-1">
                             <div class="shop-content">
-                                <!-- shop-option start -->
-                                <div class="shop-option box-shadow mb-30 clearfix">
-                                    <!-- Nav tabs -->
-                                    <ul class="nav shop-tab f-left" role="tablist">
-                                        <li>
-                                            <a class="active" href="#grid-view" data-bs-toggle="tab"><i class="zmdi zmdi-view-module"></i></a>
-                                        </li>
-                                        <li>
-                                            <a href="#list-view" data-bs-toggle="tab"><i class="zmdi zmdi-view-list-alt"></i></a>
-                                        </li>
-                                    </ul>
-                                    <!-- short-by -->
-                                    <div class="short-by f-left text-center">
-                                        <span>Sort by :</span>
-                                        <select>
-                                            <option value="volvo">Newest items</option>
-                                            <option value="saab">Saab</option>
-                                            <option value="mercedes">Mercedes</option>
-                                            <option value="audi">Audi</option>
-                                        </select> 
-                                    </div> 
-                                    <!-- showing -->
-                                    <div class="showing f-right text-end">
-                                        <span>Showing : 01-09 of 17.</span>
-                                    </div>                                   
-                                </div>
+                            	<c:if test="${member.roleDTO.roleNum ne 1 }">
+	                                <!-- shop-option start -->
+	                                <div class="shop-option box-shadow mb-30 clearfix">
+	                                    <!-- Nav tabs -->
+	                                    <ul class="nav shop-tab f-left" role="tablist">
+	                                        <li>
+	                                            <a class="active" href="#grid-view" data-bs-toggle="tab"><i class="zmdi zmdi-view-module"></i></a>
+	                                        </li>
+	                                        <li>
+	                                            <a href="#list-view" data-bs-toggle="tab"><i class="zmdi zmdi-view-list-alt"></i></a>
+	                                        </li>
+	                                    </ul>
+	                                    <!-- short-by -->
+	                                    <div class="short-by f-left text-center">
+	                                        <span>Sort by :</span>
+	                                        <select>
+	                                            <option value="volvo">Newest items</option>
+	                                            <option value="saab">Saab</option>
+	                                            <option value="mercedes">Mercedes</option>
+	                                            <option value="audi">Audi</option>
+	                                        </select> 
+	                                    </div> 
+	                                    <!-- showing -->
+	                                    <div class="showing f-right text-end">
+	                                        <span>Showing : 01-09 of 17.</span>
+	                                    </div>                                   
+	                                </div>     
+                                </c:if>
                                 <!-- shop-option end -->
                                 <!-- Tab Content start -->
                                 <div class="tab-content">
-
-
 <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@  -->
                                    
+                           
                                     <!-- grid-view -->
                                     <div id="grid-view" class="tab-pane active show" role="tabpanel">
                                        
-                                        <div class="row">
+                                       <div class="row">
+                                      
+                                        	
                                             <c:forEach items="${list}" var="dto">
+                                        
                                             <!-- product-item start -->
                                             <div class="col-lg-4 col-md-6">
                                                 <div class="product-item">
 													
                                                     <div class="product-img">
                                                         <img class="card-img-top mb-5 mb-md-0"
-                                                        src="/resources/productImg/${pageScope.dto.productName}.webp"  height="270" width="300"/>
+                                                        src="/resources/upload/product/${pageScope.dto.productImgDTO.fileName}"  height="270" width="300"/>
                                                     </div>
                                                     
                                                     <div class="product-info">
@@ -100,7 +103,7 @@
                                                             <a href="#"><i class="zmdi zmdi-star-half"></i></a>
                                                             <a href="#"><i class="zmdi zmdi-star-outline"></i></a>
                                                         </div>
-                                                        <h3 class="pro-price">${productOptionDTO.optionName}</h3>
+                                                      <%--   <h3 class="pro-price">${productOptionDTO.optionName}</h3> --%>
                                                         <ul class="action-button">
                                                             <li>
                                                                 <a href="#" title="Wishlist"><i class="zmdi zmdi-favorite"></i></a>
@@ -119,107 +122,122 @@
                                                     
                                                 </div>
                                             </div>
-
+										
                                         </c:forEach>   
                                             <!-- product-item end -->
                                         </div>                                        
                                     </div>
-                                
-                                </div>
-                                 <!-- paging -->
-                                                            <div class="row">
-                                                                <nav aria-label="Page navigation example" class="">
-                                                                    <div class="offset-md-5 col-md-5">
-                                                                        <ul class="shop-pagination box-shadow text-center ptblr-10-30">
-                                                                            <li class="page-item">
-                                                                                <a class="page-link" href="#"
-                                                                                    aria-label="Previous"
-                                                                                    data-board-page="1">
-                                                                                    <!--==page=1 -->
-
-                                                                                    <span
-                                                                                        aria-hidden="true">&laquo;</span>
-                                                                                </a>
-                                                                            </li>
-                                                                            <li
-                                                                                class="page-item ${pager.before ? 'disabled' : ''}">
-                                                                                <a class="page-link" href="#"
-                                                                                    aria-label="Previous"
-                                                                                    data-board-page="${pager.startNum-1}">
-                                                                                    <span
-                                                                                        aria-hidden="true">&lsaquo;</span>
-                                                                                    <!--lsaquo는 꺽쇠 하나 laquo는 꺽쇠 두개  -->
-                                                                                </a>
-                                                                            </li>
-                                                                            <c:forEach begin="${pager.startNum}"
-                                                                                end="${pager.lastNum}" var="i">
-                                                                                <li class="page-item"><a
-                                                                                        class="page-link ${pager.page eq i ? 'active' : '' }"
-                                                                                        href="#"
-                                                                                        data-board-page="${i}">${i}</a>
-                                                                                </li>
-                                                                            </c:forEach>
-                                                                            <!-- &gt = <꺽쇠를 표현 &lt는 >꺽쇠를 표현 -->
-                                                                            <li
-                                                                                class="page-item ${pager.after eq false ? 'disabled' : ''}">
-                                                                                <!--  -->
-                                                                                <a class="page-link " href="#"
-                                                                                    aria-label="Next"
-                                                                                    data-board-page="${pager.lastNum+1}">
-                                                                                    <span
-                                                                                        aria-hidden="true">&rsaquo;</span>
-                                                                                </a>
-                                                                            </li>
-                                                                            <li class="page-item "> <!--  -->
-                                                                                <a class="page-link " href="#"
-                                                                                    aria-label="Next"
-                                                                                    data-board-page="${pager.totalPage}">
-                                                                                    <span
-                                                                                        aria-hidden="true">&raquo;</span>
-                                                                                </a>
-                                                                            </li>
-                                                                        </ul>
-                                                                    </div>
-                                                                </nav>
-
-                                                            </div>
-                                                            <!-- 검색창 -->
-                                                            <form class="row g-3" action="./list" method="get"
-                                                                id="searchForm">
-                                                                <input type="hidden" name="page" value="1" id="page">
-                                                                <input type="hidden" name="categoryNum"
-                                                                    value="${list[0].categoryNum}" id="productNum">
-                                                                <div class="col-auto">
-                                                                    <label for="kind"
-                                                                        class="visually-hidden">Kind</label>
-                                                                    <select class="form-select" name="kind" id="kind"
-                                                                        aria-label="Default select example">
-
-                                                                        
-                                                                        <option value="id" ${pager.kind eq 'id'
-                                                                            ? 'selected' : '' }>상품이름</option>
-                                                                    </select>
-                                                                </div>
-                                                                <div class="col-auto">
-                                                                    <label for="Search"
-                                                                        class="visually-hidden">Search</label>
-                                                                    <input type="text" class="form-control"
-                                                                        name="search" id="search" placeholder="검색어 입력"
-                                                                        value="${pager.search}">
-                                                                </div>
-                                                                <div class="col-auto">
-                                                                    <button type="submit"
-                                                                        class="btn btn-warning mb-3">검색</button>
-                                                                </div>
-                                                            </form>
-                                
-                                <!-- shop-pagination end -->
-                                <c:if test="${member.roleDTO.roleNum<3}">
-                                <a href="add" class="btn">상품 추가</a>
-                                </c:if>
-                                
+                                    
+	                                <!-- paging -->
+		                            <div class="row">
+		                              <nav aria-label="Page navigation example" class="">
+		                                  <div class="">
+		                                      <ul class="shop-pagination box-shadow text-center ptblr-10-30">
+		                                          <li class="page-item">
+		                                              <a class="page-link" href="#"
+		                                                  aria-label="Previous"
+		                                                  data-board-page="1">
+		                                                  <!--==page=1 -->
+		
+		                                                  <span
+		                                                      aria-hidden="true">&laquo;</span>
+		                                              </a>
+		                                          </li>
+		                                          <li
+		                                              class="page-item ${pager.before ? 'disabled' : ''}">
+		                                              <a class="page-link" href="#"
+		                                                  aria-label="Previous"
+		                                                  data-board-page="${pager.startNum-1}">
+		                                                  <span
+		                                                      aria-hidden="true">&lsaquo;</span>
+		                                                  <!--lsaquo는 꺽쇠 하나 laquo는 꺽쇠 두개  -->
+		                                              </a>
+		                                          </li>
+		                                          <c:forEach begin="${pager.startNum}"
+		                                              end="${pager.lastNum}" var="i">
+		                                              <li class="page-item"><a
+		                                                      class="page-link ${pager.page eq i ? 'active' : '' }"
+		                                                      href="#"
+		                                                      data-board-page="${i}">${i}</a>
+		                                              </li>
+		                                          </c:forEach>
+		                                          <!-- &gt = <꺽쇠를 표현 &lt는 >꺽쇠를 표현 -->
+		                                          <li
+		                                              class="page-item ${pager.after eq false ? 'disabled' : ''}">
+		                                              <!--  -->
+		                                              <a class="page-link " href="#"
+		                                                  aria-label="Next"
+		                                                  data-board-page="${pager.lastNum+1}">
+		                                                  <span
+		                                                      aria-hidden="true">&rsaquo;</span>
+		                                              </a>
+		                                          </li>
+		                                          <li class="page-item "> <!--  -->
+		                                              <a class="page-link " href="#"
+		                                                  aria-label="Next"
+		                                                  data-board-page="${pager.totalPage}">
+		                                                  <span
+		                                                      aria-hidden="true">&raquo;</span>
+		                                              </a>
+		                                          </li>
+		                                      </ul>
+		                                  </div>
+		                              </nav>
+		
+		                          </div>
+	                                
+	                           </div>
+  
+	                         <!-- 검색창 -->
+	                
+	                         <div class="container mt-30">
+	                         	 <div class="row">
+    								<div class="col-lg-6 offset-lg-3">
+			                          <form class="row g-3" action="./list" method="get"
+			                              id="searchForm">
+			                              <input type="hidden" name="page" value="1" id="page">
+			                              <input type="hidden" name="categoryNum"
+			                                  value="${param.categoryNum}" id="productNum">
+			                          
+			                              <div class="col-auto" style="display: flex; align-items: center;">
+			                                  <label for="kind"
+			                                      class="visually-hidden">Kind</label>
+			                                  <select class="form-select" name="kind" id="kind"
+			                                      aria-label="Default select example" style="height : 35px; width : 120px; margin-bottom : 19px;">
+			                                      <option value="productName" ${pager.kind eq 'productName'
+			                                          ? 'selected' : '' }>상품이름</option>
+			                                  </select>
+			                            
+			                                  <label for="Search"
+			                                      class="visually-hidden">Search</label>
+			                                  <input type="text" class="form-control"
+			                                      name="search" id="search" placeholder="검색어를 입력하세요."
+			                                      value="${pager.search}" style="height : 35px; width : 350px; margin-left : 10px;">
+			                                  <button type="submit"class="btn btn-warning mb-4" style="width : 100px; margin-left : 10px; height : 34px;">검색 </button>    
+			                                 
+			                              </div>
+			                              
+			                            <div class="col-lg-8 offset-lg-4">
+			                               
+				                            <!-- shop-pagination end -->
+			                                <c:if test="${member.roleDTO.roleNum eq 2}">
+			                                <a href="add" class="btn btn-info" style="width : 100px; margin-bottom : 9px; ">상품 추가</a>
+			                                </c:if>
+			                                   
+			                         	</div>
+		                           	   
+			                          </form>
+			                         
+			                          </div>
+			                        </div>
+			                   </div>
+                               
+                               
+                            
                             </div>
                         </div>
+                        
+                       <c:if test="${member.roleDTO.roleNum ne 1 }">
                         <div class="col-lg-3 order-lg-1 order-2">
                             <!-- widget-search -->
                             <aside class="widget-search mb-30">
@@ -365,6 +383,8 @@
                                 <!-- product-item end -->                               
                             </aside>
                         </div>
+                        
+                        </c:if>
                     </div>
                 </div>
             </div>
@@ -492,9 +512,9 @@
                 <h3>Background Images</h3>
                 <p>Which background image you want to use?</p>
                 <ul class="patternChange main-bg-change clearfix">
-                    <li class="main-bg-1" data-style="main-bg-1" title="Background 1"> <img src="/resources/js/images/customizer/bodybg/01.jpg" alt=""></li>
-                    <li class="main-bg-2" data-style="main-bg-2" title="Background 2"> <img src="/resources/js/images/customizer/bodybg/02.jpg" alt=""></li>
-                    <li class="main-bg-3" data-style="main-bg-3" title="Background 3"> <img src="/resources/js/images/customizer/bodybg/03.jpg" alt=""></li>
+                    <li class="main-bg-1" data-style="main-bg-1" title="Background 1"> <img src="/resources/upload/product/" alt=""></li>
+                    <li class="main-bg-2" data-style="main-bg-2" title="Background 2"> <img src="resources/upload/product/" alt=""></li>
+                    <li class="main-bg-3" data-style="main-bg-3" title="Background 3"> <img src="/resources/upload/product/" alt=""></li>
                     <li class="main-bg-4" data-style="main-bg-4" title="Background 4"> <img src="/resources/js/images/customizer/bodybg/04.jpg" alt=""></li>
                     <li class="main-bg-5" data-style="main-bg-5" title="Background 5"> <img src="/resources/js/images/customizer/bodybg/05.jpg" alt=""></li>
                     <li class="main-bg-6" data-style="main-bg-6" title="Background 6"> <img src="/resources/js/images/customizer/bodybg/06.jpg" alt=""></li>
@@ -506,9 +526,9 @@
                 </ul>
             </div>
         </div>
-       
-    </div>
+<c:if test="${member.roleDTO.roleNum ne 1 }">        
   <c:import url="../template/footer.jsp"></c:import>
+</c:if>
 
  <script src="../resources/js/pageing.js"></script>
 <c:import url="../template/common_js.jsp"></c:import>
