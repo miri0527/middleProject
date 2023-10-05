@@ -19,11 +19,7 @@
 	<c:import url="../template/header.jsp"></c:import>
 	  <section class="bg-light">
         <div class="container py-4">
-            <div class="row align-items-center justify-content-between">
-                <a class="navbar-brand h1 text-center" href="/">
-                    <img src="/resources/imgs/logo.png" alt="" id="ig">                
-                </a>
-            </div>
+        
             <form action="./memberJoin" method="post" id="frm">
                 <div class="form-group" id="divId">
                		<label for="memberID" class="form-label mt-4">아이디</label>
@@ -68,7 +64,7 @@
 						        	<option value="@gmail.com">@gmail.com</option>
 						        	<option value="@hanmail.com">@hanmail.com</option>
 						        	<option value="@yahoo.co.kr">@yahoo.co.kr</option>
-						        </select>
+						 </select> 
                 </div>	
                 <div class="input-group mt-3">
 					        <input class="form-control mail-check-input" placeholder="인증번호 6자리를 입력해주세요!" disabled="disabled" maxlength="6">
