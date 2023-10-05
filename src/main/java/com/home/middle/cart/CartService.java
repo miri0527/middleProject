@@ -25,13 +25,24 @@ public class CartService {
 			sum = sum + cartDTO.getTotalPrice();
 		}
 		
-		long a = Long.parseLong(amount);
-		
-		if(sum == a) {
-			return 1;
-		}else {
-			return 0;
+				
+		try {
+			
+			long a = Long.parseLong(amount);
+			
+			if(sum == a) {
+				return 1;
+			}else {
+				return 0;
+			}
+			
+			
+		}catch(NumberFormatException e) {
+			System.out.println("유효한 처리가 아닙니다.");
+			
 		}
+		
+		return 0;
 		
 	}
 	public List<CartDTO> getCartOptionName(MemberDTO memberDTO) throws Exception{
@@ -75,16 +86,6 @@ public class CartService {
 	public List<CartDTO> getCartList(MemberDTO memberDTO) throws Exception{
 		return cartDAO.getCartList(memberDTO);
 	}
-	
-	public List<CartDTO> getMemberCartList(Pager pager) throws Exception {
-		  pager.makeRow();
-		  
-		  pager.makeNum(cartDAO.getTotalCount(pager));
-		  
-		return cartDAO.getMemberCartList(pager);
-	}
-	
-	
 	
 	public int setCartAdd(CartDTO cartDTO) throws Exception{
 		return cartDAO.setCartAdd(cartDTO);
@@ -142,6 +143,15 @@ public class CartService {
 	}
 	public List<CartDTO> getCartPaymentList(MemberDTO memberDTO) throws Exception{
 		return cartDAO.getCartPaymentList(memberDTO);
+	}
+	
+
+	public List<CartDTO> getMemberCartList(Pager pager) throws Exception {
+		  pager.makeRow();
+		  
+		  pager.makeNum(cartDAO.getTotalCount(pager));
+		  
+		return cartDAO.getMemberCartList(pager);
 	}
 	
 	

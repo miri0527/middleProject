@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.home.middle.member.MemberDTO;
-import com.home.middle.product.ProductDTO;
 import com.home.middle.product.ProductOptionDTO;
 import com.home.middle.util.Pager;
 
@@ -18,12 +17,6 @@ public class CartDAO {
 	private SqlSession sqlSession;
 	
 	private final String NAMESPACE = "com.home.middle.cart.CartDAO.";
-	
-	
-	public Long getTotalCount(Pager pager) throws Exception {
-		Long l= sqlSession.selectOne(NAMESPACE + "getTotalCount", pager);
-		return l;
-	}
 	
 	public CartDTO getPaymentCheck(CartDTO cartDTO) throws Exception{
 		return sqlSession.selectOne(NAMESPACE + "getPaymentCheck", cartDTO);
@@ -37,13 +30,6 @@ public class CartDAO {
 	public List<CartDTO> getCartList(MemberDTO memberDTO)throws Exception{
 		return sqlSession.selectList(NAMESPACE + "getCartList", memberDTO);
 	}
-	
-	public List<CartDTO> getMemberCartList(Pager pager) throws Exception {
-		List<CartDTO> ar =  sqlSession.selectList(NAMESPACE + "getMemberCartList", pager);
-		
-		return ar;
-	}
-	
 	
 	public int setCartAdd(CartDTO cartDTO) throws Exception{
 		return sqlSession.insert(NAMESPACE + "setCartAdd", cartDTO);
@@ -92,6 +78,18 @@ public class CartDAO {
 	public int setCartUpdate(CartDTO cartDTO) throws Exception{
 		return sqlSession.update(NAMESPACE + "setCartUpdate", cartDTO);
 	}
+	
+	public Long getTotalCount(Pager pager) throws Exception {
+		Long l= sqlSession.selectOne(NAMESPACE + "getTotalCount", pager);
+		return l;
+	}
+	
+	public List<CartDTO> getMemberCartList(Pager pager) throws Exception {
+		List<CartDTO> ar =  sqlSession.selectList(NAMESPACE + "getMemberCartList", pager);
+		
+		return ar;
+	}
+	
 	
 	
 }
