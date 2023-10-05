@@ -57,13 +57,30 @@
   		VALUES(NOTICE_FILE_SEQ.NEXTVAL, #{num}, #{fileName},#{oriName} )
   	</insert>
   	
-  	<select id="getBoardDetail" resultType="NoticeDTO" parameterType="NoticeDTO">
+  	<select id="getBoardDetail" resultMap="NoticeResult" parameterType="NoticeDTO">
   		SELECT * FROM NOTICE 
   			LEFT OUTER JOIN 
   				NOTICEFILE
   			USING(NUM)	
   		WHERE NUM=#{num}
   	</select>
+  	
+  	<resultMap type="NoticeDTO" id="NoticeResult">
+  		<id column="NUM" property="num"/>
+		<result column="ID" property="id"/>
+		<result column="TITLE" property="title"/>
+		<result column="CONTENTS" property="contents"/>
+		<result column="REGDATE" property="regDate"/>
+		<result column="HIT" property="hit"/>
+		<result column="DEPTH" property="depth"/>
+		<result column="IMPORTANT" property="important"/>
+		<collection property="boardFileDTOs" javaType="List" ofType="BoardFileDTO">
+			<id column="FILENUM" property="fileNum"/>
+			<result column="FILENAME" property="fileName"/>
+			<result column="ORINAME" property="oriName"/>
+		</collection>
+  	</resultMap>
+  	
   
  
   	<!--HIT 올리기-->
