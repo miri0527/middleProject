@@ -66,8 +66,8 @@
                                     </div>
                                 </form>
                                 <form action="./kakaologin.do" method="post" name="lfrm" hidden>
-    																<input type="text" name="kakaoemail" id="kakaoemail" />
-    														</form>
+										<input type="text" name="kakaoemail" id="kakaoemail" />
+								</form>
                             </div>
                         </div>
 	<c:import url="../template/common_js.jsp"></c:import>
