@@ -31,6 +31,10 @@ public class QnaDAO implements BbsDAO{
 		return sqlSession.selectList(NAMESPACE+"getBoardList", pager);
 	}
 	
+	public String getProductName(Long productNum) throws Exception {
+		return sqlSession.selectOne(NAMESPACE + "getProductName", productNum);
+	}
+	
 	@Override
 	public int setBoardAdd(BbsDTO bbsDTO) throws Exception {
 		// TODO Auto-generated method stub

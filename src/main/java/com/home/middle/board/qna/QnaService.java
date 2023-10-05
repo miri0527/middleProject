@@ -40,6 +40,9 @@ public class QnaService implements BbsService{
 		return qnaDAO.getBoardList(pager);
 	}
 	
+	public String getProductName(Long productNum) throws Exception {
+		return qnaDAO.getProductName(productNum);
+	}
 	
 	@Override
 	public int setBoardAdd(BbsDTO bbsDTO, MultipartFile[] multipartFiles , HttpSession session) throws Exception {
@@ -145,7 +148,6 @@ public class QnaService implements BbsService{
 
 	@Override
 	public BbsDTO getBoardDetail(BbsDTO bbsDTO) throws Exception {
-		// TODO Auto-generated method stub
 		return qnaDAO.getBoardDetail(bbsDTO);
 	}
 

@@ -32,7 +32,7 @@ public class QnaController {
 	
 	@ModelAttribute("boardName")
 	public String getBoardName() {
-		return "qna";
+		return "Qna";
 	}
 	
 	@GetMapping("list")
@@ -49,11 +49,11 @@ public class QnaController {
 	}
 	
 	@GetMapping("listdetail")
-	public ModelAndView getBoardListdetail(Pager pager)throws Exception {
+	public ModelAndView getBoardListdetail(Pager pager, QnaReplyDTO qnaReplyDTO)throws Exception {
 	ModelAndView mv = new ModelAndView();
 
 	List<BbsDTO> ar = qnaService.getBoardList(pager);
-	List<QnaReplyDTO> ar1 = qnaReplyService.getBoardList(pager);
+	
 	
 	//qna 
 	mv.addObject("pager",pager);
@@ -61,7 +61,6 @@ public class QnaController {
 	
 	//qna 답변 
 	mv.addObject("pager",pager);
-	mv.addObject("list1",ar1);
 	
 	mv.setViewName("board/boardList");
 		
@@ -71,9 +70,16 @@ public class QnaController {
 	
 	//글쓰기 
 	@GetMapping("add")
-	public ModelAndView SetBoardAdd(ProductDTO productDTO) throws Exception{
+	public ModelAndView SetBoardAdd(QnaDTO qnaDTO, ProductDTO productDTO) throws Exception{
 	ModelAndView mv = new ModelAndView();
+	
+	productDTO.setProductNum(qnaDTO.getProductNum());
+	
+	String productName =  qnaReplyService.getProductName(productDTO.getProductNum());
+	
+	System.out.println("productName::" + productName);
 	mv.addObject("dto",productDTO);
+	mv.addObject("productName", productName);
 	mv.setViewName("board/add");
 	return mv;
 	}
@@ -84,10 +90,10 @@ public class QnaController {
 	int result = qnaService.setBoardAdd(qnaDTO, files, session);
 	String message = "등록이 실패했습니다.";
 	if(result>0) {
-		 message = "등록을 성공했습니다.";
+		 message = "등록되었습니다.";
 	}
 	
-	mv.addObject("result", result);
+	mv.addObject("result", message);
 	mv.addObject("url", "./listdetail");
 	mv.setViewName("common/result");
 	return mv;
@@ -103,7 +109,7 @@ public class QnaController {
 		String message="삭제 실패";
 
 		if(result>0) {
-			message="삭제 성공";
+			message="삭제되었습니다.";
 		}
 
 		mv.addObject("result", message);
@@ -128,7 +134,7 @@ public class QnaController {
 		int result = qnaService.setBoardUpdate(bbsDTO, addFiles, session, fileNum);
 		
 		mv.setViewName("common/result");
-		mv.addObject("result", "수정 성공");
+		mv.addObject("result", "수정되었습니다.");
 		mv.addObject("url", "./listdetail");
 		
 		return mv;
@@ -158,5 +164,6 @@ public class QnaController {
 		 return mv;
 		
 	}
+	
 	
 }
