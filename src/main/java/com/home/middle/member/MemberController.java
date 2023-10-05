@@ -137,12 +137,11 @@ public class MemberController {
 		}
 		session.setAttribute("member", memberDTO);
 		String message="로그인 실패";
-		if(memberDTO !=null && memberDTO.getRoleDTO().getRoleNum() !=1) {
+		if(memberDTO !=null) {
 			message="로그인 성공";
 			mv.addObject("url", "/");
-		} else if(memberDTO !=null && memberDTO.getRoleDTO().getRoleNum() == 1) {
-			mv.addObject("url", "/manager/home");
-		}else {
+		} 
+		else {
 			mv.addObject("url", "./memberLogin");
 		}
 		mv.addObject("message", message);
