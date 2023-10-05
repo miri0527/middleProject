@@ -50,18 +50,23 @@
 </head>
 <body>
 
+<c:if test="${member.roleDTO.roleNum eq 2}">
+	<c:import url="../template/header.jsp"></c:import>
+</c:if>
+<c:if test="${member.roleDTO.roleNum eq 1 }">
 	<c:import url="../template/managerHeader.jsp"></c:import>
+</c:if>
        
  <div class="container-fluid my-5">
  	<div class="row col-md-4 mx-auto text-center border-bottom border-dark pb-2">
      <p class="fs-2" style="font-family: 'Impact'">상품 등록</p>
    </div>
-    <form action="./add" method = "post" enctype="multipart/form-data">
+    <form action="./add" method = "post" enctype="multipart/form-data"  id="addFrm">
     <input type="hidden" value="${dto.id }" name="id">
       <div class="row col-md-4 mx-auto my-5">
-         <div class="fw-bold fs-5 col-12">
+         <div class="fw-bold col-12">
             <p>상품등록</p>
-            <select name="categoryNum" class="form-select form-select-sm" aria-label=".form-select-sm example"><br>
+            <select name="categoryNum" class="form-select form-select" aria-label=".form-select example">
 				<option value="1" selected >컴퓨터</option>
 				<option value="2">노트북</option>
 				<option value="3">모니터</option>
@@ -73,12 +78,13 @@
 			</select>
 		</div>	
 	
-		<div class="fw-bold fs-5 col-12">
+		<div class="fw-bold col-12" style="margin-top : 10px;">
 			<p>상품명</p>
-			<input type="text" name="productName">
+			<input type="text" name="productName" id="productName">
+			<div id="productNameResult">
+				
+			</div>
 		</div>
-		
-		상품옵션 : <br>
 		
 		
 		  <fieldset class="mb-4">
@@ -92,13 +98,14 @@
                <input id="bs2" type="radio" name="productSales" value="0" class="form-check-input" for="inlineRadio2">
             </div>
          </fieldset>
-         <div id = "fileList">
-          
-            <button type="button" class = "btn btn-primary" id="addBtn">ADD</button>
-         </div>           
         
-         <div class="row justify-content-center my-5">
-            <button type="submit" class="btn btn-outline-warning col-2">전송</button>
+           <input  type="file" class="form-control" id="file" aria-describedby="inputGroupFileAddon04" aria-label="Upload" name="pics">
+           <div id="fileResult" style="margin-top : 10px;">
+           </div>
+                 
+        
+         <div class="row justify-content my-5">
+            <button type="button" class="btn btn-outline-warning col-2" id="submit">등록</button>
          </div>
       </div>
    </form>
