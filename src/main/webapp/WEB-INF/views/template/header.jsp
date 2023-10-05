@@ -118,132 +118,7 @@
                                        
                                             </ul>
                                         </li>
-                                      <!--   <li class="mega-parent"><a href="#">elements</a>
-                                            <div class="mega-menu-area clearfix">
-                                                <div class="mega-menu-link mega-menu-link-4  f-left">
-                                                    <ul class="single-mega-item">
-                                                        <li class="menu-title">Elements 1</li>
-                                                        <li>
-                                                            <a href="elements-header-1-sticky.html">header-1-sticky</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="elements-header-1-no-sticky.html">header-1-no-sticky</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="elements-header-2-sticky.html">header-2-sticky</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="elements-header-2-no-sticky.html">header-2-no-sticky</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="elements-footer-1.html">footer-1</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="elements-footer-2.html">footer-2</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="elements-footer-3.html">footer-3</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="elements-contact-form.html">Dynamic Contact Form</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="elements-map.html">Google Map</a>
-                                                        </li>
-                                                    </ul>
-                                                    <ul class="single-mega-item">
-                                                        <li class="menu-title">Elements 2</li>
-                                                        <li>
-                                                            <a href="elements-featured-product-1.html">featured-product-1</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="elements-featured-product-2.html">featured-product-2</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="elements-product-tab-1.html">product-tab-1</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="elements-product-tab-2.html">product-tab-2</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="elements-up-comming-product-1.html">up-comming-product-1</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="elements-up-comming-product-2.html">up-comming-product-2</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="elements-single-product.html">single-product</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="elements-sidebar-left.html">sidebar-left</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="elements-sidebar-right.html">sidebar-right</a>
-                                                        </li>
-                                                    </ul> -->
-                                                   <!--  <ul class="single-mega-item">
-                                                        <li class="menu-title">Elements 3</li>
-                                                        <li>
-                                                            <a href="elements-section-title.html">section-title</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="elements-pagination.html">pagination</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="elements-banner.html">Banner</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="elements-brands.html">Brands</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="elements-breadcrumbs.html">Breadcrumbs</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="elements-newsletter.html">Newsletter</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="elements-team.html">team</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="elements-audio.html">Audio</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="elements-video.html">Video</a>
-                                                        </li>
-                                                    </ul>
-                                                    <ul class="single-mega-item">
-                                                        <li class="menu-title">Elements 4</li>
-                                                        <li>
-                                                            <a href="elements-typography.html">typography</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="elements-buttons.html">Buttons</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="elements-call-to-action.html">Call to Action</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="elements-accordion.html">Accordion</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="elements-alerts.html">Alerts</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="elements-progress-bars.html">progress-bars</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="elements-tab.html">tab</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="elements-toggles.html">toggles</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="elements-toggles.html">toggles</a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </li> -->
+
                                         <li class="mega-parent"><a href="/product/detail?productNum=1">Products</a>
                                         </li>
                                         
@@ -261,9 +136,7 @@
                                         <li>
                                             <a href="/contact">Contact</a>
                                         </li>
-                                         <li>
-                                            <a href="/manager/home">Manager</a>
-                                        </li>
+                                        
                                     </ul>
                                 </nav>
                             </div>

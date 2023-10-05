@@ -10,7 +10,6 @@
     <title>Subas || Home-3</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <c:import url="../template/common_css.jsp"></c:import>
 
    
 </head>
@@ -92,7 +91,7 @@
                             <!-- logo -->
                             <div class="col-lg-2 col-md-4">
                                 <div class="logo">
-                                    <a href="/manager/home">
+                                    <a href="/">
                                         <img src="/resources/js/img/logo/logo.png" alt="main logo">
                                     </a>
                                 </div>
@@ -102,19 +101,82 @@
                                 <nav id="primary-menu">
                                     <ul class="main-menu text-center">
                                     
-                                    	<li><a href="/manager/home">Admin소개</a>
+                                    	<li><a href="/">Admin소개</a>
                                     	
                                     	</li>
-                                        <li><a href="/manager/memberList">회원리스트</a>
+                                        <li><a href="/manager/memberList">회원 리스트</a>
                                           
                                         </li>
-                                        <li class="mega-parent"><a href="/manager/productList">상품리스트</a>
-                                         
+                                        
+                                      
+                                     	<li><a href="">상품 리스트</a>
+                                            <ul class="dropdwn">
+                                              
+                                              <li>
+                                                  <a href="/manager/productList?categoryNum=1">카레고리 1 컴퓨터 </a>
+                                              </li>
+                                              <li>
+                                                  <a href="/manager/productList?categoryNum=2">카테고리 2 노트북</a>
+                                              </li>
+                                              <li>
+                                                  <a href="/manager/productList?categoryNum=3">카테고리 3 모니터</a>
+                                              </li>
+                                              <li>
+                                                  <a href="/manager/productList?categoryNum=4">카테고리 4 휴대폰</a>
+                                              </li>
+                                              <li>
+                                                  <a href="/manager/productList?categoryNum=5">카테고리 5 TV </a>
+                                              </li>
+                                              <li>
+                                                  <a href="/manager/productList?categoryNum=6">카테고리 6 냉장고 </a>
+                                              </li>
+                                              <li>
+                                                  <a href="/manager/productList?categoryNum=7">카테고리 7 에어컨</a>
+                                              </li>
+                                              <li>
+                                                  <a href="/manager/productList?categoryNum=8">카테고리 8 공기청정기</a>
+                                              </li>
+                                       
+                                            </ul>
                                         </li>
-                                        <li class="mega-parent"><a href="/manager/cartList">구매리스트</a>
+                                        
+                                        <li><a href="">상품 옵션 수정</a>
+                                            <ul class="dropdwn">
+                                              
+                                              <li>
+                                                  <a href="/product/list?categoryNum=1">카레고리 1 컴퓨터 </a>
+                                              </li>
+                                              <li>
+                                                  <a href="/product/list?categoryNum=2">카테고리 2 노트북</a>
+                                              </li>
+                                              <li>
+                                                  <a href="/product/list?categoryNum=3">카테고리 3 모니터</a>
+                                              </li>
+                                              <li>
+                                                  <a href="/product/list?categoryNum=4">카테고리 4 휴대폰</a>
+                                              </li>
+                                              <li>
+                                                  <a href="/product/list?categoryNum=5">카테고리 5 TV </a>
+                                              </li>
+                                              <li>
+                                                  <a href="/product/list?categoryNum=6">카테고리 6 냉장고 </a>
+                                              </li>
+                                              <li>
+                                                  <a href="/product/list?categoryNum=7">카테고리 7 에어컨</a>
+                                              </li>
+                                              <li>
+                                                  <a href="/product/list?categoryNum=8">카테고리 8 공기청정기</a>
+                                              </li>
+                                       
+                                            </ul>
+                                        </li>
+                                         
+                                         
+                                     
+                                        <li class="mega-parent"><a href="/manager/cartList">구매 리스트</a>
                         
                                         </li>
-                                        <li class="mega-parent"><a href="/product/add">상품등록</a>
+                                        <li class="mega-parent"><a href="/product/add">상품 등록</a>
                          
                                         </li>
                                         
@@ -154,19 +216,83 @@
                         <div class="mobile-menu">
                             <nav id="dropdown">
                                 <ul>
-                                    <li><a href="/manager/memberList">회원리스트</a>
+                                    <li><a href="/manager/memberList">회원 리스트</a>
                                        
                                     </li>
-                                    <li>
-                                        <a href="/manager/productList">상품리스트</a>
+                                    <li><a href="">상품 리스트</a>
+                                        <ul class="dropdwn">
+                                          
+                                          <li>
+                                              <a href="/manager/productList?categoryNum=1">카레고리 1 컴퓨터 </a>
+                                          </li>
+                                          <li>
+                                              <a href="/manager/productList?categoryNum=2">카테고리 2 노트북</a>
+                                          </li>
+                                          <li>
+                                              <a href="/manager/productList?categoryNum=3">카테고리 3 모니터</a>
+                                          </li>
+                                          <li>
+                                              <a href="/manager/productList?categoryNum=4">카테고리 4 휴대폰</a>
+                                          </li>
+                                          <li>
+                                              <a href="/manager/productList?categoryNum=5">카테고리 5 TV </a>
+                                          </li>
+                                          <li>
+                                              <a href="/manager/productList?categoryNum=6">카테고리 6 냉장고 </a>
+                                          </li>
+                                          <li>
+                                              <a href="/manager/productList?categoryNum=7">카테고리 7 에어컨</a>
+                                          </li>
+                                          <li>
+                                              <a href="/manager/productList?categoryNum=8">카테고리 8 공기청정기</a>
+                                          </li>
+                                   
+                                        </ul>
                                     </li>
-                                    <li><a href="/manager/cartList">구매리스트</a>
+                                    
+                                      <li><a href="">상품 옵션 수정</a>
+                                         <ul class="dropdwn">
+                                           
+                                           <li>
+                                               <a href="/product/list?categoryNum=1">카레고리 1 컴퓨터 </a>
+                                           </li>
+                                           <li>
+                                               <a href="/product/list?categoryNum=2">카테고리 2 노트북</a>
+                                           </li>
+                                           <li>
+                                               <a href="/product/list?categoryNum=3">카테고리 3 모니터</a>
+                                           </li>
+                                           <li>
+                                               <a href="/product/list?categoryNum=4">카테고리 4 휴대폰</a>
+                                           </li>
+                                           <li>
+                                               <a href="/product/list?categoryNum=5">카테고리 5 TV </a>
+                                           </li>
+                                           <li>
+                                               <a href="/product/list?categoryNum=6">카테고리 6 냉장고 </a>
+                                           </li>
+                                           <li>
+                                               <a href="/product/list?categoryNum=7">카테고리 7 에어컨</a>
+                                           </li>
+                                           <li>
+                                               <a href="/product/list?categoryNum=8">카테고리 8 공기청정기</a>
+                                           </li>
+                                    
+                                         </ul>
+                                       </li>
+                                         
+                                    
+                                    <li><a href="/manager/cartList">구매 리스트</a>
                                      
                                  
                                     </li>
-                                    <li><a href="/product/add">상품등록</a>	
+                                    <li><a href="/product/add">상품 등록</a>	
                              
                                     </li>
+                                    
+                                     <li>
+                                           <a href="/notice/list">NOTICE</a>
+                                     </li>
                                   
                                     <li>
                                         <a href="/qna/listdetail">QNA</a>
@@ -180,4 +306,3 @@
         </div>
         <!-- END MOBILE MENU AREA -->
       
-  <c:import url="../template/common_js.jsp"></c:import>   
