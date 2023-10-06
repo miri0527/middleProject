@@ -12,7 +12,7 @@
 <meta http-equiv="Cache-Control" content="no-store" />
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@400;800;900&display=swap');
-	#row {
+/* 	#row {
 		  display: flex;
 		  justify-content: center; /* 가로 방향으로 가운데 정렬 */
 		  align-items: center; /* 세로 방향으로 가운데 정렬 */

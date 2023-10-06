@@ -12,7 +12,9 @@
 
 </head>
 <body>
-<c:import url="../template/header.jsp"></c:import>
+
+<c:import url="../template/managerHeader.jsp"></c:import>
+
    <div class="container fluid my-5">
 	   <div class= "row mb-4 ">
 	   
@@ -20,7 +22,8 @@
 	  
 	  </div>
 	
-	<form class = "row g-3 ms-auto" action="./add" method="post" enctype="multipart/form-data" >
+	<form class = "row g-3 ms-auto" action="./update" method="post" enctype="multipart/form-data" >
+		<input type="hidden" name="num" value="${update.num}">
  		<div class="col-12">
     		<label for="title" class="form-label">아이디</label>
     		<input type="text" class="form-control" id="id" name="id" placeholder="id" value="${member.id}" readonly>
@@ -48,15 +51,21 @@
     		<textarea class="form-control" name="contents" id="contents" value="${update.contents}"></textarea>
   		</div> 
   		
-  		<div class="col-12">
-  			<button class="btn btn-info" type="button" id="addBtn" >파일 추가</button>
-  			<div id="addFile" style="height : 100px;"></div>
-  		</div>
+ 		  <input  type="file" class="form-control" id="file" aria-describedby="inputGroupFileAddon04" aria-label="Upload" name="pics">
+		  <div class="fw-bold fs-5 col-12 mt-3">
+               	<div class="input-group mb-3 my-3">
+				  <div class="input-group-text" style="height : 40px;">
+				    <input class="form-check-input mt-0 deleteCheck" type="checkbox"  name="fileNum" aria-label="Checkbox for following text input">
+				  </div>
+				  <input type="text" disabled value="${update.boardFileDTO.oriName}" class="form-control" aria-label="Text input with checkbox">
+				  <button class="btn btn-outline-secondary" type="button" id="button" data-filenum="${update.boardFileDTO.fileNum}" data-num= "${update.num }" style="height : 40px;">X</button>
+				</div>
+              </div> 
   		
+	
 
-
-	  <div class="col-12">
-	    <button type="submit" class="btn btn-primary">등록</button>
+	  <div class="col-12">	
+	    <button type="submit" class="btn btn-primary">수정</button>
 	  </div>
 	  
 	</form>
@@ -65,7 +74,7 @@
    <c:import url="../template/footer.jsp"></c:import>
    <c:import url="../template/common_js.jsp"></c:import>
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>   
-<script type="text/javascript" src="../resources/js/fileAdd.js"></script>
+<script type="text/javascript" src="../resources/js/noticeUpdate.js"></script>
  <script>
  	$("#contents").summernote({
 		height : 300
@@ -79,18 +88,12 @@
 	    }
 	})
 	
+
+	
 	if($("#important").val() == 1) {
 		$("#important").prop("checked", true)
 	}
-	
-	// 기존 내용 가져오기
-	var contents = "${update.contents}";
 
-	// summernote 에디터의 내용 설정하기
-	$('#contents').summernote('code', contents);
-	
-	// 수정된 내용 가져오기
-	var editedContent = $('#contents').summernote('code');
 	
 	
 </script>

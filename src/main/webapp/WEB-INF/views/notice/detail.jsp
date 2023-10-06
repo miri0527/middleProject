@@ -36,7 +36,12 @@
 </style>
 </head>
 <body>
-<c:import url="../template/header.jsp"></c:import>
+<c:if test="${member eq null || member.roleDTO.roleNum ne 1}">
+	<c:import url="../template/header.jsp"></c:import>
+</c:if>
+<c:if test="${member.roleDTO.roleNum eq 1 }">
+	<c:import url="../template/managerHeader.jsp"></c:import>
+</c:if>
 <!--Main  -->
 <div class="container-fluid col-md-9">
 	<div class="row my-5">
@@ -67,11 +72,9 @@
 			         <tr>
 				         <td colspan="4" class="text-left" valign="top" height="200">
 				         	<pre style="white-space: pre-wrap;border:none;background-color: white; font-size: 30px;">${boardDTO.contents}</pre>
-				         	<c:forEach items="${boardDTO.boardFileDTOs}" var="fileVO">
-								<img class="fileIcon" width="450" height="550" src="/resources/upload/notice/${fileVO.fileName}"  style="margin-right: 5px">
-			                       
-		                    </c:forEach>
-				         		
+				     			<c:if test="${boardDTO.boardFileDTO ne null }">
+									<img class="fileIcon" width="450" height="550" src="/resources/upload/notice/${boardDTO.boardFileDTO.fileName}"  style="margin-right: 5px">
+			                     </c:if>
 				         </td>   
 				       
 			         </tr>
