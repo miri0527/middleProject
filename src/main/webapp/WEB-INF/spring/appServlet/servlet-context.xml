@@ -23,20 +23,32 @@
 	
 	<context:component-scan base-package="com.home.middle" />
 	
-		<interceptors>
-			<interceptor>
-				<mapping path="/member/memberDetail"/>
-				<beans:bean class="com.home.middle.interceptors.MemberCheckInterceptor"></beans:bean>
-				
-			</interceptor> 
-		<interceptor>
-			<mapping path="/manager/*"/>
-				<beans:bean class="com.home.middle.interceptors.AdminCheckInterceptor"></beans:bean>
-		</interceptor>
+	<interceptors>
+    <interceptor>
+        <mapping path="/member/memberDetail"/>
+        <mapping path="/qna/add"/>
+        <mapping path="/review/add"/>
+        <mapping path="/cart/cartList"/>
+        <beans:bean class="com.home.middle.interceptors.MemberCheckInterceptor"/>
+    </interceptor>
+    <interceptor>
+        <mapping path="/manager/**"/>
+        <mapping path="/notice/add"/>
+        <mapping path="/notice/update"/>
+        <beans:bean class="com.home.middle.interceptors.AdminCheckInterceptor"/>
+    </interceptor>
+    
+     <interceptor>
+        <mapping path="/product/update"/>
+        <mapping path="/product/add"/>
+        <mapping path="/product/productOptionAdd"/>
+        <mapping path="/product/productOptionUpdate"/>
+        <beans:bean class="com.home.middle.interceptors.SellerCheckInterceptor"/>
+    </interceptor>
+</interceptors>
+			
 		
 		
-	
-	</interceptors>
 	
 	
 	
