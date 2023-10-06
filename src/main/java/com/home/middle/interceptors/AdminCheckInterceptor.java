@@ -19,11 +19,7 @@ public class AdminCheckInterceptor extends HandlerInterceptorAdapter {
 			if(memberDTO.getRoleDTO().getRoleName().equals("ADMIN") ) {
 				return true;
 			}
-		}else {
-			response.sendRedirect("../member/memberLogin");
-			return false;
 		}
-		
 		
 		request.setAttribute("result", "권한이 없습니다");
 		request.setAttribute("url", "../");
