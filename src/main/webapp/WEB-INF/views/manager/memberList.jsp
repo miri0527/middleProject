@@ -39,7 +39,7 @@ table.type09 td {
 </style>
 
 <meta charset="UTF-8">
-<title>회원리스트</title>
+<title>회원 리스트</title>
 <c:import url="../template/common_css.jsp"></c:import>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@400;800;900&display=swap');
@@ -49,7 +49,7 @@ table.type09 td {
 <c:import url="../template/managerHeader.jsp"></c:import>
 <div class="container-fluid col-md-9">
 	<div class="row col-md-4 mx-auto text-center border-bottom border-dark pb-2">
-     <p class="fs-2" style="font-family: 'Impact'">회원리스트</p>
+     <p class="fs-2" style="font-family: 'Impact'">회원 리스트</p>
    </div>
 	회원등급
 	<input type="checkbox" id="allRole" name="roleName" value="" checked > 전체

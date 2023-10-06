@@ -43,7 +43,7 @@ thead {
 <c:import url="../template/managerHeader.jsp"></c:import>
 <div class="container-fluid">
    <div class="row col-md-4 mx-auto text-center border-bottom border-dark pb-2">
-     <p class="fs-2" style="font-family: 'Impact'">상품리스트</p>
+     <p class="fs-2" style="font-family: 'Impact'">상품 리스트</p>
    </div>
 
    <div class="row">
@@ -55,6 +55,7 @@ thead {
                <th>상품명</th>
                <th>판매 여부</th>
                <th></th>
+               
             
          </tr>
       </thead>
@@ -70,10 +71,12 @@ thead {
                
                <td><a href="./productDetail?productNum=${dto.productNum}"> ${dto.productName}</a></td>
                <td>
-               	<c:if test="${dto.productSales eq 1 }">판매중</c:if>
-               	<c:if test="${dto.productSales eq 0 }">판매중단</c:if>
+	               	<c:if test="${dto.productSales eq 1 }">판매중</c:if>
+	               	<c:if test="${dto.productSales eq 0 }">판매중단</c:if>
                </td>
-               
+               <td>
+               		<a href="../product/update?productNum=${dto.productNum}" class="btn btn-primary">상품 수정</a>
+               </td>
            
             </tr>
          </c:forEach>
@@ -176,8 +179,8 @@ thead {
         
          
       <div class="col text-center button">
-         <a href="../product/add"><button type="button" class="btn btn-primary" style="color:white;" id="add">상품등록</button></a>
-         <button type="button" class="btn btn-danger" onclick="deleteValue()">상품삭제</button>
+         <a href="../product/add"><button type="button" class="btn btn-warning" style="color:white;" id="add">상품 등록</button></a>
+         <button type="button" class="btn btn-danger" onclick="deleteValue()">상품 삭제</button>
       </div>   
 </div>       
 <script src="../resources/js/memberProductList.js"></script>

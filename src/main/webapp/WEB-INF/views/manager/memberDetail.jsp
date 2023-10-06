@@ -9,6 +9,9 @@
 </head>
 <body>
 <c:import url="../template/common_css.jsp"></c:import>
+
+<c:import url="../template/managerHeader.jsp"></c:import>
+
 <div class="container-fluid md-auto">
 
 <div class="mb-3 row">

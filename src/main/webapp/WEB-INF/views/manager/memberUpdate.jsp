@@ -5,10 +5,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>회원수정</title>
+<title>회원 수정</title>
 </head>
 <body>
 <c:import url="../template/common_css.jsp"></c:import>
+
+<c:import url="../template/managerHeader.jsp"></c:import>
+
 
 <section class="bg-light">
         <div class="container py-4">
