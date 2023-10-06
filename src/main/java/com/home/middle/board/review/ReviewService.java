@@ -121,7 +121,7 @@ public class ReviewService implements BbsService {
 	}
 	@Override
 	public int setBoardDelete(BbsDTO bbsDTO, HttpSession session) throws Exception {
-		// TODO Auto-generated method stub
+
 		List<BoardFileDTO> ar = reviewDAO.getBoardFileList(bbsDTO);
 		int result =  reviewDAO.setBoardDelete(bbsDTO);
 		
