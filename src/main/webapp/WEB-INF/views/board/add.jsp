@@ -12,7 +12,12 @@
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
 </head>
 <body>
-<c:import url="../template/header.jsp"></c:import>
+<c:if test="${member eq null || member.roleDTO.roleNum ne 1}">
+	<c:import url="../template/header.jsp"></c:import>
+</c:if>
+<c:if test="${member.roleDTO.roleNum eq 1 }">
+	<c:import url="../template/managerHeader.jsp"></c:import>
+</c:if>
    <div class="container fluid my-5">
    <div class= "row mb-4 ">
    

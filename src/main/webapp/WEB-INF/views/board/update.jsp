@@ -11,7 +11,12 @@
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
 </head>
 <body>
-<c:import url="../template/header.jsp"></c:import>
+<c:if test="${member eq null || member.roleDTO.roleNum ne 1}">
+	<c:import url="../template/header.jsp"></c:import>
+</c:if>
+<c:if test="${member.roleDTO.roleNum eq 1 }">
+	<c:import url="../template/managerHeader.jsp"></c:import>
+</c:if>
 	<h1>${boardName} Update page</h1>
 	<form action="./update" method="post" enctype="multipart/form-data">
 		<c:if test="${boardName eq 'QnaReply'}">

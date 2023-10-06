@@ -13,7 +13,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@400;800;900&display=swap');
 </style>
 <body>
-<c:import url="../template/header.jsp"></c:import>
+<c:if test="${member eq null || member.roleDTO.roleNum ne 1}">
+	<c:import url="../template/header.jsp"></c:import>
+</c:if>
+<c:if test="${member.roleDTO.roleNum eq 1 }">
+	<c:import url="../template/managerHeader.jsp"></c:import>
+</c:if>
 <div class="container-fluid col-md-9">
 	<div class="row my-5">
 		<h1 style="font-family: 'Lexend', sans-serif">${boardName} List</h1> <p>${member.id}님 환영합니다.</p>
