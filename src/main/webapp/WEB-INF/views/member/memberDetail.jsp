@@ -5,11 +5,16 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>회원정보</title>
+<title>회원 정보</title>
 <c:import url="../template/common_css.jsp"></c:import>
 </head>
 <body>
+<c:if test="${member eq null || member.roleDTO.roleNum ne 1}">
 	<c:import url="../template/header.jsp"></c:import>
+</c:if>
+<c:if test="${member.roleDTO.roleNum eq 1 }">
+	<c:import url="../template/managerHeader.jsp"></c:import>
+</c:if>
 
 
 	<div class="container-fluid md-auto">
