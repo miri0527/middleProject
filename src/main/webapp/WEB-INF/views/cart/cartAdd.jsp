@@ -11,7 +11,12 @@
 <body>
 	
 	<div class="container-fluid">
-	<c:import url="../template/header.jsp"></c:import>
+	<c:if test="${member eq null || member.roleDTO.roleNum ne 1}">
+		<c:import url="../template/header.jsp"></c:import>
+	</c:if>
+	<c:if test="${member.roleDTO.roleNum eq 1 }">
+		<c:import url="../template/managerHeader.jsp"></c:import>
+	</c:if>
 		<div class="row col-md-10 mx-auto my-5">		
 			<h1 class="mb-3">CartAdd</h1>
 			<form action="./cartAdd" method = "post">
