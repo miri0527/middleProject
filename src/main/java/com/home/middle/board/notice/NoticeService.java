@@ -14,6 +14,8 @@ import org.springframework.web.multipart.MultipartFile;
 import com.home.middle.board.BbsDTO;
 import com.home.middle.board.BbsService;
 import com.home.middle.board.BoardFileDTO;
+import com.home.middle.product.ProductDTO;
+import com.home.middle.product.ProductImgDTO;
 import com.home.middle.util.FileManager;
 import com.home.middle.util.Pager;
 
@@ -70,10 +72,32 @@ public class NoticeService implements BbsService {
 		return result;
 	}
 
-	@Override
-	public int setBoardUpdate(BbsDTO bbsDTO) throws Exception {
-		return noticeDAO.setBoardUpdate(bbsDTO);
-	}
+	public int setBoardUpdate(BbsDTO bbsDTO, HttpSession session, MultipartFile[] pic, Long[] fileNums) throws Exception {
+		int result = noticeDAO.setBoardUpdate(bbsDTO);
+
+		// 파일 다시 add
+		String realPath = session.getServletContext().getRealPath("resources/upload/notice/");
+
+		for (MultipartFile pics : pic) {
+			if (pics.isEmpty()) {
+				continue;
+			}
+
+			String fileName = fileManager.fileSave(pics, realPath);
+
+			BoardFileDTO boardFileDTO = new BoardFileDTO();
+
+			boardFileDTO.setFileName(fileName);
+			boardFileDTO.setOriName(pics.getOriginalFilename());
+			boardFileDTO.setNum(bbsDTO.getNum());
+
+			result = noticeDAO.setBoardFileAdd(boardFileDTO);
+
+		}
+	
+
+	return result;
+}
 
 	@Override
 	public int setBoardDelete(BbsDTO bbsDTO, HttpSession session) throws Exception {
@@ -120,6 +144,27 @@ public class NoticeService implements BbsService {
 	}
 
 
+	 public int setBoardtFileDelete(Long fileNum, HttpSession session, BbsDTO bbsDTO) throws Exception {
+		  
+		  List<BoardFileDTO> ar = noticeDAO.getBoardFileList(bbsDTO);
+		  
+		  String realPath = session.getServletContext().getRealPath("resources/upload/notice/");
+
+			for (BoardFileDTO boardFileDTO : ar) {
+
+				boolean check = fileManager.fileDelete(realPath, boardFileDTO.getFileName());
+			};
+	  
+			int result = noticeDAO.setBoardFileDelete(fileNum);
+				
+			return result;
+	  }
+
+	@Override
+	public int setBoardUpdate(BbsDTO bbsDTO) throws Exception {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 
 	
 }

@@ -9,11 +9,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.home.middle.board.BbsDTO;
 import com.home.middle.board.BoardFileDTO;
+import com.home.middle.member.MemberDTO;
+import com.home.middle.product.ProductDTO;
 import com.home.middle.util.Pager;
 
 import oracle.jdbc.proxy.annotation.Post;
@@ -117,13 +120,34 @@ public class NoticeController {
 		
 	}
 	
+	@PostMapping("update")
+	public ModelAndView setBoardUpdate(NoticeDTO noticeDTO, HttpSession session, MultipartFile[] pics, Long[] fileNum) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		
+		int result =  noticeService.setBoardUpdate(noticeDTO, session, pics, fileNum);
+		
+		String message = "수정 실패";
+		
+		if(result > 0) {
+			message = "글이 수정되었습니다.";
+			
+		}
+		
+		mv.addObject("result", message);
+		mv.setViewName("common/result");
+		
+		mv.addObject("url", "./detail?num=" + noticeDTO.getNum());
+		
+		return mv;
+	}
+	
 	@PostMapping("delete")
 	public ModelAndView setBoardDelete(BbsDTO bbsDTO, HttpSession session) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		
 		int result = noticeService.setBoardDelete(bbsDTO, session);
 		
-		String message="삭제에 실패 하였습니다";
+		String message="삭제 실패";
 
 		if(result > 0) {
 			message="글이 삭제되었습니다.";
@@ -132,6 +156,26 @@ public class NoticeController {
 		mv.setViewName("common/result");
 		mv.addObject("result", message);
 		mv.addObject("url", "./list");
+		
+		return mv;
+	}
+	
+	
+	@PostMapping("fileDelete")
+	public ModelAndView setBoardFileDelete(Long fileNum, BbsDTO num, HttpSession session) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		
+		int result =  noticeService.setBoardtFileDelete(fileNum, session, num);
+		
+		String message="삭제 실패";
+		
+		if(result > 0) {
+			message="파일이 삭제되었습니다.";
+		}
+		
+		mv.setViewName("common/ajaxResult");
+		mv.addObject("result", message);
+		
 		
 		return mv;
 	}

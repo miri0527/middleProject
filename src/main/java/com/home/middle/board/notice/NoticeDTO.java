@@ -1,22 +1,21 @@
 package com.home.middle.board.notice;
 
-import java.util.List;
 
 import com.home.middle.board.BbsDTO;
 import com.home.middle.board.BoardFileDTO;
 
 public class NoticeDTO extends BbsDTO{
 
-	private List<BoardFileDTO> boardFileDTOs;
+	private BoardFileDTO boardFileDTO;
 	private Long r;
 	private Integer important;
 	
-	public List<BoardFileDTO> getBoardFileDTOs() {
-		return boardFileDTOs;
+	public BoardFileDTO getBoardFileDTO() {
+		return boardFileDTO;
 	}
 
-	public void setBoardFileDTOs(List<BoardFileDTO> boardFileDTOs) {
-		this.boardFileDTOs = boardFileDTOs;
+	public void setBoardFileDTOs(BoardFileDTO  boardFileDTO) {
+		this.boardFileDTO = boardFileDTO;
 	}
 	
 	public Long getR() {
