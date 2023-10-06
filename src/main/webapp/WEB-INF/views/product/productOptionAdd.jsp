@@ -15,18 +15,18 @@
 	    <input type="hidden" name="json1" id="json1">
 	    <input type="hidden" class="productNumC" name="productNum" value="${dto.productNum}">
 	    <div class="opi">
-	        <button type="button" class="oi">옵션 네임</button>
-	        <div class="op1">
-	        OptionName:<input type="text" class="optionName0" name="optionName" data-depth="0" data-value="id1">
-	        OptionValue :<input type="text" name="optionValue" data-depth="0" class="optionValue" data-value="idx2">
+	        <button type="button" class="btn btn-warning oi" style="margin-top : 30px; margin-left : 20px;">옵션 이름</button>
+	        <div class="op1" style="margin-top : 10px; margin-left : 20px;">
+	        옵션 이름 : <input type="text" class="optionName0" name="optionName" data-depth="0" data-value="id1">
+	        옵션 종류 : <input type="text" name="optionValue" data-depth="0" class="optionValue" data-value="idx2">
 	        <!-- <button type="button" class="opv">벨류 추가</button>  -->
-	        <button type="button" class="opc" data-count="1">새로운 옵션</button>
-	        <button type="button" class="opdd">옵션 삭제</button>
+	        <button type="button" class="btn btn-warning  opc" data-count="1">새로운 옵션</button>
+	        <button type="button" class="btn btn-danger opdd">옵션 삭제</button>
 	        </div>
 	        
 	        </div>
 	        
-		<button type="button" id="btnFinish">옵션 생성하기</button>
+		<button type="button" class="btn btn-primary" id="btnFinish" style="margin-top : 20px; margin-left : 20px;">옵션 생성하기</button>
 	</form>
 
 <script src="/resources/js/optionAdd.js"></script>

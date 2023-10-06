@@ -242,6 +242,7 @@
                                                             </c:if> 
                                                           
                                                            <c:if test="${member ne null && member.id eq dto.id || member.roleDTO.roleNum eq 1 }">
+                                                           		  <a href="/product/update?productNum=${dto.productNum}" class="btn btn-outline-dark flex-shrink-0" >상품 수정</a>
 	                                                            <c:choose>
 	                                                            	<c:when test="${not empty dto.productOptionDTOs[0].optionNum}">
 	                                                            		<a href="./productOptionUpdate?productNum=${dto.productNum}" class="btn btn-outline-dark flex-shrink-0">옵션 수정</a>
@@ -250,6 +251,8 @@
 	                                                            		<a href="./productOptionAdd?productNum=${dto.productNum}" class="btn btn-outline-dark flex-shrink-0">옵션 추가</a>
 	                                                            	</c:otherwise>
 	                                                            </c:choose>
+	                                                            
+	                                                          
                                                             </c:if>
                                                             
                                                             <c:if test="${member ne null  && member.roleDTO.roleNum ne 1}">
