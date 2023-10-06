@@ -71,6 +71,12 @@
    <delete id="setBoardDelete" parameterType="ReviewDTO">
 	DELETE FROM REVIEW WHERE NUM = #{num}
    </delete>
+   
+   <!--해당 상품 삭제되면 글 삭제  -->
+   <delete id="setProductBoardDelete" parameterType="ReviewDTO">
+   	DELETE FROM REVIEW
+	WHERE PRODUCTNUM=#{productNum}
+   </delete>
     
      <update id="setBoardUpdate" parameterType="BbsDTO">
   		UPDATE REVIEW SET CONTENTS=#{contents} WHERE NUM=#{num}
