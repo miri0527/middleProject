@@ -67,7 +67,7 @@
                                         </div>
                                         <div class="product-info">
                                             <h6 class="product-title">
-                                                <a href="single-product.html">에이서노트북 Swift 1(SF114-34-P3WR) 울트라북 14인치 FHD(관부가세 포함)</a>
+                                                <a href="#">에이서노트북 Swift 1(SF114-34-P3WR) 울트라북 14인치 FHD(관부가세 포함)</a>
                                             </h6>
                                             <div class="pro-rating">
                                                 <a href="#"><i class="  zmdi-star"></i></a>
@@ -88,7 +88,7 @@
                                         </div>
                                         <div class="product-info">
                                             <h6 class="product-title">
-                                                <a href="single-product.html">블루벤트 가정용 공기청정기 UV-C 살균 21평형 AHP-UV600 </a>
+                                                <a href="#">블루벤트 가정용 공기청정기 UV-C 살균 21평형 AHP-UV600 </a>
                                             </h6>
                                             <div class="pro-rating">
                                                 <a href="#"><i class="zmdi zmdi-star"></i></a>
@@ -103,13 +103,13 @@
                                     </div>
                                     <div class="product-item">
                                         <div class="product-img">
-                                            <a href="single-product.html">
+                                            <a href="#">
                                                 <img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fshop1.phinf.naver.net%2F20230308_110%2F1678283215235FCFQy_JPEG%2Fmain_3MR_53277_5.jpg&type=a340" height="270" width="300"  alt=""/>
                                             </a>
                                         </div>
                                         <div class="product-info">
                                             <h6 class="product-title">
-                                                <a href="single-product.html">ASUS ROG STRIX G18 G814JV-N5002 (SSD 512GB)</a>
+                                                <a href="#">ASUS ROG STRIX G18 G814JV-N5002 (SSD 512GB)</a>
                                             </h6>
                                             <div class="pro-rating">
                                                 <a href="#"><i class="zmdi zmdi-star"></i></a>
@@ -124,13 +124,13 @@
                                     </div>
                                     <div class="product-item">
                                         <div class="product-img">
-                                            <a href="single-product.html">
+                                            <a href="#">
                                                 <img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fshop1.phinf.naver.net%2F20220928_281%2F16643428937970a8oe_JPEG%2F71807603926506570_1690952332.jpg&type=sc960_832" height="270" width="300" alt=""/>
                                             </a>
                                         </div>
                                         <div class="product-info">
                                             <h6 class="product-title">
-                                                <a href="single-product.html">한성컴퓨터 Bossmonster GTX73 N9X6Q24</a>
+                                                <a href="#">한성컴퓨터 Bossmonster GTX73 N9X6Q24</a>
                                             </h6>
                                             <div class="pro-rating">
                                                 <a href="#"><i class="zmdi zmdi-star"></i></a>
@@ -145,13 +145,13 @@
                                     </div>
                                     <div class="product-item">
                                         <div class="product-img">
-                                            <a href="single-product.html">
+                                            <a href="#">
                                                 <img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fshop1.phinf.naver.net%2F20230312_280%2F1678631863794dMSQN_JPEG%2FB09QMP2TB9_7.jpg&type=sc960_832" height="270" width="300" alt=""/>
                                             </a>
                                         </div>
                                         <div class="product-info">
                                             <h6 class="product-title">
-                                                <a href="single-product.html">MSI 모던시리즈 모던15 B5M-R7</a>
+                                                <a href="#">MSI 모던시리즈 모던15 B5M-R7</a>
                                             </h6>
                                             <div class="pro-rating">
                                                 <a href="#"><i class="zmdi zmdi-star"></i></a>
@@ -185,7 +185,7 @@
                                 <div class="active-by-brand slick-arrow-2">
                                     <div class="brand-item">
                                         <div class="single-brand-product">
-                                            <a href="single-product.html"><img src="https://search.pstatic.net/sunny/?src=http%3A%2F%2Fimg4.tmon.kr%2Fcdn4%2Fdeals%2F2022%2F09%2F14%2F13523008218%2F13523008218_front_a09d8502ff.jpg&type=a340"  height="270" width="300"alt=""></a>
+                                            <a href="#"><img src="https://search.pstatic.net/sunny/?src=http%3A%2F%2Fimg4.tmon.kr%2Fcdn4%2Fdeals%2F2022%2F09%2F14%2F13523008218%2F13523008218_front_a09d8502ff.jpg&type=a340"  height="270" width="300"alt=""></a>
                                         </div> <h3 class="brand-title text-gray">
                                             <a href="#">애플 워치 SE </a>       
                                         </h3>
@@ -193,7 +193,7 @@
                                     </div>
                                     <div class="brand-item">
                                         <div class="single-brand-product">
-                                            <a href="single-product.html"><img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fshop1.phinf.naver.net%2F20221216_232%2F1671162320401fv4c0_JPEG%2F72298104118622986_875260104.jpg&type=a340" height="270" width="300" alt=""></a>
+                                            <a href="#"><img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fshop1.phinf.naver.net%2F20221216_232%2F1671162320401fv4c0_JPEG%2F72298104118622986_875260104.jpg&type=a340" height="270" width="300" alt=""></a>
                                             
                                         </div>
                                         <h3 class="brand-title text-gray">
@@ -202,7 +202,7 @@
                                     </div>
                                     <div class="brand-item">
                                         <div class="single-brand-product">
-                                            <a href="single-product.html"><img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fshop1.phinf.naver.net%2F20230314_107%2F1678737157563KTRwW_JPEG%2F79872992396475192_1899806522.jpg&type=sc960_832" height="270" width="300" alt=""></a>
+                                            <a href="#"><img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fshop1.phinf.naver.net%2F20230314_107%2F1678737157563KTRwW_JPEG%2F79872992396475192_1899806522.jpg&type=sc960_832" height="270" width="300" alt=""></a>
                                            
                                         </div>
                                         <h3 class="brand-title text-gray">
@@ -211,7 +211,7 @@
                                     </div>
                                     <div class="brand-item">
                                         <div class="single-brand-product">
-                                            <a href="single-product.html"><img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fshop1.phinf.naver.net%2F20221130_71%2F1669773110072fqEBq_JPEG%2F70908937886923124_1015814584.jpg&type=sc960_832" height="270" width="300" alt=""></a>
+                                            <a href="#"><img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fshop1.phinf.naver.net%2F20221130_71%2F1669773110072fqEBq_JPEG%2F70908937886923124_1015814584.jpg&type=sc960_832" height="270" width="300" alt=""></a>
                                            
                                         </div>
                                         <h3 class="brand-title text-gray">
@@ -220,7 +220,7 @@
                                     </div>
                                     <div class="brand-item">
                                         <div class="single-brand-product">
-                                            <a href="single-product.html"><img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMjA0MTJfMTA5%2FMDAxNjQ5NzM5NzU0NjA2.2I5WOBQRI4Cl8WyKLOjfTLFHrNskJMhGLrmEUBYCLiMg.KWXt4AQ3IhZs8ct6t6UqAQLrDBvYrPAjbg8rQDWRG-8g.PNG.ha-yasi%2F%25B8%25C6%25BD%25BA_2.png_%25A4%25B7%25A4%25B7.png&type=sc960_832" height="270" width="300" alt=""></a>
+                                            <a href="#"><img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMjA0MTJfMTA5%2FMDAxNjQ5NzM5NzU0NjA2.2I5WOBQRI4Cl8WyKLOjfTLFHrNskJMhGLrmEUBYCLiMg.KWXt4AQ3IhZs8ct6t6UqAQLrDBvYrPAjbg8rQDWRG-8g.PNG.ha-yasi%2F%25B8%25C6%25BD%25BA_2.png_%25A4%25B7%25A4%25B7.png&type=sc960_832" height="270" width="300" alt=""></a>
                                          
                                         </div>
                                         <h3 class="brand-title text-gray">
@@ -295,7 +295,7 @@
                                         <div class="col-lg-3 col-md-4">
                                             <div class="product-item">
                                                 <div class="product-img">
-                                                    <a href="single-product.html">
+                                                    <a href="#">
                                                         <img src="https://search.pstatic.net/common/?src=https%3A%2F%2Fshopping-phinf.pstatic.net%2Fmain_8549722%2F85497224207.jpg&type=sc960_832" height="270" width="300" alt="" />
                                                     </a>
                                                 </div>
@@ -320,7 +320,7 @@
                                         <div class="col-lg-3 col-md-4">
                                             <div class="product-item">
                                                 <div class="product-img">
-                                                    <a href="single-product.html">
+                                                    <a href="#">
                                                         <img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fshop1.phinf.naver.net%2F20230306_62%2F1678084217903432LJ_JPEG%2F79220051725824972_64293270.jpg&type=sc960_832" height="270" width="300" alt="" />
                                                     </a>
                                                 </div>
@@ -345,7 +345,7 @@
                                         <div class="col-lg-3 col-md-4">
                                             <div class="product-item">
                                                 <div class="product-img">
-                                                    <a href="single-product.html">
+                                                    <a href="#">
                                                         <img src="https://search.pstatic.net/sunny/?src=https%3A%2F%2Fdnvefa72aowie.cloudfront.net%2Fbusiness-profile%2FbizPlatform%2Fprofile%2F13724283%2F1615954892829%2F1557fc519405af3083cc3e31bee3fa06fe656d00180b69da2ffc3fbccfaa53c5.jpeg%3Fq%3D95%26s%3D1440x1440%26t%3Dinside&type=sc960_832" height="270" width="300" alt="" />
                                                     </a>
                                                 </div>
@@ -370,13 +370,13 @@
                                         <div class="col-lg-3 col-md-4">
                                             <div class="product-item">
                                                 <div class="product-img">
-                                                    <a href="single-product.html">
+                                                    <a href="#">
                                                         <img src="https://search.pstatic.net/common/?src=https%3A%2F%2Fshopping-phinf.pstatic.net%2Fmain_2867957%2F28679571569.jpg&type=sc960_832" height="270" width="300" alt="" />
                                                     </a>
                                                 </div>
                                                 <div class="product-info">
                                                     <h6 class="product-title">
-                                                        <a href="single-product.html">삼성 세탁기 13Kg WA13T5262BW </a>
+                                                        <a href="#">삼성 세탁기 13Kg WA13T5262BW </a>
                                                     </h6>
                                                     <div class="pro-rating">
                                                         <a href="#"><i class="zmdi zmdi-star"></i></a>
@@ -395,13 +395,13 @@
                                         <div class="col-lg-3 col-md-4">
                                             <div class="product-item">
                                                 <div class="product-img">
-                                                    <a href="single-product.html">
+                                                    <a href="#">
                                                         <img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fshop1.phinf.naver.net%2F20230309_187%2F1678346641280v28PS_JPEG%2F24118057635918338_1971596154.jpeg&type=sc960_832" height="270" width="300" alt="" />
                                                     </a>
                                                 </div>
                                                 <div class="product-info">
                                                     <h6 class="product-title">
-                                                        <a href="single-product.html">대우 저소음 스탠드 선풍기 14인치 가정용 업소용 DEF-RK530 </a>
+                                                        <a href="#">대우 저소음 스탠드 선풍기 14인치 가정용 업소용 DEF-RK530 </a>
                                                     </h6>
                                                     <div class="pro-rating">
                                                         <a href="#"><i class="zmdi zmdi-star"></i></a>
@@ -420,13 +420,13 @@
                                         <div class="col-lg-3 col-md-4">
                                             <div class="product-item">
                                                 <div class="product-img">
-                                                    <a href="single-product.html">
+                                                    <a href="#">
                                                         <img src="https://search.pstatic.net/common/?src=https%3A%2F%2Fshopping-phinf.pstatic.net%2Fmain_3833488%2F38334884912.jpg&type=sc960_832"  height="270" width="300" alt="" />
                                                     </a>
                                                 </div>
                                                 <div class="product-info">
                                                     <h6 class="product-title">
-                                                        <a href="single-product.html">다이슨 쿨 공기청정기(화이트실버)TP07</a>
+                                                        <a href="#">다이슨 쿨 공기청정기(화이트실버)TP07</a>
                                                     </h6>
                                                     <div class="pro-rating">
                                                         <a href="#"><i class="zmdi zmdi-star"></i></a>
@@ -445,13 +445,13 @@
                                         <div class="col-lg-3 col-md-4">
                                             <div class="product-item">
                                                 <div class="product-img">
-                                                    <a href="single-product.html">
+                                                    <a href="#">
                                                         <img src="https://search.pstatic.net/common/?src=https%3A%2F%2Fshopping-phinf.pstatic.net%2Fmain_3572577%2F35725772620.20221109112118.jpg&type=sc960_832" height="270" width="300" alt="" />
                                                     </a>
                                                 </div>
                                                 <div class="product-info">
                                                     <h6 class="product-title">
-                                                        <a href="single-product.html">Lg전자 스타일러 오브제컬렉션 S5MPNU 5QJF 블랙틴트미러 신형 G </a>
+                                                        <a href="#">Lg전자 스타일러 오브제컬렉션 S5MPNU 5QJF 블랙틴트미러 신형 G </a>
                                                     </h6>
                                                     <div class="pro-rating">
                                                         <a href="#"><i class="zmdi zmdi-star"></i></a>
@@ -476,7 +476,7 @@
                                         <div class="col-lg-3 col-md-4">
                                             <div class="product-item">
                                                 <div class="product-img">
-                                                    <a href="single-product.html">
+                                                    <a href="#">
                                                         <img src="resources/js/img/product/1.jpg" alt="" />
                                                     </a>
                                                 </div>
@@ -501,13 +501,13 @@
                                         <div class="col-lg-3 col-md-4">
                                             <div class="product-item">
                                                 <div class="product-img">
-                                                    <a href="single-product.html">
+                                                    <a href="#">
                                                         <img src="resources/js/img/product/3.jpg" alt="" />
                                                     </a>
                                                 </div>
                                                 <div class="product-info">
                                                     <h6 class="product-title">
-                                                        <a href="single-product.html">Product Name</a>
+                                                        <a href="#">Product Name</a>
                                                     </h6>
                                                     <div class="pro-rating">
                                                         <a href="#"><i class="zmdi zmdi-star"></i></a>
@@ -526,13 +526,13 @@
                                         <div class="col-lg-3 col-md-4">
                                             <div class="product-item">
                                                 <div class="product-img">
-                                                    <a href="single-product.html">
+                                                    <a href="#single-product.html">
                                                         <img src="resources/js/img/product/5.jpg" alt="" />
                                                     </a>
                                                 </div>
                                                 <div class="product-info">
                                                     <h6 class="product-title">
-                                                        <a href="single-product.html">Product Name</a>
+                                                        <a href="#">Product Name</a>
                                                     </h6>
                                                     <div class="pro-rating">
                                                         <a href="#"><i class="zmdi zmdi-star"></i></a>
@@ -551,13 +551,13 @@
                                         <div class="col-lg-3 col-md-4">
                                             <div class="product-item">
                                                 <div class="product-img">
-                                                    <a href="single-product.html">
+                                                    <a href="#">
                                                         <img src="resources/js/img/product/6.jpg" alt="" />
                                                     </a>
                                                 </div>
                                                 <div class="product-info">
                                                     <h6 class="product-title">
-                                                        <a href="single-product.html">Product Name</a>
+                                                        <a href="#">Product Name</a>
                                                     </h6>
                                                     <div class="pro-rating">
                                                         <a href="#"><i class="zmdi zmdi-star"></i></a>
@@ -576,13 +576,13 @@
                                         <div class="col-lg-3 col-md-4">
                                             <div class="product-item">
                                                 <div class="product-img">
-                                                    <a href="single-product.html">
+                                                    <a href="#">
                                                         <img src="resources/js/img/product/12.jpg" alt="" />
                                                     </a>
                                                 </div>
                                                 <div class="product-info">
                                                     <h6 class="product-title">
-                                                        <a href="single-product.html">Product Name</a>
+                                                        <a href="#">Product Name</a>
                                                     </h6>
                                                     <div class="pro-rating">
                                                         <a href="#"><i class="zmdi zmdi-star"></i></a>
@@ -651,13 +651,13 @@
                                         <div class="col-lg-3 col-md-4">
                                             <div class="product-item">
                                                 <div class="product-img">
-                                                    <a href="single-product.html">
+                                                    <a href="#">
                                                         <img src="resources/js/img/product/10.jpg" alt="" />
                                                     </a>
                                                 </div>
                                                 <div class="product-info">
                                                     <h6 class="product-title">
-                                                        <a href="single-product.html">Product Name</a>
+                                                        <a href="#">Product Name</a>
                                                     </h6>
                                                     <div class="pro-rating">
                                                         <a href="#"><i class="zmdi zmdi-star"></i></a>
@@ -682,13 +682,13 @@
                                         <div class="col-lg-3 col-md-4">
                                             <div class="product-item">
                                                 <div class="product-img">
-                                                    <a href="single-product.html">
+                                                    <a href="#">
                                                         <img src="resources/js/img/product/12.jpg" alt="" />
                                                     </a>
                                                 </div>
                                                 <div class="product-info">
                                                     <h6 class="product-title">
-                                                        <a href="single-product.html">Product Name</a>
+                                                        <a href="#">Product Name</a>
                                                     </h6>
                                                     <div class="pro-rating">
                                                         <a href="#"><i class="zmdi zmdi-star"></i></a>
@@ -707,13 +707,13 @@
                                         <div class="col-lg-3 col-md-4">
                                             <div class="product-item">
                                                 <div class="product-img">
-                                                    <a href="single-product.html">
+                                                    <a href="#">
                                                         <img src="resources/js/img/product/11.jpg" alt="" />
                                                     </a>
                                                 </div>
                                                 <div class="product-info">
                                                     <h6 class="product-title">
-                                                        <a href="single-product.html">Product Name</a>
+                                                        <a href="#">Product Name</a>
                                                     </h6>
                                                     <div class="pro-rating">
                                                         <a href="#"><i class="zmdi zmdi-star"></i></a>
@@ -732,13 +732,13 @@
                                         <div class="col-lg-3 col-md-4">
                                             <div class="product-item">
                                                 <div class="product-img">
-                                                    <a href="single-product.html">
+                                                    <a href="#">
                                                         <img src="resources/js/img/product/10.jpg" alt="" />
                                                     </a>
                                                 </div>
                                                 <div class="product-info">
                                                     <h6 class="product-title">
-                                                        <a href="single-product.html">Product Name</a>
+                                                        <a href="#">Product Name</a>
                                                     </h6>
                                                     <div class="pro-rating">
                                                         <a href="#"><i class="zmdi zmdi-star"></i></a>
@@ -757,13 +757,13 @@
                                         <div class="col-lg-3 col-md-4">
                                             <div class="product-item">
                                                 <div class="product-img">
-                                                    <a href="single-product.html">
+                                                    <a href="#">
                                                         <img src="resources/js/img/product/8.jpg" alt="" />
                                                     </a>
                                                 </div>
                                                 <div class="product-info">
                                                     <h6 class="product-title">
-                                                        <a href="single-product.html">Product Name</a>
+                                                        <a href="#">Product Name</a>
                                                     </h6>
                                                     <div class="pro-rating">
                                                         <a href="#"><i class="zmdi zmdi-star"></i></a>
@@ -782,13 +782,13 @@
                                         <div class="col-lg-3 col-md-4">
                                             <div class="product-item">
                                                 <div class="product-img">
-                                                    <a href="single-product.html">
+                                                    <a href="#">
                                                         <img src="resources/js/img/product/1.jpg" alt="" />
                                                     </a>
                                                 </div>
                                                 <div class="product-info">
                                                     <h6 class="product-title">
-                                                        <a href="single-product.html">Product Name</a>
+                                                        <a href="#">Product Name</a>
                                                     </h6>
                                                     <div class="pro-rating">
                                                         <a href="#"><i class="zmdi zmdi-star"></i></a>
@@ -807,13 +807,13 @@
                                         <div class="col-lg-3 col-md-4">
                                             <div class="product-item">
                                                 <div class="product-img">
-                                                    <a href="single-product.html">
+                                                    <a href="#">
                                                         <img src="resources/js/img/product/2.jpg" alt="" />
                                                     </a>
                                                 </div>
                                                 <div class="product-info">
                                                     <h6 class="product-title">
-                                                        <a href="single-product.html">Product Name</a>
+                                                        <a href="#">Product Name</a>
                                                     </h6>
                                                     <div class="pro-rating">
                                                         <a href="#"><i class="zmdi zmdi-star"></i></a>
@@ -832,13 +832,13 @@
                                         <div class="col-lg-3 col-md-4">
                                             <div class="product-item">
                                                 <div class="product-img">
-                                                    <a href="single-product.html">
+                                                    <a href="#">
                                                         <img src="resources/js/img/product/3.jpg" alt="" />
                                                     </a>
                                                 </div>
                                                 <div class="product-info">
                                                     <h6 class="product-title">
-                                                        <a href="single-product.html">Product Name</a>
+                                                        <a href="#">Product Name</a>
                                                     </h6>
                                                     <div class="pro-rating">
                                                         <a href="#"><i class="zmdi zmdi-star"></i></a>
@@ -857,13 +857,13 @@
                                         <div class="col-lg-3 col-md-4">
                                             <div class="product-item">
                                                 <div class="product-img">
-                                                    <a href="single-product.html">
+                                                    <a href="#">
                                                         <img src="resources/js/img/product/4.jpg" alt="" />
                                                     </a>
                                                 </div>
                                                 <div class="product-info">
                                                     <h6 class="product-title">
-                                                        <a href="single-product.html">Product Name</a>
+                                                        <a href="#">Product Name</a>
                                                     </h6>
                                                     <div class="pro-rating">
                                                         <a href="#"><i class="zmdi zmdi-star"></i></a>
@@ -888,12 +888,12 @@
                                         <div class="col-lg-3 col-md-4">
                                             <div class="product-item">
                                                 <div class="product-img">
-                                                    <a href="single-product.html">
+                                                    <a href="#">
                                                         <img src="resources/js/img/product/6.jpg" alt="" />
                                                     </a>
                                                 </div>
                                                 <div class="product-info">
-                                                    <h6 class="product-title">
+                                                    <h6 class="#">
                                                         <a href="single-product.html">Product Name</a>
                                                     </h6>
                                                     <div class="pro-rating">
@@ -913,13 +913,13 @@
                                         <div class="col-lg-3 col-md-4">
                                             <div class="product-item">
                                                 <div class="product-img">
-                                                    <a href="single-product.html">
+                                                    <a href="#">
                                                         <img src="resources/js/img/product/12.jpg" alt="" />
                                                     </a>
                                                 </div>
                                                 <div class="product-info">
                                                     <h6 class="product-title">
-                                                        <a href="single-product.html">Product Name</a>
+                                                        <a href="#">Product Name</a>
                                                     </h6>
                                                     <div class="pro-rating">
                                                         <a href="#"><i class="zmdi zmdi-star"></i></a>
@@ -938,13 +938,13 @@
                                         <div class="col-lg-3 col-md-4">
                                             <div class="product-item">
                                                 <div class="product-img">
-                                                    <a href="single-product.html">
+                                                    <a href="#">
                                                         <img src="resources/js/img/product/1.jpg" alt="" />
                                                     </a>
                                                 </div>
                                                 <div class="product-info">
                                                     <h6 class="product-title">
-                                                        <a href="single-product.html">Product Name</a>
+                                                        <a href="#">Product Name</a>
                                                     </h6>
                                                     <div class="pro-rating">
                                                         <a href="#"><i class="zmdi zmdi-star"></i></a>
@@ -963,7 +963,7 @@
                                         <div class="col-lg-3 col-md-4">
                                             <div class="product-item">
                                                 <div class="product-img">
-                                                    <a href="single-product.html">
+                                                    <a href="#">
                                                         <img src="resources/js/img/product/8.jpg" alt="" />
                                                     </a>
                                                 </div>
@@ -988,13 +988,13 @@
                                         <div class="col-lg-3 col-md-4">
                                             <div class="product-item">
                                                 <div class="product-img">
-                                                    <a href="single-product.html">
+                                                    <a href="#">
                                                         <img src="resources/js/img/product/9.jpg" alt="" />
                                                     </a>
                                                 </div>
                                                 <div class="product-info">
                                                     <h6 class="product-title">
-                                                        <a href="single-product.html">Product Name</a>
+                                                        <a href="#">Product Name</a>
                                                     </h6>
                                                     <div class="pro-rating">
                                                         <a href="#"><i class="zmdi zmdi-star"></i></a>
