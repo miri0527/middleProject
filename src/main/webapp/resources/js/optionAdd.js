@@ -11,11 +11,11 @@ $(".oi").click(function(){
     count++;
     let depth = 0;
     let a= 
-    '<div class="op'+ count +'">'
-    +'OptionName:<input type="text" data-depth="'+ depth +'" name="optionName" id="optionName" class="optionName'+ depth +'" >'
-    +'OptionValue :<input type="text" data-depth="'+ depth +'" name="optionValue" class="optionValue">'//count
-    +'<button type="button" class="opc" data-count="'+ count +'">새로운 옵션</button>'
-    +'<button type="button" class="opdd">옵션 삭제</button>'
+    '<div class="op'+ count +'" style="margin-top : 10px; margin-left : 20px;">'
+    +'옵션 이름 : <input type="text" data-depth="'+ depth +'" name="optionName" id="optionName" class="optionName'+ depth +'" >'
+    +'옵션 종류 :<input type="text" data-depth="'+ depth +'" name="optionValue" class="optionValue">'//count
+    +'<button type="button" class="btn btn-warning opc" data-count="'+ count +'" style="margin-left : 10px;">새로운 옵션</button>'
+    +'<button type="button" class="btn btn-danger opdd" style="margin-left : 10px;">옵션 삭제</button>'
     +'</div>'
     $(".opi").append(a);
 })
@@ -36,11 +36,11 @@ $(document).on("click",".opv",function(e){
 $("#frm").on("click",".opc",function(e){
     let depth = 1;
     let na=
-    '<div class="opa offset-md-2">'
-    +'OptionName:<input type="text" data-depth="'+ depth +'" name="optionName" id="optionName" class="optionName'+ depth +'">'
-    +'OptionValue :<input type="text" data-depth="'+ depth +'" name="optionValue" class="optionValue">'//'+ 10*$(this).attr('data-count')+$(this).attr('data-count') +'
-    +'<button type="button" class="opcii" data-count="'+ 10*$(this).attr('data-count') +'">새로운 옵션</button>'
-    +'<button type="button" class="opd">옵션 삭제</button>'
+    '<div class="opa offset-md-2" style="margin-top : 10px; margin-left : 60px;">'
+    +'옵션 이름 : <input type="text" data-depth="'+ depth +'" name="optionName" id="optionName" class="optionName'+ depth +'">'
+    +'옵션 종류 :<input type="text" data-depth="'+ depth +'" name="optionValue" class="optionValue">'//'+ 10*$(this).attr('data-count')+$(this).attr('data-count') +'
+    +'<button type="button" class="btn btn-info opcii" data-count="'+ 10*$(this).attr('data-count') +'" style="margin-left : 10px;">새로운 옵션</button>'
+    +'<button type="button" class="btn btn-danger opd" style="margin-left : 10px;">옵션 삭제</button>'
     +'</div>'
     $(this).parent().append(na);
     count2++;
@@ -50,12 +50,12 @@ $("#frm").on("click",".opc",function(e){
 $("#frm").on("click",".opcii",function(e){
     let depth = 2;
     let nas=
-    '<div class="opb offset-md-1">'
-    +'OptionName:<input type="text" data-depth="'+ depth +'" name="optionName" id="optionName" class="optionName'+ depth +'">'
-    +'OptionValue :<input type="text" data-depth="'+ depth +'" name="optionValue" class="optionValue">'//'+ 10*$(this).attr('data-count')+$(this).attr('data-count') +'
-    +'Price :<input type="text" data-depth="'+ depth +'" name="price" class="price">'
-    +'Stock :<input type="text" data-depth="'+ depth +'" name="stock" class="stock">'
-    +'<button type="button" class="opd">옵션 삭제</button>'
+    '<div class="opb offset-md-1" style="margin-top : 10px; margin-left : 60px;">'
+    +'옵션 이름 : <input type="text" data-depth="'+ depth +'" name="optionName" id="optionName" class="optionName'+ depth +'">'
+    +'옵션 종류 :<input type="text" data-depth="'+ depth +'" name="optionValue" class="optionValue">'//'+ 10*$(this).attr('data-count')+$(this).attr('data-count') +'
+    +'가격 :<input type="text" data-depth="'+ depth +'" name="price" class="price">'
+    +'재고 :<input type="text" data-depth="'+ depth +'" name="stock" class="stock">'
+    +'<button type="button" class="btn btn-danger opd" style="margin-left : 10px;">옵션 삭제</button>'
     +'</div>';  
     
     
@@ -116,6 +116,7 @@ $(document).on("focusout", '.optionName2', function(){
 })
 
 $('#btnFinish').click(function(){
+   
     let check = true;
     $('.price').each(function(i,v){
         if($.isNumeric($(v).val())==false){
@@ -130,6 +131,7 @@ $('#btnFinish').click(function(){
     if(check == false){
         alert('price와 stock에 숫자만 입력했는지 확인하십시오.')
     }else{
+        alert("옵션이 생성되었습니다.")
         let optionValue0 = [];
         let optionValue1 = [];
         let optionValue2 = [];
@@ -209,6 +211,8 @@ $('#btnFinish').click(function(){
                 "productNum" : productNum
             }
             });
+
+        location.href="/product/detail?prodductNum=" + productNum
     }
     
 })
