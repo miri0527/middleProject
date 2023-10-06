@@ -183,7 +183,7 @@ public class ProductController {
 		String message="등록실패";
 		
 		if(result > 0) {
-			message="글이 수정되었습니다";
+			message="상품이 수정되었습니다";
 		}
 		
 		mv.addObject("result", message);
@@ -192,6 +192,25 @@ public class ProductController {
 		
 		return mv;
 	}
+	
+	@PostMapping("fileDelete")
+	public ModelAndView setProductFileDelete(Long fileNum, ProductDTO productNum, HttpSession session) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		
+		int result =  productService.setProductFileDelete(fileNum, session, productNum);
+		
+		String message="삭제 실패";
+		
+		if(result > 0) {
+			message="파일이 삭제되었습니다.";
+		}
+		
+		mv.setViewName("common/ajaxResult");
+		mv.addObject("result", message);
+		
+		return mv;
+	}
+	
 	
 	@PostMapping("delete")
 	public ModelAndView  setProductDelete(ProductDTO productDTO, HttpSession session) throws Exception {

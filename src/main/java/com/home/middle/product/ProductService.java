@@ -99,15 +99,24 @@ public class ProductService {
 	  }
 	  
 	
+	  public int setProductFileDelete(Long fileNum, HttpSession session, ProductDTO productDTO) throws Exception {
+		  
+		  List<ProductImgDTO> ar = productDAO.getProductFileList(productDTO);
+		  
+		  String realPath = session.getServletContext().getRealPath("resources/upload/product/");
 
-	public int setProductUpdate(ProductDTO productDTO, MultipartFile[] pic, Long[] fileNums, HttpSession session)
-			throws Exception {
-		int result = productDAO.setProductUpdate(productDTO);
+			for (ProductImgDTO productImgDTO : ar) {
 
-		if (fileNums != null) {
-			for (Long fileNum : fileNums) {
-				productDAO.setProductFileDelete(fileNum);
-			}
+				boolean check = fileManager.fileDelete(realPath, productImgDTO.getFileName());
+			};
+	  
+			int result = productDAO.setProductFileDelete(fileNum);
+				
+			return result;
+	  }
+
+	public int setProductUpdate(ProductDTO productDTO, MultipartFile[] pic, Long[] fileNums, HttpSession session) throws Exception {
+			int result = productDAO.setProductUpdate(productDTO);
 
 			// 파일 다시 add
 			String realPath = session.getServletContext().getRealPath("resources/upload/product/");
@@ -128,7 +137,7 @@ public class ProductService {
 				result = productDAO.setProductFileAdd(productImgDTO);
 
 			}
-		}
+		
 		// 파일삭제
 
 		return result;
