@@ -74,11 +74,11 @@
 		<result column="HIT" property="hit"/>
 		<result column="DEPTH" property="depth"/>
 		<result column="IMPORTANT" property="important"/>
-		<collection property="boardFileDTOs" javaType="List" ofType="BoardFileDTO">
+		<association property="boardFileDTO" javaType="BoardFileDTO">
 			<id column="FILENUM" property="fileNum"/>
 			<result column="FILENAME" property="fileName"/>
 			<result column="ORINAME" property="oriName"/>
-		</collection>
+		</association>
   	</resultMap>
   	
   
@@ -99,10 +99,16 @@
 		WHERE NUM= #{num}
   	</delete>
   	
+  	
   	<select id="getBoardFileList" resultType="BoardFileDTO" parameterType="NoticeDTO">
   		SELECT * FROM NOTICEFILE WHERE NUM=#{num}
   	</select>
   	
+  	<!--파일 삭제 -->
+  	<delete id="setBoardFileDelete" parameterType="Long">
+  		DELETE FROM NOTICEFILE
+  		WHERE FILENUM=#{fileNum}
+  	</delete>
   	
   	<!-- 공지사항 수정 -->
   	<update id="setBoardUpdate" parameterType="NoticeDTO">
