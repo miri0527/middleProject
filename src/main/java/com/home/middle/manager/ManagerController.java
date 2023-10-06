@@ -17,9 +17,12 @@ import com.home.middle.cart.CartService;
 import com.home.middle.member.MemberDTO;
 import com.home.middle.member.MemberService;
 import com.home.middle.product.ProductDTO;
+import com.home.middle.product.ProductImgDTO;
 import com.home.middle.product.ProductOptionDTO;
 import com.home.middle.product.ProductService;
 import com.home.middle.util.Pager;
+
+import oracle.jdbc.proxy.annotation.Post;
 
 @Controller
 @RequestMapping(value = "/manager/*")
@@ -77,7 +80,10 @@ public class ManagerController {
 	      return mv;
 	   }
 	
-	@GetMapping("productDetail")
+
+
+	
+	@GetMapping("productDetail")	
 	public ModelAndView getProductOptionDetail(ProductDTO productDTO) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		
@@ -109,10 +115,13 @@ public class ManagerController {
 	public ModelAndView getMemberCartDetail(ProductOptionDTO productOptionDTO) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		System.out.println("con1"+productOptionDTO.getProductNum());
-		List<ProductOptionDTO> ar = productService.getMemberCartDetail(productOptionDTO);
+		/*
+		 * List<ProductOptionDTO> ar =
+		 * productService.getMemberCartDetail(productOptionDTO);
+		 */
 		
 		mv.setViewName("manager/cartDetail");
-		mv.addObject("list", ar);
+		/* mv.addObject("list", ar); */
 		
 		return mv;
 	}
@@ -165,6 +174,7 @@ public class ManagerController {
 		
 	}
 	
+	
 	@PostMapping("delete")
 	public ModelAndView setProductDelete(String chkList[],HttpSession session) throws Exception {
 		ModelAndView mv = new ModelAndView();
@@ -179,6 +189,7 @@ public class ManagerController {
 		}
 	
 	
+
 	
 	
 }
