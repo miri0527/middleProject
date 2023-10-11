@@ -25,12 +25,12 @@ public class ProductService {
 	private FileManager fileManager;
 	
 
-	public List<ProductOptionDTO> getProductList(Pager pager ) throws Exception {
+	public List<ProductDTO> getProductList(Pager pager ) throws Exception {
 		
 		pager.makeNum(productDAO.getTotalCount(pager));
 		pager.makeRow();
 		
-		List<ProductOptionDTO> ar = productDAO.getProductList(pager);
+		List<ProductDTO> ar = productDAO.getProductList(pager);
 		return ar;
 	}
 	

@@ -8,13 +8,13 @@
      <sql id="reviewCondition">
   		<where>
   			<if test="kind=='contents'">
-  				CONTENTS LIKE '%'||#{search}||'%'
+  				CONTENTS LIKE CONCAT('%',#{search},'%')
   			</if>
   			<if test="kind=='id'">
-  				R.ID LIKE '%'||#{search}||'%'
+  				R.ID LIKE CONCAT('%',#{search},'%')
   			</if>
   			<if test="kind == 'productName'">
-  				PRODUCTNAME LIKE '%'||#{search}||'%'
+  				PRODUCTNAME LIKE CONCAT('%',#{search},'%')
   			</if>
   		</where>
   	</sql>
@@ -24,22 +24,20 @@
   		
   	</select>
     
-      <select id="getBoardList" parameterType="Pager" resultMap="getBoardDetailResult">
-	 	  	SELECT * FROM
-	  	(
-		  	SELECT ROWNUM R, N.* FROM
-		  		(
-			  		SELECT R.NUM, R.ID, R.CONTENTS, R.REGDATE, R.DEPTH, R.PRODUCTNUM, P.PRODUCTNAME, P.ID AS PRODUCTID  FROM REVIEW R
-			  			LEFT JOIN 
-			  				PRODUCT P 
-			  			ON R.PRODUCTNUM = P.PRODUCTNUM 
-			  		<include refid="reviewCondition"></include>	
-			  		ORDER BY DEPTH DESC
-		  		) N
-	  	 )
-	  	WHERE R BETWEEN #{startRow} AND  #{lastRow}	  
-  	 </select>
-    
+     <select id="getBoardList" parameterType="Pager" resultMap="getBoardDetailResult">
+ 	  	SELECT (@rownum := @rownum + 1) AS R, N.*
+			FROM (
+				
+				SELECT R.NUM, R.ID, R.CONTENTS, R.REGDATE, R.DEPTH, R.PRODUCTNUM, P.PRODUCTNAME, P.ID AS PRODUCTID  FROM REVIEW R
+					LEFT JOIN 
+						PRODUCT P 
+					ON R.PRODUCTNUM = P.PRODUCTNUM 
+					<include refid="reviewCondition"></include>
+					ORDER BY DEPTH DESC
+			)N, (SELECT @rownum := 0) r
+			LIMIT #{startRow},#{perPage}
+ 	 </select>
+   
     <!--상품 이름 꺼내기 -->
     <select id="getProductName" parameterType="Long" resultType="String">
     	SELECT PRODUCTNAME FROM PRODUCT
@@ -48,24 +46,20 @@
     
     <!--글쓰기 -->
     <insert id="setBoardAdd" parameterType="ReviewDTO"  >
-    <!--파일 추가같이하고 싶으면 넣어라 -->
- 	<!-- <selectKey keyProperty="num" resultType="Long" order="BEFORE">
-      SELECT REVIEW_SEQ.NEXTVAL FROM DUAL
-    </selectKey> -->
     
     INSERT INTO REVIEW (NUM,ID,CONTENTS,REGDATE,DEPTH,PRODUCTNUM)
-	VALUES(REVIEW_SEQ.NEXTVAL,#{id},#{contents},sysdate,0,#{productNum})
+	VALUES(0,#{id},#{contents},NOW(),0,#{productNum})
     </insert>
     
-    <select id="getBoardFileList" parameterType="BbsDTO" resultType="BoardFileDTO">
+   <!--  <select id="getBoardFileList" parameterType="BbsDTO" resultType="BoardFileDTO">
   	SELECT * FROM REVIEWFILE WHERE NUM=#{num}
   	</select>
   	
-    <!--파일 추가-->
+    파일 추가
     <insert id="setBoardFileAdd" parameterType="ReviewDTO">
 	INSERT INTO REVIEWFILE
-	VALUES (REVIEW_FILE_SEQ.NEXTVAL, #{num}, #{fileName}, #{oriName})
-	</insert>
+	VALUES (0,#{num}, #{fileName}, #{oriName})
+	</insert> -->
     
    <!--글삭제-->
    <delete id="setBoardDelete" parameterType="ReviewDTO">
@@ -81,13 +75,10 @@
      <update id="setBoardUpdate" parameterType="BbsDTO">
   		UPDATE REVIEW SET CONTENTS=#{contents} WHERE NUM=#{num}
   	</update>
-     <select id="getBoardDetail" parameterType="BbsDTO" resultMap="getBoardDetailResult"> 
-   		SELECT Q.*, QF.*
-   		FROM REVIEW Q
-   			LEFT JOIN
-   			REVIEWFILE QF
-   			ON (Q.NUM = QF.NUM)
-   			WHERE Q.NUM=#{num}
+     <select id="getBoardDetail" parameterType="BbsDTO" resultType="ReviewDTO"> 
+   		SELECT *
+   		FROM REVIEW 
+   		WHERE NUM=#{num}
    </select>
      <resultMap type="REVIEWDTO" id="getBoardDetailResult">
    		<!--select된 것들중에 pk를 id에다가 써줘  -->
@@ -103,13 +94,7 @@
 	 	<result column="PRODUCTNAME" property="productName"/>
 	 	<result column="PRODUCTID " property="id"/>
 	</association>
-	<!--type에 멤버메서드중에서 속성을 넣어주기  -->
-	<!--of type은 제네릭 타입을 쓰라는 뜻입니다 column은 대소문자구문 하지 않습니다-->
-	<collection property="boardFileDTOs" javaType="List" ofType="BoardFileDTO">
-		<id column="fileNum" property="fileNum" />
-		<result column="fileName"  property="fileName"/>
-		<result column="oriName" property="oriName" />
-	</collection>
+	
 	
 	
 	

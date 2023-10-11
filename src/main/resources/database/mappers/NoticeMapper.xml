@@ -8,13 +8,13 @@
   <sql id="noticeCondition">
   		<where>
   			<if test="kind=='contents'">
-  				CONTENTS LIKE '%'||#{search}||'%'
+  				CONTENTS LIKE CONCAT('%', #{search} '%')
   			</if>
   			<if test="kind=='id'">
-  				ID LIKE '%'||#{search}||'%'
+  				ID LIKE CONCAT('%', #{search} '%')
   			</if>
   			<if test="kind == 'title'">
-  				TITLE LIKE '%' || #{search} || '%'
+  				TITLE LIKE CONCAT('%', #{search} '%')
   			</if>
   		</where>
   	</sql>
@@ -24,16 +24,11 @@
   	</select>
   	
   	<select id="getBoardList" resultType="NoticeDTO" parameterType="Pager">
-  		SELECT * FROM
-	  	(
-		  	SELECT ROWNUM R, N.* FROM
-		  		(
-			  		SELECT * FROM NOTICE
-			  		<include refid="noticeCondition"></include>
-			  		ORDER BY NUM DESC
-		  		) N
-	  	 )
-	  	WHERE R BETWEEN #{startRow} AND  #{lastRow}	  
+  		SELECT (@rownum := @rownum + 1) AS R, N.*
+			FROM (SELECT * FROM NOTICE 
+			<include refid="noticeCondition"></include>
+			ORDER BY NUM DESC) N, (SELECT @rownum := 0) r
+			LIMIT #{startRow},#{perPage}
   	</select>
   	
 	<!-- 주요 공지사항 상단 고정 -->
@@ -44,17 +39,14 @@
 	</select>
 	
 	
-  	<insert id="setBoardAdd" parameterType="NoticeDTO">
-  		<selectKey keyProperty="num" resultType="Long" order="BEFORE">
-  			SELECT NOTICE_SEQ.NEXTVAL FROM DUAL
-  		</selectKey>
+  	<insert id="setBoardAdd" parameterType="NoticeDTO" useGeneratedKeys="true" keyProperty="num">
   		INSERT INTO NOTICE
-  		VALUES(#{num},#{id}, #{title}, #{contents}, sysdate,0,0, #{important})
+  		VALUES(#{num},#{id},#{important}, #{title}, #{contents}, NOW(),0,0)
   	</insert>
   	
   	<insert id="setBoardFileAdd" parameterType="BoardFileDTO">
   		INSERT INTO NOTICEFILE
-  		VALUES(NOTICE_FILE_SEQ.NEXTVAL, #{num}, #{fileName},#{oriName} )
+  		VALUES(0,#{num}, #{fileName},#{oriName})
   	</insert>
   	
   	<select id="getBoardDetail" resultMap="NoticeResult" parameterType="NoticeDTO">
@@ -95,7 +87,7 @@
   	
   	<!-- 공지사항 삭제 -->
   	<delete id="setBoardDelete" parameterType="NoticeDTO">
-  		DELETE NOTICE 
+  		DELETE FROM NOTICE 
 		WHERE NUM= #{num}
   	</delete>
   	

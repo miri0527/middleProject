@@ -7,12 +7,12 @@
 	  <sql id="MemberCondition">
 	  	<where>
 	  			<if test="kind == 'id'">
-	  			ID LIKE '%' || #{search} || '%' 
+	  			ID LIKE CONCAT('%',#{search},'%')
 	  			
 	  			</if>
 	  			
 	  			<if test="kind == 'autoStatus'">
-	  			AUTOSTATUS LIKE '%' || #{search} || '%' 
+	  			AUTOSTATUS LIKE CONCAT('%',#{search},'%')
 	  			
 	  			</if>
 	  			
@@ -71,7 +71,7 @@
   	</select>
   	
   	<delete id="setMemberDelete" parameterType="MemberDTO">
-  		DELETE MEMBER WHERE ID=#{id}
+  		DELETE FROM MEMBER WHERE ID=#{id}
   	</delete>
   	
   	<update id="setMemberPwChange" parameterType="MemberDTO">
@@ -79,18 +79,15 @@
   	</update>
   	
   	<select id="getMemberList"  parameterType="Pager" resultMap="MemberList">
-		  		SELECT * FROM
-				(SELECT ROWNUM R, N.* FROM
-						(SELECT * FROM MEMBER M
-						LEFT JOIN MEMBERROLE MR 
-						USING(ROLENUM)
-						<include refid="MemberCondition"></include>
-						ORDER BY ROLENUM 
-						)
-					N
-				)
-				
-				WHERE R BETWEEN #{startRow} AND #{lastRow}
+	  	SELECT (@rownum := @rownum + 1) AS ROWNUM, N.*
+			FROM (
+				SELECT * FROM MEMBER M 
+					LEFT JOIN MEMBERROLE MR 
+					USING(ROLENUM)
+					<include refid="MemberCondition"></include>
+					ORDER BY ROLENUM
+			)N, (SELECT @rownum := 0) r 
+			LIMIT #{startRow},#{perPage}
   	</select>
   	<resultMap type="MemberDTO" id="MemberList">
   		<id column="ID" property="id"/>
@@ -105,7 +102,7 @@
   	
  
   	<update id="setMemberAuto" parameterType="MemberDTO">
-  	UPDATE MEMBER SET AUTOSTATUS=#{autoStatus} WHERE ID=#{id}
+  		UPDATE MEMBER SET AUTOSTATUS=#{autoStatus} WHERE ID=#{id}
   	</update>
   	
   	<update id="setSellerApprove" parameterType="MemberDTO">

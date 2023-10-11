@@ -6,10 +6,10 @@
 	
 	<!-- Connection  id/pw = projectM / localhost-->
 	<bean class = "org.springframework.jdbc.datasource.DriverManagerDataSource" id = "dataSource">
-		<property name = "username" value= "user01"></property>
-		<property name= "password" value= "user01"></property>
-		<property name= "url" value = "jdbc:oracle:thin:@localhost:1521:xe"></property>
-		<property name= "driverClassName" value = "oracle.jdbc.driver.OracleDriver"></property>
+		<property name = "username" value= "MIRI"></property>
+		<property name= "password" value= "root"></property>
+		<property name= "url" value = "jdbc:mariadb://ec2-43-200-180-28.ap-northeast-2.compute.amazonaws.com:3306/MIRI"></property>
+		<property name= "driverClassName" value = "org.mariadb.jdbc.Driver"></property>
 	</bean>
 	
 	<bean class = "org.mybatis.spring.SqlSessionFactoryBean" id = "sqlSessionFactoryBean">

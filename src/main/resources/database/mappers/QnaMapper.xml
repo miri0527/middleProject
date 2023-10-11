@@ -7,17 +7,17 @@
 	<sql id="qnaCondition">
   		<where>
   			<if test="kind=='contents'">
-  				CONTENTS LIKE '%'||#{search}||'%'
+  				CONTENTS LIKE CONCAT('%',#{search},'%')
   			</if>
   			<if test="kind=='id'">
-  				Q.ID LIKE '%'||#{search}||'%'
+  				Q.ID LIKE CONCAT('%',#{search},'%')
   			</if>
   			
   			<if test="kind == 'title'">
-  				TITLE LIKE '%' || #{search} || '%'
+  				TITLE LIKE CONCAT('%',#{search},'%')
   			</if>
   			<if test="kind == 'productName'">
-  				PRODUCTNAME LIKE '%' || #{search} || '%'
+  				PRODUCTNAME LIKE CONCAT('%',#{search},'%')
   			</if>
   		</where>
   	</sql>
@@ -32,23 +32,20 @@
   	</update>
   	
   	
-  	
-      <select id="getBoardList" parameterType="Pager" resultMap="getBoardDetailResult">
-	 	  	SELECT * FROM
-	  	(
-		  	SELECT ROWNUM R, N.* FROM
-		  		(
-			  		SELECT Q.NUM, Q.ID, Q.CONTENTS, Q.REGDATE, Q.DEPTH, Q.PRODUCTNUM, Q.TITLE, P.PRODUCTNAME, P.ID AS PRODUCTID FROM QNA Q
-			  			LEFT JOIN 
-			  				PRODUCT P 
-			  			ON Q.PRODUCTNUM = P.PRODUCTNUM 
-			  		<include refid="qnaCondition"></include>
-			  		ORDER BY DEPTH DESC
-		  		) N
-	  	 )
-	  	WHERE R BETWEEN #{startRow} AND  #{lastRow}	  
-  	 </select>
-  	 
+ 	
+     <select id="getBoardList" parameterType="Pager" resultMap="getBoardDetailResult">
+ 	  SELECT (@rownum := @rownum + 1) AS R,N.*
+		FROM (
+			SELECT Q.NUM, Q.ID, Q.CONTENTS, Q.REGDATE, Q.DEPTH, Q.PRODUCTNUM, Q.TITLE, P.PRODUCTNAME, P.ID AS PRODUCTID FROM QNA Q
+				LEFT JOIN 
+					PRODUCT P 
+				ON Q.PRODUCTNUM = P.PRODUCTNUM 
+				<include refid="qnaCondition"></include>
+				ORDER BY DEPTH DESC
+		)N, (SELECT @rownum := 0) r
+		LIMIT #{startRow},#{perPage}
+ 	 </select>
+ 	 
   	
     
     <!--상품 이름 꺼내기-->
@@ -65,24 +62,24 @@
     </selectKey> -->
     
     INSERT INTO QNA (NUM,ID,TITLE,CONTENTS,REGDATE,HIT,DEPTH,PRODUCTNUM)
-	VALUES(QNA_SEQ.NEXTVAL,#{id},#{title},#{contents},sysdate,0,0,#{productNum})
+	VALUES(0,#{id},#{title},#{contents},NOW(),0,0,#{productNum})
     </insert>
     
     
    <delete id="setBoardDelete" parameterType="BbsDTO">
-	DELETE QNA WHERE  NUM = #{num}
+	DELETE FROM QNA WHERE  NUM = #{num}
 	</delete>
     
-    <!--파일 추가-->
+  <!--파일 추가-->
     <insert id="setProductFileAdd" parameterType="QnaDTO">
 	INSERT INTO QNAFILES
-	VALUES (QNA_FILE_SEQ.NEXTVAL, #{num}, #{fileName}, #{oriName})
+	VALUES (0,#{num}, #{fileName}, #{oriName})
 	</insert>
 	
-	<select id="getBoardFileList" parameterType="BbsDTO" resultType="BoardFileDTO">
+<!-- 	<select id="getBoardFileList" parameterType="BbsDTO" resultType="BoardFileDTO">
   		SELECT * FROM QNAFILES WHERE NUM=#{num}
-  	</select>
-      
+  	</select> 
+       -->
       
       
    <select id="getBoardDetail" parameterType="BbsDTO" resultMap="getBoardDetailResult"> 

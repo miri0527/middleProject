@@ -99,7 +99,7 @@
 								
 								<button class="btn btn-primary selectPayment float-end mx-2">Payment Selected</button>
 								
-								<button class="btn btn-primary selectedDelete float-end">Delete Selected</button>
+								<button class="btn btn-primary selectedDelete float-end" id="deleteBtn">Delete Selected</button>
 							</div>
 						</div>
 						<!-- shopping-cart end -->

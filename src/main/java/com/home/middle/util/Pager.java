@@ -239,8 +239,7 @@ public class Pager {
 	
 	   //startRow, lastRow 계산 하는 메서드
 	public void makeRow() {
-	      this.startRow = (this.getPage()-1)*this.getPerPage()+1;
-	      this.lastRow = this.getPage()*this.getPerPage();
+		this.startRow = (this.getPage() - 1) * this.getPerPage();
 	}
 	   
 	public Long getStartRow() {

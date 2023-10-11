@@ -122,17 +122,8 @@ public class ReviewService implements BbsService {
 	@Override
 	public int setBoardDelete(BbsDTO bbsDTO, HttpSession session) throws Exception {
 
-		List<BoardFileDTO> ar = reviewDAO.getBoardFileList(bbsDTO);
 		int result =  reviewDAO.setBoardDelete(bbsDTO);
 		
-		if(result>0) {
-			
-			String realPath = session.getServletContext().getRealPath("resources/upload/review/");
-			
-			for(BoardFileDTO boardFileDTO : ar) {
-			boolean check = fileManager.fileDelete(realPath, boardFileDTO.getFileName());
-			}
-		}
 		
 		return result;
 	}

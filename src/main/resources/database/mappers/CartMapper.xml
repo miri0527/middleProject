@@ -7,7 +7,7 @@
 	<sql id="CartCondition">
 		<where>
 			<if test="kind == id ">
-				PO.ID LIKE '%' || #{search} || '%'
+				PO.ID LIKE CONCAT('%', #{search}, '%')
 			</if>
 		</where>	
 		
@@ -23,8 +23,9 @@
 	</select>
 	
 	<select id="getPaymentNum" resultType="Long">
-		SELECT PRODUCTPAYMENT_SEQ.NEXTVAL FROM DUAL
+		SELECT NEXTVAL(PRODUCTPAYMENT_SEQ)
 	</select>
+	
 	<insert id="setPaymentInsert" parameterType="ProductPaymentDTO">
 		INSERT INTO PRODUCTPAYMENT VALUES(#{paymentNum},#{paymentName})
 	</insert>
@@ -36,8 +37,8 @@
 		SELECT * FROM PRODUCTORDER PO
 		LEFT OUTER JOIN PRODUCT P
 		ON(PO.PRODUCTNUM = P.PRODUCTNUM)
-		LEFT OUTER JOIN PRODUCTOPTION "POP"
-		ON(PO.OPTIONNUM  = "POP".OPTIONNUM)
+		LEFT OUTER JOIN PRODUCTOPTION POP
+		ON(PO.OPTIONNUM  = POP.OPTIONNUM)
 		WHERE PO.ID = #{id} AND BUYCHECK = 0
 		ORDER BY PO.ORDERNUM DESC
 	</select>
@@ -82,15 +83,15 @@
 	
 	<insert id="setCartAdd" parameterType="CartDTO">
 		INSERT INTO PRODUCTORDER (ORDERNUM, PRODUCTNUM, ID, TOTALPRICE, PRODUCTEA, ORDERDATE, BUYCHECK, OPTIONNUM, PAYMENTCHECK)
-		VALUES (PRODUCT_ORDER_SEQ.NEXTVAL, #{productDTO.productNum}, #{id}, #{totalPrice}, #{productEa}, SYSDATE, 0, #{optionNum}, 0)
+		VALUES (0,#{productDTO.productNum}, #{id}, #{totalPrice}, #{productEa}, NOW(), 0, #{optionNum}, 0)
 	</insert>
 	
 	
 	<delete id="setCartDelete" parameterType="CartDTO">
-		DELETE PRODUCTORDER WHERE ORDERNUM = #{orderNum}
+		DELETE FROM PRODUCTORDER WHERE ORDERNUM = #{orderNum}
 	</delete>
 	<delete id="setCartClear" parameterType="CartDTO">
-		DELETE PRODUCTORDER WHERE ID = #{id}
+		DELETE FROM PRODUCTORDER WHERE ID = #{id}
 	</delete>
 	
 	
@@ -124,21 +125,22 @@
  	</select>
 	
 	<select id="getMemberCartList"  parameterType="Pager" resultMap="ProductCartList">
-		SELECT * FROM 
-		(SELECT ROWNUM R, N.* FROM
-		(SELECT * FROM PRODUCT P
-			LEFT OUTER JOIN PRODUCTORDER PO
-			USING(PRODUCTNUM)
-				<include refid="CartCondition"></include>
-				<if test="search == null">
+		SELECT (@rownum := @rownum + 1) AS ROWNUM, N.*
+			FROM (
+			   
+			        SELECT P.PRODUCTNAME,P.PRODUCTSALES, PO.*
+			        FROM PRODUCT P
+			        LEFT OUTER JOIN PRODUCTORDER PO 
+			        USING(PRODUCTNUM)
+			       	<include refid="CartCondition"></include>
+			       	<if test="search == null">
 					WHERE BUYCHECK=1
-				</if>
-				<if test="search == ''">
-				 AND BUYCHECK=1
-				 </if>
-				ORDER BY ORDERNUM DESC
-				)
-	N)
-		WHERE R BETWEEN #{startRow} AND #{lastRow}
+					</if>
+					<if test="search == ''">
+					 AND BUYCHECK=1
+					</if>
+			        ORDER BY ORDERNUM DESC
+			    ) N, (SELECT @rownum := 0) r  
+			LIMIT #{startRow},#{perPage}
 	</select>
 </mapper>

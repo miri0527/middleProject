@@ -47,7 +47,7 @@ public class ProductController {
 		ModelAndView mv = new ModelAndView();
 		
 		
-		List<ProductOptionDTO> ar = productService.getProductList(pager);
+		List<ProductDTO> ar = productService.getProductList(pager);
 		
 		mv.addObject("list", ar);
 		mv.setViewName("product/productList");

@@ -48,7 +48,7 @@
 				<tr>
 					
 					<td>${dto.r}</td>
-					<td><a href="../qna/detail?num=${dto.num}">${dto.title}</a></td>
+					<td>${dto.title}</td>
 					<c:if test="${boardName eq 'Qna' }">
 						<td width="650px">
 						<h5 style="font-weight: bold; "> [문의 내용] </h5> <p style="font-weight: bold; text-align: initial; background-color: #FFE794;"> ${dto.contents}</p>  

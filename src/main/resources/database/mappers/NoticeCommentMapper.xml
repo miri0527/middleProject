@@ -17,11 +17,11 @@
 	
 	<insert id="setNoticeCommentAdd" parameterType="NoticeCommentDTO">
 		INSERT INTO NOTICECOMMENT
-		VALUES(NOTICEREPLY_SEQ.NEXTVAL, #{num}, #{id},#{contents},CURRENT_DATE, NULL, #{num}, 0,0)
+		VALUES(0,#{num}, #{id},#{contents},CURRENT_DATE, NULL, #{num}, 0,0)
 	</insert>
 	
 	<delete id="setNoticeCommentDelete" parameterType="NoticeCommentDTO">
-		DELETE NOTICECOMMENT WHERE REPLYNUM=#{replyNum}
+		DELETE FROM NOTICECOMMENT WHERE REPLYNUM=#{replyNum}
 	</delete>
 	
 	<update id="setNoticeCommentUpdate" parameterType="NoticeCommentDTO">

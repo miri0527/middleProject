@@ -7,10 +7,10 @@
 	<sql id="qnaReplyCondition">
   		<where>
   			<if test="kind=='contents'">
-  				CONTENTS LIKE '%'||#{search}||'%'
+  				CONTENTS LIKE CONCAT('%',#{search},'%')
   			</if>
   			<if test="kind=='id'">
-  				ID LIKE '%'||#{search}||'%'
+  				ID LIKE CONCAT('%',#{search},'%')
   			</if>
   		</where>
   	</sql>
@@ -27,32 +27,24 @@
   	
   	
       <select id="getBoardList" parameterType="Pager" resultMap="getBoardDetailResult">
-	 	  	SELECT * FROM
-	  	(
-		  	SELECT ROWNUM R, N.* FROM
-		  		(
-			  		SELECT QR.NUM,QR.REPLYNUM, QR.ID ,QR.PRODUCTNUM,QR.TITLE,QR.CONTENTS,QR.REGDATE,QR.DEPTH, P.PRODUCTNAME  FROM QNAREPLY QR
-			  			LEFT OUTER JOIN 
-			  				PRODUCT P 
-			  			ON QR.PRODUCTNUM = P.PRODUCTNUM
-			  		<include refid="qnaReplyCondition"></include>
-			  		ORDER BY DEPTH DESC
-		  		) N
-	  	 )
-	  	WHERE R BETWEEN #{startRow} AND  #{lastRow}	  
+	 	 SELECT (@rownum := @rownum + 1) AS R,N.*
+			FROM (
+				SELECT QR.NUM,QR.REPLYNUM, QR.ID ,QR.PRODUCTNUM,QR.TITLE,QR.CONTENTS,QR.REGDATE,QR.DEPTH,P.PRODUCTNAME  FROM QNAREPLY QR
+					LEFT OUTER JOIN 
+						PRODUCT P 
+					ON QR.PRODUCTNUM = P.PRODUCTNUM
+					<include refid="qnaReplyCondition"></include>
+					ORDER BY DEPTH DESC
+			)N, (SELECT @rownum := 0) r
+			LIMIT #{startRow},#{perPage}
   	 </select>
   	 
   	 <select id="getReplyDetail" parameterType="BbsDTO" resultType="QnaReplyDTO">
-	  	 SELECT * FROM 
-		(
-			SELECT ROWNUM R, N.* FROM 
-			(
-				(
-					SELECT * FROM QNAREPLY
-	  	 			WHERE NUM=#{num}
-				)
-			)
-		N)
+	  	SELECT (@rownum := @rownum + 1) AS R, N.*
+			FROM (
+				SELECT * FROM QNAREPLY 
+				WHERE NUM=#{num}
+			)N, (SELECT @rownum := 0) r
   	 </select>
   	 
   	 <select id="getReplyUpdate" parameterType="QnaReplyDTO" resultType="QnaReplyDTO">
@@ -80,8 +72,8 @@
       SELECT REVIEW_SEQ.NEXTVAL FROM DUAL
     </selectKey> -->
     
-    INSERT INTO QNAREPLY (REPLYNUM,NUM,ID,TITLE,CONTENTS,REGDATE,HIT,DEPTH,PRODUCTNUM)
-	VALUES(QNAREPLY_SEQ.NEXTVAL,#{num},#{id},#{title},#{contents},sysdate,0,0,#{productNum})
+    INSERT INTO QNAREPLY (REPLYNUM,NUM,ID,TITLE,CONTENTS,REGDATE,DEPTH,PRODUCTNUM)
+	VALUES(0,#{num},#{id},#{title},#{contents},NOW(),0,#{productNum})
     </insert>
     
     
@@ -92,7 +84,7 @@
     <!--파일 추가-->
     <insert id="setProductFileAdd" parameterType="QnaReplyDTO">
 	INSERT INTO QNAFILES
-	VALUES (QNA_FILE_SEQ.NEXTVAL, #{num}, #{fileName}, #{oriName})
+	VALUES (0,#{num}, #{fileName}, #{oriName})
 	</insert>
 	
 	<select id="getBoardFileList" parameterType="BbsDTO" resultType="BoardFileDTO">
@@ -114,7 +106,7 @@
 			
 		  <id column="REPLYNUM" property="replyNum"/>
 	      <result column="NUM" property="num"/>
-	      <result column="R" property="r" />
+	      <result column="R" property="r"/>
 		  <result column="TITLE" property="title"/>
 		  <result column="ID" property="id"/>
 		  <result column="CONTENTS" property="contents"/>

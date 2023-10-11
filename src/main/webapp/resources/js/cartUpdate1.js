@@ -159,6 +159,7 @@ $(".checkAll").on("click", function(){
 })
 
 $(".selectedDelete").on("click", function(){
+	
     let check = [];
     $(".check").each(function(i, v){
         if($(v).is(":checked")){

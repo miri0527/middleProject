@@ -9,41 +9,38 @@
  	</select>
  	
  	<select id="productOptionNum" resultType="Long">
-		SELECT PRODUCTOPTION_SEQ.NEXTVAL FROM DUAL
+		SELECT NEXTVAL(PRODUCTOPTION_SEQ)
 	</select>
  	  <sql id="ProductCondition">
       <where>
       	CATEGORYNUM = #{categoryNum}
          <if test="kind== 'productName'">
-          	AND PRODUCTNAME LIKE '%' || #{search} || '%'
+          	AND PRODUCTNAME LIKE CONCAT('%',#{search},'%')
          </if>
       </where>
    	</sql>
  	
  	<select id="getProductNum" resultType="Long">
-  		SELECT PRODUCT_SEQ.NEXTVAL FROM DUAL
+  		SELECT NEXTVAL(PRODUCT_SEQ)
   	</select>
   	<insert id="productOptionAdd0" parameterType="ProductOptionDTO">
- 		INSERT INTO PRODUCTOPTION (OPTIONNUM, PRODUCTNUM, OPTIONNAME, OPTIONVALUE, PRODUCTPRICE, PRODUCTSTOCK, REF, DEPTH)
- 		VALUES (#{optionNum}, #{productNum}, #{optionName}, #{optionValue}, #{productPrice}, #{productStock}, #{ref}, #{depth})
+ 		INSERT INTO PRODUCTOPTION (OPTIONNUM,PRODUCTNUM, OPTIONNAME, OPTIONVALUE, PRODUCTPRICE, PRODUCTSTOCK, REF, DEPTH)
+ 		VALUES (#{optionNum},#{productNum}, #{optionName}, #{optionValue}, #{productPrice}, #{productStock}, #{ref}, #{depth})
  	</insert>
  	
  
   	
   	<select id="getProductList" resultMap="productList11" parameterType="Pager">
-	SELECT * FROM 
-		(
-			SELECT ROWNUM R, N.* FROM
-			(
-			(SELECT * FROM PRODUCT
+		SELECT (@rownum := @rownum + 1) AS R, N.*
+			FROM (
+				SELECT * FROM PRODUCT 
 					LEFT JOIN 
-					PRODUCTFILES
+					PRODUCTFILES 
 					USING(PRODUCTNUM)
-				<include refid="ProductCondition"></include>
-			 ORDER BY PRODUCTNUM DESC) 
-			)
-		N)
-		WHERE R BETWEEN #{startRow} AND #{lastRow} 
+					<include refid="ProductCondition"></include>
+					ORDER BY PRODUCTNUM DESC
+				)N, (SELECT @rownum := 0) r 
+			LIMIT #{startRow},#{perPage}
   	</select>
   
   	
@@ -52,6 +49,7 @@
 	   <!--Primary Key  -->
 	   <id column="PRODUCTNUM" property="productNum" />
 	   <!-- 그외 나머지 -->
+	   <result column="R" property="r"/>
 	   <result column="PRODUCTNAME" property="productName" />
 	   <result column="PRODUCTSALES" property="productSales" />
 	   <result column="CATEGORYNUM" property="categoryNum" />
@@ -132,30 +130,26 @@
  	</select>
 	
 	<insert id="setProductAdd" parameterType="ProductDTO">
-		<selectKey keyProperty="productNum" resultType="Long" order="BEFORE">
-			SELECT PRODUCT_SEQ.NEXTVAL FROM DUAL
-		</selectKey>
+	<selectKey keyProperty="productNum" resultType="Long" order="BEFORE">
+			SELECT NEXTVAL(PRODUCT_SEQ)
+	</selectKey>
 		INSERT INTO PRODUCT (PRODUCTNUM , PRODUCTNAME, PRODUCTSALES, ID, CATEGORYNUM)
-		VALUES (#{productNum}, #{productName},#{productSales},#{id}, #{categoryNum})
+		VALUES (#{productNum},#{productName},#{productSales},#{id}, #{categoryNum})
 	</insert>
 	
 	<insert id="setProductFileAdd" parameterType="ProductImgDTO">
 		INSERT INTO PRODUCTFILES
-		VALUES (PRODUCTFILES_SEQ.NEXTVAL, #{productNum}, #{fileName}, #{oriName})
+		VALUES (0,#{productNum}, #{fileName}, #{oriName})
 	</insert>  
 	
  	<select id="getMemberProductList" resultType="ProductDTO" parameterType="Pager" >
-		SELECT * FROM 
-		(
-			SELECT ROWNUM R, N.* FROM
-			(
-			(SELECT * FROM PRODUCT 
-				
+		SELECT (@rownum := @rownum + 1) AS ROWNUM, N.*
+			FROM (
+				SELECT * FROM PRODUCT 
 				<include refid="ProductCondition"></include>
-			 ORDER BY PRODUCTNUM DESC) 
-			)
-		N)
-		WHERE R BETWEEN #{startRow} AND #{lastRow} 	
+				ORDER BY PRODUCTNUM DESC
+			)N, (SELECT @rownum := 0) r 
+			LIMIT #{startRow},#{perPage}
 		
 	</select>
 	
@@ -192,14 +186,14 @@
 	</update>	
 	
 	<delete id="setProductFileDelete" parameterType="Long">
-		DELETE PRODUCTFILES
+		DELETE FROM PRODUCTFILES
 		WHERE FILENUM=#{fileNum}
 	</delete>
 	
 	<delete id="setProductDelete" parameterType="ProductDTO">
-		DELETE PRODUCT WHERE PRODUCTNUM = #{productNum}
+		DELETE FROM PRODUCT WHERE PRODUCTNUM = #{productNum}
 	</delete>
 	<delete id="setProductOptionDelete" parameterType="ProductOptionDTO">
- 		DELETE PRODUCTOPTION WHERE PRODUCTNUM = #{productNum}
+ 		DELETE FROM PRODUCTOPTION WHERE PRODUCTNUM = #{productNum}
  	</delete>
 	</mapper>  
