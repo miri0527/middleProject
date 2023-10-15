@@ -116,12 +116,7 @@
 	</update>
 	
 	<select id="getTotalCount" resultType="Long" parameterType="Pager">
-	 		SELECT COUNT(PRODUCTNUM) FROM
-			(SELECT * FROM PRODUCT P
-			INNER JOIN PRODUCTORDER PO
-			USING(PRODUCTNUM) 
-		<include refid="CartCondition"></include>
-		)N
+	 		SELECT COUNT(PRODUCTNUM) FROM PRODUCT
  	</select>
 	
 	<select id="getMemberCartList"  parameterType="Pager" resultMap="ProductCartList">
